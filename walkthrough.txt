@@ -1,1 +1,2 @@
 https://magento.com/tech-resources/download
+http://devdocs.magento.com/guides/v2.0/install-gde/prereq/file-system-perms.html
