@@ -1,0 +1,8 @@
+#menu-vollkorn-all-menu > a::before {
+    background-image: url('../images/icon.png');
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    content: '';
+    height: 42px;
+    margin-bottom: 0;
+}
