@@ -3,6 +3,18 @@
     background-position: center 4px;
     background-repeat: no-repeat;
     content: '';
-    height: 42px;
+    height: 36px;
     margin-bottom: 0;
+}
+
+#menu-vollkorn-all-menu > a > span {
+    display: block;
+    padding: 2px 0 8px;
+}
+
+.admin__page-nav.vollkorn .admin__page-nav-title {
+    background-image: url('../images/icon.png') !important;
+    background-position: 8px !important;
+    background-repeat: no-repeat !important;
+    padding-left: 48px;
 }
