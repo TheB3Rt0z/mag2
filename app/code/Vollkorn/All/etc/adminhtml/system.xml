@@ -7,7 +7,7 @@
         </tab>
         <section id="vollkorn_all" translate="label" type="text" sortOrder="000"
                  showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>Information</label>
+            <label>General</label>
             <tab>vollkorn</tab>
             <resource>Vollkorn_All::config</resource>
             <group id="vollkorn_all_information" translate="label" type="text" sortOrder="000"

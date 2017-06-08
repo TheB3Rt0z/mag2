@@ -21,4 +21,4 @@ done
 
 printf "\nhelping process took $SECONDS seconds\n\n";
 
-osascript -e 'display notification "May the PASTA be always with you!" with title "Lord Vollkorn says: DONE!"';
+osascript -e 'display notification "May the PASTA be always with you!" with title "Lord Vollkorn says: JOB DONE in '$SECONDS' seconds!"';
