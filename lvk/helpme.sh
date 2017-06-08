@@ -1,5 +1,3 @@
-START_TIME=0;
-
 /Applications/XAMPP/bin/php bin/magento setup:upgrade;
 rm -R var/cache 2> /dev/null;
 rm -R var/di 2> /dev/null;
@@ -21,4 +19,4 @@ done
 
 printf "\nhelping process took $SECONDS seconds\n\n";
 
-osascript -e 'display notification "May the PASTA be always with you!" with title "Lord Vollkorn says: JOB DONE in '$SECONDS' seconds!"';
+osascript -e 'display notification "May the VOLLKORN PASTA be always with you!" with title "Lord Vollkorn says: JOB DONE in '$SECONDS' seconds" sound name "Glass"';
