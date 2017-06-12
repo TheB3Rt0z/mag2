@@ -1,9 +1,10 @@
-/Applications/XAMPP/bin/php bin/magento setup:upgrade;
 rm -R var/cache 2> /dev/null;
 rm -R var/di 2> /dev/null;
 rm -R var/generation 2> /dev/null;
 rm -R var/page_cache 2> /dev/null;
 rm -R var/view_preprocessed 2> /dev/null;
+
+/Applications/XAMPP/bin/php bin/magento setup:upgrade;
 
 rm -R pub/static/_requirejs 2> /dev/null;
 rm -R pub/static/adminhtml 2> /dev/null;
