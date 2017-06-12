@@ -4,5 +4,8 @@
     <menu>
     	<add id="Iways_Base::menu" title="i-ways" module="Iways_Base"
     	     sortOrder="000" resource="Iways_Base::menu" />
+    	<add id="Iways_Base::menu_configuration" title="Configuration" module="Iways_Base"
+             sortOrder="999" parent="Iways_Base::menu" action="adminhtml/system_config/edit/section/iways_base"
+             resource="Iways_Base::menu_configuration" />
     </menu>
 </config>
