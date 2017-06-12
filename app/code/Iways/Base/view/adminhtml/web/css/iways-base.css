@@ -1,0 +1,20 @@
+#menu-iways-base-menu > a::before {
+    background-image: url('../images/icon.png');
+    background-position: center 4px;
+    background-repeat: no-repeat;
+    content: '';
+    height: 36px;
+    margin-bottom: 0;
+}
+
+#menu-iways-base-menu > a > span {
+    display: block;
+    padding: 5px;
+}
+
+.admin__page-nav.iways .admin__page-nav-title {
+    background-image: url('../images/icon.png') !important;
+    background-position: 8px !important;
+    background-repeat: no-repeat !important;
+    padding-left: 48px;
+}
