@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Iways\Design\Block\Html\Head\Additional\Css"
+                   name="iways_design_block_html_head_additional_css" />
+        </referenceBlock>
+    </body>
+</page>

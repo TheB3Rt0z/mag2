@@ -1,0 +1,19 @@
+{
+	"name": "iways/magento2-module-design",
+	"require": {
+	   "iways/magento2-module-base": "100.0.*"
+	},
+	"type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+	"autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\Design\\": ""
+        }
+    }
+}
