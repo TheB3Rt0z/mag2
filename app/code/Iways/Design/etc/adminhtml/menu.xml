@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_Design::design_config" title="Design Configuration" module="Magento_Theme"
+             sortOrder="100" parent="Iways_Base::menu" action="theme/design_config"
+             resource="Magento_Config::config_design" />
+        <add id="Iways_Design::system_design_theme" title="Installed Themes" module="Magento_Theme"
+             sortOrder="200" parent="Iways_Base::menu" action="adminhtml/system_design_theme" 
+             resource="Magento_Theme::theme" />
+    </menu>
+</config>
