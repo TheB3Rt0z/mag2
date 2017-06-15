@@ -16,3 +16,29 @@ body .page-wrapper {
     background-repeat: no-repeat !important;
     padding-left: 48px;
 }
+
+
+/* magento backend tunings */
+
+.admin__action-dropdown {
+    background-color: transparent !important;
+}
+
+.page-main-actions:not(._hidden),
+.page-actions._fixed {
+    background: none !important;
+    border-top: none !important;
+}
+
+.dashboard-container .empty-text {
+    padding: 5px 3px 0;
+}
+
+.dashboard-store-stats .dashboard-store-stats-content {
+	background-color: white;
+    border: solid 1px #bbb;
+    border-top: none;
+}
+
+
+/* END-OF-FILE */
