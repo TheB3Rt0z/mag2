@@ -1,0 +1,18 @@
+body {
+	font-family: 'Vollkorn', serif !important;
+}
+
+body .page-wrapper {
+    background-color: white;
+    background-image: url('../images/background-125.png');
+    background-position: left top;
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+.fieldset-wrapper[data-index=vollkorn_settings] > .fieldset-wrapper-title {
+    background-image: url('../images/icon.png') !important;
+    background-position: 8px 6px !important;
+    background-repeat: no-repeat !important;
+    padding-left: 48px;
+}

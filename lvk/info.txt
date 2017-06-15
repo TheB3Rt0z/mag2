@@ -1,7 +1,0 @@
-https://magento.com/tech-resources/download
-
-http://devdocs.magento.com/guides/v2.0/install-gde/prereq/file-system-perms.html
-http://devdocs.magento.com/guides/v2.1/config-guide/bootstrap/magento-modes.html
-http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-create.html
-
-http://inchoo.net/magento-2/how-to-create-a-basic-module-in-magento-2/

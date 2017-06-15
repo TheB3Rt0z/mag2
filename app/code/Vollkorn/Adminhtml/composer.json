@@ -1,5 +1,5 @@
 {
-	"name": "vollkorn/module-design",
+	"name": "vollkorn/module-adminhtml",
 	"require": {
 	   "vollkorn/module-all": "100.0.*"
 	},
@@ -13,7 +13,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Vollkorn\\Design\\": ""
+            "Vollkorn\\Adminhtml\\": ""
         }
     }
 }

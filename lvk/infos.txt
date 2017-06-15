@@ -1,0 +1,10 @@
+https://magento.com/tech-resources/download
+
+http://devdocs.magento.com/guides/v2.0/install-gde/prereq/file-system-perms.html
+http://devdocs.magento.com/guides/v2.1/config-guide/bootstrap/magento-modes.html
+http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-create.html
+
+http://inchoo.net/magento-2/how-to-create-a-basic-module-in-magento-2/
+
+* * * * * rsync -r --exclude '.*' [PATH_TO_m2bt]/app/design/frontend/Iways/base/* [PATH_TO_m2vk]/app/design/frontend/Iways/base
+* * * * * rsync -r --exclude '.*' [PATH_TO_m2bt]/app/code/Iways/* [PATH_TO_m2vk]/app/code/Iways
