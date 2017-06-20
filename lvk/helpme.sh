@@ -1,3 +1,5 @@
+/Applications/XAMPP/bin/php bin/magento maintenance:enable;
+
 rm -R var/cache 2> /dev/null;
 rm -R var/di 2> /dev/null;
 rm -R var/generation 2> /dev/null;
@@ -22,3 +24,5 @@ done
 printf "\nhelping process took $SECONDS seconds\n\n";
 
 osascript -e 'display notification "May the VOLLKORN PASTA be always with you!" with title "Lord Vollkorn says: FERTIG in '$SECONDS' seconds" sound name "Glass"';
+
+/Applications/XAMPP/bin/php bin/magento maintenance:disable;

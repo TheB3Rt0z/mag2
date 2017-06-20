@@ -10,6 +10,39 @@ body .page-wrapper {
     background-size: 100%;
 }
 
+.page-layout-admin-login .page-wrapper,
+table.data-grid {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.login-header {
+	background-image: url('../images/logo.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: auto 62px;
+    position: relative;
+}
+
+.login-header::before {
+	bottom: 0;
+	content: 'Vollkorn';
+    position: absolute;
+    left: 64px;
+}
+.login-header::after {
+    bottom: 0;
+    content: 'Edition';
+    position: absolute;
+    right: 80px;
+}
+
+
+.message-system-short {
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 5px 30px rgba(0, 0, 0, .5);
+}
+
 .fieldset-wrapper[data-index=vollkorn_settings] > .fieldset-wrapper-title {
     background-image: url('../images/icon.png') !important;
     background-position: 8px 6px !important;
