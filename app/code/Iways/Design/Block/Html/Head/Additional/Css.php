@@ -17,10 +17,13 @@ class Css extends \Magento\Framework\View\Element\Template {
 
         echo '<style type="text/css">';
 
+        if ($background_color = $this->_scopeConfig->getValue('design/body/background_color', $storeScope))
+            echo 'body{background-image: none !important; background-color: ' . $background_color . ' !important}';
+
         if ($background_src = $this->_scopeConfig->getValue('design/body/background_src', $storeScope))
             echo 'body{background-image: url("'
                . $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)
-               . \Vollkorn\Design\Model\Design\Backend\Body\Background::UPLOAD_DIR
+               . \Iways\Design\Model\Design\Backend\Body\Background::UPLOAD_DIR
                . '/' . $background_src . '") !important}';
 
         echo '</style>';

@@ -6,6 +6,7 @@
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string" translate="true">i-ways Settings</item>
                 <item name="sortOrder" xsi:type="number">999</item>
+                <item name="additionalClasses" xsi:type="string">iways-settings</item>
             </item>
         </argument>
         <fieldset name="body">
@@ -16,6 +17,16 @@
                     <item name="level" xsi:type="number">1</item>
                 </item>
             </argument>
+            <field name="body_background_color">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Background Color</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="componentType" xsi:type="string">input</item>
+                        <item name="additionalClasses" xsi:type="string">iways-color</item>
+                    </item>
+                </argument>
+            </field>
             <field name="body_background_src">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
