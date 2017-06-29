@@ -5,4 +5,7 @@
          <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" />
          <css src="Vollkorn_Adminhtml::css/vollkorn-adminhtml.css" />
      </head>
+     <body>
+         <block class="Vollkorn\Adminhtml\Block\Audio" name="vollkorn_adminhtml_block_audio" after="-" />
+     </body>
 </page>

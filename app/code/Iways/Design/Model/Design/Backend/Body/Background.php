@@ -2,9 +2,7 @@
 
 namespace Iways\Design\Model\Design\Backend\Body;
 
-use Magento\Theme\Model\Design\Backend\Image;
-
-class Background extends Image {
+class Background extends \Magento\Theme\Model\Design\Backend\Image {
 
     const UPLOAD_DIR = 'body';
 

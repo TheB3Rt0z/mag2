@@ -1,3 +1,12 @@
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
 body {
 	font-family: 'Vollkorn', serif !important;
 }
@@ -6,8 +15,9 @@ body .page-wrapper {
     background-color: white;
     background-image: url('../images/background-125.png');
     background-position: left top;
-    background-repeat: repeat-y;
-    background-size: 100%;
+    /*background-repeat: repeat-y;
+    background-size: 100%;*/
+    animation: animatedBackground 30s linear infinite;
 }
 
 .page-layout-admin-login .page-wrapper,
