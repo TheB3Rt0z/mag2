@@ -3,7 +3,7 @@
         background-position: 0 0;
     }
     to {
-        background-position: 0 100%;
+        background-position: 100% 100%;
     }
 }
 
@@ -15,8 +15,8 @@ body .page-wrapper {
     background-color: white;
     background-image: url('../images/background-125.png');
     background-position: left top;
-    /*background-repeat: repeat-y;
-    background-size: 100%;*/
+}    
+body.adminhtml-auth-login .page-wrapper {
     animation: animatedBackground 30s linear infinite;
 }
 
