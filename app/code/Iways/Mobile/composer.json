@@ -1,0 +1,19 @@
+{
+	"name": "iways/magento2-module-mobile",
+	"require": {
+	   "iways/magento2-module-design": "100.0.*"
+	},
+	"type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+	"autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\Mobile\\": ""
+        }
+    }
+}

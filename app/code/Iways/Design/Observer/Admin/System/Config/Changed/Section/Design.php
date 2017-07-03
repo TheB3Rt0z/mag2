@@ -4,59 +4,64 @@ namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 
 class Design implements \Magento\Framework\Event\ObserverInterface {
 
-   protected $_media_writer;
+    const EOL = "\n";
+
+    protected $_store_manager,
+              $_module_writer,
+              $_event_manager;
+
+    protected function _write($file, $data = '') {
+
+        try {
+            $file->lock();
+            try {
+                $file->write($data);
+            }
+            finally {
+                $file->unlock();
+            }
+        }
+        finally {
+            $file->close();
+        }
+    }
 
     public function __construct(\Magento\Framework\View\Element\Context $context,
+                                \Magento\Store\Model\StoreManagerInterface $storeManager,
                                 \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
                                 \Magento\Framework\Filesystem $filesystem) {
 
         $this->_scopeConfig = $context->getScopeConfig();
-        //$this->_media_writer = $filesystem->getDirectoryWrite($directoryList::MEDIA);
+
+        $this->_storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+
+        $this->_store_manager = $storeManager;
         $this->_module_writer = $filesystem->getDirectoryWrite('app');
+        $this->_event_manager = $context->getEventManager();
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer) {
 
-        $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        $output = '';
 
-        $css = '';
+        if ($background_color = $this->_scopeConfig->getValue('design/body/background_color', $this->_storeScope))
+            $output .= 'body {' . self::EOL
+                     . '    background-image: none !important;' . self::EOL
+                     . '    background-color: ' . $background_color . ' !important;' . self::EOL
+                     . '}' . self::EOL;
 
-        if ($background_color = $this->_scopeConfig->getValue('design/body/background_color', $storeScope))
-            $css .= 'body{background-image: none !important; background-color: ' . $background_color . ' !important}' . "\n";
-
-        if ($background_src = $this->_scopeConfig->getValue('design/body/background_src', $storeScope))
-            $css .= 'body{background-image: url("'
-                  . $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)
-                  . \Iways\Design\Model\Design\Backend\Body\Background::UPLOAD_DIR
-                  . '/' . $background_src . '") !important}' . "\n";
-
-        /*$file = $this->_media_writer->openFile('iways/design/frontend/web/css/iways-design.css', 'w');
-        try {
-            $file->lock();
-            try {
-                $file->write($css);
-            }
-            finally {
-                $file->unlock();
-            }
-        }
-        finally {
-            $file->close();
-        }*/
+        if ($background_src = $this->_scopeConfig->getValue('design/body/background_src', $this->_storeScope))
+            $output .= 'body {' . self::EOL
+                     . '    background-image: url("' . $this->_store_manager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)
+                                                     . \Iways\Design\Model\Design\Backend\Body\Background::UPLOAD_DIR
+                                                     . '/' . $background_src . '") !important;' . self::EOL
+                     . '}' . self::EOL;
 
         $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'w');
-        try {
-            $file->lock();
-            try {
-                $file->write($css);
-            }
-            finally {
-                $file->unlock();
-            }
-        }
-        finally {
-            $file->close();
-        }
+        $this->_write($file, $output);
+
+        $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'a');
+        $this->_event_manager->dispatch('iways_design_admin_system_config_changed_section_design', ['file' => $file]);
 
         return $this;
     }

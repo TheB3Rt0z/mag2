@@ -1,6 +1,6 @@
 $(document).on('change keyup', '.iways-color input', function (e) {
 	
-	var color = tinycolor($(this).val());
+	var color = tinycolor($(this).val()); // https://github.com/bgrins/TinyColor
 	
 	if (color.isValid()) {
 		
