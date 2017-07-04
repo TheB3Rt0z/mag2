@@ -47,8 +47,7 @@ table.data-grid {
     right: 80px;
 }
 
-
-.message-system-short {
+.message-system-inner {
 	border-radius: 0 0 5px 5px;
 	box-shadow: 0 5px 30px rgba(0, 0, 0, .5);
 }

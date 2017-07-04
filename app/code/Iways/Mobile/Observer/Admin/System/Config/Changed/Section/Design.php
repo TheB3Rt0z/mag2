@@ -4,15 +4,17 @@ namespace Iways\Mobile\Observer\Admin\System\Config\Changed\Section;
 
 class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\Design {
 
-    protected function _addNavigationDirectionJS() {
+    protected function _addNavigationDirectionJS($active = true) {
 
-        $output = 'var config = {' . self::EOL
-	            . '    map: {' . self::EOL
-		        . '        "*": {' . self::EOL
-			    . '            "menu": "Iways_Mobile/js/iways-navigation-direction",' . self::EOL
-		        . '        },' . self::EOL
-	            . '    },' . self::EOL
-                . '};' . self::EOL;
+        $output = $active
+                  ? 'var config = {' . self::EOL
+	              . '    map: {' . self::EOL
+		          . '        "*": {' . self::EOL
+			      . '            "menu": "Iways_Mobile/js/iways-navigation-direction",' . self::EOL
+		          . '        },' . self::EOL
+	              . '    },' . self::EOL
+                  . '};' . self::EOL
+                  : 'var config = {};' . self::EOL;
 
         $file = $this->_module_writer->openFile('code/Iways/Mobile/View/frontend/requirejs-config.js', 'w');
         $this->_write($file, $output);
@@ -22,7 +24,7 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
 
         $output = '';
 
-        if ($navigation_direction = $this->_scopeConfig->getValue('design/mobile/navigation_direction', $this->_storeScope)) {
+        if ($this->_scopeConfig->getValue('design/mobile/navigation_direction', $this->_storeScope)) {
             $output .= '.nav-open .page-wrapper {' . self::EOL
                      . '    left: 0 !important;' . self::EOL
                      . '    right: 80%;' . self::EOL
@@ -43,6 +45,8 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
 
             $this->_addNavigationDirectionJS();
         }
+        else
+            $this->_addNavigationDirectionJS(false);
 
         $this->_write($observer->getFile(), $output);
 
