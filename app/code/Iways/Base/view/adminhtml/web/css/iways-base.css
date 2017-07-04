@@ -18,3 +18,9 @@
     background-repeat: no-repeat !important;
     padding-left: 48px;
 }
+
+.iways-doc p,
+.iways-doc ol,
+.iways-doc ul {
+    margin-bottom: 2.5em;
+}
