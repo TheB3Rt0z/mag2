@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_Mobile::menu_documentation_mobile" title="Mobile Module" module="Iways_Mobile"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_mobile/doc/index"
+             resource="Iways_Mobile::menu_documentation_mobile" />
+    </menu>
+</config>

@@ -2,11 +2,16 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
+        <add id="Iways_Design::design" title="Design" module="Magento_Theme"
+             sortOrder="100" parent="Iways_Base::menu" resource="Magento_Config::design" />
         <add id="Iways_Design::design_config" title="Design Configuration" module="Magento_Theme"
-             sortOrder="100" parent="Iways_Base::menu" action="theme/design_config"
+             sortOrder="111" parent="Iways_Design::design" action="theme/design_config"
              resource="Magento_Config::config_design" />
         <add id="Iways_Design::system_design_theme" title="Installed Themes" module="Magento_Theme"
-             sortOrder="200" parent="Iways_Base::menu" action="adminhtml/system_design_theme" 
+             sortOrder="122" parent="Iways_Design::design" action="adminhtml/system_design_theme" 
              resource="Magento_Theme::theme" />
+        <add id="Iways_Design::menu_documentation_design" title="Design Module" module="Iways_Design"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_design/doc/index"
+             resource="Iways_Design::menu_documentation_design" />
     </menu>
 </config>

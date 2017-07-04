@@ -1,0 +1,11 @@
+<?php
+
+$object_manager = \Magento\Framework\App\ObjectManager::getInstance();
+$module_reader = $object_manager->get('Magento\Framework\Module\Dir\Reader');
+$file_path = $module_reader->getModuleDir('', $this->getModule()) . '/README.md';
+$file_contents = file_get_contents($file_path);
+$filtered_contents = str_replace('/view/adminhtml/web', $this->getViewFileUrl('Iways_Mobile'), $file_contents);
+$parse_down = new Parsedown();
+echo $parse_down->text($filtered_contents);
+
+?>
