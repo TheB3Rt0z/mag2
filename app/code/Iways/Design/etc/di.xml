@@ -18,6 +18,10 @@
                         <item name="value" xsi:type="string">body</item>
                     </item>
                 </item>
+                <item name="body_background_gradient" xsi:type="array">
+                    <item name="path" xsi:type="string">design/body/background_gradient</item>
+                    <item name="fieldset" xsi:type="string">iways_settings/body</item>
+                </item>
             </argument>
         </arguments>
     </type>

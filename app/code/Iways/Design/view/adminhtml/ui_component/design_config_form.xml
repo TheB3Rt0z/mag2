@@ -42,6 +42,16 @@
                     </item>
                 </argument>
             </field>
+            <field name="body_background_gradient">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Gradient</item>
+                        <item name="formElement" xsi:type="string">textarea</item>
+                        <item name="componentType" xsi:type="string">textarea</item>
+                        <item name="notice" xsi:type="string" translate="true">see http://www.colorzilla.com/gradient-editor for configurable valid CSS gradient's code and presets</item>
+                    </item>
+                </argument>
+            </field>
         </fieldset>
     </fieldset>
 </form>

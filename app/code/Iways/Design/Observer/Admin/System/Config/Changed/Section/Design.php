@@ -45,16 +45,21 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
         $output = '';
 
         if ($background_color = $this->_scopeConfig->getValue('design/body/background_color', $this->_storeScope))
-            $output .= 'body {' . self::EOL
-                     . '    background-image: none !important;' . self::EOL
-                     . '    background-color: ' . $background_color . ' !important;' . self::EOL
+            $output .= 'html body {' . self::EOL
+                     . '    background-image: none;' . self::EOL
+                     . '    background-color: ' . $background_color . ';' . self::EOL
                      . '}' . self::EOL;
 
         if ($background_src = $this->_scopeConfig->getValue('design/body/background_src', $this->_storeScope))
-            $output .= 'body {' . self::EOL
+            $output .= 'html body {' . self::EOL
                      . '    background-image: url("' . $this->_store_manager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)
                                                      . \Iways\Design\Model\Design\Backend\Body\Background::UPLOAD_DIR
-                                                     . '/' . $background_src . '") !important;' . self::EOL
+                                                     . '/' . $background_src . '");' . self::EOL
+                     . '}' . self::EOL;
+
+        if ($background_gradient = $this->_scopeConfig->getValue('design/body/background_gradient', $this->_storeScope))
+            $output .= 'html body {' . self::EOL
+                     . '    ' . str_replace(["\n", "\r"], '', $background_gradient) . self::EOL
                      . '}' . self::EOL;
 
         $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'w');

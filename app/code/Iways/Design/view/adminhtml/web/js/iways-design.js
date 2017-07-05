@@ -1,17 +1,22 @@
 $(document).on('change keyup', '.iways-color input', function (e) {
 	
-	var color = tinycolor($(this).val()); // https://github.com/bgrins/TinyColor
+	var val = $(this).val();
 	
-	if (color.isValid()) {
+	if (val.length >= 3) {
+	
+		var color = tinycolor(val); // https://github.com/bgrins/TinyColor
 		
-		var color_hex = color.toHexString();
-		
-		$(this).val(color_hex)
-		
-		$(this).css('color', color.isLight() ? 'black' : 'white')
-		       .css('background-color', color_hex);
+		if (color.isValid()) {
+			
+			var color_hex = color.toHexString();
+			
+			$(this).val(color_hex)
+			
+			$(this).css('color', color.isLight() ? 'black' : 'white')
+			       .css('background-color', color_hex);
+		}
+		else
+			$(this).css('color', 'initial')
+		           .css('background-color', 'initial');
 	}
-	else
-		$(this).css('color', 'initial')
-	           .css('background-color', 'initial');
 });
