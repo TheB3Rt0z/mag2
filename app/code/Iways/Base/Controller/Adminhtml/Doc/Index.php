@@ -23,9 +23,11 @@ class Index extends \Magento\Backend\App\Action {
 
     public function execute() {
 
+        $module = $this->getRequest()->getParam('module');
+
         $result_page = $this->_result_page_factory->create();
 
-        $result_page->getConfig()->getTitle()->set('Documentation');
+        $result_page->getConfig()->getTitle()->set(__('Documentation') . ' i-ways Magento 2 ' . __(substr($module, 6) . ' Module'));
 
         return $result_page;
     }

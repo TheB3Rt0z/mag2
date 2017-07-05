@@ -7,7 +7,7 @@
         <add id="Iways_Base::menu_documentation" title="Documentation" module="Iways_Base"
              sortOrder="800" parent="Iways_Base::menu" resource="Iways_Base::menu_documentation" />
         <add id="Iways_Base::menu_documentation_base" title="Base Module" module="Iways_Base"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_Base"
              resource="Iways_Base::menu_documentation_base" />
     	<add id="Iways_Base::menu_configuration" title="Configuration" module="Iways_Base"
              sortOrder="999" parent="Iways_Base::menu" action="adminhtml/system_config/edit/section/iways_base"

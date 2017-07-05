@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Iways_Mobile::menu_documentation_mobile" title="Mobile Module" module="Iways_Mobile"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_mobile/doc/index"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_Mobile"
              resource="Iways_Mobile::menu_documentation_mobile" />
     </menu>
 </config>

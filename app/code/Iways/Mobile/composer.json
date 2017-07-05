@@ -1,7 +1,7 @@
 {
-	"name": "iways/magento2-module-mobile",
+	"name": "iways/module-mobile",
 	"require": {
-	   "iways/magento2-module-design": "100.0.*"
+	   "iways/module-design": "100.0.*"
 	},
 	"type": "magento2-module",
     "version": "1.0.0",

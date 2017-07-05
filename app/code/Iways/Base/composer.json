@@ -1,5 +1,5 @@
 {
-	"name": "i-ways/magento2-base-module",
+	"name": "i-ways/module-base",
 	"require": {
        "erusev/parsedown": "1.6.*"
     },

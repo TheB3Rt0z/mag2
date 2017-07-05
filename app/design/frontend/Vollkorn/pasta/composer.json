@@ -1,9 +1,9 @@
 {
-    "name": "vollkorn/theme-frontend-pasta",
+    "name": "vollkorn/theme-pasta",
     "description": "BASTA mit der übliche PASTA!",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0",
-        "i-ways/magento2-base-theme": "100.0.*",
+        "i-ways/theme-base": "100.0.*",
         "magento/framework": "100.0.*"
     },
     "type": "magento2-theme",

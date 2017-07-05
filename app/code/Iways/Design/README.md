@@ -12,4 +12,5 @@
 ## What will this module do?
 
 - [X] offers a complete control on frontend's background: color, image and/or gradient
+- [ ] will permit an advanced setting of body backgrund's images's properties (repeating, scaling, attachment..)
 - [ ] content, sidebar and header/footer enhancements will be also provided (if not with a dedicated child-module)

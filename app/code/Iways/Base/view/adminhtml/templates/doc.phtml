@@ -1,0 +1,19 @@
+<?php
+
+$contents = str_replace('/view/adminhtml/web',
+                        $this->getViewFileUrl($this->getData('module')),
+                        $this->getData('contents'));
+
+$parse_down = new Parsedown();
+$parse_down->setBreaksEnabled(true);
+$contents = $parse_down->text($contents);
+
+?>
+
+<div class="iways-doc">
+    <span class="language-flag">
+        <img src="<?php echo $this->getViewFileUrl('Iways_Base/images/doc/' . $this->getData('locale') . '/language_flag.png') ?>"
+             alt="<?php echo $this->getData('locale') ?>">
+    </span>
+    <?php echo $contents ?>
+</div>

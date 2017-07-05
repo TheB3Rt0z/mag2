@@ -11,7 +11,7 @@
              sortOrder="122" parent="Iways_Design::design" action="adminhtml/system_design_theme" 
              resource="Magento_Theme::theme" />
         <add id="Iways_Design::menu_documentation_design" title="Design Module" module="Iways_Design"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_design/doc/index"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_Design"
              resource="Iways_Design::menu_documentation_design" />
     </menu>
 </config>
