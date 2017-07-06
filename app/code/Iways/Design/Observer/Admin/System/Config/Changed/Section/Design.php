@@ -37,6 +37,7 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
 
         $this->_store_manager = $storeManager;
         $this->_module_writer = $filesystem->getDirectoryWrite('app');
+        $this->_media_writer = $filesystem->getDirectoryWrite('media');
         $this->_event_manager = $context->getEventManager();
     }
 
@@ -62,7 +63,9 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
                      . '    ' . str_replace(["\n", "\r"], '', $background_gradient) . self::EOL
                      . '}' . self::EOL;
 
-        $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'w');
+        //$file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'w');
+        //$file = $this->_media_writer->openFile('Iways/Design/View/frontend/web/css/iways-design.css', 'w');
+        $file = $this->_media_writer->openFile('iways/styles.css', 'w');
         $this->_write($file, $output);
 
         $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'a');
