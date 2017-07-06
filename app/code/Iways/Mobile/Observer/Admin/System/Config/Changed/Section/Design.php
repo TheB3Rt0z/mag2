@@ -24,7 +24,7 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
 
         $output = '';
 
-        if ($this->_scopeConfig->getValue('design/mobile/navigation_direction', $this->_storeScope)) {
+        if ($this->_scopeConfig->getValue('design/mobile/navigation_direction', $this->_storeScope))// {
             $output .= '.nav-open .page-wrapper {' . self::EOL
                      . '    left: 0 !important;' . self::EOL
                      . '    right: 80%;' . self::EOL
@@ -43,10 +43,10 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
                      . '    right: 0 !important;' . self::EOL
                      . '}' . self::EOL;
 
-            $this->_addNavigationDirectionJS();
+            /*$this->_addNavigationDirectionJS();
         }
         else
-            $this->_addNavigationDirectionJS(false);
+            $this->_addNavigationDirectionJS(false);*/
 
         $this->_write($observer->getFile(), $output);
 

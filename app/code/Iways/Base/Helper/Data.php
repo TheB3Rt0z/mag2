@@ -16,6 +16,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         parent::__construct($context);
     }
 
+    public function getConfig($path) {
+
+        return $this->scopeConfig->getValue($path, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
     public function getLocale() {
 
         return $this->_resolver->getLocale();
