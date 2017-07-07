@@ -46,7 +46,7 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
 
     public function execute(\Magento\Framework\Event\Observer $observer) {
 
-        $output = '';
+        $output = '@CHARSET "UTF-8";' . self::EOL . self::EOL;
 
         if ($background_color = $this->_scopeConfig->getValue('design/body/background_color', $this->_storeScope))
             $output .= 'html body {' . self::EOL
