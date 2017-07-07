@@ -12,6 +12,9 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
 
     protected function _write($file, $data = '') {
 
+        if ($this->_scopeConfig->getValue('iways_design/frontend/minify_css', $this->_storeScope))
+            $data = str_replace(['    ', self::EOL], '', $data);
+
         try {
             $file->lock();
             try {
@@ -64,11 +67,11 @@ class Design implements \Magento\Framework\Event\ObserverInterface {
                      . '}' . self::EOL;
 
         //$file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'w');
-        //$file = $this->_media_writer->openFile('Iways/Design/View/frontend/web/css/iways-design.css', 'w');
         $file = $this->_media_writer->openFile('iways/styles.css', 'w');
         $this->_write($file, $output);
 
-        $file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'a');
+        //$file = $this->_module_writer->openFile('code/Iways/Design/View/frontend/web/css/iways-design.css', 'a');
+        $file = $this->_media_writer->openFile('iways/styles.css', 'a');
         $this->_event_manager->dispatch('iways_design_admin_system_config_changed_section_design', ['file' => $file]);
 
         return $this;
