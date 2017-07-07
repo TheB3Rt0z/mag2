@@ -11,6 +11,13 @@ body {
 	font-family: 'Vollkorn', serif !important;
 }
 
+body video {
+    position: absolute;
+    top: -196px;
+    width: 88px;
+    z-index: 999;
+}
+
 body .page-wrapper {
     background-color: white;
     background-image: url('../images/background-125.png');
@@ -27,7 +34,7 @@ table.data-grid {
 }
 
 .login-header {
-	background-image: url('../images/logo.png');
+	background-image: url('../images/icon_64x64.png');
     background-position: right top;
     background-repeat: no-repeat;
     background-size: auto 62px;
@@ -53,7 +60,7 @@ table.data-grid {
 }
 
 .fieldset-wrapper[data-index=vollkorn_settings] > .fieldset-wrapper-title {
-    background-image: url('../images/icon.png') !important;
+    background-image: url('../images/icon_32x32.png') !important;
     background-position: 8px 6px !important;
     background-repeat: no-repeat !important;
     padding-left: 48px;

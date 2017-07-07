@@ -2,7 +2,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" type="image/png" sizes="32x32" src="images/icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" src="images/icon_32x32.png" />
         <link rel="stylesheet" type="text/css" media="all" href="/pub/media/iways/styles.css" />
     </head>
 </page>

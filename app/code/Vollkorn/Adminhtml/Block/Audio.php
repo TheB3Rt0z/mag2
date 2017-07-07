@@ -15,14 +15,17 @@ class Audio extends \Magento\Framework\View\Element\Template {
         $assetRepository = $context->getAssetRepository();
 
         if (!$authSession->getUser())
-            echo '<audio autoplay loop>
-                      <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/som.mp3') . '" type="audio/mpeg"></source>
-                  </audio>';
+            echo '<audio autoplay loop>'
+               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/som.mp3') . '" type="audio/mpeg"></source>'
+               . '</audio>';
         elseif (!$session->getAudioPlayed()) {
             $session->setAudioPlayed(true);
-            echo '<audio autoplay preload>
-                      <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/tod.mp3') . '" type="audio/mpeg"></source>
-                  </audio>';
+            echo '<video width="800" height="450" autoplay preload>'
+               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp4/ben.mp4') . '" type="video/mp4">'
+               . '</video>'
+               . '<audio autoplay preload>'
+               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/tod.mp3') . '" type="audio/mpeg"></source>'
+               . '</audio>';
         }
     }
 }

@@ -1,5 +1,5 @@
 #menu-vollkorn-all-menu > a::before {
-    background-image: url('../images/icon.png');
+    background-image: url('../images/icon_32x32.png');
     background-position: center 4px;
     background-repeat: no-repeat;
     content: '';
@@ -13,7 +13,7 @@
 }
 
 .admin__page-nav.vollkorn .admin__page-nav-title {
-    background-image: url('../images/icon.png') !important;
+    background-image: url('../images/icon_32x32.png') !important;
     background-position: 8px !important;
     background-repeat: no-repeat !important;
     padding-left: 48px;
