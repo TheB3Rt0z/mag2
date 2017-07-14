@@ -1,11 +1,10 @@
 {
 	"name": "i-ways/module-base",
 	"require": {
-	   "i-ways/theme-base": "100.0.*",
        "erusev/parsedown": "1.6.*"
     },
 	"type": "magento2-module",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "license": [
         "proprietary"
     ],

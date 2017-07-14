@@ -12,8 +12,9 @@ body {
 }
 
 body video {
+	height: 50px;
     position: absolute;
-    top: -196px;
+    top: 4px;
     width: 88px;
     z-index: 999;
 }
@@ -30,7 +31,7 @@ body.adminhtml-auth-login .page-wrapper {
 .page-layout-admin-login .page-wrapper,
 table.data-grid {
     border-radius: 5px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .login-header {

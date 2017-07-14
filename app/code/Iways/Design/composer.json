@@ -1,10 +1,10 @@
 {
 	"name": "iways/module-design",
 	"require": {
-	   "iways/module-base": "100.0.*"
+	   "iways/module-base": "0.0.*"
 	},
 	"type": "magento2-module",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "license": [
         "proprietary"
     ],
