@@ -19,6 +19,31 @@
     padding-left: 48px;
 }
 
+.accordion .config input[id^="iways_"] + .note::before {
+    color: #514943;
+    content: '\e633';
+    display: inline-block;
+    font-family: 'Admin Icons';
+    font-size: 1.1rem;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-right: 3px;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+}
+
+.iways-code {
+	background-color: black;
+	border-radius: 4px;
+    box-shadow: 0 0 4px white inset;
+    color: forestgreen;
+    display: inline-block;
+	padding: 6px;
+}
+
 .iways-doc p,
 .iways-doc ol,
 .iways-doc ul {
