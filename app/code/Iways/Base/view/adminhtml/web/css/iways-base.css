@@ -35,6 +35,15 @@
     -webkit-font-smoothing: antialiased;
 }
 
+#row_iways_base_iways_base_information_iways_base_information_credits span[data-config-scope]:before,
+#row_iways_base_iways_base_information_iways_base_information_check {
+	display: none;
+}
+#row_iways_base_iways_base_information_iways_base_information_notification .note {
+	color: red;
+	margin: 0;
+}
+
 .iways-code {
 	background-color: black;
 	border-radius: 4px;
