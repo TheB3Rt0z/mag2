@@ -1,13 +1,13 @@
 /Applications/XAMPP/bin/php bin/magento maintenance:enable;
 
-#rm -R var/generation 2> /dev/null;
+rm -R var/generation 2> /dev/null;
 
 rm -R var/cache 2> /dev/null;
 rm -R var/page_cache 2> /dev/null;
 rm -R var/view_preprocessed 2> /dev/null;
 
-#rm -R var/di 2> /dev/null;
-#mkdir var/di;
+rm -R var/di 2> /dev/null;
+mkdir var/di;
 /Applications/XAMPP/bin/php bin/magento setup:upgrade;
 
 while getopts "bcdghlt" opt
