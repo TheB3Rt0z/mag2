@@ -24,14 +24,14 @@ do
        # compilation
        c) /Applications/XAMPP/bin/php bin/magento setup:di:compile
           ;;
-       # base global deploy
+       # base frontend deploy
        d) rm -R pub/static/_requirejs 2> /dev/null
           rm -R pub/static/adminhtml 2> /dev/null
           rm -R pub/static/frontend 2> /dev/null
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma 
           ;;
-       # german global deploy
-       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy de_DE
+       # german frontend deploy
+       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
           ;;
        #
        h) printf "\nDIOCANE\n\n"
