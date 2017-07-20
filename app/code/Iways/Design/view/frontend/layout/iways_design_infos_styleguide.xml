@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <title>i-ways | Styleguide</title>
     </head>
     <body>
-        <referenceContainer name="body">
-            <block class="Magento\Framework\View\Element\Template" template="Iways_Design::infos/styleguide.phtml" />
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" template="Iways_Design::infos/styleguide.phtml"
+                   name="iways_design_infos_styleguide" as="iways_design_infos_styleguide" />
         </referenceContainer>
     </body>
 </page>

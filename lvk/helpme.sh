@@ -1,3 +1,5 @@
+#!/bin/bash
+
 /Applications/XAMPP/bin/php bin/magento maintenance:enable;
 
 rm -R var/generation 2> /dev/null;
@@ -14,25 +16,32 @@ while getopts "bcdghlt" opt
 do
    case $opt in
        # full backend deploy
-       b) rm -R pub/static/_requirejs 2> /dev/null;
-          rm -R pub/static/adminhtml 2> /dev/null;
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml;
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml de_DE;;
+       b) rm -R pub/static/_requirejs 2> /dev/null
+          rm -R pub/static/adminhtml 2> /dev/null
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml de_DE
+          ;;
        # compilation
-       c) /Applications/XAMPP/bin/php bin/magento setup:di:compile;;
+       c) /Applications/XAMPP/bin/php bin/magento setup:di:compile
+          ;;
        # base global deploy
-       d) rm -R pub/static/_requirejs 2> /dev/null;
-          rm -R pub/static/adminhtml 2> /dev/null;
-          rm -R pub/static/frontend 2> /dev/null;
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy;;
+       d) rm -R pub/static/_requirejs 2> /dev/null
+          rm -R pub/static/adminhtml 2> /dev/null
+          rm -R pub/static/frontend 2> /dev/null
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy
+          ;;
        # german global deploy
-       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy de_DE;;
+       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy de_DE
+          ;;
        #
-       h) printf "\nDIOCANE\n\n";;
+       h) printf "\nDIOCANE\n\n"
+          ;;
        # clears layouts cache
-       l) /Applications/XAMPP/bin/php bin/magento cache:clean layout;;
+       l) /Applications/XAMPP/bin/php bin/magento cache:clean layout
+          ;;
        # clears translations cache
-       t) /Applications/XAMPP/bin/php bin/magento cache:clean translate;;
+       t) /Applications/XAMPP/bin/php bin/magento cache:clean translate
+          ;;
    esac
 done
 

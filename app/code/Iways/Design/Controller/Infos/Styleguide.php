@@ -18,6 +18,8 @@ class Styleguide extends \Magento\Framework\App\Action\Action {
 
     public function execute() {
 
-        return $this->_result_page_factory->create();
+        $resultPage = $this->_result_page_factory->create();
+
+        return $resultPage;
     }
 }
