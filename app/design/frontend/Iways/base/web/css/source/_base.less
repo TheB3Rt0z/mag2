@@ -1,0 +1,63 @@
+@background-color: transparent;
+@text-color: transparent;
+@primary-color: transparent;
+@secondary-color: transparent;
+@tertiary-color: transparent;
+@grey-lighter: transparent;
+@grey-light: transparent;
+@grey-normal: transparent;
+@grey-dark: transparent;
+@grey-darker: transparent;
+
+//@magento_import '_colors.less';
+
+.background.background-color {
+    background-color: @background-color;
+    box-shadow: 0 0 1px @text-color inset;
+    color: @text-color;
+}
+.background.text-color {
+    background-color: @text-color;
+    color: @background-color;
+}
+.background.primary-color {
+    background-color: @primary-color;
+    color: @background-color - @primary-color;
+}
+.background.secondary-color {
+    background-color: @secondary-color;
+    color: @background-color - @secondary-color;
+}
+.background.tertiary-color {
+    background-color: @tertiary-color;
+    color: @background-color - @tertiary-color;
+}
+.background.grey-lighter {
+    background-color: @grey-lighter;
+    color: #888 - @grey-lighter;
+}
+.background.grey-light {
+    background-color: @grey-light;
+    color: #888 - @grey-light;
+}
+.background.grey-normal {
+    background-color: @grey-normal;
+    color: #888 - @grey-normal;
+}
+.background.grey-dark {
+    background-color: @grey-dark;
+    color: #888 - @grey-dark;
+}
+.background.grey-darker {
+    background-color: @grey-darker;
+    color: #888 - @grey-darker;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: @text-color;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}

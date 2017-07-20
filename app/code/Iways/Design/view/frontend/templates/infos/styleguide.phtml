@@ -1,7 +1,71 @@
-<h1>Headline H1</h1>
-<h2>Headline H2</h2>
-<h3>Headline H3</h3>
-<h4>Headline H4</h4>
-<h5>Headline H5</h5>
-<p>Paragraph P</p>
-<a>anchor A</a>
+<fieldset>
+    <legend><?php echo __('Colors') ?></legend>
+    <span class="background background-color"><?php echo __('Background color') ?></span>
+    <span class="background text-color"><?php echo __('Text color') ?></span>
+    <span class="background primary-color"><?php echo __('Primary color') ?></span>
+    <span class="background secondary-color"><?php echo __('Secondary color') ?></span>
+    <span class="background tertiary-color"><?php echo __('Tertiary color') ?></span>
+    <br />
+    <span class="background grey-lighter"><?php echo __('Grey lighter') ?></span>
+    <span class="background grey-light"><?php echo __('Grey light') ?></span>
+    <span class="background grey-normal"><?php echo __('Grey normal') ?></span>
+    <span class="background grey-dark"><?php echo __('Grey dark') ?></span>
+    <span class="background grey-darker"><?php echo __('Grey darker') ?></span>
+</fieldset>
+<br />
+<fieldset>
+    <legend><?php echo __('Headlines') ?></legend>
+    <h1>Headline tag H1</h1>
+    <h1 class="display">Headline tag H1.display</h1>
+    <h2>Headline tag H2</h2>
+    <h3>Headline tag H3</h3>
+    <h4>Headline tag H4</h4>
+    <h5>Headline tag H5</h5>
+    <h5 class="muted">Headline tag H5.muted</h5>
+    <h6>Headline tag H6</h6>
+    <h6 class="muted">Headline tag H6.muted</h6>
+</fieldset>
+<br />
+<fieldset>
+    <legend><?php echo __('Text elements') ?></legend>
+    <p>Paragraph tag P</p>
+    <strong>Text tag STRONG</strong>
+    <br />
+    <em>Text tag EM</em>
+    <br />
+    <a>Anchor tag A</a>
+</fieldset>
+<br />
+<fieldset>
+    <legend><?php echo __('Widgets') ?></legend>
+    <button class="light small">
+        <span><?php echo __('Small light button') ?></span>
+    </button>
+    <button class="light">
+        <span><?php echo __('Normal light button') ?></span>
+    </button>
+    <button class="light big">
+        <span><?php echo __('Big light button') ?></span>
+    </button>
+    <br />
+    <button class="dark small">
+        <span><?php echo __('Small dark button') ?></span>
+    </button>
+    <button class="dark">
+        <span><?php echo __('Normal dark button') ?></span>
+    </button>
+    <button class="dark big">
+        <span><?php echo __('Big dark button') ?></span>
+    </button>
+</fieldset>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function($) {
+        $('fieldset > .background').each(function() {
+            if ($(this).css('background-color') == 'rgba(0, 0, 0, 0)')
+                $(this).hide();
+        });
+    });
+</script>

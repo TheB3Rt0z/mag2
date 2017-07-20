@@ -1,0 +1,18 @@
+fieldset {
+	border-radius: 5px;
+	padding: 10px;
+}
+fieldset > legend {
+	padding: 0;
+}
+fieldset > .background {
+	background-color: transparent;
+	display: inline-block;
+	margin-bottom: 3px;
+	min-width: 125px;
+	padding: 25px;
+	text-align: center;
+}
+fieldset > .button {
+    margin-bottom: 3px;
+}
