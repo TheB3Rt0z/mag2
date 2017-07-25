@@ -10,9 +10,8 @@ rm -R var/view_preprocessed 2> /dev/null;
 
 rm -R var/di 2> /dev/null;
 mkdir var/di;
-/Applications/XAMPP/bin/php bin/magento setup:upgrade;
 
-while getopts "bcdghlt" opt
+while getopts "bcdghltu" opt
 do
    case $opt in
        # full backend deploy
@@ -26,21 +25,29 @@ do
           ;;
        # base frontend deploy
        d) rm -R pub/static/_requirejs 2> /dev/null
-          rm -R pub/static/adminhtml 2> /dev/null
           rm -R pub/static/frontend 2> /dev/null
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma 
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
           ;;
        # german frontend deploy
        g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
           ;;
        #
-       h) printf "\nDIOCANE\n\n"
+       h) printf "b) full backend deploy
+c) compilation
+d) base frontend deploy
+g) german frontend deploy
+l) clears layouts cache
+t) clears translations cache
+u) magento setup upgrade"
           ;;
        # clears layouts cache
        l) /Applications/XAMPP/bin/php bin/magento cache:clean layout
           ;;
        # clears translations cache
        t) /Applications/XAMPP/bin/php bin/magento cache:clean translate
+          ;;
+       # magento setup upgrade
+       u) /Applications/XAMPP/bin/php bin/magento setup:upgrade
           ;;
    esac
 done

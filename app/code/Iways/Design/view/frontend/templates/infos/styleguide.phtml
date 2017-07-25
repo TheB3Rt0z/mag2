@@ -15,8 +15,8 @@
 <br />
 <fieldset>
     <legend><?php echo __('Headlines') ?></legend>
-    <h1>Headline tag H1</h1>
     <h1 class="display">Headline tag H1.display</h1>
+    <h1>Headline tag H1</h1>
     <h2>Headline tag H2</h2>
     <h3>Headline tag H3</h3>
     <h4>Headline tag H4</h4>
@@ -42,14 +42,17 @@
     </p>
     <p>
         <blockquote>Paragraph tag P + BLOCKQUOTE: Mauris lacinia pellentesque ex, id blandit tortor ornare sed.</blockquote>
-        <em>Paragraph tag P + BLOCKQUOTE + EM</em>
+        <em>Paragraph tag P + EM</em>
     </p>
     <p>
         Aenean blandit sapien sit amet dui tincidunt mattis. <strong>Paragraph tag P + STRONG: Integer congue dictum porta. Quisque convallis suscipit diam non faucibus.</strong>
     </p>
     <strong>Text tag STRONG</strong><br />
     <b>Text tag B</b><br />
-    <blockquote>Text tag BLOCKQUOTE</blockquote><br />
+    <blockquote>
+        Text tag BLOCKQUOTE<br />
+        <small><em>Text tag SMALL + EM</em></small>
+    </blockquote>
     <big>Text tag BIG</big><br />
     <small>Text tag SMALL</small><br />
     <em>Text tag EM</em><br />
@@ -184,6 +187,10 @@
     <button class="dark big">
         <span><?php echo __('Big dark button') ?></span>
     </button>
+    <br />
+    <form>
+
+    </form>
 </fieldset>
 
 <script type="text/javascript">
@@ -191,8 +198,12 @@
         'jquery'
     ], function($) {
         $('fieldset > .theme-color').each(function() {
-            if ($(this).css('background-color') == 'rgba(0, 0, 0, 0)')
+            var html = $(this).html(),
+                background_color = $(this).css('background-color');
+            if (background_color == 'rgba(0, 0, 0, 0)')
                 $(this).hide();
+            else
+            	$(this).html(html + '<br />' + background_color);
         });
     });
 </script>
