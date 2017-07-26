@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="iways_openinghours" translate="label" sortOrder="111"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>OpeningHours</label>
+            <tab>iways</tab>
+            <resource>Iways_OpeningHours::config</resource>
+            
+            <group id="opening_hours" translate="label" sortOrder="000"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Opening hours</label>
+
+                <field id="monday" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Monday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="monday_single" sortOrder="110"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/monday">1</field>
+                    </depends>
+                </field>
+                <field id="monday_double" sortOrder="120"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/monday">2</field>
+                    </depends>
+                </field>
+
+                <field id="tuesday" translate="label" type="select" sortOrder="200"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tuesday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="tuesday_single" sortOrder="210"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/tuesday">1</field>
+                    </depends>
+                </field>
+                <field id="tuesday_double" sortOrder="220"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/tuesday">2</field>
+                    </depends>
+                </field>
+
+                <field id="wednesday" translate="label" type="select" sortOrder="300"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Wednesday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="wednesday_single" sortOrder="310"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/wednesday">1</field>
+                    </depends>
+                </field>
+                <field id="wednesday_double" sortOrder="320"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/wednesday">2</field>
+                    </depends>
+                </field>
+
+                <field id="thursday" translate="label" type="select" sortOrder="400"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thursday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="thursday_single" sortOrder="410"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/thursday">1</field>
+                    </depends>
+                </field>
+                <field id="thursday_double" sortOrder="420"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/thursday">2</field>
+                    </depends>
+                </field>
+
+                <field id="friday" translate="label" type="select" sortOrder="500"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Friday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="friday_single" sortOrder="510"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/friday">1</field>
+                    </depends>
+                </field>
+                <field id="friday_double" sortOrder="520"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/friday">2</field>
+                    </depends>
+                </field>
+
+                <field id="saturday" translate="label" type="select" sortOrder="600"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Saturday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="saturday_single" sortOrder="610"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/saturday">1</field>
+                    </depends>
+                </field>
+                <field id="saturday_double" sortOrder="620"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/saturday">2</field>
+                    </depends>
+                </field>
+
+                <field id="sunday" translate="label" type="select" sortOrder="700"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sunday</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                </field>
+                <field id="sunday_single" sortOrder="710"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/sunday">1</field>
+                    </depends>
+                </field>
+                <field id="sunday_double" sortOrder="720"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Iways\OpeningHours\Block\Adminhtml\System\Config\Opening</frontend_model>
+                    <depends>
+                        <field id="iways_openinghours/opening_hours/sunday">2</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <group id="settings" translate="label" sortOrder="999"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                
+                <field id="first_day" translate="label" type="select" sortOrder="000"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>First day of the week</label>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Days\First</source_model>
+                </field>
+                
+                <field id="compress_table" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Compress table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_OpeningHours::menu_documentation_openinghours" title="OpeningHours Module" module="Iways_OpeningHours"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_OpeningHours"
+             resource="Iways_OpeningHours::menu_documentation_openinghours" />
+    </menu>
+</config>

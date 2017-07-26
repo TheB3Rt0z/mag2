@@ -11,6 +11,19 @@
 
 //@magento_import '_colors.less';
 
+@primary-color-lighter: lighten(@primary-color, 50%);
+@primary-color-light: lighten(@primary-color, 25%);
+@primary-color-dark: darken(@primary-color, 25%);
+@primary-color-darker: darken(@primary-color, 50%);
+@secondary-color-lighter: lighten(@secondary-color, 50%);
+@secondary-color-light: lighten(@secondary-color, 25%);
+@secondary-color-dark: darken(@secondary-color, 25%);
+@secondary-color-darker: darken(@secondary-color, 50%);
+@tertiary-color-lighter: lighten(@tertiary-color, 50%);
+@tertiary-color-light: lighten(@tertiary-color, 25%);
+@tertiary-color-dark: darken(@tertiary-color, 25%);
+@tertiary-color-darker: darken(@tertiary-color, 50%);
+
 .theme-color {
     &.background-color {
         background-color: @background-color;
@@ -21,17 +34,65 @@
         background-color: @text-color;
         color: @background-color;
     }
+    &.primary-color-lighter {
+        background-color: @primary-color-lighter;
+        color: @background-color - @primary-color-lighter;
+    }
+    &.primary-color-light {
+        background-color: @primary-color-light;
+        color: @background-color - @primary-color-light;
+    }
     &.primary-color {
         background-color: @primary-color;
         color: @background-color - @primary-color;
+    }
+    &.primary-color-dark {
+        background-color: @primary-color-dark;
+        color: @background-color - @primary-color-dark;
+    }
+    &.primary-color-darker {
+        background-color: @primary-color-darker;
+        color: @background-color - @primary-color-darker;
+    }
+    &.secondary-color-lighter {
+        background-color: @secondary-color-lighter;
+        color: @background-color - @secondary-color-lighter;
+    }
+    &.secondary-color-light {
+        background-color: @secondary-color-light;
+        color: @background-color - @secondary-color-light;
     }
     &.secondary-color {
         background-color: @secondary-color;
         color: @background-color - @secondary-color;
     }
+    &.secondary-color-dark {
+        background-color: @secondary-color-dark;
+        color: @background-color - @secondary-color-dark;
+    }
+    &.secondary-color-darker {
+        background-color: @secondary-color-darker;
+        color: @background-color - @secondary-color-darker;
+    }
+    &.tertiary-color-lighter {
+        background-color: @tertiary-color-lighter;
+        color: @background-color - @tertiary-color-lighter;
+    }
+    &.tertiary-color-light {
+        background-color: @tertiary-color-light;
+        color: @background-color - @tertiary-color-light;
+    }
     &.tertiary-color {
         background-color: @tertiary-color;
         color: @background-color - @tertiary-color;
+    }
+    &.tertiary-color-dark {
+        background-color: @tertiary-color-dark;
+        color: @background-color - @tertiary-color-dark;
+    }
+    &.tertiary-color-darker {
+        background-color: @tertiary-color-darker;
+        color: @background-color - @tertiary-color-darker;
     }
     &.grey-lighter {
         background-color: @grey-lighter;

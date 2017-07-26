@@ -1,0 +1,18 @@
+<div class="iways-opening">
+    <table>
+        <?php
+        foreach ($this->getOpeningMatrix() as $key => $value) {
+            ?>
+            <tr>
+                <td align="left">
+                    <?php echo $key ?>
+                </td>
+                <td align="right">
+                    <?php echo $value ?>
+                </td>
+            </tr>
+            <?
+        }
+        ?>
+    </table>
+</div>

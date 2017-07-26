@@ -44,6 +44,35 @@
 	margin: 0;
 }
 
+.iways-width-1_2 {
+	min-width: auto !important;
+    width: 50% !important;
+}
+.iways-width-1_3 {
+	min-width: auto !important;
+    width: 33.333% !important;
+}
+.iways-width-1_4 {
+	min-width: auto !important;
+    width: 25% !important;
+}
+.iways-width-1_5 {
+	min-width: auto !important;
+	width: 20% !important;
+}
+.iways-width-1_6 {
+    min-width: auto !important;
+    width: 16.666% !important;
+}
+.iways-width-1_7 {
+    min-width: auto !important;
+    width: 14.25% !important;
+}
+.iways-width-1_8 {
+	min-width: auto !important;
+    width: 12.5% !important;
+}
+
 .iways-code {
 	background-color: black;
 	border-radius: 4px;
