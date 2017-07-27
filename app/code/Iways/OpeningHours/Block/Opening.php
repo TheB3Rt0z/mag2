@@ -87,23 +87,23 @@ class Opening extends \Magento\Framework\View\Element\Template {
                 case 0 : { $opening = __('Closed'); break; }
                 case 1 : {
                     $type_data = explode(',', $this->_opening_hours[$value . '_single']);
-                    $opening = sprintf("%'.02d\n", $type_data[0]) . ':'
-                             . sprintf("%'.02d\n", $type_data[1]) . ' - '
-                             . sprintf("%'.02d\n", $type_data[2]) . ':'
-                             . sprintf("%'.02d\n", $type_data[3]) . ' ' . __('Hour');
+                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
+                             . sprintf("%'.02d", $type_data[1]) . ' - '
+                             . sprintf("%'.02d", $type_data[2]) . ':'
+                             . sprintf("%'.02d", $type_data[3]) . ' ' . __('Hour');
                     break;
                 }
                 case 2 : {
                     $type_data = explode(',', $this->_opening_hours[$value . '_double']);
-                    $opening = sprintf("%'.02d\n", $type_data[0]) . ':'
-                             . sprintf("%'.02d\n", $type_data[1]) . ' - '
-                             . sprintf("%'.02d\n", $type_data[2]) . ':'
-                             . sprintf("%'.02d\n", $type_data[3]) . ' ' . __('Hour')
+                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
+                             . sprintf("%'.02d", $type_data[1]) . ' - '
+                             . sprintf("%'.02d", $type_data[2]) . ':'
+                             . sprintf("%'.02d", $type_data[3]) . ' ' . __('Hour')
                              . '<br />'
-                             . sprintf("%'.02d\n", $type_data[4]) . ':'
-                             . sprintf("%'.02d\n", $type_data[5]) . ' - '
-                             . sprintf("%'.02d\n", $type_data[6]) . ':'
-                             . sprintf("%'.02d\n", $type_data[7]) . ' ' . __('Hour');
+                             . sprintf("%'.02d", $type_data[4]) . ':'
+                             . sprintf("%'.02d", $type_data[5]) . ' - '
+                             . sprintf("%'.02d", $type_data[6]) . ':'
+                             . sprintf("%'.02d", $type_data[7]) . ' ' . __('Hour');
                     break;
                 }
                 case 3 : { $opening = __('All day open'); break; }

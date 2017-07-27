@@ -15,7 +15,7 @@ while getopts "bcdghltu" opt
 do
    case $opt in
        # full backend deploy
-       b) rm -R pub/static/_requirejs 2> /dev/null
+       b) #rm -R pub/static/_requirejs 2> /dev/null
           rm -R pub/static/adminhtml 2> /dev/null
           /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml
           /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml de_DE
