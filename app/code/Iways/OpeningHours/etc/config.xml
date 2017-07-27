@@ -5,6 +5,7 @@
         <iways_openinghours>
             <settings>
                 <first_day>1</first_day>
+                <compress_table>1</compress_table>
             </settings>
         </iways_openinghours>
     </default>
