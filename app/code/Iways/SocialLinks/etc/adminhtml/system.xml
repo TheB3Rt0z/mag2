@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="iways_sociallinks" translate="label" sortOrder="111"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>SocialLinks</label>
+            <tab>iways</tab>
+            <resource>Iways_SocialLinks::config</resource>
+            
+            <group id="frontend" translate="label" sortOrder="000"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Frontend</label>
+                
+                <field id="show_links" translate="label" type="select" sortOrder="000"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show on frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="link_aspect" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link aspect</label>
+                    <source_model>Iways\SocialLinks\Model\Config\Source\Aspects</source_model>
+                </field>
+                
+                <field id="block_title" translate="label" type="text" sortOrder="200"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Block title</label>
+                </field>
+            </group>
+            
+            <group id="social_networks" translate="label" sortOrder="100"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Social networks</label>
+                
+                <field id="active_links" translate="label" type="multiselect" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Active links</label>
+                    <source_model>Iways\SocialLinks\Model\Config\Source\Networks</source_model>
+                </field>
+                
+                <field id="facebook_url" translate="label comment" type="text" sortOrder="110"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook</label>
+                    <comment>Facebook url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="google-plus_url" translate="label comment" type="text" sortOrder="120"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google+</label>
+                    <comment>Google+ url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="instagram_url" translate="label comment" type="text" sortOrder="130"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instagram</label>
+                    <comment>Instagram url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="linkedin_url" translate="label comment" type="text" sortOrder="140"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LinkedIn</label>
+                    <comment>LinkedIn url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="medium_url" translate="label comment" type="text" sortOrder="150"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Medium</label>
+                    <comment>Medium url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="meetup_url" translate="label comment" type="text" sortOrder="160"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meetup</label>
+                    <comment>Meetup url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="pinterest_url" translate="label comment" type="text" sortOrder="170"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pinterest</label>
+                    <comment>Pinterest url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="renren_url" translate="label comment" type="text" sortOrder="180"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>renren</label>
+                    <comment>renren url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="secret_url" translate="label comment" type="text" sortOrder="190"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Secret</label>
+                    <comment>Secret url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="snapchat_url" translate="label comment" type="text" sortOrder="200"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Snapchat</label>
+                    <comment>Snapchat url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="tumblr_url" translate="label comment" type="text" sortOrder="210"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>tumblr</label>
+                    <comment>tumblr url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="twitter_url" translate="label comment" type="text" sortOrder="220"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twitter</label>
+                    <comment>Twitter url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="vine_url" translate="label comment" type="text" sortOrder="230"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Vine</label>
+                    <comment>Vine url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="vk_url" translate="label comment" type="text" sortOrder="240"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>VK</label>
+                    <comment>VK url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="whatsapp_url" translate="label comment" type="text" sortOrder="250"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WhatsApp</label>
+                    <comment>WhatsApp url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="xing_url" translate="label comment" type="text" sortOrder="260"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>XING</label>
+                    <comment>XING url</comment>
+                    <validate>validate-url</validate>
+                </field>
+                
+                <field id="youtube_url" translate="label comment" type="text" sortOrder="270"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>YouTube</label>
+                    <comment>YouTube url</comment>
+                    <validate>validate-url</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

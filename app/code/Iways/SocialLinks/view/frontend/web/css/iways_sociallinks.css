@@ -1,0 +1,19 @@
+.iways-sociallinks ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.iways-sociallinks ol li {
+    float: left;
+}
+
+.iways-sociallinks ol li a {
+    display: inline-block;
+    text-align: center;
+}
+
+/*.fa-googleplus-f::before,
+.fa-googleplus::before {
+    content: "\f0d5";
+}*/

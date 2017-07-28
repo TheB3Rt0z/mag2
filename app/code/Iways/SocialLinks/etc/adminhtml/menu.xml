@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_SocialLinks::menu_configuration_sociallinks" title="SocialLinks Module" module="Iways_SocialLinks"
+             sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_sociallinks"
+             resource="Iways_SocialLinks::menu_configuration_sociallinks" />
+        <add id="Iways_SocialLinks::menu_documentation_sociallinks" title="SocialLinks Module" module="Iways_SocialLinks"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_SocialLinks"
+             resource="Iways_SocialLinks::menu_documentation_sociallinks" />
+    </menu>
+</config>

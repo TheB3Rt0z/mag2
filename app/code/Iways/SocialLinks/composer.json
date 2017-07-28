@@ -1,0 +1,19 @@
+{
+	"name": "iways/module-sociallinks",
+	"require": {
+	   "iways/module-base": "0.0.*"
+	},
+	"type": "magento2-module",
+    "version": "0.0.1",
+    "license": [
+        "proprietary"
+    ],
+	"autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\SocialLinks\\": ""
+        }
+    }
+}

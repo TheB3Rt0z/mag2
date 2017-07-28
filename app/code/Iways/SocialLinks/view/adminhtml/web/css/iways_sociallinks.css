@@ -1,0 +1,27 @@
+#iways_sociallinks_social_networks .label::before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    margin-right: 5px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#row_iways_sociallinks_social_networks_facebook_url > .label::before{content:'\f09a'}
+#row_iways_sociallinks_social_networks_google-plus_url > .label::before{content:'\f0d5'}
+#row_iways_sociallinks_social_networks_instagram_url > .label::before{content:'\f16d'}
+#row_iways_sociallinks_social_networks_linkedin_url > .label::before{content:'\f0e1'}
+#row_iways_sociallinks_social_networks_medium_url > .label::before{content:'\f23a'}
+#row_iways_sociallinks_social_networks_meetup_url > .label::before{content:'\f2e0'}
+#row_iways_sociallinks_social_networks_pinterest_url > .label::before{content:'\f0d2'}
+#row_iways_sociallinks_social_networks_renren_url > .label::before{content:'\f18b'}
+#row_iways_sociallinks_social_networks_secret_url > .label::before{content:'\f21b'}
+#row_iways_sociallinks_social_networks_snapchat_url > .label::before{content:'\f2ab'}
+#row_iways_sociallinks_social_networks_tumblr_url > .label::before{content:'\f173'}
+#row_iways_sociallinks_social_networks_twitter_url > .label::before{content:'\f099'}
+#row_iways_sociallinks_social_networks_vine_url > .label::before{content:'\f1ca'}
+#row_iways_sociallinks_social_networks_vk_url > .label::before{content:'\f189'}
+#row_iways_sociallinks_social_networks_whatsapp_url > .label::before{content:'\f232'}
+#row_iways_sociallinks_social_networks_xing_url > .label::before{content:'\f168'}
+#row_iways_sociallinks_social_networks_youtube_url > .label::before{content:'\f16a'}
