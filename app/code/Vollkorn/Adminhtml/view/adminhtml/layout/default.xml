@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
      <head>
          <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" />
-         <css src="Vollkorn_Adminhtml::css/vollkorn-adminhtml.css" />
+         <css src="Vollkorn_Adminhtml::css/vollkorn_adminhtml.css" />
      </head>
      <body>
          <block class="Vollkorn\Adminhtml\Block\Audio" name="vollkorn_adminhtml_block_audio" after="-" />

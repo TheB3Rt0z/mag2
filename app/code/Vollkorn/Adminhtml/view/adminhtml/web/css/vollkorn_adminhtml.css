@@ -21,7 +21,7 @@ body video {
 
 body .page-wrapper {
     background-color: white;
-    background-image: url('../images/background-125.png');
+    background-image: url('../images/background_125.png');
     background-position: left top;
 }    
 body.adminhtml-auth-login .page-wrapper {
