@@ -2,9 +2,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
      <head>
-         <css src="Iways_Design::css/iways-design.css" />
+         <css src="Iways_Design::css/iways_design.css" />
          <link src="jquery.js" />
-         <link src="Iways_Design::js/color-parser.js" />
-         <link src="Iways_Design::js/iways-design.js" />
+         <link src="Iways_Design::js/color_parser.js" />
+         <link src="Iways_Design::js/iways_design.js" />
      </head>
 </page>

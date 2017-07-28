@@ -11,7 +11,7 @@ class Apitest extends \Magento\Config\Block\System\Config\Form\Field {
         parent::_prepareLayout();
 
         if (!$this->getTemplate())
-            $this->setTemplate('system/config/apitest.phtml');
+            $this->setTemplate('system/config/api_test.phtml');
 
         return $this;
     }
