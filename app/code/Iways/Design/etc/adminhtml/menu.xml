@@ -10,6 +10,9 @@
         <add id="Iways_Design::system_design_theme" title="Installed Themes" module="Magento_Theme"
              sortOrder="122" parent="Iways_Design::design" action="adminhtml/system_design_theme" 
              resource="Magento_Theme::theme" />
+        <add id="Iways_Design::menu_configuration_design" title="Design Module" module="Iways_Design"
+             sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_design"
+             resource="Iways_Design::menu_configuration_design" />
         <add id="Iways_Design::menu_documentation_design" title="Design Module" module="Iways_Design"
              sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_Design"
              resource="Iways_Design::menu_documentation_design" />

@@ -4,6 +4,8 @@
     <menu>
     	<add id="Iways_Base::menu" title="i-ways" module="Iways_Base"
     	     sortOrder="000" resource="Iways_Base::menu" dependsOnModule="Iways_Base" />
+    	<add id="Iways_Base::menu_configuration" title="Configuration" module="Iways_Base"
+             sortOrder="700" parent="Iways_Base::menu" resource="Iways_Base::menu_configuration" />
         <add id="Iways_Base::menu_documentation" title="Documentation" module="Iways_Base"
              sortOrder="800" parent="Iways_Base::menu" resource="Iways_Base::menu_documentation" />
         <add id="Iways_Base::menu_documentation_base" title="Base Module" module="Iways_Base"
@@ -11,11 +13,11 @@
              resource="Iways_Base::menu_documentation_base" />
     	<add id="Iways_Base::menu_system" title="System" module="Iways_Base"
              sortOrder="900" parent="Iways_Base::menu" resource="Iways_Base::menu_system" />
-    	<add id="Iways_Base::menu_configuration" title="Configuration" module="Iways_Base"
+    	<add id="Iways_Base::menu_system_configuration" title="Configuration" module="Iways_Base"
              sortOrder="911" parent="Iways_Base::menu_system" action="adminhtml/system_config/edit/section/iways_base"
-             resource="Iways_Base::menu_configuration" />
-        <add id="Iways_Base::menu_cache_flush" title="Flush Magento's Cache" module="Iways_Base"
+             resource="Iways_Base::menu_system_configuration" />
+        <add id="Iways_Base::menu_system_cacheflush" title="Flush Magento's Cache" module="Iways_Base"
              sortOrder="999" parent="Iways_Base::menu_system" action="adminhtml/cache/flushSystem"
-             resource="Iways_Base::menu_cache_flush" />
+             resource="Iways_Base::menu_system_cacheflush" />
     </menu>
 </config>

@@ -2,6 +2,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
+        <add id="Iways_GoogleFonts::menu_configuration_googlefonts" title="GoogleFonts Module" module="Iways_GoogleFonts"
+             sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_googlefonts"
+             resource="Iways_GoogleFonts::menu_configuration_googlefonts" />
         <add id="Iways_GoogleFonts::menu_documentation_googlefonts" title="GoogleFonts Module" module="Iways_GoogleFonts"
              sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_GoogleFonts"
              resource="Iways_GoogleFonts::menu_documentation_googlefonts" />

@@ -6,7 +6,7 @@ class Data extends \Iways\Base\Helper\Data {
 
     protected static $_social_networks = array( // ATM are all fontsawesome supported
         'facebook' => "Facebook",
-        'google-plus' => "Google+",
+        'googleplus' => "Google+",
         'instagram' => "Instagram",
         'linkedin' => "LinkedIn",
         'medium' => "Medium",

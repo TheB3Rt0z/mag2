@@ -19,7 +19,7 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
 
             if (!empty($url)) {
 
-                $output .= '<li><a href="' . $url . '" target="_blank">';
+                $output .= '<li class="iways-' . $key . '"><a href="' . $url . '" target="_blank">';
 
                 switch ($this->_frontend_aspect) {
 

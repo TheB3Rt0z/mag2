@@ -47,7 +47,7 @@
                     <validate>validate-url</validate>
                 </field>
                 
-                <field id="google-plus_url" translate="label comment" type="text" sortOrder="120"
+                <field id="googleplus_url" translate="label comment" type="text" sortOrder="120"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Google+</label>
                     <comment>Google+ url</comment>
