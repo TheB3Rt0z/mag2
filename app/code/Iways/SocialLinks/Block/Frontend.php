@@ -9,6 +9,24 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
               $_social_networks,
               $_active_social_networks;
 
+    public function __construct(
+        \Magento\Framework\View\Element\Context $context,
+        \Iways\SocialLinks\Helper\Data $helper,
+        array $data = []
+    ) {
+
+        $this->helper = $helper;
+
+        $this->_link_aspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
+
+        $this->_block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
+
+        $this->_social_networks = $this->helper->getSocialNetworks();
+        $this->_active_social_networks = explode(",", $this->helper->getConfig('iways_sociallinks/social_networks/active_links'));
+
+        parent::__construct($context, $data);
+    }
+
     public function toHtml()  {
 
         $output = '<span>' . __($this->_block_title) . '</span><ol>';
@@ -21,7 +39,7 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
 
                 $output .= '<li class="iways-' . $key . '"><a href="' . $url . '" target="_blank">';
 
-                switch ($this->_frontend_aspect) {
+                switch ($this->_link_aspect) {
 
                     case 'icons' : {
                         $output .= '<i class="fa fa-' . $key . '" title="'
@@ -42,23 +60,5 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
         }
 
         return $output . '</ol>';
-    }
-
-    public function __construct(
-        \Magento\Framework\View\Element\Context $context,
-        \Iways\SocialLinks\Helper\Data $helper,
-        array $data = []
-    ) {
-
-        $this->helper = $helper;
-
-        $this->_frontend_aspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
-
-        $this->_block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
-
-        $this->_social_networks = $this->helper->getSocialNetworks();
-        $this->_active_social_networks = explode(",", $this->helper->getConfig('iways_sociallinks/social_networks/active_links'));
-
-        parent::__construct($context, $data);
     }
 }

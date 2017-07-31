@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="iways_openinghours_opening" class="Iways\OpeningHours\Block\Opening\Widget"
+            placeholder_image="Iways_Base::images/icon_32x32.png">
+        <label>i-ways OpeningHours Opening</label>
+        <description>i-ways OpeningHours Opening Widget</description>
+        <parameters>
+            <parameter name="first_day" xsi:type="select" required="true"
+                       source_model="Iways\OpeningHours\Model\Config\Source\Days\First">
+                <label translate="true">First day of the week</label>
+            </parameter>
+            <parameter name="compress_table" xsi:type="select" required="false"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Compress table</label>
+            </parameter>
+        </parameters>
+    </widget>
+    
+    <widget id="iways_openinghours_status" class="Iways\OpeningHours\Block\Status\Widget"
+            placeholder_image="Iways_Base::images/icon_32x32.png">
+        <label>i-ways OpeningHours Status</label>
+        <description>i-ways OpeningHours Status Widget</description>
+    </widget>
+</widgets>

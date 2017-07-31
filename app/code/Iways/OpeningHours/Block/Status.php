@@ -2,7 +2,7 @@
 
 namespace Iways\OpeningHours\Block;
 
-class Status extends \Magento\Framework\View\Element\Template {
+class Status extends \Magento\Framework\View\Element\AbstractBlock {
 
     protected $_date,
               $_opening_hours;
@@ -120,6 +120,5 @@ class Status extends \Magento\Framework\View\Element\Template {
     public function getHtml() {
 
         return '<p class="iways-status">' . $this->_getStatus() . '</p>';
-
     }
 }
