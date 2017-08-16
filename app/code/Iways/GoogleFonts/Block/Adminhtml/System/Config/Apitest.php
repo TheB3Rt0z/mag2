@@ -25,17 +25,16 @@ class Apitest extends \Magento\Config\Block\System\Config\Form\Field {
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
+        \Iways\GoogleFonts\Helper\Data $helper,
         \Iways\GoogleFonts\Model\Api $api,
         array $data = []
     ) {
 
-        $this->_scopeConfig = $context->getScopeConfig();
-
-        $this->_storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        $this->helper = $helper;
 
         $this->_api = $api;
 
-        if ($api_key = $this->_scopeConfig->getValue('iways_googlefonts/credentials/api_key', $this->_storeScope))
+        if ($api_key = $this->helper->getConfig('iways_googlefonts/credentials/api_key'))
             $this->_api->setApiKey($api_key);
 
         parent::__construct($context, $data);

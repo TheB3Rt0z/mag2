@@ -14,7 +14,16 @@
                 <argument name="data" xsi:type="array">
                     <item name="options" xsi:type="object">Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\Direction\Options</item>
                     <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Navigation Direction</item>
+                        <item name="label" xsi:type="string" translate="true">Navigation direction</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="mobile_modal_sidebars">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Modal sidebars</item>
                         <item name="formElement" xsi:type="string">select</item>
                     </item>
                 </argument>

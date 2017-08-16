@@ -2,16 +2,18 @@
 
 namespace Iways\SocialLinks\Model\Config\Source;
 
+use \Iways\SocialLinks\Helper\Data as helper;
+
 class Networks implements \Magento\Framework\Option\ArrayInterface {
 
-    public function __construct(\Iways\SocialLinks\Helper\Data $helper) {
+    public function __construct(helper $helper) {
 
         $this->helper = $helper;
     }
 
     public function toArray() {
 
-        $output = array();
+        $output = [];
 
         foreach ($this->helper->getSocialNetworks() as $key => $value)
             $output[$key] = __($value);
@@ -21,13 +23,13 @@ class Networks implements \Magento\Framework\Option\ArrayInterface {
 
     public function toOptionArray() {
 
-        $output = array();
+        $output = [];
 
         foreach ($this->toArray() as $key => $value) {
-            $output[] = array(
+            $output[] = [
                 'value' => $key,
                 'label' => $value,
-            );
+            ];
         }
 
         return $output;

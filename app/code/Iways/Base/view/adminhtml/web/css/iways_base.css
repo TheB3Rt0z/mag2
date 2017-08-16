@@ -11,6 +11,28 @@
     display: block;
     padding: 5px;
 }
+#menu-iways-base-menu .level-2 > a {
+	padding-left: 40px;
+	position: relative;
+}
+#menu-iways-base-menu .level-2 > a::before {
+	background-image: url('../images/icons_16x16.png');
+	background-position: -160px -160px;
+	content: '';
+	display: block;
+	height: 16px;
+	left: 16px;
+	position: absolute;
+	top: 14px;
+	width: 16px;
+}
+#menu-iways-base-menu .level-2.item-menu-system-cacheflush > a::before {
+    background-position: -176px -16px;
+}
+#menu-iways-base-menu .level-2.item-menu-system-configuration > a::before {
+    background-position: -64px -96px;
+    top: 13px;
+}
 
 .admin__page-nav.iways .admin__page-nav-title {
     background-image: url('../images/icon_32x32.png') !important;
@@ -104,7 +126,7 @@
 }
 
 
-/* mmagento */
+/* magento GUI enhancements */
 
 #theme_preview_image {
 	width: 100%;

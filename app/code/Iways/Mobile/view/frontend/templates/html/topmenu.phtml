@@ -2,7 +2,7 @@
 <?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
 
 <nav class="navigation" data-action="navigation">
-    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}, "invert_direction":<?php echo $this->helper('Iways\Base\Helper\Data')->getConfig('design/mobile/navigation_direction') ?>}}'>
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}, "invert_direction":<?php echo $this->helper('Iways\Design\Helper\Data')->getConfig('design/mobile/navigation_direction') ?>}}'>
         <?php /* @escapeNotVerified */ echo $_menu; ?>
         <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
     </ul>

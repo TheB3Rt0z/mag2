@@ -5,12 +5,16 @@
         <css src="Iways_SocialLinks::css/font-awesome.min.css" />
         <css src="Iways_SocialLinks::css/iways_sociallinks.css" />
     </head>
-    
     <body>
-	    <container name="iways_sociallinks" as="iways_sociallinks" label="i-ways SocialLinks"
-	               htmlTag="div" htmlClass="iways-sociallinks">
-	        <block name="iways_sociallinks_frontend" as="iways_sociallinks_frontend"
-	               class="Iways\SocialLinks\Block\Frontend" ifconfig="iways_sociallinks/frontend/show_links" />
+	    <container name="iways_sociallinks"
+	               as="iways_sociallinks"
+	               label="i-ways SocialLinks"
+	               htmlTag="div"
+	               htmlClass="iways-sociallinks">
+	        <block class="Iways\SocialLinks\Block\Frontend"
+	               name="iways_sociallinks_frontend"
+	               as="iways_sociallinks_frontend"
+	               ifconfig="iways_sociallinks/frontend/show_links" />
 	    </container>
     </body>
 </page>

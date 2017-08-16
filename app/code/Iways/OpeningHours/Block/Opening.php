@@ -2,6 +2,8 @@
 
 namespace Iways\OpeningHours\Block;
 
+use \Iways\OpeningHours\Helper\Data as helper;
+
 class Opening extends \Magento\Framework\View\Element\Template {
 
     private static $_days = [
@@ -13,6 +15,10 @@ class Opening extends \Magento\Framework\View\Element\Template {
         'fri' => 'friday',
         'sat' => 'saturday',
     ];
+
+    protected $_opening_hours,
+              $_first_day,
+              $_compress_table;
 
     private function _compressMatrix($data) {
 
@@ -41,10 +47,6 @@ class Opening extends \Magento\Framework\View\Element\Template {
         return $output;
     }
 
-    protected $_opening_hours,
-              $_first_day,
-              $_compress_table;
-
     protected function _prepareLayout() {
 
         parent::_prepareLayout();
@@ -56,18 +58,21 @@ class Opening extends \Magento\Framework\View\Element\Template {
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
+        helper $helper,
         array $data = []
     ) {
 
-        $this->_scopeConfig = $context->getScopeConfig();
+        $this->helper = $helper;
 
-        $this->_storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
-
-        $this->_opening_hours = $this->_scopeConfig->getValue('iways_openinghours/opening_hours', $this->_storeScope);
-        $this->_first_day = $this->_scopeConfig->getValue('iways_openinghours/settings/first_day', $this->_storeScope);
-        $this->_compress_table = $this->_scopeConfig->getValue('iways_openinghours/settings/compress_table', $this->_storeScope);
+        $this->_opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
 
         parent::__construct($context, $data);
+
+        if (!$this->_first_day)
+            $this->_first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
+
+        if (!$this->_compress_table)
+            $this->_compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
     }
 
     public function getOpeningMatrix() {

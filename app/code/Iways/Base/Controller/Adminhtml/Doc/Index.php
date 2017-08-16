@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\Base\Controller\Adminhtml\Doc;
+<?php namespace Iways\Base\Controller\Adminhtml\Doc;
 
 class Index extends \Magento\Backend\App\Action {
 

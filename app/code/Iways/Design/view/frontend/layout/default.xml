@@ -3,8 +3,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="head.additional">
-            <block class="Iways\Design\Block\Head" name="iways_design_block_head"
-                   template="Iways_Design::head.phtml" after="-" />
+            <block class="Iways\Design\Block\Head"
+                   name="iways_design_block_head"
+                   as="iways_design_block_head"
+                   template="Iways_Design::head.phtml"
+                   after="-" />
         </referenceBlock>
     </body>
 </page>

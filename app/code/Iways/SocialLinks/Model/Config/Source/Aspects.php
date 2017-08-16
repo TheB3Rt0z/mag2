@@ -6,21 +6,21 @@ class Aspects implements \Magento\Framework\Option\ArrayInterface {
 
     public function toArray() {
 
-        return array(
+        return [
             'icons' => __('FA-icons'),
             'labels' => __('Text-labels'),
-        );
+        ];
     }
 
     public function toOptionArray() {
 
-        $output = array();
+        $output = [];
 
         foreach ($this->toArray() as $key => $value) {
-            $output[] = array(
+            $output[] = [
                 'value' => $key,
                 'label' => $value,
-            );
+            ];
         }
 
         return $output;

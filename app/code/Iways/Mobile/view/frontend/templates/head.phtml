@@ -1,0 +1,9 @@
+<?php
+
+if ($this->getHelper()->getConfig('design/mobile/modal_sidebars'))
+    echo $this->addTag('script', [
+        'src' => $this->getViewFileUrl('Iways_Mobile/js/modal_sidebars.js'),
+        'type' => "text/javascript",
+    ]);
+
+?>

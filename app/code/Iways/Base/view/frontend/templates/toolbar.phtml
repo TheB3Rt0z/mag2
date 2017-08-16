@@ -1,0 +1,13 @@
+<?php
+
+if ($this->helper->wasAdminLogged()) {
+    ?>
+    <div class="iways-toolbar">
+        <?php
+        echo $this->getItemsHtml();
+        if ($admin_uri = $this->helper('Magento\Backend\Helper\Data')->getHomePageUrl())
+            echo '<span><a href="' . $admin_uri . '" target="_BLANK">Backend</a></span>';
+        ?>
+    </div>
+    <?php
+}

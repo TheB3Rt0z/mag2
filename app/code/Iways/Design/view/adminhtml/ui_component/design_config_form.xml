@@ -53,5 +53,32 @@
                 </argument>
             </field>
         </fieldset>
+        <fieldset name="sidebar">
+             <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Sidebar</item>
+                    <item name="collapsible" xsi:type="boolean">true</item>
+                    <item name="level" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <field name="sidebar_title_main">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Main sidebar title</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="componentType" xsi:type="string">input</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="sidebar_title_additional">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Additional sidebar title</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="componentType" xsi:type="string">input</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
     </fieldset>
 </form>

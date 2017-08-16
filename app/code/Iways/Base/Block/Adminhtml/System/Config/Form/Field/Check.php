@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\Base\Block\Adminhtml\System\Config\Form\Field;
+<?php namespace Iways\Base\Block\Adminhtml\System\Config\Form\Field;
 
 class Check extends \Magento\Config\Block\System\Config\Form\Field {
 

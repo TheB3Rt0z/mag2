@@ -102,17 +102,16 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock {
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
+        \Iways\OpeningHours\Helper\Data $helper,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
         array $data = []
     ) {
 
-        $this->_scopeConfig = $context->getScopeConfig();
-
-        $this->_storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        $this->helper = $helper;
 
         $this->_date = $date;
 
-        $this->_opening_hours = $this->_scopeConfig->getValue('iways_openinghours/opening_hours', $this->_storeScope);
+        $this->_opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
 
         parent::__construct($context, $data);
     }

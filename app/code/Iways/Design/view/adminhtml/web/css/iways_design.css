@@ -1,3 +1,15 @@
+#menu-iways-base-menu .level-2.item-design-config > a::before {
+    background-position: -272px -96px;
+}
+#menu-iways-base-menu .level-2.item-system-design-theme > a::before {
+    background-position: -256px -96px;
+}
+#menu-iways-base-menu .level-2.item-menu-configuration-design > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-design > a::before {
+    background-position: 0 -64px;
+}
+
+
 .fieldset-wrapper[data-index=iways_settings] > .fieldset-wrapper-title {
     background-image: url('../images/icon_32x32.png') !important;
     background-position: 9px 11px !important;

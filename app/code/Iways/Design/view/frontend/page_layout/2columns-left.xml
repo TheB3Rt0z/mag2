@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="2columns-left" />
+    <referenceContainer name="columns">
+        <block class="Iways\Design\Block\Sidebar\Title"
+               name="iways_design_block_sidebar_title_main"
+               as="iways_design_block_sidebar_title_main"
+               before="div.sidebar.main"
+               ifconfig="design/sidebar/sidebar_title_main">
+            <arguments>
+                <argument name="sidebar_type" xsi:type="string">main</argument>
+            </arguments>
+        </block>
+        <block class="Iways\Design\Block\Sidebar\Title"
+               name="iways_design_block_sidebar_title_additional"
+               as="iways_design_block_sidebar_title_additional"
+               before="div.sidebar.additional"
+               ifconfig="design/sidebar/sidebar_title_additional">
+            <arguments>
+                <argument name="sidebar_type" xsi:type="string">additional</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</layout>

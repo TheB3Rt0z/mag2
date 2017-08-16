@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <iways_categorytree>
+            <frontend>
+                <block_title>Categories</block_title>
+                <tree_root>0</tree_root>
+                <tree_depth>999</tree_depth>
+            </frontend>
+        </iways_categorytree>
+    </default>
+</config>

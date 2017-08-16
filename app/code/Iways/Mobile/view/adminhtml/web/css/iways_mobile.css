@@ -1,0 +1,6 @@
+#menu-iways-base-menu .level-2.item-menu-configuration-mobile > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-mobile > a::before {
+    background-position: -320px -112px;
+    left: 17px;
+    top: 15px;
+}

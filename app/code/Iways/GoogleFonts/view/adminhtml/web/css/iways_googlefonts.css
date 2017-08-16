@@ -1,0 +1,5 @@
+#menu-iways-base-menu .level-2.item-menu-configuration-googlefonts > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-googlefonts > a::before {
+    background-position: -544px -80px;
+    left: 17px;
+}

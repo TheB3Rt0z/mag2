@@ -2,6 +2,8 @@
 
 namespace Iways\SocialLinks\Block;
 
+use \Iways\SocialLinks\Helper\Data as helper;
+
 class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
 
     protected $_frontend_aspect,
@@ -11,7 +13,7 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
 
     public function __construct(
         \Magento\Framework\View\Element\Context $context,
-        \Iways\SocialLinks\Helper\Data $helper,
+        helper $helper,
         array $data = []
     ) {
 
@@ -27,7 +29,7 @@ class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
         parent::__construct($context, $data);
     }
 
-    public function toHtml()  {
+    public function toHtml() {
 
         $output = '<span>' . __($this->_block_title) . '</span><ol>';
 

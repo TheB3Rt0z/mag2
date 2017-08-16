@@ -4,7 +4,7 @@ namespace Iways\SocialLinks\Helper;
 
 class Data extends \Iways\Base\Helper\Data {
 
-    protected static $_social_networks = array( // ATM are all fontsawesome supported
+    protected static $_social_networks = [ // ATM are all fontsawesome supported
         'facebook' => "Facebook",
         'googleplus' => "Google+",
         'instagram' => "Instagram",
@@ -22,7 +22,7 @@ class Data extends \Iways\Base\Helper\Data {
         'whatsapp' => "WhatsApp",
         'xing' => "XING",
         'youtube' => "YouTube",
-    );
+    ];
 
     public function getSocialNetworks() {
 

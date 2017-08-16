@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\Base\Helper;
+<?php namespace Iways\Base\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper {
 
@@ -24,5 +22,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
     public function getLocale() {
 
         return $this->_resolver->getLocale();
+    }
+
+    public function wasAdminLogged() {
+
+        return isset($_SESSION['admin'][0]);
     }
 }

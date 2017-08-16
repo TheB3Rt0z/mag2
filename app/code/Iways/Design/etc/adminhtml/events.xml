@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="admin_system_config_changed_section_design">
-        <observer name="Iways_Design_Observer_Admin_System_Config_Changed_Section"
+        <observer name="iways_design_observer_admin_system_config_changed_section_design"
                   instance="Iways\Design\Observer\Admin\System\Config\Changed\Section\Design" />
     </event>
 </config>

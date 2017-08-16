@@ -22,6 +22,14 @@
                     <item name="path" xsi:type="string">design/body/background_gradient</item>
                     <item name="fieldset" xsi:type="string">iways_settings/body</item>
                 </item>
+                <item name="sidebar_title_main" xsi:type="array">
+                    <item name="path" xsi:type="string">design/sidebar/sidebar_title_main</item>
+                    <item name="fieldset" xsi:type="string">iways_settings/sidebar</item>
+                </item>
+                <item name="sidebar_title_additional" xsi:type="array">
+                    <item name="path" xsi:type="string">design/sidebar/sidebar_title_additional</item>
+                    <item name="fieldset" xsi:type="string">iways_settings/sidebar</item>
+                </item>
             </argument>
         </arguments>
     </type>

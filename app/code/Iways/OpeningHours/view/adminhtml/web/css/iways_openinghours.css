@@ -1,3 +1,8 @@
+#menu-iways-base-menu .level-2.item-menu-configuration-openinghours > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-openinghours > a::before {
+    background-position: -352px -16px;
+}
+
 .iways-opening {
 	min-width: auto !important;
 	width: 17.5% !important;

@@ -8,6 +8,10 @@
                     <item name="path" xsi:type="string">design/mobile/navigation_direction</item>
                     <item name="fieldset" xsi:type="string">iways_settings/mobile</item>
                 </item>
+                <item name="mobile_modal_sidebars" xsi:type="array">
+                    <item name="path" xsi:type="string">design/mobile/modal_sidebars</item>
+                    <item name="fieldset" xsi:type="string">iways_settings/mobile</item>
+                </item>
             </argument>
         </arguments>
     </type>

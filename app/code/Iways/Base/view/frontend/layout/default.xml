@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Iways_Base::css/iways_base.css" />
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Iways\Base\Block\Toolbar"
+                   name="iways_base_block_toolbar"
+                   as="iways_base_block_toolbar"
+                   template="Iways_Base::toolbar.phtml"
+                   after="-" />
+        </referenceContainer>
+    </body>
+</page>
