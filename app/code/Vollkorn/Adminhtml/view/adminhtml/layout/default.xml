@@ -6,6 +6,9 @@
          <css src="Vollkorn_Adminhtml::css/vollkorn_adminhtml.css" />
      </head>
      <body>
-         <block class="Vollkorn\Adminhtml\Block\Audio" name="vollkorn_adminhtml_block_audio" after="-" />
+         <block class="Vollkorn\Adminhtml\Block\Audio"
+                name="vollkorn_adminhtml_block_audio"
+                as="vollkorn_adminhtml_block_audio"
+                after="-" />
      </body>
 </page>
