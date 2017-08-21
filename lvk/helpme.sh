@@ -26,10 +26,10 @@ do
        # base frontend deploy
        d) rm -R pub/static/_requirejs 2> /dev/null
           rm -R pub/static/frontend 2> /dev/null
-          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma --exclude-theme Ece/alstertal
+          /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
           ;;
        # german frontend deploy
-       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma --exclude-theme Ece/alstertal
+       g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
           ;;
        #
        h) printf "b) full backend deploy
