@@ -18,7 +18,8 @@ class Title extends \Magento\Framework\View\Element\AbstractBlock {
 
         parent::__construct($context, $data);
 
-        $this->_title = $this->helper->getConfig('design/sidebar/sidebar_title_' . $this->getSidebarType());
+        if ($this->_title === null)
+            $this->_title = $this->helper->getConfig('design/sidebar/sidebar_title_' . $this->getSidebarType());
     }
 
     public function toHtml() {

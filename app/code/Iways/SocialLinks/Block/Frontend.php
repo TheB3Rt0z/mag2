@@ -1,66 +1,59 @@
-<?php
-
-namespace Iways\SocialLinks\Block;
+<?php namespace Iways\SocialLinks\Block;
 
 use \Iways\SocialLinks\Helper\Data as helper;
 
-class Frontend extends \Magento\Framework\View\Element\AbstractBlock {
+class Frontend extends \Magento\Framework\View\Element\Template {
 
-    protected $_frontend_aspect,
+    protected $_link_aspect,
               $_block_title,
               $_social_networks,
               $_active_social_networks;
 
     public function __construct(
-        \Magento\Framework\View\Element\Context $context,
+        \Magento\Framework\View\Element\Template\Context $context,
         helper $helper,
         array $data = []
     ) {
 
         $this->helper = $helper;
 
-        $this->_link_aspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
+        if ($this->_link_aspect === null)
+            $this->_link_aspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
 
-        $this->_block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
+        if ($this->_block_title === null)
+            $this->_block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
 
         $this->_social_networks = $this->helper->getSocialNetworks();
-        $this->_active_social_networks = explode(",", $this->helper->getConfig('iways_sociallinks/social_networks/active_links'));
+        if ($this->_active_social_networks === null)
+            $this->_active_social_networks = explode(",", $this->helper->getConfig('iways_sociallinks/social_networks/active_links'));
 
         parent::__construct($context, $data);
     }
 
-    public function toHtml() {
+    public function getBlockTitle() {
 
-        $output = '<span>' . __($this->_block_title) . '</span><ol>';
+        return $this->_block_title;
+    }
+
+    public function getSocialLinks() { // assumes active font-awesome support on frontend
 
         foreach ($this->_active_social_networks as $key) {
 
-            $url = $this->helper->getConfig('iways_sociallinks/social_networks/' . $key . '_url');
+            if ($url = $this->helper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
 
-            if (!empty($url)) {
+                $name = $this->_social_networks[$key];
 
-                $output .= '<li class="iways-' . $key . '"><a href="' . $url . '" target="_blank">';
+                $label = $this->_link_aspect == 'icons'
+                         ? '<i class="fa fa-' . $key . '" title="' . $name . '"></i>'
+                         : $name;
 
-                switch ($this->_link_aspect) {
-
-                    case 'icons' : {
-                        $output .= '<i class="fa fa-' . $key . '" title="'
-                                 . $this->_social_networks[$key] . '"></i>';
-                        break;
-                    }
-                    case 'labels' : {
-                        $output .= $this->_social_networks[$key];
-                        break;
-                    }
-                    default : {
-                        $output .= $key;
-                    }
-                }
-
-                $output .= '</a></li>';
+                $data[$key] = [
+                    'label' => $label,
+                    'url' => $url,
+                ];
             }
         }
 
-        return $output . '</ol>';
+        return $data;
     }
 }

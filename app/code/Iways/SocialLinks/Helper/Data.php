@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\SocialLinks\Helper;
+<?php namespace Iways\SocialLinks\Helper;
 
 class Data extends \Iways\Base\Helper\Data {
 

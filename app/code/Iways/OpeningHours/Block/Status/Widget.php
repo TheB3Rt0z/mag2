@@ -1,5 +1,4 @@
-<?php
+<?php namespace Iways\OpeningHours\Block\Status;
 
-namespace Iways\OpeningHours\Block\Status;
-
-class Widget extends \Iways\OpeningHours\Block\Status implements \Magento\Widget\Block\BlockInterface {}
+class Widget extends \Iways\OpeningHours\Block\Status
+             implements \Magento\Widget\Block\BlockInterface {}

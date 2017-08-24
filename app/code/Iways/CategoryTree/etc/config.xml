@@ -7,6 +7,7 @@
                 <block_title>Categories</block_title>
                 <tree_root>0</tree_root>
                 <tree_depth>999</tree_depth>
+                <show_empty>0</show_empty>
             </frontend>
         </iways_categorytree>
     </default>

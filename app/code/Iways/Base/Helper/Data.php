@@ -1,6 +1,6 @@
 <?php namespace Iways\Base\Helper;
 
-class Data extends \Magento\Framework\App\Helper\AbstractHelper {
+class Data extends \Magento\Framework\App\Helper\AbstractHelper { // ToDo: actually methods are in alphabetical order, refactoring to different classes if required
 
     protected $_resolver;
 
@@ -24,7 +24,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         return $this->_resolver->getLocale();
     }
 
-    public function wasAdminLogged() {
+    public function toOptionArray($array) {
+
+        foreach ($array as $key => $value) {
+            $data[] = [
+                'value' => $key,
+                'label' => $value,
+            ];
+        }
+
+        return $data;
+    }
+
+    public function wasAdminLogged() { // ToDo: check and update observer for a better (isAdminLogged) method..
 
         return isset($_SESSION['admin'][0]);
     }

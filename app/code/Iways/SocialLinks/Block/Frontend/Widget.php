@@ -1,8 +1,7 @@
-<?php
+<?php namespace Iways\SocialLinks\Block\Frontend;
 
-namespace Iways\SocialLinks\Block\Frontend;
-
-class Widget extends \Iways\SocialLinks\Block\Frontend implements \Magento\Widget\Block\BlockInterface {
+class Widget extends \Iways\SocialLinks\Block\Frontend
+             implements \Magento\Widget\Block\BlockInterface {
 
     protected function _construct() {
 

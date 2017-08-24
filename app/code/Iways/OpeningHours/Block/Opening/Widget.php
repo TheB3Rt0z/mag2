@@ -1,8 +1,7 @@
-<?php
+<?php namespace Iways\OpeningHours\Block\Opening;
 
-namespace Iways\OpeningHours\Block\Opening;
-
-class Widget extends \Iways\OpeningHours\Block\Opening implements \Magento\Widget\Block\BlockInterface {
+class Widget extends \Iways\OpeningHours\Block\Opening
+             implements \Magento\Widget\Block\BlockInterface {
 
     protected function _construct() {
 

@@ -1,8 +1,6 @@
-<?php
+<?php namespace Iways\SocialLinks\Model\Config\Source;
 
-namespace Iways\SocialLinks\Model\Config\Source;
-
-class Aspects implements \Magento\Framework\Option\ArrayInterface {
+class Aspects extends \Iways\Base\Model\Config\Source {
 
     public function toArray() {
 
@@ -10,19 +8,5 @@ class Aspects implements \Magento\Framework\Option\ArrayInterface {
             'icons' => __('FA-icons'),
             'labels' => __('Text-labels'),
         ];
-    }
-
-    public function toOptionArray() {
-
-        $output = [];
-
-        foreach ($this->toArray() as $key => $value) {
-            $output[] = [
-                'value' => $key,
-                'label' => $value,
-            ];
-        }
-
-        return $output;
     }
 }

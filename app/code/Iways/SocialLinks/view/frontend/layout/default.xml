@@ -14,6 +14,7 @@
 	        <block class="Iways\SocialLinks\Block\Frontend"
 	               name="iways_sociallinks_frontend"
 	               as="iways_sociallinks_frontend"
+	               template="frontend.phtml"
 	               ifconfig="iways_sociallinks/frontend/show_links" />
 	    </container>
     </body>

@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\OpeningHours\Block;
+<?php namespace Iways\OpeningHours\Block;
 
 use \Iways\OpeningHours\Helper\Data as helper;
 
@@ -20,31 +18,29 @@ class Opening extends \Magento\Framework\View\Element\Template {
               $_first_day,
               $_compress_table;
 
-    private function _compressMatrix($data) {
-
-        $output = array();
+    private function _compressMatrix($array) {
 
         $last_value = $last_key = $base_key = null;
 
-        foreach ($data as $key => $value) {
+        foreach ($array as $key => $value) {
 
             if ($value == $last_value) {
-                unset($output[$combined_key]);
+                unset($data[$combined_key]);
                 $last_key = $key;
             }
             else {
                 if ($last_key)
-                    unset($output[$base_key]);
+                    unset($data[$base_key]);
                 $base_key = $key;
                 $last_key = null;
             }
 
             $last_value = $value;
             $combined_key = $base_key . ($last_key ? ' - ' . $last_key : '');
-            $output[$combined_key] = $last_value;
+            $data[$combined_key] = $last_value;
         }
 
-        return $output;
+        return $data;
     }
 
     protected function _prepareLayout() {
@@ -68,10 +64,10 @@ class Opening extends \Magento\Framework\View\Element\Template {
 
         parent::__construct($context, $data);
 
-        if (!$this->_first_day)
+        if ($this->_first_day === null)
             $this->_first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
 
-        if (!$this->_compress_table)
+        if ($this->_compress_table === null)
             $this->_compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
     }
 
@@ -83,8 +79,6 @@ class Opening extends \Magento\Framework\View\Element\Template {
             unset($days['sun']);
             $days['sun'] = 'sunday';
         }
-
-        $output = array();
 
         foreach ($days as $key => $value) {
             $day_type = $this->_opening_hours[$value];
@@ -116,16 +110,16 @@ class Opening extends \Magento\Framework\View\Element\Template {
             }
 
             if ($opening)
-                $output[(string)__(ucfirst($key))] = $opening;
+                $data[(string)__(ucfirst($key))] = $opening;
         }
 
         if ($this->_compress_table)
-            $output = $this->_compressMatrix($output);
+            $data = $this->_compressMatrix($data);
 
-        return $output;
+        return $data;
     }
 
-    public function getHtml() {
+    public function getHtml() { // ToDo: to be removed
 
         return $this->toHtml();
     }

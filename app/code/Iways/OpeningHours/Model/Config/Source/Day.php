@@ -1,25 +1,26 @@
-<?php
-
-namespace Iways\OpeningHours\Model\Config\Source;
+<?php namespace Iways\OpeningHours\Model\Config\Source;
 
 class Day implements \Magento\Framework\Option\ArrayInterface {
 
-    public function toOptionArray() {
+    public function toArray() {
 
         return [
-            [
-                'label' => __('Closed'),
-                'value' => 0,
-            ], [
-                'label' => __('Working hours'),
-                'value' => 1,
-            ], [
-                'label' => __('Discontinued time'),
-                'value' => 2,
-            ], [
-                'label' => __('All day open'),
-                'value' => 3,
-            ],
+            0 => __('Closed'),
+            1 => __('Working hours'),
+            2 => __('Discontinued time'),
+            3 => __('All day open'),
         ];
+    }
+
+    public function toOptionArray() {
+
+        foreach ($this->toArray() as $key => $value) {
+            $data[] = [
+                'value' => $key,
+                'label' => $value,
+            ];
+        }
+
+        return $data;
     }
 }

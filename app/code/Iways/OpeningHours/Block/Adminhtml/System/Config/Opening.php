@@ -1,8 +1,6 @@
-<?php
+<?php namespace Iways\OpeningHours\Block\Adminhtml\System\Config;
 
-namespace Iways\OpeningHours\Block\Adminhtml\System\Config;
-
-class Opening extends \Magento\Config\Block\System\Config\Form\Field {
+class Opening extends \Magento\Config\Block\System\Config\Form\Field { // ToDo: to be checked
 
     protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element) {
 

@@ -1,6 +1,4 @@
-<?php
-
-namespace Iways\CategoryTree\Block\Frontend;
+<?php namespace Iways\CategoryTree\Block\Frontend;
 
 use \Iways\CategoryTree\Helper\Data as helper;
 
@@ -15,5 +13,7 @@ class Widget extends \Iways\CategoryTree\Block\Frontend implements \Magento\Widg
             $this->_custom_root = $this->getCustomRoot();
 
         $this->_tree_depth = $this->getTreeDepth();
+
+        $this->_show_empty = $this->getShowEmpty();
     }
 }

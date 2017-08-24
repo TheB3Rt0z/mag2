@@ -1,19 +1,24 @@
-<?php
-
-namespace Iways\OpeningHours\Model\Config\Source\Days;
+<?php namespace Iways\OpeningHours\Model\Config\Source\Days;
 
 class First implements \Magento\Framework\Option\ArrayInterface {
 
-    public function toOptionArray() {
+    public function toArray() {
 
         return [
-            [
-                'label' => __('Monday'),
-                'value' => 1,
-            ], [
-                'label' => __('Sunday'),
-                'value' => 0,
-            ],
+            1 => __('Monday'),
+            0 => __('Sunday'),
         ];
+    }
+
+    public function toOptionArray() {
+
+        foreach ($this->toArray() as $key => $value) {
+            $data[] = [
+                'value' => $key,
+                'label' => $value,
+            ];
+        }
+
+        return $data;
     }
 }

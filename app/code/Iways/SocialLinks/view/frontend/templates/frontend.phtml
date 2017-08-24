@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <span><?php echo __($this->getBlockTitle()) ?></span>
+    <ol>
+        <?php
+        foreach ($this->getSocialLinks() as $key => $values) {
+            ?>
+            <li class="iways-<?php echo $key ?>">
+                <a href="<?php $values['url'] ?>" target="_blank">
+                    <?php echo $values['label'] ?>
+                </a>
+            </li>
+            <?php
+        }
+        ?>
+    </ol>
+</div>
+
+<br class="clearfix" />

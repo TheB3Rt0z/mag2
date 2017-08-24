@@ -11,7 +11,8 @@ class Frontend extends \Magento\Framework\View\Element\Template {
               $_block_title,
               $_tree_root,
               $_custom_root,
-              $_tree_depth;
+              $_tree_depth,
+              $_show_empty;
 
     private function _getRootCategory() {
 
@@ -33,6 +34,8 @@ class Frontend extends \Magento\Framework\View\Element\Template {
             $output .= '<ul>';
             foreach (explode(',', $children) as $id) {
                 $category = $this->_category_repository->get($id, $this->_store_id);
+                if (!$this->_show_empty && !$category->getProductCollection()->count())
+                    continue;
                 $children_html = $this->_getCategoryHtml($category, $max_depth, $depth + 1);
                 $output .= '<li class="level_' . $category->getLevel() . ' depth_' . $depth . '">'
                          . '    <a href="' . $category->getUrl() . '" ' . ($children_html
@@ -60,23 +63,26 @@ class Frontend extends \Magento\Framework\View\Element\Template {
 
         parent::__construct($context, $data);
 
-        if (!$this->_block_title)
+        if ($this->_block_title === null)
             $this->_block_title = $this->helper->getConfig('iways_categorytree/frontend/block_title');
 
-        if (!$this->_tree_root)
+        if ($this->_tree_root === null)
             $this->_tree_root = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
         if ($this->_tree_root == helper::ROOT_USE_CUSTOM_CATEGORY)
-            if (!$this->_custom_root)
+            if ($this->_custom_root === null)
                 $this->_custom_root = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
 
-        if (!$this->_tree_depth)
+        if ($this->_tree_depth === null)
             $this->_tree_depth = $this->helper->getConfig('iways_categorytree/frontend/tree_depth');
+
+        if ($this->_show_empty === null)
+            $this->_show_empty = $this->helper->getConfig('iways_categorytree/frontend/show_empty');
     }
 
     public function _toHtml() {
 
         if (!$categories_tree = $this->_getCategoryHtml($this->_getRootCategory(), $this->_tree_depth))
-            return null;
+            return '<div class="block empty"></div>';
 
         $output = '<div class="block categories">'
                 . '    <div class="block-title categories-title">'
