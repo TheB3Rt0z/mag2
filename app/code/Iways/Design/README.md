@@ -7,7 +7,7 @@
 - set a customizable CSS frontend-pipe, based on an theme-configuration after-save event-observer, with custom dispatcher
 - provides a flexible backend-to-frontend CSS settings channel eventually extendable from children-modules
 
-![Extra Settings](/view/adminhtml/web/images/doc/extra_settings.jpg)
+![Extra Settings](/view/adminhtml/web/images/documentation/extra_settings.jpg)
 
 ## What will this module do?
 

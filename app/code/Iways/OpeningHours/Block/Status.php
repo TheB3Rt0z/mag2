@@ -11,7 +11,7 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
 
         $day_type = $this->_opening_hours[$day];
         switch ($day_type) {
-            case 0 : { $data = __('Closed today'); break; }
+            case 0 : { $data = __("Closed today"); break; }
             case 1 : {
                 $type_data = explode(',', $this->_opening_hours[$day . '_single']);
                 $current_hour = $this->_date->gmtDate('H') + $this->_date->getGmtOffset('hours');
@@ -23,7 +23,7 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                         $hour--;
                         $mins += 60;
                     }
-                    $data = sprintf(__('Today it will open in %d hours, %d minutes'), $hour, $mins);
+                    $data = sprintf(__("Today it will open in %d hours, %d minutes"), $hour, $mins);
                 }
                 else {
                     $hour = $type_data[2] - $current_hour;
@@ -33,10 +33,10 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                             $hour--;
                             $mins += 60;
                         }
-                        $data = sprintf(__('Today is still open for %d hours, %d minutes'), $hour, $mins);
+                        $data = sprintf(__("Today is still open for %d hours, %d minutes"), $hour, $mins);
                     }
                     else
-                        $data = __('Now closed');
+                        $data = __("Now closed");
                 }
                 break;
             }
@@ -51,7 +51,7 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                         $hour--;
                         $mins += 60;
                     }
-                    $data = sprintf(__('Today it will open in %d hours, %d minutes'), $hour, $mins);
+                    $data = sprintf(__("Today it will open in %d hours, %d minutes"), $hour, $mins);
                 }
                 elseif ($current_hour < $type_data[2]) {
                     $hour = $type_data[2] - $current_hour;
@@ -61,11 +61,11 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                             $hour--;
                             $mins += 60;
                         }
-                        $data = sprintf(__('Today is still open for %d hours, %d minutes'), $hour, $mins)
-                                . '<br />' . __('After a pause it will be open again');
+                        $data = sprintf(__("Today is still open for %d hours, %d minutes"), $hour, $mins)
+                                . '<br />' . __("After a pause it will be open again");
                     }
                     else
-                        $data = __('Now closed');
+                        $data = __("Now closed");
                 }
                 elseif ($current_hour < $type_data[4]) {
                     $hour = $type_data[4] - $current_hour;
@@ -74,7 +74,7 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                         $hour--;
                         $mins += 60;
                     }
-                    $data = sprintf(__('Today it will open in %d hours, %d minutes'), $hour, $mins);
+                    $data = sprintf(__("Today it will open in %d hours, %d minutes"), $hour, $mins);
                 }
                 else {
                     $hour = $type_data[6] - $current_hour;
@@ -84,14 +84,14 @@ class Status extends \Magento\Framework\View\Element\AbstractBlock { // ToDo: to
                             $hour--;
                             $mins += 60;
                         }
-                        $data = sprintf(__('Today is still open for %d hours, %d minutes'), $hour, $mins);
+                        $data = sprintf(__("Today is still open for %d hours, %d minutes"), $hour, $mins);
                     }
                     else
-                        $data = __('Now closed');
+                        $data = __("Now closed");
                 }
                 break;
             }
-            case 3 : { $data = __('All day open today'); break; }
+            case 3 : { $data = __("All day open today"); break; }
             default : { $data = false; }
         }
 

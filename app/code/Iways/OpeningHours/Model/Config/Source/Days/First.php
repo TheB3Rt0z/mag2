@@ -5,8 +5,8 @@ class First implements \Magento\Framework\Option\ArrayInterface {
     public function toArray() {
 
         return [
-            1 => __('Monday'),
-            0 => __('Sunday'),
+            1 => __("Monday"),
+            0 => __("Sunday"),
         ];
     }
 

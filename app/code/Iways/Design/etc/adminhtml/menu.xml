@@ -14,7 +14,7 @@
              sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_design"
              resource="Iways_Design::menu_configuration_design" />
         <add id="Iways_Design::menu_documentation_design" title="Design Module" module="Iways_Design"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/doc/index/module/Iways_Design"
+             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_Design"
              resource="Iways_Design::menu_documentation_design" />
     </menu>
 </config>

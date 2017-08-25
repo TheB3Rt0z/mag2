@@ -6,7 +6,7 @@
 - creates two separate block for opening table and status, also available as widgets
 - trough customization settings it permits additional control over its output
 
-![Extra Settings](/view/adminhtml/web/images/doc/extra_settings.jpg)
+![Extra Settings](/view/adminhtml/web/images/documentation/extra_settings.jpg)
 
 ## What will this module do?
 

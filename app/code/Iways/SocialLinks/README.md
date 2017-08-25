@@ -7,7 +7,7 @@
 - extra configuration includes aspect of links and optional block title
 - provides a settings-driven block including widget mode possibility
 
-![Extra Settings](/view/adminhtml/web/images/doc/extra_settings.jpg)
+![Extra Settings](/view/adminhtml/web/images/documentation/extra_settings.jpg)
 
 ## What will this module do?
 

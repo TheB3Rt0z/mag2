@@ -5,10 +5,10 @@ class Day implements \Magento\Framework\Option\ArrayInterface {
     public function toArray() {
 
         return [
-            0 => __('Closed'),
-            1 => __('Working hours'),
-            2 => __('Discontinued time'),
-            3 => __('All day open'),
+            0 => __("Closed"),
+            1 => __("Working hours"),
+            2 => __("Discontinued time"),
+            3 => __("All day open"),
         ];
     }
 

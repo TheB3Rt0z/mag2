@@ -51,7 +51,7 @@ u) magento setup upgrade"
         r) /Applications/XAMPP/bin/php bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcpd
-        s) /Applications/XAMPP/bin/php phpcpd.phar -vvv --min-lines 1 app/code/Iways
+        s) /Applications/XAMPP/bin/php phpcpd.phar -vvv --min-lines 1 app/code
         ;;
         # clears translations cache
         t) /Applications/XAMPP/bin/php bin/magento cache:clean translate

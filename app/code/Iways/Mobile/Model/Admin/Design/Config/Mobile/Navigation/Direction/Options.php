@@ -9,11 +9,11 @@ class Options implements \Magento\Framework\Option\ArrayInterface {
         return [
             0 => [
                 'value' => 0,
-                'label' => __('from left to right') . ' ⇉',
+                'label' => __("from left to right") . " ⇉",
             ],
             1 => [
                 'value' => 1,
-                'label' => __('from right to left') . ' ⇇',
+                'label' => __("from right to left") . " ⇇",
             ],
         ];
     }

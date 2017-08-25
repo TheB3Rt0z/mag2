@@ -8,7 +8,7 @@
 - creates in the same way a base system configuration control panel, including credits
 - basic required translation and style sheets are also included
 
-![Example Screenshot](/view/adminhtml/web/images/doc/example_screenshot.jpg)
+![Example Screenshot](/view/adminhtml/web/images/documentation/example_screenshot.jpg)
 
 ## What will this module do?
 

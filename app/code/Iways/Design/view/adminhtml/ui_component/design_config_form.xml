@@ -20,7 +20,7 @@
             <field name="body_background_color">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Background Color</item>
+                        <item name="label" xsi:type="string" translate="true">Background color</item>
                         <item name="formElement" xsi:type="string">input</item>
                         <item name="componentType" xsi:type="string">input</item>
                         <item name="additionalClasses" xsi:type="string">iways-color</item>
@@ -30,7 +30,7 @@
             <field name="body_background_src">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Background Image</item>
+                        <item name="label" xsi:type="string" translate="true">Background image</item>
                         <item name="formElement" xsi:type="string">fileUploader</item>
                         <item name="componentType" xsi:type="string">fileUploader</item>
                         <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>

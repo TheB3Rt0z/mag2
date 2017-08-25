@@ -3,10 +3,10 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Iways\Base\Block\Adminhtml\Doc"
-                   name="iways_base_block_adminhtml_doc"
-                   as="iways_base_block_adminhtml_doc"
-                   template="Iways_Base::doc.phtml"
+            <block class="Iways\Base\Block\Adminhtml\Documentation"
+                   name="iways_base_block_adminhtml_documentation"
+                   as="iways_base_block_adminhtml_documentation"
+                   template="Iways_Base::documentation.phtml"
                    before="-" />
         </referenceContainer>
     </body>

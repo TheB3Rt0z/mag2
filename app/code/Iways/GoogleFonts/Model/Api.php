@@ -52,6 +52,7 @@ class Api extends \Magento\Framework\Model\AbstractModel {
 
         return is_string($output)
              ? $output
-             : $output->kind . ' ' . __('is working') . ': ' . count($output->items) . ' ' . __('different fonts found') . '.';
+             : $output->kind . " " . __("is working") . ": "
+             . count($output->items) . " " . __("different fonts found") . ".";
     }
 }

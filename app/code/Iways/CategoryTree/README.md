@@ -4,7 +4,7 @@
 
 - 
 
-![Extra Settings](/view/adminhtml/web/images/doc/extra_settings.jpg)
+![Extra Settings](/view/adminhtml/web/images/documentation/extra_settings.jpg)
 
 ## What will this module do?
 

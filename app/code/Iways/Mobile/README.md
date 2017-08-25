@@ -6,7 +6,7 @@
 - provides an additional theme config option, in order to change sliding direction from left2right to right2left
 - extends Iways_Design basic event observer with a customizable requirejs component (a mage/menu overwrite)
 
-![Extra Settings](/view/adminhtml/web/images/doc/navigation_direction.jpg)
+![Extra Settings](/view/adminhtml/web/images/documentation/navigation_direction.jpg)
 
 ## What will this module do?
 

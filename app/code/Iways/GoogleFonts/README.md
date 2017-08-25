@@ -4,7 +4,7 @@
 
 - 
 
-![Fonts Settings](/view/adminhtml/web/images/doc/fonts_settings.jpg)
+![Fonts Settings](/view/adminhtml/web/images/documentation/fonts_settings.jpg)
 
 ## What will this module do?
 
