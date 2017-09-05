@@ -3,11 +3,11 @@ fieldset {
 	padding: 10px;
 }
 
-fieldset > legend {
+fieldset legend {
 	padding: 0;
 }
 
-fieldset > .theme-color {
+fieldset .theme-color {
 	background-color: transparent;
 	display: inline-block;
 	margin-bottom: 3px;
@@ -17,6 +17,6 @@ fieldset > .theme-color {
 	width: 19.666%;
 }
 
-fieldset > button {
+fieldset button {
     margin-bottom: 3px;
 }

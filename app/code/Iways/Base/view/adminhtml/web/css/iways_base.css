@@ -26,12 +26,18 @@
 	top: 14px;
 	width: 16px;
 }
-#menu-iways-base-menu .level-2.item-menu-system-cacheflush > a::before {
-    background-position: -176px -16px;
-}
 #menu-iways-base-menu .level-2.item-menu-system-configuration > a::before {
     background-position: -64px -96px;
     top: 13px;
+}
+#menu-iways-base-menu .level-2.item-menu-documentation-iways-magento-2 > a::before {
+    background-position: -560px -224px;
+}
+#menu-iways-base-menu .level-2.item-menu-system-cacheflush > a::before {
+    background-position: -176px -16px;
+}
+#menu-iways-base-menu .level-2.item-menu-system-cacheflushall > a::before {
+    background-position: -128px -224px;
 }
 
 .admin__page-nav.iways .admin__page-nav-title {

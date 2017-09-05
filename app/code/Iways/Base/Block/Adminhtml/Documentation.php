@@ -15,7 +15,9 @@ class Documentation extends \Magento\Backend\Block\Template {
         $data['locale'] = $helper->getLocale();
         $data['module'] = $request->getParam('module');
 
-        $file_path = $reader->getModuleDir('', $data['module']) . '/documentation/' . $data['locale'] . '/README.md';
+        $file_path = $data['module']
+                     ? $reader->getModuleDir('', $data['module']) . '/documentation/' . $data['locale'] . '/README.md'
+                     : $reader->getModuleDir('', 'Iways_Base') . '/documentation/README.md';
         $data['contents'] = file_get_contents($file_path);
 
         parent::__construct($context, $data);

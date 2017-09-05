@@ -1,0 +1,22 @@
+#menu-iways-base-menu .level-1.item-menu-developertoolbox > strong {
+	padding-left: 40px;
+	position: relative;
+}
+#menu-iways-base-menu .level-1.item-menu-developertoolbox > strong::before {
+    background-image: url('../images/icon_24x24.png');
+    content: '';
+    display: block;
+    height: 24px;
+    left: 13px;
+    position: absolute;
+    top: 11px;
+    width: 24px;
+}
+#menu-iways-base-menu .level-2.item-menu-configuration-developertoolbox > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-developertoolbox > a::before {
+    background-position: -544px -112px;
+}
+#menu-iways-base-menu .level-2.item-menu-developertoolbox-modules-overview > a::before {
+	background-position: -32px -192px;
+	left: 16px;
+}

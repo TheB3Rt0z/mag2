@@ -1,4 +1,4 @@
-<?php namespace Iways\Base\Controller\Adminhtml\Documentation;
+<?php namespace Iways\DeveloperToolBox\Controller\Adminhtml\Modules;
 
 class Index extends \Magento\Backend\App\Action {
 
@@ -25,10 +25,7 @@ class Index extends \Magento\Backend\App\Action {
 
         $result_page = $this->_result_page_factory->create();
 
-        $result_page->getConfig()->getTitle()->set(__("Documentation") . ' | i-ways Magento 2'
-                                                 . ($module
-                                                 ? ' | ' . __(substr($module, 6) . " Module")
-                                                 : ''));
+        $result_page->getConfig()->getTitle()->set(__("Developer's Tool-Box") . ' | ' . __("Modules overview"));
 
         return $result_page;
     }

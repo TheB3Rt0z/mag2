@@ -8,6 +8,13 @@
              sortOrder="700" parent="Iways_Base::menu" resource="Iways_Base::menu_configuration" />
         <add id="Iways_Base::menu_documentation" title="Documentation" module="Iways_Base"
              sortOrder="800" parent="Iways_Base::menu" resource="Iways_Base::menu_documentation" />
+        <add id="Iways_Base::menu_documentation_iways_magento_2"
+             resource="Iways_Base::menu_documentation_iways_magento_2"
+             title="i-ways Magento 2"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="801"
+             module="Iways_Base"
+             action="iways_base/documentation/index" />
         <add id="Iways_Base::menu_documentation_base" title="Base Module" module="Iways_Base"
              sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_Base"
              resource="Iways_Base::menu_documentation_base" />
@@ -17,7 +24,10 @@
              sortOrder="911" parent="Iways_Base::menu_system" action="adminhtml/system_config/edit/section/iways_base"
              resource="Iways_Base::menu_system_configuration" />
         <add id="Iways_Base::menu_system_cacheflush" title="Flush Magento's Cache" module="Iways_Base"
-             sortOrder="999" parent="Iways_Base::menu_system" action="adminhtml/cache/flushSystem"
+             sortOrder="988" parent="Iways_Base::menu_system" action="adminhtml/cache/flushSystem"
              resource="Iways_Base::menu_system_cacheflush" />
+        <add id="Iways_Base::menu_system_cacheflushall" title="Flush Storage Cache" module="Iways_Base"
+             sortOrder="999" parent="Iways_Base::menu_system" action="adminhtml/cache/flushAll"
+             resource="Iways_Base::menu_system_cacheflushall" />             
     </menu>
 </config>
