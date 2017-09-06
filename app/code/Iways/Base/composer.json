@@ -1,6 +1,7 @@
 {
 	"name": "i-ways/module-base",
 	"require": {
+	   "i-ways/theme-base" : "0.0.*",
        "erusev/parsedown": "1.6.*"
     },
 	"type": "magento2-module",

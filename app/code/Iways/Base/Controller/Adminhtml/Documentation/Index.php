@@ -21,14 +21,24 @@ class Index extends \Magento\Backend\App\Action {
 
     public function execute() {
 
+        $theme = $this->getRequest()->getParam('theme');
+
         $module = $this->getRequest()->getParam('module');
+
+        $dev = $this->getRequest()->getParam('dev');
 
         $result_page = $this->_result_page_factory->create();
 
-        $result_page->getConfig()->getTitle()->set(__("Documentation") . ' | i-ways Magento 2'
+        $result_page->getConfig()->getTitle()->set(($dev
+                                                   ? __("Developer's Reference")
+                                                   : __("Documentation"))
+                                                 . " | i-ways Magento 2"
+                                                 . ($theme
+                                                   ? " | " . __($theme . " Theme")
+                                                   : '')
                                                  . ($module
-                                                 ? ' | ' . __(substr($module, 6) . " Module")
-                                                 : ''));
+                                                   ? " | " . __($module . " Module")
+                                                   : ''));
 
         return $result_page;
     }

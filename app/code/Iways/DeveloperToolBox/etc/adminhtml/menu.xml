@@ -9,11 +9,26 @@
              sortOrder="711"
              module="Iways_DeveloperToolBox"
              action="adminhtml/system_config/edit/section/iways_developertoolbox" />
-        <add id="Iways_DeveloperToolBox::menu_documentation_developertoolbox" title="DeveloperToolBox Module" module="Iways_DeveloperToolBox"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_DeveloperToolBox"
-             resource="Iways_DeveloperToolBox::menu_documentation_developertoolbox" />
-        <add id="Iways_DeveloperToolBox::menu_developertoolbox" title="Developer's Tool-Box" module="Iways_Base"
-             sortOrder="1000" parent="Iways_Base::menu" resource="Iways_Base::menu_configuration" />
+        <add id="Iways_DeveloperToolBox::menu_documentation_iways_magento_2"
+             resource="Iways_DeveloperToolBox::menu_documentation_iways_magento_2"
+             title="i-ways Magento 2"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="800"
+             module="Iways_DeveloperToolBox"
+             action="iways_base/documentation/index/dev/1" />
+        <add id="Iways_DeveloperToolBox::menu_documentation_developertoolbox"
+             resource="Iways_DeveloperToolBox::menu_documentation_developertoolbox"
+             title="DeveloperToolBox Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_DeveloperToolBox"
+             action="iways_base/documentation/index/module/Iways_DeveloperToolBox" />
+        <add id="Iways_DeveloperToolBox::menu_developertoolbox"
+             resource="Iways_DeveloperToolBox::menu_developertoolbox"
+             title="Developer's Tool-Box"
+             parent="Iways_Base::menu"
+             sortOrder="1000"
+             module="Iways_DeveloperToolBox" />
         <add id="Iways_DeveloperToolBox::menu_developertoolbox_modules_overview"
              resource="Iways_DeveloperToolBox::menu_developertoolbox"
              title="Modules overview"

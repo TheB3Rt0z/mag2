@@ -14,7 +14,7 @@
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Information</label>
                 
-                <field id="check" translate="label comment" sortOrder="000" 
+                <field id="check" sortOrder="000" 
                        type="hidden" showInDefault="1" showInWebsite="1" showInStore="1">
                     <frontend_model>Iways\Base\Block\Adminhtml\System\Config\Form\Field\Check</frontend_model>
                 </field>

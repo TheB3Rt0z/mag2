@@ -12,6 +12,9 @@
     top: 11px;
     width: 24px;
 }
+#menu-iways-base-menu .level-2.item-menu-documentation-iways-magento-2 > a::before {
+    background-position: -560px -224px;
+}
 #menu-iways-base-menu .level-2.item-menu-configuration-developertoolbox > a::before,
 #menu-iways-base-menu .level-2.item-menu-documentation-developertoolbox > a::before {
     background-position: -544px -112px;

@@ -25,7 +25,7 @@ class Check extends \Magento\Config\Block\System\Config\Form\Field {
             $this->_theme = $themeProvider->getThemeById($theme_id);
             $theme_id = $this->_theme->getParentId();
         }
-        while ($theme_id > 1); // 1 is always blank-theme
+        while ($theme_id > 1); // 1 is always the blank-theme
 
         parent::__construct($context, $data);
     }

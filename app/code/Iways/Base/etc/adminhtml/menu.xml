@@ -8,16 +8,20 @@
              sortOrder="700" parent="Iways_Base::menu" resource="Iways_Base::menu_configuration" />
         <add id="Iways_Base::menu_documentation" title="Documentation" module="Iways_Base"
              sortOrder="800" parent="Iways_Base::menu" resource="Iways_Base::menu_documentation" />
-        <add id="Iways_Base::menu_documentation_iways_magento_2"
-             resource="Iways_Base::menu_documentation_iways_magento_2"
-             title="i-ways Magento 2"
+        <add id="Iways_Base::menu_documentation_theme"
+             resource="Iways_Base::menu_documentation_theme"
+             title="Base Theme"
              parent="Iways_Base::menu_documentation"
              sortOrder="801"
              module="Iways_Base"
-             action="iways_base/documentation/index" />
-        <add id="Iways_Base::menu_documentation_base" title="Base Module" module="Iways_Base"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_Base"
-             resource="Iways_Base::menu_documentation_base" />
+             action="iways_base/documentation/index/theme/base/dev/0" />
+        <add id="Iways_Base::menu_documentation_base"
+             resource="Iways_Base::menu_documentation_base"
+             title="Base Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_Base"
+             action="iways_base/documentation/index/module/Base/dev/0" />
     	<add id="Iways_Base::menu_system" title="System" module="Iways_Base"
              sortOrder="900" parent="Iways_Base::menu" resource="Iways_Base::menu_system" />
     	<add id="Iways_Base::menu_system_configuration" title="Configuration" module="Iways_Base"

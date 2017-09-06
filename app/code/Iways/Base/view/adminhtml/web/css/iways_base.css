@@ -30,8 +30,8 @@
     background-position: -64px -96px;
     top: 13px;
 }
-#menu-iways-base-menu .level-2.item-menu-documentation-iways-magento-2 > a::before {
-    background-position: -560px -224px;
+#menu-iways-base-menu .level-2.item-menu-documentation-theme > a::before {
+    background-position: -512px 0;
 }
 #menu-iways-base-menu .level-2.item-menu-system-cacheflush > a::before {
     background-position: -176px -16px;

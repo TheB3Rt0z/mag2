@@ -1,6 +1,6 @@
-# i-ways Magento 2 Base Module
+## i-ways Magento 2 Base Module
 
-## What does this module do?
+### What does this module do?
 
 - provides a base controller and a template for documentation pages, such as this one
 - support MD syntax and gitHub flauvoured Documentation files trough ParseDown external library
@@ -10,7 +10,7 @@
 
 ![Example Screenshot](/view/adminhtml/web/images/documentation/example_screenshot.jpg)
 
-## What will this module do?
+### What will this module do?
 
 - [X] supports future modules with its shared functionalities, code and assets
 - [ ] will be extended with additional resources like composer dependencies

@@ -1,8 +1,15 @@
 <?php
 
-$contents = str_replace('/view/adminhtml/web',
-                        $this->getViewFileUrl($this->getData('module')),
-                        $this->getData('contents'));
+$contents = $this->getData('contents');
+
+if ($theme = $this->getData('theme'))
+    $contents = str_replace('/web',
+                            $this->getViewFileUrl(''),
+                            $contents);
+elseif ($module = $this->getData('module'))
+    $contents = str_replace('/view/adminhtml/web',
+                            $this->getViewFileUrl('Iways_' . $module),
+                            $contents);
 
 $parse_down = new Parsedown();
 $parse_down->setBreaksEnabled(true);
@@ -12,7 +19,7 @@ $contents = $parse_down->text($contents);
 
 <div class="iways-documentation">
     <?php
-    if ($this->getData('module')) {
+    if ($this->getData('locale')) {
         ?>
         <span class="language-flag">
             <img src="<?php echo $this->getViewFileUrl('Iways_Base/images/documentation/' . $this->getData('locale') . '/language_flag.png') ?>"
