@@ -2,8 +2,8 @@
 
 use \Iways\Base\Helper\Data as helper;
 
-class Documentation extends \Magento\Backend\Block\Template {
-
+class Documentation extends \Magento\Backend\Block\Template
+{
     protected $_doc_file = 'README.md';
 
     public function __construct(

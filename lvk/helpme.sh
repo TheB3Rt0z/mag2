@@ -40,7 +40,7 @@ g) german frontend deploy
 h) this help information
 l) clears layouts cache
 r) reindex all indexes
-s) scan i-ways app directory with phpcpd
+s) scan i-ways app directory with php sniffer
 t) clears translations cache
 u) magento setup upgrade"
         ;;
@@ -51,7 +51,7 @@ u) magento setup upgrade"
         r) /Applications/XAMPP/bin/php bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcpd
-        s) /Applications/XAMPP/bin/php phpcpd.phar -vvv --min-lines 1 app/code
+        s) /Applications/XAMPP/bin/php vendor/bin/phpcs app/code/Iways/Base
         ;;
         # clears translations cache
         t) /Applications/XAMPP/bin/php bin/magento cache:clean translate

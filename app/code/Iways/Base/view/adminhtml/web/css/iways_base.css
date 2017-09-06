@@ -12,19 +12,19 @@
     padding: 5px;
 }
 #menu-iways-base-menu .level-2 > a {
-	padding-left: 40px;
-	position: relative;
+    padding-left: 40px;
+    position: relative;
 }
 #menu-iways-base-menu .level-2 > a::before {
-	background-image: url('../images/icons_16x16.png');
-	background-position: -160px -160px;
-	content: '';
-	display: block;
-	height: 16px;
-	left: 16px;
-	position: absolute;
-	top: 14px;
-	width: 16px;
+    background-image: url('../images/icons_16x16.png');
+    background-position: -160px -160px;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 16px;
+    position: absolute;
+    top: 14px;
+    width: 16px;
 }
 #menu-iways-base-menu .level-2.item-menu-system-configuration > a::before {
     background-position: -64px -96px;
@@ -65,28 +65,28 @@
 
 #row_iways_base_iways_base_information_iways_base_information_credits span[data-config-scope]:before,
 #row_iways_base_iways_base_information_iways_base_information_check {
-	display: none;
+    display: none;
 }
 #row_iways_base_iways_base_information_iways_base_information_notification .note {
-	color: red;
-	margin: 0;
+    color: red;
+    margin: 0;
 }
 
 .iways-width-1_2 {
-	min-width: auto !important;
+    min-width: auto !important;
     width: 50% !important;
 }
 .iways-width-1_3 {
-	min-width: auto !important;
+    min-width: auto !important;
     width: 33.333% !important;
 }
 .iways-width-1_4 {
-	min-width: auto !important;
+    min-width: auto !important;
     width: 25% !important;
 }
 .iways-width-1_5 {
-	min-width: auto !important;
-	width: 20% !important;
+    min-width: auto !important;
+    width: 20% !important;
 }
 .iways-width-1_6 {
     min-width: auto !important;
@@ -97,17 +97,17 @@
     width: 14.25% !important;
 }
 .iways-width-1_8 {
-	min-width: auto !important;
+    min-width: auto !important;
     width: 12.5% !important;
 }
 
 .iways-code {
-	background-color: black;
-	border-radius: 4px;
+    background-color: black;
+    border-radius: 4px;
     box-shadow: 0 0 4px white inset;
     color: forestgreen;
     display: inline-block;
-	padding: 6px;
+    padding: 6px;
 }
 
 .iways-documentation p,
@@ -117,17 +117,17 @@
 }
 
 .iways-documentation .language-flag {
-	border: solid 1px #ddd;
-	border-radius: 4px;
-	box-shadow: 0 0 4px rgba(0, 0, 0, .4);
-	display: inline-block;
-	height: 20px;
-	float: right;
-	overflow: hidden;
-	width: auto;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    overflow: hidden;
+    width: auto;
 }
 .iways-documentation .language-flag > img {
-    height: 100%;	
+    height: 100%;    
     width: auto;
 }
 
@@ -135,5 +135,5 @@
 /* magento GUI enhancements */
 
 #theme_preview_image {
-	width: 100%;
+    width: 100%;
 }

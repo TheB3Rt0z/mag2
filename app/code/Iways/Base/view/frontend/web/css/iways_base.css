@@ -1,7 +1,7 @@
 .iways-toolbar {
-	background-color: transparent;
-	background-image: url('../images/icon_32x32.png');
-	background-position: 5px center;
+    background-color: transparent;
+    background-image: url('../images/icon_32x32.png');
+    background-position: 5px center;
     background-repeat: no-repeat;
     border-radius: 5px;
     display: block;
@@ -17,24 +17,24 @@
 }
 
 .iways-toolbar:hover {
-	background-color: white;
-	border-radius: 5px;
-	box-shadow: 0 1px 2px black;
-	opacity: 1;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px black;
+    opacity: 1;
 }
 
 .iways-toolbar span {
-	border-left: 0;
-	display: inline-block;
-	margin-left: 6px;
-	padding: 6px 0 6px 6px;
-	overflow: hidden;
-	transition: .125s;
+    border-left: 0;
+    display: inline-block;
+    margin-left: 6px;
+    padding: 6px 0 6px 6px;
+    overflow: hidden;
+    transition: .125s;
     width: 0;
 }
 
 .iways-toolbar:hover span {
-	border-left: solid 1px black;
-	overflow: visible;
+    border-left: solid 1px black;
+    overflow: visible;
     width: auto;
 }
