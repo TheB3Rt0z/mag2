@@ -1,13 +1,25 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-    	<add id="Iways_Base::menu" title="i-ways" module="Iways_Base"
-    	     sortOrder="000" resource="Iways_Base::menu" dependsOnModule="Iways_Base" />
-    	<add id="Iways_Base::menu_configuration" title="Configuration" module="Iways_Base"
-             sortOrder="700" parent="Iways_Base::menu" resource="Iways_Base::menu_configuration" />
-        <add id="Iways_Base::menu_documentation" title="Documentation" module="Iways_Base"
-             sortOrder="800" parent="Iways_Base::menu" resource="Iways_Base::menu_documentation" />
+    	<add id="Iways_Base::menu"
+    	     resource="Iways_Base::menu"
+    	     title="i-ways"
+    	     sortOrder="000"
+    	     dependsOnModule="Iways_Base"
+    	     module="Iways_Base" />
+    	<add id="Iways_Base::menu_configuration"
+    	     resource="Iways_Base::menu_configuration"
+    	     title="Configuration"
+    	     parent="Iways_Base::menu"
+             sortOrder="700"
+    	     module="Iways_Base" />
+        <add id="Iways_Base::menu_documentation"
+             resource="Iways_Base::menu_documentation"
+             title="Documentation"
+             parent="Iways_Base::menu"
+             sortOrder="800"
+             module="Iways_Base" />
         <add id="Iways_Base::menu_documentation_theme"
              resource="Iways_Base::menu_documentation_theme"
              title="Base Theme"
@@ -22,16 +34,32 @@
              sortOrder="811"
              module="Iways_Base"
              action="iways_base/documentation/index/module/Base/dev/0" />
-    	<add id="Iways_Base::menu_system" title="System" module="Iways_Base"
-             sortOrder="900" parent="Iways_Base::menu" resource="Iways_Base::menu_system" />
-    	<add id="Iways_Base::menu_system_configuration" title="Configuration" module="Iways_Base"
-             sortOrder="911" parent="Iways_Base::menu_system" action="adminhtml/system_config/edit/section/iways_base"
-             resource="Iways_Base::menu_system_configuration" />
-        <add id="Iways_Base::menu_system_cacheflush" title="Flush Magento's Cache" module="Iways_Base"
-             sortOrder="988" parent="Iways_Base::menu_system" action="adminhtml/cache/flushSystem"
-             resource="Iways_Base::menu_system_cacheflush" />
-        <add id="Iways_Base::menu_system_cacheflushall" title="Flush Storage Cache" module="Iways_Base"
-             sortOrder="999" parent="Iways_Base::menu_system" action="adminhtml/cache/flushAll"
-             resource="Iways_Base::menu_system_cacheflushall" />             
+    	<add id="Iways_Base::menu_system"
+    	     resource="Iways_Base::menu_system"
+    	     title="System"
+    	     parent="Iways_Base::menu"
+             sortOrder="900"
+    	     module="Iways_Base" />
+    	<add id="Iways_Base::menu_system_configuration"
+    	     resource="Iways_Base::menu_system_configuration"
+    	     title="Configuration"
+    	     parent="Iways_Base::menu_system"
+             sortOrder="911"
+    	     module="Iways_Base"
+    	     action="adminhtml/system_config/edit/section/iways_base" />
+        <add id="Iways_Base::menu_system_cacheflush"
+             resource="Iways_Base::menu_system_cacheflush"
+             title="Flush Magento's Cache"
+             parent="Iways_Base::menu_system"
+             sortOrder="988"
+             module="Iways_Base"
+             action="adminhtml/cache/flushSystem" />
+        <add id="Iways_Base::menu_system_cacheflushall"
+             resource="Iways_Base::menu_system_cacheflushall"
+             title="Flush Storage Cache"
+             parent="Iways_Base::menu_system"
+             sortOrder="999"
+             module="Iways_Base"
+             action="adminhtml/cache/flushAll" />
     </menu>
 </config>

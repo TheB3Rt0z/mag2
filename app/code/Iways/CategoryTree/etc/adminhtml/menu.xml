@@ -1,12 +1,20 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Iways_CategoryTree::menu_configuration_categorytree" title="CategoryTree Module" module="Iways_CategoryTree"
-             sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_categorytree"
-             resource="Iways_CategoryTree::menu_configuration_categorytree" />
-        <add id="Iways_CategoryTree::menu_documentation_categorytree" title="CategoryTree Module" module="Iways_CategoryTree"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_CategoryTree"
-             resource="Iways_CategoryTree::menu_documentation_categorytree" />
+        <add id="Iways_CategoryTree::menu_configuration_categorytree"
+             resource="Iways_CategoryTree::menu_configuration_categorytree"
+             title="CategoryTree Module"
+             parent="Iways_Base::menu_configuration"
+             sortOrder="711"
+             module="Iways_CategoryTree"
+             action="adminhtml/system_config/edit/section/iways_categorytree" />
+        <add id="Iways_CategoryTree::menu_documentation_categorytree"
+             resource="Iways_CategoryTree::menu_documentation_categorytree"
+             title="CategoryTree Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_CategoryTree"
+             action="iways_base/documentation/index/module/CategoryTree" />
     </menu>
 </config>

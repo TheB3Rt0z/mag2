@@ -31,20 +31,21 @@ class Frontend extends \Magento\Framework\View\Element\Template {
         $output = '';
 
         if ($depth <= $max_depth && $children = $category->getChildren()) {
-            $output .= '<ul>';
+            $items = '';
             foreach (explode(',', $children) as $id) {
                 $category = $this->_category_repository->get($id, $this->_store_id);
                 if (!$this->_show_empty && !$category->getProductCollection()->count())
                     continue;
                 $children_html = $this->_getCategoryHtml($category, $max_depth, $depth + 1);
-                $output .= '<li class="level_' . $category->getLevel() . ' depth_' . $depth . '">'
-                         . '    <a href="' . $category->getUrl() . '" ' . ($children_html
-                                                                          ? 'class="parent"'
-                                                                          : '') . '>' . $category->getName() . '</a>'
-                         . '    ' . $children_html
-                         . '</li>';
+                $items .= '<li class="level_' . $category->getLevel() . ' depth_' . $depth . '">'
+                        . '    <a href="' . $category->getUrl() . '" ' . ($children_html
+                                                                         ? 'class="parent"'
+                                                                         : '') . '>' . $category->getName() . '</a>'
+                        . '    ' . $children_html
+                        . '</li>';
             }
-            $output .= '</ul>';
+            if ($items)
+                $output .= '<ul>' . $items . '</ul>';
         }
 
         return $output;

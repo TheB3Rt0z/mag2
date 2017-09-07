@@ -1,33 +1,85 @@
-<?php namespace Iways\Base\Block\Adminhtml;
+<?php
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+namespace Iways\Base\Block\Adminhtml;
 
 use \Iways\Base\Helper\Data as helper;
+use \Magento\Backend\Block\Template as Template;
+use \Magento\Backend\Block\Template\Context as Context;
+use \Magento\Framework\App\Request\Http as Http;
+use \Magento\Framework\Filesystem\DirectoryList as DirectoryList;
 
-class Documentation extends \Magento\Backend\Block\Template
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Documentation extends Template
 {
-    protected $_doc_file = 'README.md';
+    protected $doc_file = 'README.md';
 
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $context       Magento\Backend\Block\Template\Context
+     * @param object $helper        Iways\Base\Helper\Data
+     * @param object $http          Magento\Framework\App\Request\Http
+     * @param object $directoryList Magento\Framework\Filesystem\DirectoryList
+     * @param array  $data          Object attributes
+     */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
+        Context $context,
         helper $helper,
-        \Magento\Framework\App\Request\Http $request,
-        \Magento\Framework\Filesystem\DirectoryList $dir,
+        Http $http,
+        DirectoryList $directoryList,
         array $data = []
     ) {
+        $data['dev'] = $http->getParam('dev');
 
-        if (!$request->getParam('dev')) // developers documentation is always and only in english
-            $data['locale'] = $helper->getLocale();
+        // developers documentation only in english
+        $data['locale'] = !$data['dev'] ? $helper->getLocale() : false;
 
-        if ($request->getParam('theme'))
-            $data['theme'] = $request->getParam('theme');
+        if ($http->getParam('theme')) {
+            $data['theme'] = $http->getParam('theme');
+            $data['static_path'] = '/web';
+            $data['view_path'] = '';
+        }
 
-        if ($request->getParam('module'))
-            $data['module'] = $request->getParam('module');
+        if ($http->getParam('module')) {
+            $data['module'] = $http->getParam('module');
+            $data['static_path'] = '/view/adminhtml/web';
+            $data['view_path'] = 'Iways_' . $data['module'];
+        }
 
-        $this->file_path = $dir->getPath('app')
-                         . (isset($data['theme']) ? '/design/frontend/Iways/' . $data['theme'] : '')
-                         . (isset($data['module']) ? '/code/Iways/' . $data['module'] : '')
-                         . (isset($data['locale']) ? '/documentation/' . $data['locale'] : '')
-                         . '/' . $this->_doc_file;
+        $this->file_path = $directoryList->getPath('app')
+                         . (isset($data['theme'])
+                         ? '/design/frontend/Iways/' . $data['theme']
+                         : '')
+                         . (isset($data['module'])
+                         ? '/code/Iways/' . $data['module']
+                         : '')
+                         . ($data['locale']
+                         ? '/documentation/' . $data['locale']
+                         : '')
+                         . '/' . $this->doc_file;
 
         $data['contents'] = file_get_contents($this->file_path);
 

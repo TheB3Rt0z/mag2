@@ -1,26 +1,64 @@
-<?php namespace Iways\Base\Block;
+<?php
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+namespace Iways\Base\Block;
 
 use \Iways\Base\Helper\Data as helper;
+use \Magento\Framework\View\Element\Template as Template;
+use \Magento\Framework\View\Element\Template\Context as Context;
 
-class Toolbar extends \Magento\Framework\View\Element\Template {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Toolbar extends Template
+{
+    protected $items = [
+        [
+            'label' => "Homepage",
+            'link' => "/",
+        ],
+    ];
 
-    protected $_event_manager,
-              $_items = [
-                  [
-                      'label' => "Homepage",
-                      'link' => "/",
-                  ],
-              ];
+    protected $event_manager;
 
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $context Magento\Framework\View\Element\Template\Context
+     * @param object $helper  Iways\Base\Helper\Data
+     * @param array  $data    Object attributes
+     */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
         helper $helper,
         array $data = []
     ) {
+        $this->event_manager = $context->getEventManager();
 
-        $this->_event_manager = $context->getEventManager();
-
-        $this->_event_manager->dispatch('iways_base_block_toolbar', ['items' => &$this->_items]);
+        $this->event_manager->dispatch(
+            'iways_base_block_toolbar',
+            ['items' => &$this->items]
+        );
 
         $this->helper = $helper;
 
@@ -29,8 +67,15 @@ class Toolbar extends \Magento\Framework\View\Element\Template {
         $this->setData('helper', $this->helper);
     }
 
-    public function getItemsHtml() {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getItemsHtml()
+    {
         $output = '';
 
         foreach ($this->_items as $item) {

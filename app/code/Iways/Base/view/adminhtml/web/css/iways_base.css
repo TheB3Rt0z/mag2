@@ -112,22 +112,37 @@
 
 .iways-documentation p,
 .iways-documentation ol,
-.iways-documentation ul {
+.iways-documentation ul,
+.iways-documentation pre {
     margin-bottom: 2.5em;
 }
+.iways-documentation pre {
+    border: solid 1px #ddd;
+    border-radius: 4px;
+    padding: 8px;
+}
 
+.iways-documentation .logo,
 .iways-documentation .language-flag {
     border: solid 1px #ddd;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
     display: inline-block;
     height: 20px;
     float: right;
-    overflow: hidden;
+    margin-left: 10px;
     width: auto;
 }
+
+.iways-documentation .logo {
+    background-color: white;
+}
+
+.iways-documentation .language-flag {
+    overflow: hidden;
+}
 .iways-documentation .language-flag > img {
-    height: 100%;    
+    height: 100%;
     width: auto;
 }
 

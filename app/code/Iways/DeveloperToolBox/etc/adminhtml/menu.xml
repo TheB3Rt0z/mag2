@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Iways_DeveloperToolBox::menu_configuration_developertoolbox"
+        <!--<add id="Iways_DeveloperToolBox::menu_configuration_developertoolbox"
              resource="Iways_DeveloperToolBox::menu_configuration_developertoolbox"
              title="DeveloperToolBox Module"
              parent="Iways_Base::menu_configuration"
              sortOrder="711"
              module="Iways_DeveloperToolBox"
-             action="adminhtml/system_config/edit/section/iways_developertoolbox" />
+             action="adminhtml/system_config/edit/section/iways_developertoolbox" />-->
         <add id="Iways_DeveloperToolBox::menu_documentation_iways_magento_2"
              resource="Iways_DeveloperToolBox::menu_documentation_iways_magento_2"
              title="i-ways Magento 2"

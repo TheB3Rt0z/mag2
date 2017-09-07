@@ -1,7 +1,20 @@
+<?xml version="1.0" ?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" type="image/png" sizes="32x32" src="images/icon_32x32.png" />
+        <link rel="apple-touch-icon"
+              sizes="32x32"
+              src="images/icon_32x32.png" />
+        <link rel="icon"
+              type="image/png"
+              sizes="32x32"
+              src="images/icon_32x32.png" />
+        <link rel="shortcut icon"
+              type="image/png"
+              href="images/icon_32x32.png" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+        <meta name="format-detection"
+              content="telephone=no" />
     </head>
 </page>

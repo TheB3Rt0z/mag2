@@ -1,33 +1,57 @@
 <?php
 
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
 $contents = $this->getData('contents');
 
-if ($theme = $this->getData('theme'))
-    $contents = str_replace('/web',
-                            $this->getViewFileUrl(''),
-                            $contents);
-elseif ($module = $this->getData('module'))
-    $contents = str_replace('/view/adminhtml/web',
-                            $this->getViewFileUrl('Iways_' . $module),
-                            $contents);
+$contents = str_replace(
+    $this->getData('static_path'),
+    $this->getViewFileUrl($this->getData('view_path')),
+    $contents
+);
 
 $parse_down = new Parsedown();
 $parse_down->setBreaksEnabled(true);
 $contents = $parse_down->text($contents);
 
+$images_path = 'Iways_Base/images/documentation/';
+
+$markdown_url = $this->getViewFileUrl($images_path . 'logo_markdown.png');
+
 ?>
 
 <div class="iways-documentation">
+    <img src="<?php echo $markdown_url ?>"
+         alt="MarkDown"
+         title="MarkDown"
+         class="logo markdown" />
+
     <?php
     if ($this->getData('locale')) {
+        $image_url = $this->getViewFileUrl(
+            $images_path
+            . $this->getData('locale')
+            . '/language_flag.png'
+        );
         ?>
         <span class="language-flag">
-            <img src="<?php echo $this->getViewFileUrl('Iways_Base/images/documentation/' . $this->getData('locale') . '/language_flag.png') ?>"
-                 alt="<?php echo $this->getData('locale') ?>">
+            <img src="<?php echo $image_url ?>"
+                 alt="<?php echo $this->getData('locale') ?>"
+                 title="<?php echo $this->getData('locale') ?>" />
         </span>
         <?php
     }
-    ?>
 
-    <?php echo $contents ?>
+    echo $contents;
+    ?>
 </div>

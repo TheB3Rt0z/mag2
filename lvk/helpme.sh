@@ -1,6 +1,8 @@
 #!/bin/bash
 
-/Applications/XAMPP/bin/php bin/magento maintenance:enable;
+PHP_PATH="/Applications/XAMPP/bin/php"
+
+$PHP_PATH bin/magento maintenance:enable;
 
 rm -R var/generation 2> /dev/null;
 
@@ -17,19 +19,19 @@ do
         # full backend deploy
         b) #rm -R pub/static/_requirejs 2> /dev/null
             rm -R pub/static/adminhtml 2> /dev/null
-            /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml
-            /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area adminhtml de_DE
+            $PHP_PATH bin/magento setup:static-content:deploy --area adminhtml
+            $PHP_PATH bin/magento setup:static-content:deploy --area adminhtml de_DE
         ;;
         # compilation
-        c) /Applications/XAMPP/bin/php bin/magento setup:di:compile
+        c) $PHP_PATH bin/magento setup:di:compile
         ;;
         # base frontend deploy
         d) rm -R pub/static/_requirejs 2> /dev/null
            rm -R pub/static/frontend 2> /dev/null
-           /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
+           $PHP_PATH bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
         ;;
         # german frontend deploy
-        g) /Applications/XAMPP/bin/php bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
+        g) $PHP_PATH bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
         ;;
         #
         h) printf "b) full backend deploy
@@ -40,24 +42,30 @@ g) german frontend deploy
 h) this help information
 l) clears layouts cache
 r) reindex all indexes
-s) scan i-ways app directory with php sniffer
+s) scan directory with php sniffer
 t) clears translations cache
 u) magento setup upgrade"
         ;;
         # clears layouts cache
-        l) /Applications/XAMPP/bin/php bin/magento cache:clean layout
+        l) $PHP_PATH bin/magento cache:clean layout
         ;;
         # reindex all indexes   
-        r) /Applications/XAMPP/bin/php bin/magento indexer:reindex
+        r) $PHP_PATH bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcpd
-        s) /Applications/XAMPP/bin/php vendor/bin/phpcs app/code/Iways/Base
+        s) PATH_TO_SNIFF="app/code/Iways/Base"
+           EXTENSIONS_TO_CHECK="inc,php,phtml,js,css"
+           #$PHP_PATH vendor/bin/phpcs -h
+           $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           #$PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
         ;;
         # clears translations cache
-        t) /Applications/XAMPP/bin/php bin/magento cache:clean translate
+        t) $PHP_PATH bin/magento cache:clean translate
         ;;
         # magento setup upgrade
-        u) /Applications/XAMPP/bin/php bin/magento setup:upgrade
+        u) $PHP_PATH bin/magento setup:upgrade
         ;;
     esac
 done
@@ -66,4 +74,4 @@ printf "\nhelping process took $SECONDS seconds\n\n";
 
 osascript -e 'display notification "May the VOLLKORN PASTA be always with you!" with title "Lord Vollkorn says: FERTIG in '$SECONDS' seconds" sound name "Glass"';
 
-/Applications/XAMPP/bin/php bin/magento maintenance:disable;
+$PHP_PATH bin/magento maintenance:disable;

@@ -1,7 +1,8 @@
 {
 	"name": "iways/module-developertoolbox",
 	"require": {
-	   "iways/module-base": "0.0.*"
+	   "iways/module-base": "0.0.*",
+	   "magento-ecg/coding-standard": "3.0.*"
 	},
 	"type": "magento2-module",
     "version": "0.0.1",

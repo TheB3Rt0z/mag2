@@ -1,12 +1,27 @@
 <?php
 
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
+$admin_uri = $this->helper('Magento\Backend\Helper\Data')->getHomePageUrl();
+$admin_link = $admin_uri
+            ? '<span><a href="' . $admin_uri . '" target="_BLANK">Backend</a></span>'
+            : false;
+
 if ($this->helper->wasAdminLogged()) {
     ?>
     <div class="iways-toolbar">
         <?php
-        echo $this->getItemsHtml();
-        if ($admin_uri = $this->helper('Magento\Backend\Helper\Data')->getHomePageUrl())
-            echo '<span><a href="' . $admin_uri . '" target="_BLANK">Backend</a></span>';
+        echo $this->getItemsHtml() . $admin_link;
         ?>
     </div>
     <?php
