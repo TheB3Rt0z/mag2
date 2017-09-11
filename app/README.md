@@ -14,6 +14,22 @@ N.B.: at present date there is another extension in embrional stage, Iways_Googl
 
 ## Conventions
 
+### Keywords
+
+- **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
+- **Todo:** prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+
+### Code validation
+
+i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standard, furthermore PSR-1, PSR-2 and optionally EcgM2 (Magento 2 Extension Quality Program) standards could also be applied if needed, with some minimal modification:
+
+- codelines could eventually exceed limit of 85 characters in some cases:
+  1) if line follows format "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
+  2) if a doc block line follows format " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
+  3) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
+
+- underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (e.g.: "_isAllowed()", "_getElementHtml(AbstractElement $element)") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
+
 ### Theme naming
 
 Basic template identifier has 2 components, **Iways** and **base** (slash separated), further templates extending it should be identified with **Iways/[LOWERCASE_STRING]** and **Iways/[LOWERCASE_STRING]_[LOWERCASE_STRING]** if additional nesting is needed.
@@ -48,8 +64,12 @@ The following are functioning pattern and examples given are actually used in i-
 
 <?xml version="1.0" ?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="[LAYOUT_IDENTIFIER]"> [1column|2columns-left|2columns-right|3columns]
+    <update handle="[LAYOUT_IDENTIFIER]" /> [1column|2columns-left|2columns-right|3columns]
     <head>
+        <title>[HANDLE_TITLE]</title> e.g.: "i-ways | Styleguide"
+        <link src="[MODULE_IDENTIFIER]::css/[LOWERCASE_IDENTIFIER].css" /> e.g.: "Iways_Design", "styleguide"
         <link rel="apple-touch-icon"
               sizes="[IMAGE_SIZE]" e.g.: "32x32"
               src="[IMAGE_PATH] /> e.g.: "images/icon_32x32.png" />
@@ -78,11 +98,35 @@ The following are functioning pattern and examples given are actually used in i-
                    name="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation"
                    as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation"
                    template="[MODULE_IDENTIFIER]::[TEMPLATE_PATH]" e.g.: "Iways_Base", "documentation.phtml"
-                   before="-" />
+                   [POSITION_TAG] e.g.: before/after="-", before/after="[BLOCK_NAME]"
+                   ifconfig="[CONFIG_PATH]" /> e.g.: "design/sidebar/sidebar_title_main"
         </referenceContainer>
     </body>
 </page>
 ```
+
+**Page type layout**
+```
+<!-- */page_layout/[LOWERCASE_LAYOUT].xml --> [1column|2columns-left|2columns-right|3columns]
+
+<?xml version="1.0" ?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="[LAYOUT_IDENTIFIER]" /> [1column|2columns-left|2columns-right|3columns]
+    <referenceContainer name="[LOWERCASE_CONTAINER]"> e.g.: "columns"
+        <block class="[CLASS_NAME]" e.g.: "Iways\Design\Block\Sidebar\Title"
+               name="[LOWERCASE_IDENTIFIER]" e.g.: "iways_design_block_sidebar_title_main"
+               as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_design_block_sidebar_title_main"
+               template="[MODULE_IDENTIFIER]::[TEMPLATE_PATH]" e.g.: "Iways_Design", "sidebar/title.phtml"
+               [POSITION_TAG] e.g.: before/after="-", before/after="[BLOCK_NAME]"
+               ifconfig="[CONFIG_PATH]"> e.g.: "design/sidebar/sidebar_title_main"
+            <arguments>
+                <argument name="[LOWERCASE_NAME]" e.g.: "sidebar_type"
+                          xsi:type="[ARGUMENT_TYPE]">[ARGUMENT_VALUE]</argument> [string|number], e.g.: "main"
+            </arguments>
+        </block>
+    </referenceContainer>
+</layout>
 
 **Module resource ACL**
 ```
@@ -126,6 +170,41 @@ The following are functioning pattern and examples given are actually used in i-
             </[LOWERCASE_IDENTIFIER]> e.g.: "frontend"
         </[LOWERCASE_IDENTIFIER]> "general"
     </default>
+</config>
+```
+
+**Dependency injection**
+```
+<!-- etc/di.xml -->
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="[OBJECT_CLASS]"> e.g.: "Magento\Theme\Model\Design\Config\MetadataProvider"
+        <arguments>
+            <argument name="metadata"
+                      xsi:type="array">
+                <item name="[LOWERCASE_NAME]" e.g.: "body_background_src"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">[SETTING_PATH]</item> e.g.: "design/body/background_src"
+                    <item name="fieldset"
+                          xsi:type="string">[FIELDSET_PATH]</item> e.g.: "iways_settings/body"
+                    <item name="backend_model"
+                          xsi:type="string">[MODEL_CLASS]</item> e.g.: "Iways\Design\Model\Design\Backend\Body\Background"
+                    <item name="base_url"
+                          xsi:type="array">
+                        <item name="type"
+                              xsi:type="string">media</item> e.g.: [array|boolean|configurableObject|null|number|object|string] or custom
+                        <item name="scope_info"
+                              xsi:type="string">1</item> Todo: gain more information about this!
+                        <item name="value"
+                              xsi:type="string">[PUBMEDIA_RELATIVEPATH]</item> e.g.: "body"
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
 ```
 
@@ -297,6 +376,104 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
+**Module frontend events**
+```
+<!-- etc/frontend/events.xml -->
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="[LOWERCASE_IDENTIFIER]"> e.g.: "iways_base_block_toolbar"
+        <observer name="[LOWERCASE_NAME]" e.g.: "iways_design_observer_iways_base_block_toolbar"
+                  instance="[OBSERVER_CLASS]" /> e.g.: "Iways\Design\Observer\Iways\Base\Block\Toolbar"
+    </event>
+</config>
+```
+
+**Module frontend router**
+```
+<!-- etc/frontend/routes.xml -->
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="[LOWERCASE_IDENTIFIER]" e.g.: "iways_design"
+               frontName="[LOWERCASE_IDENTIFIER]"> e.g.: "iways_design"
+            <module name="[MODULE_IDENTIFIER]" e.g.: "Iways_Design"
+                    before="Magento_Theme" />
+        </route>
+    </router>
+</config>
+```
+
+**Module backend UI Component**
+```
+<!-- view/adminhtml/ui_component/[LOWERCASE_LAYOUT].xml --> e.g.: "design_config_form"
+
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="[LOWERCASE_IDENTIFIER]"> e.g.: "iways_settings"
+        <argument name="data"
+                  xsi:type="array">
+            <item name="config"
+                  xsi:type="array">
+                <item name="label"
+                      xsi:type="string"
+                      translate="true">[FIELDSET_NAME]</item> e.g.: "i-ways Settings"
+                <item name="sortOrder"
+                      xsi:type="number">[SORTING_WEIGHT]</item> e.g.: "999"
+                <item name="additionalClasses"
+                      xsi:type="string">[LOWERCASE_CLASS(ES)]</item> e.g.: "iways-settings"
+            </item>
+        </argument>
+        <fieldset name="[LOWERCASE_IDENTIFIER]"> e.g.: "body"
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">[FIELDSET_NAME]</item> e.g.: "Body"
+                    <item name="collapsible"
+                          xsi:type="boolean">[BOOLEAN_LITERAL]</item> [true|false]
+                    <item name="level"
+                          xsi:type="number">[LEVEL_DEPTH]</item> >= 1
+                </item>
+            </argument>
+            <field name="[LOWERCASE_IDENTIFIER]"> e.g.: "body_background_src"
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">[FIELD_NAME]</item> e.g.: "Background image"
+                        <item name="formElement"
+                              xsi:type="string">[ELEMENT_TYPE]</item> [fileUploader]
+                        <item name="componentType"
+                              xsi:type="string">[COMPONENT_TYPE]</item> [fileUploader]
+                        <item name="notice"
+                              xsi:type="string"
+                              translate="true">[NOTICE_STRING]</item> e.g.: "Allowed file types: png, gif, jpg, jpeg, svg."
+                        <item name="maxFileSize"
+                              xsi:type="number">[MAX_KBs]</item> e.g.: 5242880
+                        <item name="allowedExtensions"
+                              xsi:type="string">[SPACESEPARATED_EXTENSIONS]</item> e.g.: "jpg jpeg gif png svg"
+                        <item name="uploaderConfig"
+                              xsi:type="array">
+                            <item name="url"
+                                  xsi:type="string">theme/design_config_fileUploader/save</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+</form>
+```
+
 ### PHP Doc Pattern
 
 ```
@@ -330,6 +507,12 @@ In case of class methods:
  * @todo [TODO_STRING]
  */
 ```
+
+## Theme and modules construction guidelines
+
+### Theme(s) structure
+
+### Module structure
 
 ## Nice to have
 

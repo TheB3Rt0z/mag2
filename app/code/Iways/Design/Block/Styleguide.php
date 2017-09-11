@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Head extends Template
+class Styleguide extends Template
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -50,32 +50,5 @@ class Head extends Template
         parent::__construct($context, $data);
 
         $this->setData('helper', $this->helper);
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param string $type ATM [link|script]
-     * @param array  $data associative array of tag attributes
-     *
-     * @return string
-     */
-    public function addTag($type, $data = [])
-    {
-        $attributes = '';
-
-        foreach ($data as $id => $value) {
-            $attributes .= ' ' . $id . '="' . $value . '"';
-        }
-
-        $output = '<' . $type . $attributes;
-
-        if ($type == 'script') {
-            return $output . '></' . $type . '>';
-        }
-
-        return $output . ' />';
     }
 }

@@ -1,19 +1,26 @@
 {
-    "name": "i-ways/theme-base",
-    "require": {
-        "php": "~5.5.0|~5.6.0|~7.0.0",
-        "magento/theme-frontend-blank": "100.0.*",
-        "magento/framework": "100.0.*"
+  "name": "iways/theme-base",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "magento/theme-frontend-blank": "100.0.*|100.1.*",
+    "magento/framework": "100.0.*|100.1.*",
+    "iways/module-base": "^0.1.0"
+  },
+  "type": "magento2-theme",
+  "version": "0.1.2",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
     },
-    "type": "magento2-theme",
-    "version": "0.0.1",
-    "license": [
-        "OSL-3.0",
-        "AFL-3.0"
-    ],
-    "autoload": {
-        "files": [
-            "registration.php"
-        ]
+    {
+      "url": "git@github.com:i-ways/magento2-base-module.git",
+      "type": "git"
     }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
 }

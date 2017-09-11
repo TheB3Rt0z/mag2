@@ -11,10 +11,11 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Model\Config;
 
-use \Iways\Base\Helper\Data as helper;
-use \Magento\Framework\Option\ArrayInterface as ArrayInterface;
+use Iways\Base\Helper\Data as helper;
+use Magento\Framework\Option\ArrayInterface;
 
 /**
  * Ⓒ i-ways sales solutions GmbH

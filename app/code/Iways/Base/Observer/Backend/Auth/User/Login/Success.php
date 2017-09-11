@@ -11,10 +11,11 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Observer\Backend\Auth\User\Login;
 
-use \Magento\Framework\Event\Observer as Observer;
-use \Magento\Framework\Event\ObserverInterface as ObserverInterface;
+use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -40,7 +41,7 @@ class Success implements ObserverInterface
      *
      * @param object $observer Magento\Framework\Event\Observer
      *
-     * @return boolean
+     * @return void
      *
      * @todo new started session should last the same as for admin session..
      */
@@ -59,10 +60,6 @@ class Success implements ObserverInterface
             session_write_close();
             session_id($this->session_id);
             session_start();
-
-            return true;
         }
-
-        return false;
     }
 }

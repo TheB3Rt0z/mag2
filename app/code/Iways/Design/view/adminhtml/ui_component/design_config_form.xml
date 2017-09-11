@@ -2,80 +2,137 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <fieldset name="iways_settings">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">i-ways Settings</item>
-                <item name="sortOrder" xsi:type="number">999</item>
-                <item name="additionalClasses" xsi:type="string">iways-settings</item>
+        <argument name="data"
+                  xsi:type="array">
+            <item name="config"
+                  xsi:type="array">
+                <item name="label"
+                      xsi:type="string"
+                      translate="true">i-ways Settings</item>
+                <item name="sortOrder"
+                      xsi:type="number">999</item>
+                <item name="additionalClasses"
+                      xsi:type="string">iways-settings</item>
             </item>
         </argument>
         <fieldset name="body">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Body</item>
-                    <item name="collapsible" xsi:type="boolean">true</item>
-                    <item name="level" xsi:type="number">1</item>
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Body</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
                 </item>
             </argument>
             <field name="body_background_color">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Background color</item>
-                        <item name="formElement" xsi:type="string">input</item>
-                        <item name="componentType" xsi:type="string">input</item>
-                        <item name="additionalClasses" xsi:type="string">iways-color</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
                     </item>
                 </argument>
             </field>
             <field name="body_background_src">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Background image</item>
-                        <item name="formElement" xsi:type="string">fileUploader</item>
-                        <item name="componentType" xsi:type="string">fileUploader</item>
-                        <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
-                        <item name="maxFileSize" xsi:type="number">5242880</item>
-                        <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
-                        <item name="uploaderConfig" xsi:type="array">
-                            <item name="url" xsi:type="string">theme/design_config_fileUploader/save</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background image</item>
+                        <item name="formElement"
+                              xsi:type="string">fileUploader</item>
+                        <item name="componentType"
+                              xsi:type="string">fileUploader</item>
+                        <item name="notice"
+                              xsi:type="string"
+                              translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                        <item name="maxFileSize"
+                              xsi:type="number">5242880</item>
+                        <item name="allowedExtensions"
+                              xsi:type="string">jpg jpeg gif png svg</item>
+                        <item name="uploaderConfig"
+                              xsi:type="array">
+                            <item name="url"
+                                  xsi:type="string">theme/design_config_fileUploader/save</item>
                         </item>
                     </item>
                 </argument>
             </field>
             <field name="body_background_gradient">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Gradient</item>
-                        <item name="formElement" xsi:type="string">textarea</item>
-                        <item name="componentType" xsi:type="string">textarea</item>
-                        <item name="notice" xsi:type="string" translate="true">see http://www.colorzilla.com/gradient-editor for configurable valid CSS gradient's code and presets</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Gradient</item>
+                        <item name="formElement"
+                              xsi:type="string">textarea</item>
+                        <item name="componentType"
+                              xsi:type="string">textarea</item>
+                        <item name="notice"
+                              xsi:type="string"
+                              translate="true">see http://www.colorzilla.com/gradient-editor for configurable valid CSS gradient's code and presets</item>
                     </item>
                 </argument>
             </field>
         </fieldset>
         <fieldset name="sidebar">
-             <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Sidebar</item>
-                    <item name="collapsible" xsi:type="boolean">true</item>
-                    <item name="level" xsi:type="number">1</item>
+             <argument name="data"
+                       xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Sidebar</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
                 </item>
             </argument>
             <field name="sidebar_title_main">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Main sidebar title</item>
-                        <item name="formElement" xsi:type="string">input</item>
-                        <item name="componentType" xsi:type="string">input</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Main sidebar title</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
                     </item>
                 </argument>
             </field>
             <field name="sidebar_title_additional">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Additional sidebar title</item>
-                        <item name="formElement" xsi:type="string">input</item>
-                        <item name="componentType" xsi:type="string">input</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Additional sidebar title</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
                     </item>
                 </argument>
             </field>

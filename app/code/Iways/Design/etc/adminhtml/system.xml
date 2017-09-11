@@ -2,18 +2,31 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="iways_design" translate="label" sortOrder="111"
-                 showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="iways_design"
+                 translate="label"
+                 type="text"
+                 sortOrder="111"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
             <label>Design</label>
             <tab>iways</tab>
             <resource>Iways_Design::config</resource>
-            
-            <group id="frontend" translate="label" sortOrder="000"
-                   showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="frontend"
+                   translate="label"
+                   type="text"
+                   sortOrder="000"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
                 <label>Frontend</label>
-                
-                <field id="minify_css" translate="label" type="select" sortOrder="000"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="minify_css"
+                       translate="label"
+                       type="select"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Minify CSS</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>

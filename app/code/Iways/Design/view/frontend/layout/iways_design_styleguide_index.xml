@@ -1,17 +1,19 @@
 <?xml version="1.0" ?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="1column">
     <head>
         <title>i-ways | Styleguide</title>
         <link src="Iways_Design::css/styleguide.css" />
     </head>
     <body>
-        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="page.main.title"
+                        remove="true" />
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template"
-                   name="iways_design_styleguide_index"
-                   as="iways_design_styleguide_index"
-                   template="Iways_Design::styleguide/index.phtml" />
+            <block class="Iways\Design\Block\Styleguide"
+                   name="iways_design_block_styleguide"
+                   as="iways_design_block_styleguide"
+                   template="Iways_Design::styleguide.phtml" />
         </referenceContainer>
     </body>
 </page>

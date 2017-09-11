@@ -11,12 +11,13 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Helper;
 
-use \Magento\Framework\App\Helper\AbstractHelper as AbstractHelper;
-use \Magento\Framework\App\Helper\Context as Context;
-use \Magento\Framework\Locale\Resolver as Resolver;
-use \Magento\Store\Model\ScopeInterface as ScopeInterface;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Locale\Resolver;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Ⓒ i-ways sales solutions GmbH

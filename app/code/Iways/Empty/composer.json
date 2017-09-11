@@ -1,11 +1,10 @@
 {
-  "name": "iways/module-base",
+  "name": "iways/module-empty",
   "require": {
-    "erusev/parsedown": "1.6.*",
     "magento/framework": "100.0.*|100.1.*"
   },
   "type": "magento2-module",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "repositories": [
     {
       "type": "composer",
@@ -17,7 +16,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Iways\\Base\\": ""
+      "Iways\\Empty\\": ""
     }
   }
 }

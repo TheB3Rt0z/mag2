@@ -40,9 +40,15 @@ function tinycolor (color, opts) {
     // Potentially lose a little bit of precision here, but will fix issues where
     // .5 gets interpreted as half of the total, instead of half of 1
     // If it was supposed to be 128, this was already taken care of by `inputToRgb`
-    if (this._r < 1) { this._r = mathRound(this._r); }
-    if (this._g < 1) { this._g = mathRound(this._g); }
-    if (this._b < 1) { this._b = mathRound(this._b); }
+    if (this._r < 1) {
+        this._r = mathRound(this._r);
+    }
+    if (this._g < 1) {
+        this._g = mathRound(this._g);
+    }
+    if (this._b < 1) {
+        this._b = mathRound(this._b);
+    }
 
     this._ok = rgb.ok;
     this._tc_id = tinyCounter++;
@@ -80,9 +86,21 @@ tinycolor.prototype = {
         GsRGB = rgb.g/255;
         BsRGB = rgb.b/255;
 
-        if (RsRGB <= 0.03928) {R = RsRGB / 12.92;} else {R = Math.pow(((RsRGB + 0.055) / 1.055), 2.4);}
-        if (GsRGB <= 0.03928) {G = GsRGB / 12.92;} else {G = Math.pow(((GsRGB + 0.055) / 1.055), 2.4);}
-        if (BsRGB <= 0.03928) {B = BsRGB / 12.92;} else {B = Math.pow(((BsRGB + 0.055) / 1.055), 2.4);}
+        if (RsRGB <= 0.03928) {
+            R = RsRGB / 12.92;
+        } else {
+            R = Math.pow(((RsRGB + 0.055) / 1.055), 2.4);
+        }
+        if (GsRGB <= 0.03928) {
+            G = GsRGB / 12.92;
+        } else {
+            G = Math.pow(((GsRGB + 0.055) / 1.055), 2.4);
+        }
+        if (BsRGB <= 0.03928) {
+            B = BsRGB / 12.92;
+        } else {
+            B = Math.pow(((BsRGB + 0.055) / 1.055), 2.4);
+        }
         return (0.2126 * R) + (0.7152 * G) + (0.0722 * B);
     },
     setAlpha: function(value) {
@@ -275,8 +293,7 @@ tinycolor.fromRatio = function(color, opts) {
             if (color.hasOwnProperty(i)) {
                 if (i === "a") {
                     newColor[i] = color[i];
-                }
-                else {
+                } else {
                     newColor[i] = convertToPercentage(color[i]);
                 }
             }
@@ -321,15 +338,13 @@ function inputToRGB(color) {
             rgb = rgbToRgb(color.r, color.g, color.b);
             ok = true;
             format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
-        }
-        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
+        } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
             s = convertToPercentage(color.s);
             v = convertToPercentage(color.v);
             rgb = hsvToRgb(color.h, s, v);
             ok = true;
             format = "hsv";
-        }
-        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
+        } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
             s = convertToPercentage(color.s);
             l = convertToPercentage(color.l);
             rgb = hslToRgb(color.h, s, l);
@@ -387,10 +402,9 @@ function rgbToHsl(r, g, b) {
     var max = mathMax(r, g, b), min = mathMin(r, g, b);
     var h, s, l = (max + min) / 2;
 
-    if(max == min) {
+    if (max == min) {
         h = s = 0; // achromatic
-    }
-    else {
+    } else {
         var d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
         switch(max) {
@@ -417,18 +431,27 @@ function hslToRgb(h, s, l) {
     l = bound01(l, 100);
 
     function hue2rgb(p, q, t) {
-        if(t < 0) t += 1;
-        if(t > 1) t -= 1;
-        if(t < 1/6) return p + (q - p) * 6 * t;
-        if(t < 1/2) return q;
-        if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        if (t < 0) {
+            t += 1;
+        }
+        if (t > 1) {
+            t -= 1;
+        }
+        if (t < 1/6) {
+            return p + (q - p) * 6 * t;
+        }
+        if (t < 1/2) {
+            return q;
+        }
+        if (t < 2/3) {
+            return p + (q - p) * (2/3 - t) * 6;
+        }
         return p;
     }
 
-    if(s === 0) {
+    if (s === 0) {
         r = g = b = l; // achromatic
-    }
-    else {
+    } else {
         var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
         var p = 2 * l - q;
         r = hue2rgb(p, q, h + 1/3);
@@ -455,10 +478,9 @@ function rgbToHsv(r, g, b) {
     var d = max - min;
     s = max === 0 ? 0 : d / max;
 
-    if(max == min) {
+    if (max == min) {
         h = 0; // achromatic
-    }
-    else {
+    } else {
         switch(max) {
             case r: h = (g - b) / d + (g < b ? 6 : 0); break;
             case g: h = (b - r) / d + 2; break;
@@ -551,7 +573,9 @@ function rgbaToArgbHex(r, g, b, a) {
 // `equals`
 // Can be called with any tinycolor input
 tinycolor.equals = function (color1, color2) {
-    if (!color1 || !color2) { return false; }
+    if (!color1 || !color2) {
+        return false;
+    }
     return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
 };
 
@@ -673,7 +697,7 @@ function analogous(color, results, slices) {
     var part = 360 / slices;
     var ret = [tinycolor(color)];
 
-    for (hsl.h = ((hsl.h - (part * results >> 1)) + 720) % 360; --results; ) {
+    for (hsl.h = ((hsl.h - (part * results >> 1)) + 720) % 360; --results;) {
         hsl.h = (hsl.h + part) % 360;
         ret.push(tinycolor(hsl));
     }
@@ -781,7 +805,7 @@ tinycolor.mostReadable = function(baseColor, colorList, args) {
     level = args.level;
     size = args.size;
 
-    for (var i= 0; i < colorList.length ; i++) {
+    for (var i= 0; i < colorList.length; i++) {
         readability = tinycolor.readability(baseColor, colorList[i]);
         if (readability > bestScore) {
             bestScore = readability;
@@ -791,8 +815,7 @@ tinycolor.mostReadable = function(baseColor, colorList, args) {
 
     if (tinycolor.isReadable(baseColor, bestColor, {"level":level,"size":size}) || !includeFallbackColors) {
         return bestColor;
-    }
-    else {
+    } else {
         args.includeFallbackColors=false;
         return tinycolor.mostReadable(baseColor,["#fff", "#000"],args);
     }
@@ -985,7 +1008,9 @@ function boundAlpha(a) {
 
 // Take input from [0, n] and return it as [0, 1]
 function bound01(n, max) {
-    if (isOnePointZero(n)) { n = "100%"; }
+    if (isOnePointZero(n)) {
+        n = "100%";
+    }
 
     var processPercent = isPercentage(n);
     n = mathMin(max, mathMax(0, parseFloat(n)));
@@ -1097,8 +1122,7 @@ function stringInputToObject(color) {
     if (names[color]) {
         color = names[color];
         named = true;
-    }
-    else if (color == 'transparent') {
+    } else if (color == 'transparent') {
         return { r: 0, g: 0, b: 0, a: 0, format: "name" };
     }
 
@@ -1182,13 +1206,9 @@ function validateWCAG2Parms(parms) {
 // Node: Export function
 if (typeof module !== "undefined" && module.exports) {
     module.exports = tinycolor;
-}
-// AMD/requirejs: Define the module
-else if (typeof define === 'function' && define.amd) {
+} else if (typeof define === 'function' && define.amd) { // AMD/requirejs: Define the module
     define(function () {return tinycolor;});
-}
-// Browser: Expose to window
-else {
+} else { // Browser: Expose to window
     window.tinycolor = tinycolor;
 }
 

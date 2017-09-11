@@ -110,6 +110,10 @@
     padding: 6px;
 }
 
+.iways-documentation h2 {
+    border-bottom: solid 1px #ddd;
+}
+
 .iways-documentation p,
 .iways-documentation ol,
 .iways-documentation ul,

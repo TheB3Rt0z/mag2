@@ -1,9 +1,46 @@
-<?php namespace Iways\Design\Observer\Iways\Base\Block;
+<?php
 
-class Toolbar implements \Magento\Framework\Event\ObserverInterface {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Design
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    public function execute(\Magento\Framework\Event\Observer $observer) {
+namespace Iways\Design\Observer\Iways\Base\Block;
 
+use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Design
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Toolbar implements ObserverInterface
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $observer Magento\Framework\Event\Observer
+     *
+     * @return void
+     */
+    public function execute(Observer $observer)
+    {
         $items = $observer->getItems();
 
         $items[] = [

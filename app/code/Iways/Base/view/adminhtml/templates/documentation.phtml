@@ -31,10 +31,13 @@ $markdown_url = $this->getViewFileUrl($images_path . 'logo_markdown.png');
 ?>
 
 <div class="iways-documentation">
-    <img src="<?php echo $markdown_url ?>"
-         alt="MarkDown"
-         title="MarkDown"
-         class="logo markdown" />
+    <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
+       target="_blank">
+        <img src="<?php echo $markdown_url ?>"
+             alt="MarkDown"
+             title="MarkDown"
+             class="logo markdown" />
+    </a>
 
     <?php
     if ($this->getData('locale')) {

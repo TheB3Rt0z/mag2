@@ -11,14 +11,15 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Block\Adminhtml\System\Config\Form\Field;
 
-use \Magento\Backend\Block\Template\Context as Context;
-use \Magento\Config\Block\System\Config\Form\Field as Field;
-use \Magento\Framework\Data\Form\Element\AbstractElement as AbstractElement;
-use \Magento\Framework\View\Design\Theme\ThemeProviderInterface as ThemeProviderInterface;
-use \Magento\Framework\View\DesignInterface as DesignInterface;
-use \Magento\Store\Model\ScopeInterface as ScopeInterface;
+use Magento\Backend\Block\Template\Context;
+use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
+use Magento\Framework\View\DesignInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -56,13 +57,13 @@ class Check extends Field
      *
      * PHP Version 5
      *
-     * @param object $context       Magento\Backend\Block\Template\Context
-     * @param object $themeProvider Magento\Framework\View\Design\Theme\ThemeProviderInterface
-     * @param array  $data          Object attributes
+     * @param object $context                Magento\Backend\Block\Template\Context
+     * @param object $themeProviderInterface Magento\Framework\View\Design\Theme\ThemeProviderInterface
+     * @param array  $data                   object attributes
      */
     public function __construct(
         Context $context,
-        ThemeProviderInterface $themeProvider,
+        ThemeProviderInterface $themeProviderInterface,
         array $data = []
     ) {
         $theme_id = $context->getScopeConfig()->getValue(
@@ -72,9 +73,9 @@ class Check extends Field
         );
 
         do {
-            $this->theme = $themeProvider->getThemeById($theme_id);
+            $this->theme = $themeProviderInterface->getThemeById($theme_id);
             $theme_id = $this->theme->getParentId();
-        } while ($theme_id > 1); // 1 is always the blank-theme
+        } while ($theme_id > 1); // 1 is always the blank-theme (or $this->theme->getCode() == 'Magento/blank')
 
         parent::__construct($context, $data);
     }

@@ -2,19 +2,35 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Iways_Design::design" title="Design" module="Magento_Theme"
-             sortOrder="100" parent="Iways_Base::menu" resource="Magento_Config::design" />
-        <add id="Iways_Design::design_config" title="Design Configuration" module="Magento_Theme"
-             sortOrder="111" parent="Iways_Design::design" action="theme/design_config"
-             resource="Magento_Config::config_design" />
-        <add id="Iways_Design::system_design_theme" title="Installed Themes" module="Magento_Theme"
-             sortOrder="122" parent="Iways_Design::design" action="adminhtml/system_design_theme" 
-             resource="Magento_Theme::theme" />
-        <add id="Iways_Design::menu_configuration_design" title="Design Module" module="Iways_Design"
-             sortOrder="711" parent="Iways_Base::menu_configuration" action="adminhtml/system_config/edit/section/iways_design"
-             resource="Iways_Design::menu_configuration_design" />
-        <add id="Iways_Design::menu_documentation_design" title="Design Module" module="Iways_Design"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_Design"
-             resource="Iways_Design::menu_documentation_design" />
+        <add id="Iways_Design::design"
+             resource="Magento_Config::design"
+             title="Design" module="Magento_Theme"
+             parent="Iways_Base::menu"
+             sortOrder="100" />
+        <add id="Iways_Design::design_config"
+             resource="Magento_Config::config_design"
+             title="Design Configuration"
+             parent="Iways_Design::design"
+             sortOrder="111"
+             module="Magento_Theme"
+             action="theme/design_config" />
+        <add id="Iways_Design::system_design_theme"
+             resource="Magento_Theme::theme"
+             title="Installed Themes" module="Magento_Theme"
+             parent="Iways_Design::design"
+             sortOrder="122"
+             action="adminhtml/system_design_theme" />
+        <add id="Iways_Design::menu_configuration_design"
+             resource="Iways_Design::menu_configuration_design"
+             title="Design Module" module="Iways_Design"
+             parent="Iways_Base::menu_configuration"
+             sortOrder="711"
+             action="adminhtml/system_config/edit/section/iways_design" />
+        <add id="Iways_Design::menu_documentation_design"
+             resource="Iways_Design::menu_documentation_design"
+             title="Design Module" module="Iways_Design"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             action="iways_base/documentation/index/module/Design" />
     </menu>
 </config>

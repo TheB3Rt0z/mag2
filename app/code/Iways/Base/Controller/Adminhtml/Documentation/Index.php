@@ -11,10 +11,11 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Controller\Adminhtml\Documentation;
 
-use \Magento\Backend\App\Action\Context as Context;
-use \Magento\Framework\View\Result\PageFactory as PageFactory;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Ⓒ i-ways sales solutions GmbH

@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="iways_base_block_toolbar">
-        <observer name="iways_design_iways_base_block_toolbar"
+        <observer name="iways_design_observer_iways_base_block_toolbar"
                   instance="Iways\Design\Observer\Iways\Base\Block\Toolbar" />
     </event>
 </config>

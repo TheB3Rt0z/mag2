@@ -11,11 +11,12 @@
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
+
 namespace Iways\Base\Block;
 
-use \Iways\Base\Helper\Data as helper;
-use \Magento\Framework\View\Element\Template as Template;
-use \Magento\Framework\View\Element\Template\Context as Context;
+use Iways\Base\Helper\Data as helper;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -46,7 +47,7 @@ class Toolbar extends Template
      *
      * @param object $context Magento\Framework\View\Element\Template\Context
      * @param object $helper  Iways\Base\Helper\Data
-     * @param array  $data    Object attributes
+     * @param array  $data    object attributes
      */
     public function __construct(
         Context $context,
@@ -78,7 +79,7 @@ class Toolbar extends Template
     {
         $output = '';
 
-        foreach ($this->_items as $item) {
+        foreach ($this->items as $item) {
             $output .= '<span>'
                      . (isset($item['link'])
                        ? '<a href="' . $item['link'] . '">' . $item['label'] . '</a>'
