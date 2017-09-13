@@ -2,24 +2,38 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="iways_googlefonts" translate="label" sortOrder="111"
-                 showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="iways_googlefonts"
+                 translate="label"
+                 sortOrder="111"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
             <label>GoogleFonts</label>
             <tab>iways</tab>
             <resource>Iways_GoogleFonts::config</resource>
-            
-            <group id="credentials" translate="label" sortOrder="000"
-                   showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="credentials"
+                   translate="label"
+                   sortOrder="000"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
                 <label>Credentials</label>
-                
-                <field id="api_key" translate="label" type="text" sortOrder="000"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="api_key"
+                       translate="label"
+                       type="text"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>API-Key</label>
                     <comment>https://developers.google.com/fonts/docs/developer_api</comment>
                 </field>
-                
-                <field id="api_test" translate="label" sortOrder="111"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="api_test"
+                       translate="label"
+                       sortOrder="111"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>API Test</label>
                     <frontend_model>Iways\GoogleFonts\Block\Adminhtml\System\Config\Apitest</frontend_model>
                 </field>

@@ -53,11 +53,17 @@ u) magento setup upgrade"
         r) $PHP_PATH bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcs
-        s) #PATH_TO_SNIFF="app/design/frontend/Iways"
-           PATH_TO_SNIFF="app/code/Iways/Mobile"
+        s) $PHP_PATH vendor/bin/phpcs -h
            EXTENSIONS_TO_CHECK="inc,php,phtml,js,json,css"
-           $PHP_PATH vendor/bin/phpcs -h
-           #$PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           #PATH_TO_SNIFF="app/code/Iways/DeveloperToolBox"
+           #$PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           PATH_TO_SNIFF="app/code/Iways"
+           $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+           $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+           $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+           $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           PATH_TO_SNIFF="app/design/frontend/Iways"
+           $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
            $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
            $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
            $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK

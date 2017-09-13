@@ -1,16 +1,21 @@
 <?xml version="1.0" ?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget id="iways_sociallinks" class="Iways\SocialLinks\Block\Frontend\Widget"
+    <widget id="iways_sociallinks"
+            class="Iways\SocialLinks\Block\Frontend\Widget"
             placeholder_image="Iways_Base::images/icon_32x32.png">
         <label>i-ways SocialLinks</label>
         <description>i-ways SocialLinks Widget</description>
         <parameters>
-            <parameter name="link_aspect" xsi:type="select" required="true"
+            <parameter name="link_aspect"
+                       xsi:type="select"
+                       required="true"
                        source_model="Iways\SocialLinks\Model\Config\Source\Aspects">
                 <label translate="true">Link aspect</label>
             </parameter>
-            <parameter name="block_title" xsi:type="text" required="false">
+            <parameter name="block_title"
+                       xsi:type="text"
+                       required="false">
                 <label translate="true">Block title</label>
             </parameter>
         </parameters>

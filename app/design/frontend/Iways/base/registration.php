@@ -12,8 +12,10 @@
  * @link     https://www.i-ways.net
  */
 
-\Magento\Framework\Component\ComponentRegistrar::register(
-    \Magento\Framework\Component\ComponentRegistrar::THEME,
+use Magento\Framework\Component\ComponentRegistrar;
+
+ComponentRegistrar::register(
+    ComponentRegistrar::THEME,
     'frontend/Iways/base',
     __DIR__
 );

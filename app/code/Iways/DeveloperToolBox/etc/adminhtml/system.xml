@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="iways_developertoolbox"
+                 translate="label"
+                 type="text"
+                 sortOrder="111"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <label>DeveloperToolBox</label>
+            <tab>iways</tab>
+            <resource>Iways_DeveloperToolBox::config</resource>
+            <group id="modules"
+                   translate="label"
+                   type="text"
+                   sortOrder="000"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Modules</label>
+                <field id="overview_scope"
+                       translate="label"
+                       type="select"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Overview scope</label>
+                    <source_model>Iways\DeveloperToolBox\Model\Config\Source\Scopes</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

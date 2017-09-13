@@ -6,16 +6,15 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_Design
+ * @package  Iways_DeveloperToolBox
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\Design\Observer\Iways\Base\Block;
+namespace Iways\DeveloperToolBox\Helper;
 
-use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
+use Iways\Base\Helper\Data as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -23,31 +22,24 @@ use Magento\Framework\Event\ObserverInterface;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_Design
+ * @package  Iways_DeveloperToolBox
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Toolbar implements ObserverInterface
+class Data extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $observer Magento\Framework\Event\Observer
+     * @return boolean
      *
-     * @return void
+     * @todo check and update observer for a better (isAdminLogged) method..
      */
-    public function execute(Observer $observer)
+    public function wasAdminLogged()
     {
-        $items = $observer->getItems();
-
-        $items[] = [
-            'label' => __("Styleguide"),
-            'link' => "/iways_design/styleguide/index/",
-        ];
-
-        $observer->setItems($items);
+        return isset($_SESSION['admin'][0]);
     }
 }

@@ -15,7 +15,7 @@
 namespace Iways\Design\Block\Sidebar;
 
 use Iways\Design\Helper\Data as helper;
-use Magento\Framework\View\Element\AbstractBlock;
+use Magento\Framework\View\Element\AbstractBlock as extended;
 use Magento\Framework\View\Element\Context;
 
 /**
@@ -29,10 +29,8 @@ use Magento\Framework\View\Element\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Title extends AbstractBlock
+class Title extends extended
 {
-    protected $title;
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -52,8 +50,7 @@ class Title extends AbstractBlock
         parent::__construct($context, $data);
 
         if ($this->title === null) {
-            $config_path = 'design/sidebar/sidebar_title_' . $this->getSidebarType();
-            $this->title = $this->helper->getConfig($config_path);
+            $this->title = $this->helper->getConfig('design/sidebar/sidebar_title_' . $this->getSidebarType());
         }
     }
 }

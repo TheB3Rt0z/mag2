@@ -14,7 +14,7 @@
 
 namespace Iways\Base\Helper;
 
-use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\AbstractHelper as extended;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Locale\Resolver;
 use Magento\Store\Model\ScopeInterface;
@@ -32,10 +32,8 @@ use Magento\Store\Model\ScopeInterface;
  *
  * @todo refactor actual alphabetical-ordered methods to sub-classes if needed
  */
-class Data extends AbstractHelper
+class Data extends extended
 {
-    protected $resolver;
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -90,6 +88,8 @@ class Data extends AbstractHelper
      */
     public function toOptionArray($array)
     {
+        $data = [];
+
         foreach ($array as $key => $value) {
             $data[] = [
                 'value' => $key,
@@ -98,19 +98,5 @@ class Data extends AbstractHelper
         }
 
         return $data;
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
-     *
-     * @todo check and update observer for a better (isAdminLogged) method..
-     */
-    public function wasAdminLogged()
-    {
-        return isset($_SESSION['admin'][0]);
     }
 }

@@ -12,11 +12,11 @@
  * @link     https://www.i-ways.net
  */
 
-$contents = $this->getData('contents');
+$contents = $block->getData('contents');
 
 $contents = str_replace(
-    $this->getData('static_path'),
-    $this->getViewFileUrl($this->getData('view_path')),
+    $block->getData('static_path'),
+    $block->getViewFileUrl($block->getData('view_path')),
     $contents
 );
 
@@ -26,7 +26,7 @@ $contents = $parse_down->text($contents);
 
 $images_path = 'Iways_Base/images/documentation/';
 
-$markdown_url = $this->getViewFileUrl($images_path . 'logo_markdown.png');
+$markdown_url = $block->getViewFileUrl($images_path . 'logo_markdown.png');
 
 ?>
 
@@ -40,17 +40,17 @@ $markdown_url = $this->getViewFileUrl($images_path . 'logo_markdown.png');
     </a>
 
     <?php
-    if ($this->getData('locale')) {
-        $image_url = $this->getViewFileUrl(
+    if ($block->getData('locale')) {
+        $image_url = $block->getViewFileUrl(
             $images_path
-            . $this->getData('locale')
+            . $block->getData('locale')
             . '/language_flag.png'
         );
         ?>
         <span class="language-flag">
             <img src="<?php echo $image_url ?>"
-                 alt="<?php echo $this->getData('locale') ?>"
-                 title="<?php echo $this->getData('locale') ?>" />
+                 alt="<?php echo $block->getData('locale') ?>"
+                 title="<?php echo $block->getData('locale') ?>" />
         </span>
         <?php
     }

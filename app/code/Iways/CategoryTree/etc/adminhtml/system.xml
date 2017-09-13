@@ -2,44 +2,71 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="iways_categorytree" translate="label" sortOrder="111"
-                 showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="iways_categorytree"
+                 translate="label"
+                 sortOrder="111"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
             <label>CategoryTree</label>
             <tab>iways</tab>
             <resource>Iways_CategoryTree::config</resource>
-            
-            <group id="frontend" translate="label" sortOrder="000"
-                   showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="frontend"
+                   translate="label"
+                   sortOrder="000"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
                 <label>Frontend</label>
-                
-                <field id="block_title" translate="label" type="text" sortOrder="000"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="block_title"
+                       translate="label"
+                       type="text"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Block title</label>
                 </field>
-                
-                <field id="tree_root" translate="label" type="select" sortOrder="100"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="tree_root"
+                       translate="label"
+                       type="select"
+                       sortOrder="100"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Root category</label>
                     <source_model>Iways\CategoryTree\Model\Config\Source\Root</source_model>
                 </field>
-                
-                <field id="custom_root" translate="label" type="select" sortOrder="200"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="custom_root"
+                       translate="label"
+                       type="select"
+                       sortOrder="200"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Custom root category</label>
                     <source_model>Iways\CategoryTree\Model\Config\Source\Categories</source_model>
                     <depends>
                         <field id="iways_categorytree/frontend/tree_root">3</field>
                     </depends>
                 </field>
-                
-                <field id="tree_depth" translate="label" type="select" sortOrder="300"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="tree_depth"
+                       translate="label"
+                       type="select"
+                       sortOrder="300"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Tree depth</label>
                     <source_model>Iways\CategoryTree\Model\Config\Source\Depth</source_model>
                 </field>
-                
-                <field id="show_empty" translate="label" type="select" sortOrder="400"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="show_empty"
+                       translate="label"
+                       type="select"
+                       sortOrder="400"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
                     <label>Show empty categories</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>

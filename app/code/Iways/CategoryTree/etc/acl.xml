@@ -7,7 +7,9 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Iways_CategoryTree::config" title="i-ways CategoryTree Section" sortOrder="111" />
+                            <resource id="Iways_CategoryTree::config"
+                                      title="i-ways CategoryTree Section"
+                                      sortOrder="111" />
                         </resource>
                     </resource>
                 </resource>

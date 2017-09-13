@@ -3,28 +3,46 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <fieldset name="iways_settings">
         <fieldset name="mobile">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Mobile</item>
-                    <item name="collapsible" xsi:type="boolean">true</item>
-                    <item name="level" xsi:type="number">1</item>
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Mobile</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
                 </item>
             </argument>
             <field name="mobile_navigation_direction">
-                <argument name="data" xsi:type="array">
-                    <item name="options" xsi:type="object">Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\Direction\Options</item>
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Navigation direction</item>
-                        <item name="formElement" xsi:type="string">select</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\Direction\Options</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation direction</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
                     </item>
                 </argument>
             </field>
             <field name="mobile_modal_sidebars"> <!-- todo: only if sidebars do actually have a title (design module) -->
-                <argument name="data" xsi:type="array">
-                    <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
-                    <item name="config" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Modal sidebars</item>
-                        <item name="formElement" xsi:type="string">select</item>
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Modal sidebars</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
                     </item>
                 </argument>
             </field>

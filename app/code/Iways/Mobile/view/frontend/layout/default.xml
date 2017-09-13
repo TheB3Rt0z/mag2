@@ -12,7 +12,8 @@
         <referenceContainer name="page.top">
             <referenceBlock name="catalog.topnav">
                 <action method="setTemplate">
-                    <argument name="template" xsi:type="string">Iways_Mobile::html/topmenu.phtml</argument>
+                    <argument name="template"
+                              xsi:type="string">Iways_Mobile::html/topmenu.phtml</argument>
                 </action>
             </referenceBlock>
         </referenceContainer>

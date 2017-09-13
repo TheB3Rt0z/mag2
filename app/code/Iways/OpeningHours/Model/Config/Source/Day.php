@@ -1,26 +1,48 @@
-<?php namespace Iways\OpeningHours\Model\Config\Source;
+<?php
 
-class Day implements \Magento\Framework\Option\ArrayInterface {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    public function toArray() {
+namespace Iways\OpeningHours\Model\Config\Source;
 
+use Iways\Base\Model\Config\Source;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Day extends Source
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return array
+     */
+    public function toArray()
+    {
         return [
-            0 => __("Closed"),
-            1 => __("Working hours"),
-            2 => __("Discontinued time"),
-            3 => __("All day open"),
+            __("Closed"),
+            __("Working hours"),
+            __("Discontinued time"),
+            __("All day open"),
         ];
-    }
-
-    public function toOptionArray() {
-
-        foreach ($this->toArray() as $key => $value) {
-            $data[] = [
-                'value' => $key,
-                'label' => $value,
-            ];
-        }
-
-        return $data;
     }
 }

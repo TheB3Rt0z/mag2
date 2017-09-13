@@ -1,8 +1,35 @@
-<?php namespace Iways\SocialLinks\Helper;
+<?php
 
-class Data extends \Iways\Base\Helper\Data {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    protected static $_social_networks = [ // ATM are all fontsawesome supported
+namespace Iways\SocialLinks\Helper;
+
+use Iways\Base\Helper\Data as extended;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Data extends extended
+{
+    public static $social_networks = [ // ATM they are all supported in fontawesome
         'facebook' => "Facebook",
         'googleplus' => "Google+",
         'instagram' => "Instagram",
@@ -21,9 +48,4 @@ class Data extends \Iways\Base\Helper\Data {
         'xing' => "XING",
         'youtube' => "YouTube",
     ];
-
-    public function getSocialNetworks() {
-
-        return self::$_social_networks;
-    }
 }

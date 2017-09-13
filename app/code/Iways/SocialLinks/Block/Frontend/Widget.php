@@ -1,11 +1,45 @@
-<?php namespace Iways\SocialLinks\Block\Frontend;
+<?php
 
-class Widget extends \Iways\SocialLinks\Block\Frontend
-             implements \Magento\Widget\Block\BlockInterface {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    protected function _construct() {
+namespace Iways\SocialLinks\Block\Frontend;
 
-        $this->_link_aspect = $this->getLinkAspect();
-        $this->_block_title = $this->getBlockTitle();
+use Iways\SocialLinks\Block\Frontend as extended;
+use Magento\Widget\Block\BlockInterface as implemented;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Widget extends extended implements implemented
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->link_aspect = $this->getLinkAspect();
+        $this->block_title = $this->getBlockTitle();
     }
 }

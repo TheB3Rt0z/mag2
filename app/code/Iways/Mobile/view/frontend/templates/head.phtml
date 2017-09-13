@@ -1,9 +1,23 @@
 <?php
 
-if ($this->getHelper()->getConfig('design/mobile/modal_sidebars'))
-    echo $this->addTag('script', [
-        'src' => $this->getViewFileUrl('Iways_Mobile/js/modal_sidebars.js'),
-        'type' => "text/javascript",
-    ]);
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Mobile
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-?>
+if ($block->getHelper()->getConfig('design/mobile/modal_sidebars')) {
+    echo $block->addTag(
+        'script',
+        [
+            'src' => $block->getViewFileUrl('Iways_Mobile/js/modal_sidebars.js'),
+            'type' => "text/javascript",
+        ]
+    );
+}

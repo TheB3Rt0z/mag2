@@ -2,14 +2,14 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <css src="Iways_Base::css/iways_base.css" />
+        <css src="Iways_DeveloperToolBox::css/iways_developertoolbox.css" />
     </head>
     <body>
         <referenceContainer name="before.body.end">
-            <block class="Iways\Base\Block\Toolbar"
-                   name="iways_base_block_toolbar"
-                   as="iways_base_block_toolbar"
-                   template="Iways_Base::toolbar.phtml"
+            <block class="Iways\DeveloperToolBox\Block\Toolbar"
+                   name="iways_developertoolbox_block_toolbar"
+                   as="iways_developertoolbox_block_toolbar"
+                   template="Iways_DeveloperToolBox::toolbar.phtml"
                    after="-" />
         </referenceContainer>
     </body>

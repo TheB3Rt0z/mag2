@@ -1,31 +1,79 @@
-<?php namespace Iways\DeveloperToolBox\Controller\Adminhtml\Modules;
+<?php
 
-class Index extends \Magento\Backend\App\Action {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_DeveloperToolBox
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    protected $_result_page_factory;
+namespace Iways\DeveloperToolBox\Controller\Adminhtml\Modules;
 
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    ) {
+use Magento\Backend\App\Action as extended;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
-        parent::__construct($context);
-
-        $this->_result_page_factory = $resultPageFactory;
-    }
-
-    protected function _isAllowed() {
-
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_DeveloperToolBox
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Index extends extended
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return boolean
+     */
+    protected function _isAllowed()
+    {
         return $this->_authorization->isAllowed('Iways_Base::documentation');
     }
 
-    public function execute() {
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $context     Magento\Backend\App\Action\Context
+     * @param object $pageFactory Magento\Framework\View\Result\PageFactory
+     */
+    public function __construct(
+        Context $context,
+        PageFactory $pageFactory
+    ) {
+        parent::__construct($context);
 
-        $module = $this->getRequest()->getParam('module');
+        $this->page_factory = $pageFactory;
+    }
 
-        $result_page = $this->_result_page_factory->create();
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return object
+     */
+    public function execute()
+    {
+        $result_page = $this->page_factory->create();
 
-        $result_page->getConfig()->getTitle()->set(__("Developer's Tool-Box") . ' | ' . __("Modules overview"));
+        $page_title = __("Developer's Tool-Box") . ' | ' . __("Modules overview");
+
+        $result_page->getConfig()->getTitle()->set($page_title);
 
         return $result_page;
     }

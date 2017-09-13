@@ -1,9 +1,39 @@
-<?php $columnsLimit = $block->getColumnsLimit() ?: 0 ?>
-<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+<?php
 
-<nav class="navigation" data-action="navigation">
-    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}, "invert_direction":<?php echo $this->helper('Iways\Design\Helper\Data')->getConfig('design/mobile/navigation_direction') ?>}}'>
-        <?php /* @escapeNotVerified */ echo $_menu; ?>
-        <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Mobile
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
+$helper = $this->helper('Iways\Design\Helper\Data');
+$navigation_direction = $helper->getConfig('design/mobile/navigation_direction');
+
+?>
+
+<nav class="navigation"
+     data-action="navigation">
+    <ul data-mage-init="{
+        'menu':
+        {
+            'responsive': true;
+            'expanded': true,
+            'position':
+            {
+                'my': 'left top',
+                'at': 'left bottom'
+            },
+                'invert_direction': <?php echo $navigation_direction ?>
+            }
+        }">
+        <?php echo $_menu . $block->getChildHtml() ?>
     </ul>
 </nav>

@@ -15,10 +15,12 @@
 namespace Iways\Base\Block\Adminhtml;
 
 use Iways\Base\Helper\Data as helper;
-use Magento\Backend\Block\Template;
+use Magento\Backend\Block\Template as extended;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem\DriverPool;
+use Magento\Framework\Filesystem\File\ReadFactory;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -31,9 +33,9 @@ use Magento\Framework\Filesystem\DirectoryList;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Documentation extends Template
+class Documentation extends extended
 {
-    protected $doc_file = 'README.md';
+    const DOC_FILE = 'README.md';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -44,6 +46,7 @@ class Documentation extends Template
      * @param object $helper        Iways\Base\Helper\Data
      * @param object $http          Magento\Framework\App\Request\Http
      * @param object $directoryList Magento\Framework\Filesystem\DirectoryList
+     * @param object $readFactory   Magento\Framework\Filesystem\File\ReadFactory
      * @param array  $data          object attributes
      */
     public function __construct(
@@ -51,6 +54,7 @@ class Documentation extends Template
         helper $helper,
         Http $http,
         DirectoryList $directoryList,
+        ReadFactory $readFactory,
         array $data = []
     ) {
         $data['dev'] = $http->getParam('dev');
@@ -80,9 +84,11 @@ class Documentation extends Template
                          . ($data['locale']
                          ? '/documentation/' . $data['locale']
                          : '')
-                         . '/' . $this->doc_file;
+                         . '/' . self::DOC_FILE;
 
-        $data['contents'] = file_get_contents($this->file_path);
+        $file_reader = $readFactory->create($this->file_path, DriverPool::FILE);
+
+        $data['contents'] = $file_reader->readAll();
 
         parent::__construct($context, $data);
     }

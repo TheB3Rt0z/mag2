@@ -15,7 +15,7 @@
 namespace Iways\Design\Block;
 
 use Iways\Design\Helper\Data as helper;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Head extends Template
+class Head extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -62,7 +62,7 @@ class Head extends Template
      *
      * @return string
      */
-    public function addTag($type, $data = [])
+    public function addTag($type, array $data = [])
     {
         $attributes = '';
 
@@ -70,12 +70,12 @@ class Head extends Template
             $attributes .= ' ' . $id . '="' . $value . '"';
         }
 
-        $output = '<' . $type . $attributes;
+        $data = '<' . $type . $attributes;
 
         if ($type == 'script') {
-            return $output . '></' . $type . '>';
+            return $data . '></' . $type . '>';
         }
 
-        return $output . ' />';
+        return $data . ' />';
     }
 }

@@ -1,10 +1,37 @@
-<?php namespace Iways\OpeningHours\Block;
+<?php
 
-use \Iways\OpeningHours\Helper\Data as helper;
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-class Opening extends \Magento\Framework\View\Element\Template {
+namespace Iways\OpeningHours\Block;
 
-    private static $_days = [
+use Iways\OpeningHours\Helper\Data as helper;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\View\Element\Template;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Opening extends template
+{
+    public static $days = [
         'sun' => 'sunday',
         'mon' => 'monday',
         'tue' => 'tuesday',
@@ -14,12 +41,17 @@ class Opening extends \Magento\Framework\View\Element\Template {
         'sat' => 'saturday',
     ];
 
-    protected $_opening_hours,
-              $_first_day,
-              $_compress_table;
-
-    private function _compressMatrix($array) {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param array $array plain data matrix
+     *
+     * @return array
+     */
+    public function compressMatrix(array $array)
+    {
         $last_value = $last_key = $base_key = null;
 
         foreach ($array as $key => $value) {
@@ -27,10 +59,10 @@ class Opening extends \Magento\Framework\View\Element\Template {
             if ($value == $last_value) {
                 unset($data[$combined_key]);
                 $last_key = $key;
-            }
-            else {
-                if ($last_key)
+            } else {
+                if ($last_key) {
                     unset($data[$base_key]);
+                }
                 $base_key = $key;
                 $last_key = null;
             }
@@ -43,8 +75,15 @@ class Opening extends \Magento\Framework\View\Element\Template {
         return $data;
     }
 
-    protected function _prepareLayout() {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return Iways\OpeningHours\Block\Opening
+     */
+    protected function _prepareLayout()
+    {
         parent::_prepareLayout();
 
         $this->setTemplate('opening.phtml');
@@ -52,75 +91,119 @@ class Opening extends \Magento\Framework\View\Element\Template {
         return $this;
     }
 
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $context Magento\Backend\Block\Template\Context
+     * @param object $helper  Iways\OpeningHours\Helper\Data
+     * @param array  $data    object attributes
+     */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
+        Context $context,
         helper $helper,
         array $data = []
     ) {
-
         $this->helper = $helper;
 
-        $this->_opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
+        $this->opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
 
         parent::__construct($context, $data);
 
-        if ($this->_first_day === null)
-            $this->_first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
+        if ($this->first_day === null) {
+            $this->first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
+        }
 
-        if ($this->_compress_table === null)
-            $this->_compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
+        if ($this->compress_table === null) {
+            $this->compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
+        }
     }
 
-    public function getOpeningMatrix() {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return array
+     */
+    public function getOpeningMatrix()
+    {
         $days = self::$_days;
 
-        if ($this->_first_day) {
+        if ($this->first_day) {
             unset($days['sun']);
             $days['sun'] = 'sunday';
         }
 
         foreach ($days as $key => $value) {
-            $day_type = $this->_opening_hours[$value];
-            switch ($day_type) {
-                case 0 : { $opening = __("Closed"); break; }
-                case 1 : {
-                    $type_data = explode(',', $this->_opening_hours[$value . '_single']);
-                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
-                             . sprintf("%'.02d", $type_data[1]) . ' - '
-                             . sprintf("%'.02d", $type_data[2]) . ':'
-                             . sprintf("%'.02d", $type_data[3]) . ' ' . __("o'clock");
+
+            $day_type = $this->opening_hours[$value];
+            switch ($day_type)
+            {
+                case 0:
+                    $opening = __("Closed");
                     break;
-                }
-                case 2 : {
-                    $type_data = explode(',', $this->_opening_hours[$value . '_double']);
+
+                case 1:
+                    $type_data = explode(
+                        ',',
+                        $this->opening_hours[$value . '_single']
+                    );
                     $opening = sprintf("%'.02d", $type_data[0]) . ':'
                              . sprintf("%'.02d", $type_data[1]) . ' - '
                              . sprintf("%'.02d", $type_data[2]) . ':'
-                             . sprintf("%'.02d", $type_data[3]) . ' ' . __("o'clock")
+                             . sprintf("%'.02d", $type_data[3]) . ' '
+                             . __("o'clock");
+                    break;
+
+                case 2:
+                    $type_data = explode(
+                        ',',
+                        $this->opening_hours[$value . '_double']
+                    );
+                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
+                             . sprintf("%'.02d", $type_data[1]) . ' - '
+                             . sprintf("%'.02d", $type_data[2]) . ':'
+                             . sprintf("%'.02d", $type_data[3]) . ' '
+                             . __("o'clock")
                              . '<br />'
                              . sprintf("%'.02d", $type_data[4]) . ':'
                              . sprintf("%'.02d", $type_data[5]) . ' - '
                              . sprintf("%'.02d", $type_data[6]) . ':'
-                             . sprintf("%'.02d", $type_data[7]) . ' ' . __("o'clock");
+                             . sprintf("%'.02d", $type_data[7]) . ' '
+                             . __("o'clock");
                     break;
-                }
-                case 3 : { $opening = __("All day open"); break; }
-                default : { $opening = false; }
+
+                case 3:
+                    $opening = __("All day open");
+                    break;
+
+                default:
+                    $opening = false;
             }
 
-            if ($opening)
+            if ($opening) {
                 $data[(string)__(ucfirst($key))] = $opening;
+            }
         }
 
-        if ($this->_compress_table)
+        if ($this->compress_table) {
             $data = $this->_compressMatrix($data);
+        }
 
         return $data;
     }
 
-    public function getHtml() { // ToDo: to be removed
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getHtml() // ToDo: to be removed
+    {
         return $this->toHtml();
     }
 }

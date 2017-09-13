@@ -6,22 +6,22 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_Base
+ * @package  Iways_DeveloperToolBox
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-$admin_uri = $this->helper('Magento\Backend\Helper\Data')->getHomePageUrl();
+$admin_uri = $block->helper('Magento\Backend\Helper\Data')->getHomePageUrl();
 $admin_link = $admin_uri
             ? '<span><a href="' . $admin_uri . '" target="_BLANK">Backend</a></span>'
             : false;
 
-if ($this->helper->wasAdminLogged()) {
+if ($block->helper->wasAdminLogged()) {
     ?>
     <div class="iways-toolbar">
         <?php
-        echo $this->getItemsHtml() . $admin_link;
+        echo $block->getItemsHtml() . $admin_link;
         ?>
     </div>
     <?php

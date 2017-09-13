@@ -1,11 +1,28 @@
+<?php
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
+?>
+
 <div class="wrapper">
-    <span><?php echo __($this->getBlockTitle()) ?></span>
+    <span><?php echo __($block->getBlockTitle()) ?></span>
     <ol>
         <?php
-        foreach ($this->getSocialLinks() as $key => $values) {
+        foreach ($block->getSocialLinks() as $key => $values) {
             ?>
             <li class="iways-<?php echo $key ?>">
-                <a href="<?php $values['url'] ?>" target="_blank">
+                <a href="<?php $values['url'] ?>"
+                   target="_blank">
                     <?php echo $values['label'] ?>
                 </a>
             </li>

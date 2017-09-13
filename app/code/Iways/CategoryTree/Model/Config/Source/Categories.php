@@ -1,37 +1,68 @@
 <?php
 
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_CategoryTree
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
 namespace Iways\CategoryTree\Model\Config\Source;
 
-class Categories implements \Magento\Framework\Option\ArrayInterface {
+use Iways\Base\Model\Config\Source as extended;
+use Iways\CategoryTree\Helper\Data as helper;
+use Magento\Catalog\Helper\Category;
 
-    protected $_store_categories;
-
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_CategoryTree
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Categories extends extended
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $helper   Iways\CategoryTree\Helper\Data
+     * @param object $category Magento\Catalog\Helper\Category
+     */
     public function __construct(
-        \Magento\Catalog\Helper\Category $categoryHelper
+        helper $helper,
+        Category $category
     ) {
+        $this->helper = $helper;
 
-        $this->_store_categories = $categoryHelper->getStoreCategories();
+        $this->store_categories = $category->getStoreCategories();
     }
 
-    public function toArray() {
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $data = [];
 
-        foreach($this->_store_categories as $category)
-            $output[$category->getId()] = $category->getName();
-
-        return $output;
-    }
-
-    public function toOptionArray() {
-
-        $output = array();
-
-        foreach ($this->toArray() as $key => $value) {
-            $output[] = array(
-                'value' => $key,
-                'label' => $value,
-            );
+        foreach ($this->store_categories as $category) {
+            $data[$category->getId()] = $category->getName();
         }
 
-        return $output;
+        return $data;
     }
 }

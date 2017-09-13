@@ -14,7 +14,7 @@
 
 namespace Iways\Design\Model\Design\Backend\Body;
 
-use Magento\Theme\Model\Design\Backend\Image;
+use Magento\Theme\Model\Design\Backend\Image as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,9 +27,21 @@ use Magento\Theme\Model\Design\Backend\Image;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Background extends Image
+class Background extends extended
 {
     const UPLOAD_DIR = 'body';
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return boolean
+     */
+    protected function _addWhetherScopeInfo()
+    {
+        return true;
+    }
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -43,18 +55,6 @@ class Background extends Image
         $upload_dir = $this->_appendScopeInfo(self::UPLOAD_DIR);
 
         return $this->_mediaDirectory->getRelativePath($upload_dir);
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
-     */
-    protected function _addWhetherScopeInfo()
-    {
-        return true;
     }
 
     /**

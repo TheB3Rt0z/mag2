@@ -57,9 +57,10 @@
     line-height: 1.1;
     margin-right: 3px;
     overflow: hidden;
+    position: relative;
     speak: none;
     text-align: center;
-    vertical-align: middle;
+    top: 2px;
     -webkit-font-smoothing: antialiased;
 }
 

@@ -1,19 +1,54 @@
-<?php namespace Iways\CategoryTree\Block\Frontend;
+<?php
 
-use \Iways\CategoryTree\Helper\Data as helper;
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-class Widget extends \Iways\CategoryTree\Block\Frontend implements \Magento\Widget\Block\BlockInterface {
+namespace Iways\CategoryTree\Block\Frontend;
 
-    protected function _construct() {
+use Iways\CategoryTree\Block\Frontend as extended;
+use Iways\CategoryTree\Helper\Data as helper;
+use Magento\Widget\Block\BlockInterface as implemented;
 
-        $this->_block_title = $this->getBlockTitle();
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_SocialLinks
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class Widget extends extended implements implemented
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->block_title = $this->getBlockTitle();
 
-        $this->_tree_root = $this->getTreeRoot();
-        if ($this->_tree_root == helper::ROOT_USE_CUSTOM_CATEGORY)
-            $this->_custom_root = $this->getCustomRoot();
+        $this->tree_root = $this->getTreeRoot();
+        if ($this->tree_root == helper::ROOT_USE_CUSTOM_CATEGORY) {
+            $this->custom_root = $this->getCustomRoot();
+        }
 
-        $this->_tree_depth = $this->getTreeDepth();
+        $this->tree_depth = $this->getTreeDepth();
 
-        $this->_show_empty = $this->getShowEmpty();
+        $this->show_empty = $this->getShowEmpty();
     }
 }

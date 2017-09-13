@@ -1,24 +1,46 @@
-<?php namespace Iways\OpeningHours\Model\Config\Source\Days;
+<?php
 
-class First implements \Magento\Framework\Option\ArrayInterface {
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
 
-    public function toArray() {
+namespace Iways\OpeningHours\Model\Config\Source\Days;
 
+use Iways\Base\Model\Config\Source;
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+class First extends Source
+{
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return array
+     */
+    public function toArray()
+    {
         return [
             1 => __("Monday"),
             0 => __("Sunday"),
         ];
-    }
-
-    public function toOptionArray() {
-
-        foreach ($this->toArray() as $key => $value) {
-            $data[] = [
-                'value' => $key,
-                'label' => $value,
-            ];
-        }
-
-        return $data;
     }
 }

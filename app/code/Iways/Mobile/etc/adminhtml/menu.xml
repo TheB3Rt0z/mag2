@@ -2,8 +2,12 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Iways_Mobile::menu_documentation_mobile" title="Mobile Module" module="Iways_Mobile"
-             sortOrder="811" parent="Iways_Base::menu_documentation" action="iways_base/documentation/index/module/Iways_Mobile"
-             resource="Iways_Mobile::menu_documentation_mobile" />
+        <add id="Iways_Mobile::menu_documentation_mobile"
+             resource="Iways_Mobile::menu_documentation_mobile"
+             title="Mobile Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_Mobile"
+             action="iways_base/documentation/index/module/Mobile" />
     </menu>
 </config>

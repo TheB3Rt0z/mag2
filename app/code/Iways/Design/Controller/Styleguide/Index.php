@@ -15,7 +15,7 @@
 namespace Iways\Design\Controller\Styleguide;
 
 use Iways\Design\Helper\Data as helper;
-use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -30,10 +30,8 @@ use Magento\Framework\View\Result\PageFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Index extends Action
+class Index extends extended
 {
-    protected $result_page_factory;
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *

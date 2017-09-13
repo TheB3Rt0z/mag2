@@ -15,7 +15,7 @@
 namespace Iways\Base\Model\Config;
 
 use Iways\Base\Helper\Data as helper;
-use Magento\Framework\Option\ArrayInterface;
+use Magento\Framework\Option\ArrayInterface as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -28,7 +28,7 @@ use Magento\Framework\Option\ArrayInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-abstract class Source implements ArrayInterface
+abstract class Source implements extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

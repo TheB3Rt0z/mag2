@@ -1,6 +1,6 @@
 #menu-iways-base-menu .level-1.item-menu-developertoolbox > strong {
-	padding-left: 40px;
-	position: relative;
+    padding-left: 40px;
+    position: relative;
 }
 #menu-iways-base-menu .level-1.item-menu-developertoolbox > strong::before {
     background-image: url('../images/icon_24x24.png');
@@ -20,6 +20,6 @@
     background-position: -544px -112px;
 }
 #menu-iways-base-menu .level-2.item-menu-developertoolbox-modules-overview > a::before {
-	background-position: -32px -192px;
-	left: 16px;
+    background-position: -32px -192px;
+    left: 16px;
 }

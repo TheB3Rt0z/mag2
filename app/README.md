@@ -1,3 +1,9 @@
+**[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
+
+**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
+
+**[Development guidelines](#development-guidelines)** | [Theme(s) structure](#themes-structure) | [Modules structure](#modules-structure) | [Nice to have](#nice-to-have)
+
 ## Concept
 
 - Theme and modules provide german translation csv files of used english coded strings, independently of local Magento's available dictionaries, in order to assure an aimed translation of interface (tested on system with locale se en_US/de_DE) on german systems.
@@ -12,12 +18,21 @@ At the moment, the i-ways Magento 2 Extensions Framework consist of following co
 
 N.B.: at present date there is another extension in embrional stage, Iways_GoogleFonts, which actually could become Iways_Googlefonts (see further, modules naming conventions), in order to assist basic extensions at point 2 above on the frontend.
 
-## Conventions
+<a name="conventions"></a>
+
+##Conventions
+
+<a name="keywords"></a>
 
 ### Keywords
 
 - **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
-- **Todo:** prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+- **todo** prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+- **extended** conventional alias for extended class, if applicable
+- **implemented** conventional alias for implemented interface class, if applicable
+- **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
+
+<a name="code-validation"></a>
 
 ### Code validation
 
@@ -26,24 +41,73 @@ i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standar
 - codelines could eventually exceed limit of 85 characters in some cases:
   1) if line follows format "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
   2) if a doc block line follows format " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
-  3) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
+  3) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "$[VARIABLE_NAME] = $this->helper->getConfig('[CONFIG_PATH]');"
+  4) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
 
-- underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (e.g.: "_isAllowed()", "_getElementHtml(AbstractElement $element)") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
+- underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (l.g.: "_addWhetherScopeInfo()", "_construct()", "_isAllowed()", "_getElementHtml(AbstractElement $element)", "_getUploadDir()", "_prepareLayout()") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
+
+- usage of forbidden function (l.g.: "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (e.g.: "echo"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in DeveloperToolbox module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
+
+N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by DeveloperToolBox module).
+
+<a name="theme-naming"></a>
 
 ### Theme naming
 
 Basic template identifier has 2 components, **Iways** and **base** (slash separated), further templates extending it should be identified with **Iways/[LOWERCASE_STRING]** and **Iways/[LOWERCASE_STRING]_[LOWERCASE_STRING]** if additional nesting is needed.
+
+<a name="module-naming"></a>
 
 ### Module naming
 
 Basic extensions should follow pattern **Iways_[UPPERCASEFIRST_STRING]** whereas additional extensions have another element in the name, and are following pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING]**.
 The only extension with pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING]** is actually Iways_DeveloperToolBox, only for internal use.
 
-### XML Attributes
+<a name="php-doc-patterns"></a>
+
+### PHP Doc patterns
+
+```
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category [File|Class]
+ * @package  [MODULE_IDENTIFIER|THEME_IDENTIFIER]
+ * @author   [AUTHOR_NAME] <[AUTHOR_EMAIL]>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ *
+ * @todo [TODO_STRING]
+ */
+```
+
+In case of class methods:
+
+```
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @param [string|integer|float|boolean|array|object|null|resource|mixed] [PARAMETER_NAME] [PARAMETER_DESCRIPTION]
+ *
+ * @return [string|integer|float|boolean|array|object|null|resource|mixed]
+ *
+ * @todo [TODO_STRING]
+ */
+```
+
+<a name="xml-attributes"></a>
+
+## XML attributes
 
 The following are functioning pattern and examples given are actually used in i-ways framework in different xml files:
 
-**Theme declaration**
+<a name="theme-declaration"></a>
+
+### Theme declaration
 ```
 <!-- app/design/frontend/Iways/[LOWERCASE_THEME]/theme.xml --> e.g.: "base"
 
@@ -58,7 +122,9 @@ The following are functioning pattern and examples given are actually used in i-
 </theme>
 ```
 
-**General layout**
+<a name="general-layout"></a>
+
+### General layout
 ```
 <!-- */layout/[LOWERCASE_LAYOUT].xml --> e.g.: "default", "default_head_blocks"
 
@@ -87,6 +153,13 @@ The following are functioning pattern and examples given are actually used in i-
               content="telephone=no" />
     </head>
     <body>
+    	<container name="[LOWERCASE_IDENTIFIER]" e.g.: "iways_sociallinks"
+	               as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_sociallinks"
+	               label="[CONTAINER_NAME]" e.g.: "i-ways SocialLinks"
+	               htmlTag="[HTML_TAG]" e.g.: "div"
+	               htmlClass="[HTML_CLASS]"> e.g.: "iways-sociallinks"
+	        <block ... />
+	    </container>
         <referenceBlock name="[BLOCK_NAME]"> e.g.: "logo"
             <arguments>
                 <argument name="[LOWERCASE_NAME]" e.g.: "logo_file"
@@ -105,7 +178,9 @@ The following are functioning pattern and examples given are actually used in i-
 </page>
 ```
 
-**Page type layout**
+<a name="page-type-layout"></a>
+
+### Page type layout
 ```
 <!-- */page_layout/[LOWERCASE_LAYOUT].xml --> [1column|2columns-left|2columns-right|3columns]
 
@@ -127,8 +202,11 @@ The following are functioning pattern and examples given are actually used in i-
         </block>
     </referenceContainer>
 </layout>
+```
 
-**Module resource ACL**
+<a name="module-resource-acl"></a>
+
+### Module resource ACL
 ```
 <!-- etc/acl.xml -->
 
@@ -156,7 +234,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module default settings**
+<a name="module-default-settings"></a>
+
+### Module default settings
 ```
 <!-- etc/config.xml -->
 
@@ -173,7 +253,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Dependency injection**
+<a name="dependency-injection"></a>
+
+### Dependency injection
 ```
 <!-- etc/di.xml -->
 
@@ -208,7 +290,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module declaration**
+<a name="module-declaration"></a>
+
+### Module declaration
 ```
 <!-- etc/module.xml -->
 
@@ -224,7 +308,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module widgets configuration**
+<a name="module-widgets-configuration"></a>
+
+### Module widgets configuration
 ```
 <!-- etc/widgets.xml -->
 
@@ -239,15 +325,22 @@ The following are functioning pattern and examples given are actually used in i-
         <parameters>
             <parameter name="[LOWERCASE_NAME]" e.g.: "show_block"
                        xsi:type="[PARAMETER_TYPE]" [text|select]
-                       required="[BOOLEAN_LITERAL]"> [true|false]
+                       required="[BOOLEAN_LITERAL]" [true|false]
+                       source_model="[CLASS_NAME]"> e.g.: "Iways\CategoryTree\Model\Config\Source\Root"
                 <label translate="[BOOLEAN_LITERAL]">[PARAMETER_NAME]</label> [true|false], e.g.: "Show block"
+                <depends>
+                    <parameter name="[LOWERCASE_NAME]" e.g.: "tree_root"
+                               value="[INTEGER_VALUE]" /> e.g.: 3
+                </depends>
             </parameter>
         </parameters>
     </widget>
 </widgets>
 ```
 
-**Module backend events**
+<a name="module-backend-events"></a>
+
+### Module backend events
 ```
 <!-- etc/adminhtml/events.xml -->
 
@@ -261,7 +354,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module backend menu**
+<a name="module-backend-menu"></a>
+
+### Module backend menu
 ```
 <!-- etc/adminhtml/menu.xml -->
 
@@ -292,7 +387,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module backend router**
+<a name="module-backend-router"></a>
+
+### Module backend router
 ```
 <!-- etc/adminhtml/routes.xml -->
 
@@ -309,7 +406,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module backend configuration**
+<a name="module-backend-configuration"></a>
+
+### Module backend configuration
 ```
 <!-- etc/adminhtml/system.xml -->
 
@@ -347,6 +446,7 @@ The following are functioning pattern and examples given are actually used in i-
                        showInDefault="1"
                        showInWebsite="1"
                        showInStore="1">
+                    <validate>[VALIDATION_TOKEN]</validate> e.g.: "validate-url"
                     <frontend_model>[BLOCK_CLASS]</frontend_model> e.g.: "Iways\Base\Block\Adminhtml\System\Config\Form\Field\Check"
                 </field>
                 <field id="[LOWERCASE_IDENTIFIER]" e.g.: "warning"
@@ -358,7 +458,7 @@ The following are functioning pattern and examples given are actually used in i-
                        showInStore="1">
                     <label>[FIELD_NAME]</label> e.g.: "Warning"
                     <depends>
-                        <field id="[FIELD_PATH]">1</field> e.g.: "iways_base/information/check"
+                        <field id="[FIELD_PATH]">[INTEGER_VALUE]</field> e.g.: "iways_base/information/check", 1
                     </depends>
                     <comment>[COMMENT_STRING]</comment> e.g.: "Please install an i-ways Certified Frontend Theme in order to assure full compatibility with our extensions!"
                 </field>
@@ -369,6 +469,7 @@ The following are functioning pattern and examples given are actually used in i-
                        showInWebsite="1"
                        showInStore="1">
                     <label>[CDATA_STRING]</label> e.g.: "<![CDATA[Copyright &copy; 2011-2017<br /><br /><a href="http://www.i-ways.net" target="_blank">i-ways sales solutions GmbH<br />Kurfürstendamm 125A<br />D-10711 Berlin</a><br /><br />]]>"
+                    <source_model>[MODEL_CLASS]</source_model> e.g.: "Iways\CategoryTree\Model\Config\Source\Root"
                 </field>
             </group>
         </section>
@@ -376,7 +477,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module frontend events**
+<a name="module-frontend-events"></a>
+
+### Module frontend events
 ```
 <!-- etc/frontend/events.xml -->
 
@@ -390,7 +493,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module frontend router**
+<a name="module-frontend-router"></a>
+
+### Module frontend router
 ```
 <!-- etc/frontend/routes.xml -->
 
@@ -407,7 +512,9 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
-**Module backend UI Component**
+<a name="module-backend-ui-component"></a>
+
+### Module backend UI component
 ```
 <!-- view/adminhtml/ui_component/[LOWERCASE_LAYOUT].xml --> e.g.: "design_config_form"
 
@@ -474,47 +581,21 @@ The following are functioning pattern and examples given are actually used in i-
 </form>
 ```
 
-### PHP Doc Pattern
+<a name="development-guidelines"></a>
 
-```
-/**
- * Ⓒ i-ways sales solutions GmbH
- *
- * PHP Version 5
- *
- * @category [File|Class]
- * @package  [MODULE_IDENTIFIER|THEME_IDENTIFIER]
- * @author   [AUTHOR_NAME] <[AUTHOR_EMAIL]>
- * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
- * @link     https://www.i-ways.net
- *
- * @todo [TODO_STRING]
- */
-```
+## Development guidelines
 
-In case of class methods:
-
-```
-/**
- * Ⓒ i-ways sales solutions GmbH
- *
- * PHP Version 5
- *
- * @param [string|integer|float|boolean|array|object|null|resource|mixed] [PARAMETER_NAME] [PARAMETER_DESCRIPTION]
- *
- * @return [string|integer|float|boolean|array|object|null|resource|mixed]
- *
- * @todo [TODO_STRING]
- */
-```
-
-## Theme and modules construction guidelines
+<a name="themes-structure"></a>
 
 ### Theme(s) structure
 
-### Module structure
+<a name="modules-structure"></a>
 
-## Nice to have
+### Modules structure
+
+<a name="nice-to-have"></a>
+
+### Nice to have
 
 - automatic documentation generator, based on code analysis and programmatically stored in each module/theme's readme;
 - a (semi-)professional check of all used translations and usability of graphical interface, user-guide README.md files.

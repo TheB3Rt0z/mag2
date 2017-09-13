@@ -1,89 +1,143 @@
-<?php $values = array_merge(explode(',', $this->getValues()), [null, null, null, null, null, null, null, null]) ?>
+<?php
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Openinghours
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
+$values = array_merge(
+    explode(
+        ',',
+        $block->getValues()
+    ),
+    [null, null, null, null, null, null, null, null]
+);
+
+?>
 
 <?php echo __("from") ?>
 &nbsp;
-<select id="<?php echo $this->getHtmlId() ?>_morning_start_hour"
-        name="<?php echo $this->getNamePrefix() ?>[value][morning_start_hour]"
+<select id="<?php echo $block->getHtmlId() ?>_morning_start_hour"
+        name="<?php echo $block->getNamePrefix() ?>[value][morning_start_hour]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 6; $i <= 24; $i++)
-        echo '<option value="' . $i . '"' . ($values[0] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 6; $i <= 24; $i++) {
+        echo '<option value="' . $i . '"'
+           . ($values[0] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 :
-<select id="<?php echo $this->getHtmlId() ?>_morning_start_min"
-        name="<?php echo $this->getNamePrefix() ?>[value][morning_start_min]"
+<select id="<?php echo $block->getHtmlId() ?>_morning_start_min"
+        name="<?php echo $block->getNamePrefix() ?>[value][morning_start_min]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 0; $i <= 55; $i += 5)
-        echo '<option value="' . $i . '"' . ($values[1] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 0; $i <= 55; $i += 5) {
+        echo '<option value="' . $i . '"'
+           . ($values[1] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 &nbsp;
 <?php echo __("to") ?>
 &nbsp;
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_end_hour"
-        name="<?php echo $this->getNamePrefix() ?>[value][morning_end_hour]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_end_hour"
+        name="<?php echo $block->getNamePrefix() ?>[value][morning_end_hour]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 6; $i <= 24; $i++)
-        echo '<option value="' . $i . '"' . ($values[2] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 6; $i <= 24; $i++) {
+        echo '<option value="' . $i . '"'
+           . ($values[2] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 :
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_end_min"
-        name="<?php echo $this->getNamePrefix() ?>[value][morning_end_min]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_end_min"
+        name="<?php echo $block->getNamePrefix() ?>[value][morning_end_min]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 0; $i <= 55; $i += 5)
-        echo '<option value="' . $i . '"' . ($values[3] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 0; $i <= 55; $i += 5) {
+        echo '<option value="' . $i . '"'
+           . ($values[3] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 <br /><br />
 <?php echo __("from") ?>
 &nbsp;
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_start_hour"
-        name="<?php echo $this->getNamePrefix() ?>[value][afternoon_start_hour]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_start_hour"
+        name="<?php echo $block->getNamePrefix() ?>[value][afternoon_start_hour]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 6; $i <= 24; $i++)
-        echo '<option value="' . $i . '"' . ($values[4] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 6; $i <= 24; $i++) {
+        echo '<option value="' . $i . '"'
+           . ($values[4] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 :
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_start_min"
-        name="<?php echo $this->getNamePrefix() ?>[value][afternoon_start_min]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_start_min"
+        name="<?php echo $block->getNamePrefix() ?>[value][afternoon_start_min]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 0; $i <= 55; $i += 5)
-        echo '<option value="' . $i . '"' . ($values[5] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 0; $i <= 55; $i += 5) {
+        echo '<option value="' . $i . '"'
+           . ($values[5] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 &nbsp;
 <?php echo __("to") ?>
 &nbsp;
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_end_hour"
-        name="<?php echo $this->getNamePrefix() ?>[value][afternoon_end_hour]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_end_hour"
+        name="<?php echo $block->getNamePrefix() ?>[value][afternoon_end_hour]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 6; $i <= 24; $i++)
-        echo '<option value="' . $i . '"' . ($values[6] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 6; $i <= 24; $i++) {
+        echo '<option value="' . $i . '"'
+           . ($values[6] == $i
+             ? ' selected'
+             : '')
+           . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
 :
-<select id="<?php echo $this->getHtmlId() ?>_afternoon_end_min"
-        name="<?php echo $this->getNamePrefix() ?>[value][afternoon_end_min]"
+<select id="<?php echo $block->getHtmlId() ?>_afternoon_end_min"
+        name="<?php echo $block->getNamePrefix() ?>[value][afternoon_end_min]"
         class="select admin__control-select iways-opening">
     <?php
-    for ($i = 0; $i <= 55; $i += 5)
-        echo '<option value="' . $i . '"' . ($values[7] == $i ? ' selected' : '') . '>'
-             . sprintf("%'.02d", $i) . '</option>';
+    for ($i = 0; $i <= 55; $i += 5) {
+        echo '<option value="' . $i . '"'
+           . ($values[7] == $i
+             ? ' selected'
+             : '')
+             . '>' . sprintf("%'.02d", $i) . '</option>';
+    }
     ?>
 </select>
