@@ -15,8 +15,8 @@
 namespace Iways\Design\Block\Sidebar;
 
 use Iways\Design\Helper\Data as helper;
-use Magento\Framework\View\Element\AbstractBlock as extended;
-use Magento\Framework\View\Element\Context;
+use Magento\Framework\View\Element\Template as extended;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -31,12 +31,14 @@ use Magento\Framework\View\Element\Context;
  */
 class Title extends extended
 {
+    protected $title;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $context Magento\Framework\View\Element\Context
+     * @param object $context Magento\Framework\View\Element\Template\Context;
      * @param object $helper  Iways\Design\Helper\Data
      * @param array  $data    object attributes
      */
@@ -52,5 +54,17 @@ class Title extends extended
         if ($this->title === null) {
             $this->title = $this->helper->getConfig('design/sidebar/sidebar_title_' . $this->getSidebarType());
         }
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

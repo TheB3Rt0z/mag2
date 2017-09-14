@@ -67,7 +67,7 @@ class Depth extends extended
         if ($children = $category->getChildren()) {
             $data = $depth;
             foreach (explode(',', $children) as $id) {
-                $category = $this->_category_repository->get($id, $this->_store_id);
+                $category = $this->category_repository->get($id, $this->store_id);
                 $result = $this->getMaxDepth($category, $depth + 1);
                 if ($result > $data) {
                     $data = $result;

@@ -15,9 +15,9 @@
 namespace Iways\OpeningHours\Block;
 
 use Iways\OpeningHours\Helper\Data as helper;
-use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Framework\View\Element\AbstractBlock as extended;
+use Magento\Framework\View\Element\Template as extended;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -32,12 +32,14 @@ use Magento\Framework\View\Element\AbstractBlock as extended;
  */
 class Status extends extended // ToDo: to be refactored
 {
+    protected $opening_hours;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $context  Magento\Backend\Block\Template\Context
+     * @param object $context  Magento\Framework\View\Element\Template\Context
      * @param object $helper   Iways\OpeningHours\Helper\Data
      * @param object $dateTime Magento\Framework\Stdlib\DateTime\DateTime
      * @param array  $data     object attributes
@@ -64,25 +66,13 @@ class Status extends extended // ToDo: to be refactored
      *
      * PHP Version 5
      *
-     * @return string
-     */
-    public function getHtml() // Todo: to be removed in favor of a block template
-    {
-        return '<p class="iways-status">' . $this->getStatus() . '</p>';
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param integer $minutes difference between configured and actual minute
      * @param integer $hours   difference between configured and actual hour
+     * @param integer $minutes difference between configured and actual minute
      * @param string  $text    output text to be integrated with calculations
      *
      * @return string
      */
-    public function calculateStatus($minutes, $hours, $text)
+    public function calculateStatus($hours, $minutes, $text)
     {
         if ($minutes < 0) {
             $hours--;
@@ -103,7 +93,7 @@ class Status extends extended // ToDo: to be refactored
      */
     public function getComplexStatus($type)
     {
-        $type_data = explode(',', $this->opening_hours[$day . '_' . $type]);
+        $type_data = explode(',', $this->opening_hours[$this->day . '_' . $type]);
 
         $current_hours = $this->date_time->gmtDate('H')
                        + $this->date_time->getGmtOffset('hours');
@@ -115,31 +105,33 @@ class Status extends extended // ToDo: to be refactored
                 $type_data[1] - $current_minutes,
                 "Today it will open in %d hours, %d minutes"
             );
-        } elseif ($current_hours < $type_data[4] && $current_hours > $type_data[2]) {
-            return $this->calculateStatus(
-                $type_data[4] - $current_hours,
-                $type_data[5] - $current_minutes,
-                "Today it will open again in %d hours, %d minutes"
-            );
-        } elseif ($type == 'double' && $current_hours < $type_data[8]) {
-            if ($hours = $type_data[6] - $current_hours) {
+        } elseif ($type == 'double' && $current_hours > $type_data[2]) { // in or after the pause
+            if ($current_hours < $type_data[4]) {
                 return $this->calculateStatus(
-                    $hours,
-                    $type_data[7] - $current_minutes,
-                    "Today is still open for %d hours, %d minutes"
+                    $type_data[4] - $current_hours,
+                    $type_data[5] - $current_minutes,
+                    "Today it will open again in %d hours, %d minutes"
                 );
-            } else {
-                return __("Now closed");
+            } elseif ($current_hours < $type_data[6]) {
+                if ($hours = $type_data[6] - $current_hours) {
+                    return $this->calculateStatus(
+                        $hours,
+                        $type_data[7] - $current_minutes,
+                        "Today is still open for %d hours, %d minutes"
+                    );
+                } else {
+                    return __("Now closed");
+                }
             }
         } else {
-            if ($hours = $type_data[2] - $current_hour) {
+            if ($hours = $type_data[2] - $current_hours) {
                 return $this->calculateStatus(
                     $hours,
                     $type_data[3] - $current_minutes,
                     "Today is still open for %d hours, %d minutes"
-                ) . $type == 'double'
+                ) . ($type == 'double'
                     ? '<br />' . __("After a pause it will be open again")
-                    : '';
+                    : '');
             } else {
                 return __("Now closed");
             }
@@ -155,9 +147,9 @@ class Status extends extended // ToDo: to be refactored
      */
     public function getStatus()
     {
-        $day = strtolower(date('l'));
+        $this->day = strtolower(date('l'));
 
-        $day_type = $this->opening_hours[$day];
+        $day_type = $this->opening_hours[$this->day];
         switch ($day_type)
         {
             case 0:

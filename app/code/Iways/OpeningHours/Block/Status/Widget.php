@@ -14,8 +14,8 @@
 
 namespace Iways\OpeningHours\Block\Status;
 
-use Iways\OpeningHours\Block\Status;
-use Magento\Widget\Block\BlockInterface;
+use Iways\OpeningHours\Block\Status as extended;
+use Magento\Widget\Block\BlockInterface as implemented;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -28,6 +28,6 @@ use Magento\Widget\Block\BlockInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Widget extends Status implements BlockInterface
+class Widget extends extended implements implemented
 {
 }

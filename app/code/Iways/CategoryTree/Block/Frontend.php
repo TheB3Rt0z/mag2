@@ -32,32 +32,9 @@ use Magento\Framework\View\Element\Template as extended;
  */
 class Frontend extends extended
 {
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return string
-     */
-    protected function toHtml() // todo: to be removed
-    {
-        $html = $this->getCategoryHtml($this->_getRootCategory(), $this->tree_depth);
-
-        if (!$html) {
-            return '<div class="block empty"></div>';
-        }
-
-        $data = '<div class="block categories">'
-              . '    <div class="block-title categories-title">'
-              . '        <strong>' . __($this->block_title) . '</strong>'
-              . '    </div>'
-              . '    <div class="block-content iways-categories">'
-              . '        ' . $html
-              . '    </div>'
-              . '</div>';
-
-        return $data;
-    }
+    protected $block_title;
+    protected $custom_root;
+    protected $tree_root;
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -125,7 +102,7 @@ class Frontend extends extended
 
             foreach (explode(',', $children) as $id) {
 
-                $category = $this->category_repository->get($id, $this->_store_id);
+                $category = $this->category_repository->get($id, $this->store_id);
 
                 if (!$this->show_empty) {
                     if (!$category->getProductCollection()->getSize()) {
@@ -167,7 +144,7 @@ class Frontend extends extended
      */
     public function getRootCategory()
     {
-        switch ($this->_tree_root)
+        switch ($this->tree_root)
         {
             case helper::ROOT_USE_CURRENT_CATEGORY:
                 return $this->helper->getCurrentCategory();
@@ -181,5 +158,32 @@ class Frontend extends extended
             default:
                 return $this->helper->getRootCategory(); // as of 'root'
         }
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function toHtml() // todo: to be removed
+    {
+        $html = $this->getCategoryHtml($this->getRootCategory(), $this->tree_depth);
+
+        if (!$html) {
+            return '<div class="block empty"></div>';
+        }
+
+        $data = '<div class="block categories">'
+              . '    <div class="block-title categories-title">'
+              . '        <strong>' . __($this->block_title) . '</strong>'
+              . '    </div>'
+              . '    <div class="block-content iways-categories">'
+              . '        ' . $html
+              . '    </div>'
+              . '</div>';
+
+        return $data;
     }
 }

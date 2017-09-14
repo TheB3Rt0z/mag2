@@ -15,8 +15,8 @@
 namespace Iways\OpeningHours\Block;
 
 use Iways\OpeningHours\Helper\Data as helper;
-use Magento\Backend\Block\Template\Context;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template as extended;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -29,8 +29,11 @@ use Magento\Framework\View\Element\Template;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends template
+class Opening extends extended
 {
+    protected $compress_table;
+    protected $first_day;
+
     public static $days = [
         'sun' => 'sunday',
         'mon' => 'monday',
@@ -40,6 +43,35 @@ class Opening extends template
         'fri' => 'friday',
         'sat' => 'saturday',
     ];
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $context Magento\Framework\View\Element\Template\Context
+     * @param object $helper  Iways\OpeningHours\Helper\Data
+     * @param array  $data    object attributes
+     */
+    public function __construct(
+        Context $context,
+        helper $helper,
+        array $data = []
+    ) {
+        $this->helper = $helper;
+
+        $this->opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
+
+        parent::__construct($context, $data);
+
+        if ($this->first_day === null) {
+            $this->first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
+        }
+
+        if ($this->compress_table === null) {
+            $this->compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
+        }
+    }
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -80,45 +112,12 @@ class Opening extends template
      *
      * PHP Version 5
      *
-     * @return Iways\OpeningHours\Block\Opening
+     * @return string
      */
-    protected function _prepareLayout()
+    /*public function getHtml()
     {
-        parent::_prepareLayout();
-
-        $this->setTemplate('opening.phtml');
-
-        return $this;
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context Magento\Backend\Block\Template\Context
-     * @param object $helper  Iways\OpeningHours\Helper\Data
-     * @param array  $data    object attributes
-     */
-    public function __construct(
-        Context $context,
-        helper $helper,
-        array $data = []
-    ) {
-        $this->helper = $helper;
-
-        $this->opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
-
-        parent::__construct($context, $data);
-
-        if ($this->first_day === null) {
-            $this->first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
-        }
-
-        if ($this->compress_table === null) {
-            $this->compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
-        }
-    }
+        return $this->toHtml();
+    }*/
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -129,7 +128,7 @@ class Opening extends template
      */
     public function getOpeningMatrix()
     {
-        $days = self::$_days;
+        $days = self::$days;
 
         if ($this->first_day) {
             unset($days['sun']);
@@ -189,21 +188,9 @@ class Opening extends template
         }
 
         if ($this->compress_table) {
-            $data = $this->_compressMatrix($data);
+            $data = $this->compressMatrix($data);
         }
 
         return $data;
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return string
-     */
-    public function getHtml() // ToDo: to be removed
-    {
-        return $this->toHtml();
     }
 }

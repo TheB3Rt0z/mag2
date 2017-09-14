@@ -1,27 +1,20 @@
 {
     "name": "iways/module-base",
-    "require":
-    {
+    "require": {
         "erusev/parsedown": "1.6.*",
         "magento/framework": "100.0.*|100.1.*"
     },
     "type": "magento2-module",
     "version": "0.1.1",
-    "repositories":
-    [
-        {
-            "type": "composer",
-            "url": "https://repo.magento.com/"
-        }
-    ],
-    "autoload":
-    {
-        "files":
-        [
+    "repositories": [{
+        "type": "composer",
+        "url": "https://repo.magento.com/"
+    }],
+    "autoload": {
+        "files": [
             "registration.php"
         ],
-        "psr-4":
-        {
+        "psr-4": {
             "Iways\\Base\\": ""
         }
     }

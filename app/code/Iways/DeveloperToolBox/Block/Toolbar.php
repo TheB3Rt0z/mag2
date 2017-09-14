@@ -56,7 +56,7 @@ class Toolbar extends extended
 
         $this->event_manager->dispatch(
             'iways_base_block_toolbar',
-            ['items' => &$this->items]
+            ['items' => &self::$items]
         );
 
         $this->helper = $helper;
@@ -77,7 +77,7 @@ class Toolbar extends extended
     {
         $data = '';
 
-        foreach ($this->items as $item) {
+        foreach (self::$items as $item) {
             $data .= '<span>'
                    . (isset($item['link'])
                      ? '<a href="' . $item['link'] . '">' . $item['label'] . '</a>'

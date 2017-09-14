@@ -14,7 +14,7 @@
 
 namespace Iways\OpeningHours\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source;
+use Iways\Base\Model\Config\Source as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,7 +27,7 @@ use Iways\Base\Model\Config\Source;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Days extends Source
+class Days extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

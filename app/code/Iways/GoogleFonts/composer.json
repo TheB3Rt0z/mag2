@@ -1,31 +1,25 @@
 {
     "name": "iways/module-googlefonts",
     "type": "magento2-module",
-    "require":
-    {
+    "require": {
         "iways/module-base": "^0.1.0",
         "iways/module-design": "^0.1.0"
     },
-    "repositories":
-    [
+    "repositories": [
         {
             "url": "git@github.com:i-ways/magento2-base-module.git",
             "type": "git"
-        },
-        {
+        }, {
             "url": "git@github.com:i-ways/magento2-design-module.git",
             "type": "git"
         }
     ],
     "version": "0.1.1",
-    "autoload":
-    {
-        "files":
-        [
+    "autoload": {
+        "files": [
             "registration.php"
         ],
-        "psr-4":
-        {
+        "psr-4": {
             "Iways\\GoogleFonts\\": ""
         }
     }

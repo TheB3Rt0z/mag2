@@ -1,4 +1,4 @@
-**[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
+**[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
 
 **[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
 
@@ -27,7 +27,8 @@ N.B.: at present date there is another extension in embrional stage, Iways_Googl
 ### Keywords
 
 - **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
-- **todo** prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+- "**@todo **" phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+- "**@example **" phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
 - **extended** conventional alias for extended class, if applicable
 - **implemented** conventional alias for implemented interface class, if applicable
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
@@ -49,6 +50,44 @@ i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standar
 - usage of forbidden function (l.g.: "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (e.g.: "echo"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in DeveloperToolbox module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
 
 N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by DeveloperToolBox module).
+
+<a name="composer-json"></a>
+
+### composer.json
+
+```
+{
+    "name": "iways/[COMPONENT_TYPE]-[LOWERCASE_IDENTIFIER]", [theme|module], e.g.: "base"
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/theme-frontend-blank": "100.0.*|100.1.*",
+        "magento/framework": "100.0.*|100.1.*",
+        ...
+    },
+    "type": "magento2-[COMPONENT_TYPE]", [theme|module]
+    "version": "[VERSION_NUMBER]", e.g.: "0.0.1"
+    "license": [
+        "proprietary"
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }, {
+            "url": "git@github.com:i-ways/magento2-[LOWERCASE_IDENTIFIER]-[COMPONENT_TYPE].git", e.g.: "base", [theme|module]
+            "type": "git"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\[UPPERCASEFIRST_IDENTIFIER]\\": "" e.g.: "Base"
+        }
+    }
+}
+```
 
 <a name="theme-naming"></a>
 
@@ -470,6 +509,34 @@ The following are functioning pattern and examples given are actually used in i-
                        showInStore="1">
                     <label>[CDATA_STRING]</label> e.g.: "<![CDATA[Copyright &copy; 2011-2017<br /><br /><a href="http://www.i-ways.net" target="_blank">i-ways sales solutions GmbH<br />Kurfürstendamm 125A<br />D-10711 Berlin</a><br /><br />]]>"
                     <source_model>[MODEL_CLASS]</source_model> e.g.: "Iways\CategoryTree\Model\Config\Source\Root"
+                </field>
+            </group>
+            <group id="[LOWERCASE_IDENTIFIER]" e.g.: "settings"
+                   translate="label"
+                   sortOrder="[SORTING_WEIGHT]" e.g.: "999"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>[FIELD_NAME]</label> e.g.: "Settings"
+                <field id="[LOWERCASE_IDENTIFIER]" e.g.: "first_day"
+                       translate="label"
+                       type="select"
+                       sortOrder="[SORTING_WEIGHT]" e.g.: "000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>[FIELD_NAME]</label> e.g.: "First day of the week"
+                    <source_model>[MODEL_CLASS]</source_model> e.g.: "Iways\OpeningHours\Model\Config\Source\Days\First"
+                </field>
+                <field id="[LOWERCASE_IDENTIFIER]" e.g.: "compress_table"
+                       translate="label"
+                       type="select"
+                       sortOrder="[SORTING_WEIGHT]" e.g.: "100"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>[FIELD_NAME]</label> e.g.: "Compress table"
+                    <source_model>[MODEL_CLASS]</source_model> e.g.: "Magento\Config\Model\Config\Source\Yesno"
                 </field>
             </group>
         </section>

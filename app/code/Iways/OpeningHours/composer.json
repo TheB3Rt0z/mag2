@@ -1,14 +1,14 @@
 {
-	"name": "iways/module-openinghours",
-	"require": {
-	   "iways/module-base": "0.0.*"
-	},
-	"type": "magento2-module",
+    "name": "iways/module-openinghours",
+    "require": {
+        "iways/module-base": "0.0.*"
+    },
+    "type": "magento2-module",
     "version": "0.0.1",
     "license": [
         "proprietary"
     ],
-	"autoload": {
+    "autoload": {
         "files": [
             "registration.php"
         ],

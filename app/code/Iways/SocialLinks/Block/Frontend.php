@@ -31,6 +31,10 @@ use Magento\Framework\View\Element\Template\Context;
  */
 class Frontend extends extended
 {
+    protected $active_social_networks;
+    protected $block_title;
+    protected $link_aspect;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -55,7 +59,6 @@ class Frontend extends extended
             $this->block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
         }
 
-        $this->social_networks = helper::$social_networks;
         if ($this->active_social_networks === null) {
             $config = $this->helper->getConfig('iways_sociallinks/social_networks/active_links');
             $this->active_social_networks = explode(",", $config);
@@ -89,7 +92,7 @@ class Frontend extends extended
 
             if ($url = $this->helper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
 
-                $name = $this->social_networks[$key];
+                $name = helper::$social_networks[$key];
 
                 $label = $this->link_aspect == 'icons'
                          ? '<i class="fa fa-' . $key . '" title="' . $name . '"></i>'

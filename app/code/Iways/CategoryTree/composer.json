@@ -2,25 +2,18 @@
     "name": "iways/module-categorytree",
     "type": "magento2-module",
     "version": "0.1.0",
-    "require":
-    {
+    "require": {
         "iways/module-base": "^0.1.0"
     },
-    "repositories":
-    [
-        {
-            "url": "git@github.com:i-ways/magento2-base-module.git",
-            "type": "git"
-        }
-    ],
-    "autoload":
-    {
-        "files":
-        [
+    "repositories": [{
+        "url": "git@github.com:i-ways/magento2-base-module.git",
+        "type": "git"
+    }],
+    "autoload": {
+        "files": [
             "registration.php"
         ],
-        "psr-4":
-        {
+        "psr-4": {
             "Iways\\CategoryTree\\": ""
         }
     }

@@ -1,24 +1,19 @@
 {
     "name": "iways/module-developertoolbox",
-    "require":
-    {
+    "require": {
         "iways/module-base": "0.0.*",
         "magento-ecg/coding-standard": "3.0.*"
     },
     "type": "magento2-module",
     "version": "0.0.1",
-    "license":
-    [
+    "license": [
         "proprietary"
     ],
-    "autoload":
-    {
-        "files":
-        [
+    "autoload": {
+        "files": [
             "registration.php"
         ],
-        "psr-4":
-        {
+        "psr-4": {
             "Iways\\DeveloperToolBox\\": ""
         }
     }

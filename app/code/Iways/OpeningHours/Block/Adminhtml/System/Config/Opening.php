@@ -14,7 +14,7 @@
 
 namespace Iways\OpeningHours\Block\Adminhtml\System\Config;
 
-use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Config\Block\System\Config\Form\Field as extended;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
@@ -28,7 +28,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends Field // ToDo: to be checked
+class Opening extends extended // ToDo: to be checked
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
