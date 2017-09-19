@@ -30,9 +30,9 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Status extends extended // ToDo: to be refactored
+class Status extends extended // @todo: to be refactored
 {
-    protected $opening_hours;
+    protected $openingHours;
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -52,10 +52,10 @@ class Status extends extended // ToDo: to be refactored
     ) {
         $this->helper = $helper;
 
-        $this->date_time = $dateTime;
+        $this->dateTime = $dateTime;
 
-        if ($this->opening_hours === null) {
-            $this->opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
+        if ($this->openingHours === null) {
+            $this->openingHours = $this->helper->getConfig('iways_openinghours/opening_hours');
         }
 
         parent::__construct($context, $data);
@@ -93,30 +93,30 @@ class Status extends extended // ToDo: to be refactored
      */
     public function getComplexStatus($type)
     {
-        $type_data = explode(',', $this->opening_hours[$this->day . '_' . $type]);
+        $typeData = explode(',', $this->openingHours[$this->day . '_' . $type]);
 
-        $current_hours = $this->date_time->gmtDate('H')
-                       + $this->date_time->getGmtOffset('hours');
-        $current_minutes = $this->date_time->gmtDate('i');
+        $currentHours = $this->dateTime->gmtDate('H')
+                      + $this->dateTime->getGmtOffset('hours');
+        $currentMinutes = $this->dateTime->gmtDate('i');
 
-        if ($current_hours < $type_data[0]) {
+        if ($currentHours < $typeData[0]) {
             return $this->calculateStatus(
-                $type_data[0] - $current_hours,
-                $type_data[1] - $current_minutes,
+                $typeData[0] - $currentHours,
+                $typeData[1] - $currentMinutes,
                 "Today it will open in %d hours, %d minutes"
             );
-        } elseif ($type == 'double' && $current_hours > $type_data[2]) { // in or after the pause
-            if ($current_hours < $type_data[4]) {
+        } elseif ($type == 'double' && $currentHours > $typeData[2]) { // in or after the pause
+            if ($currentHours < $typeData[4]) {
                 return $this->calculateStatus(
-                    $type_data[4] - $current_hours,
-                    $type_data[5] - $current_minutes,
+                    $typeData[4] - $currentHours,
+                    $typeData[5] - $currentMinutes,
                     "Today it will open again in %d hours, %d minutes"
                 );
-            } elseif ($current_hours < $type_data[6]) {
-                if ($hours = $type_data[6] - $current_hours) {
+            } elseif ($currentHours < $typeData[6]) {
+                if ($hours = $typeData[6] - $currentHours) {
                     return $this->calculateStatus(
                         $hours,
-                        $type_data[7] - $current_minutes,
+                        $typeData[7] - $currentMinutes,
                         "Today is still open for %d hours, %d minutes"
                     );
                 } else {
@@ -124,10 +124,10 @@ class Status extends extended // ToDo: to be refactored
                 }
             }
         } else {
-            if ($hours = $type_data[2] - $current_hours) {
+            if ($hours = $typeData[2] - $currentHours) {
                 return $this->calculateStatus(
                     $hours,
-                    $type_data[3] - $current_minutes,
+                    $typeData[3] - $currentMinutes,
                     "Today is still open for %d hours, %d minutes"
                 ) . ($type == 'double'
                     ? '<br />' . __("After a pause it will be open again")
@@ -149,8 +149,8 @@ class Status extends extended // ToDo: to be refactored
     {
         $this->day = strtolower(date('l'));
 
-        $day_type = $this->opening_hours[$this->day];
-        switch ($day_type)
+        $dayType = $this->openingHours[$this->day];
+        switch ($dayType)
         {
             case 0:
                 $data = __("Closed today");

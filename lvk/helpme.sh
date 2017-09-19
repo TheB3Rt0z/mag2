@@ -17,24 +17,24 @@ while getopts "bcdghlrstu" opt
 do
     case $opt in
         # full backend deploy
-        b) #rm -R pub/static/_requirejs 2> /dev/null
+        b ) #rm -R pub/static/_requirejs 2> /dev/null
             rm -R pub/static/adminhtml 2> /dev/null
             $PHP_PATH bin/magento setup:static-content:deploy --area adminhtml
             $PHP_PATH bin/magento setup:static-content:deploy --area adminhtml de_DE
         ;;
         # compilation
-        c) $PHP_PATH bin/magento setup:di:compile
+        c ) $PHP_PATH bin/magento setup:di:compile
         ;;
         # base frontend deploy
-        d) rm -R pub/static/_requirejs 2> /dev/null
-           rm -R pub/static/frontend 2> /dev/null
-           $PHP_PATH bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
+        d ) rm -R pub/static/_requirejs 2> /dev/null
+            rm -R pub/static/frontend 2> /dev/null
+            $PHP_PATH bin/magento setup:static-content:deploy --area frontend --exclude-theme Magento/luma
         ;;
         # german frontend deploy
-        g) $PHP_PATH bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
+        g ) $PHP_PATH bin/magento setup:static-content:deploy --area frontend de_DE --exclude-theme Magento/luma
         ;;
         #
-        h) printf "b) full backend deploy
+        h ) printf "b) full backend deploy
 b) full backend deploy
 c) compilation
 d) base frontend deploy
@@ -47,26 +47,42 @@ t) clears translations cache
 u) magento setup upgrade"
         ;;
         # clears layouts cache
-        l) $PHP_PATH bin/magento cache:clean layout
+        l ) $PHP_PATH bin/magento cache:clean layout
         ;;
         # reindex all indexes   
-        r) $PHP_PATH bin/magento indexer:reindex
+        r ) $PHP_PATH bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcs
-        s) $PHP_PATH vendor/bin/phpcs -h
-           EXTENSIONS_TO_CHECK="inc,php,phtml,js,json,css"
-           #PATH_TO_SNIFF="app/code/Iways/DeveloperToolBox"
-           #$PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
-           PATH_TO_SNIFF="app/code/Iways"
-           $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
-           $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
-           $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
-           $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
-           PATH_TO_SNIFF="app/design/frontend/Iways"
-           $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
-           $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
-           $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
-           $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+        s ) $PHP_PATH vendor/bin/phpcs -h
+            EXTENSIONS_TO_CHECK="inc,php,phtml,js,json,css"
+            #PATH_TO_SNIFF="app/code/Iways/DeveloperToolBox"
+            #$PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+           
+            PATH_TO_SNIFF="app/code/Iways"
+            $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox # to be deleted
+            if [ -d "app/code/Vollkorn" ]; then
+                PATH_TO_SNIFF="app/code/Vollkorn"
+                $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+		    fi
+		    
+            PATH_TO_SNIFF="app/design/frontend/Iways"
+            $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+            $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+            $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+            $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+            if [ -d "app/design/frontend/Vollkorn" ]; then
+                PATH_TO_SNIFF="app/design/frontend/Vollkorn"
+                $PHP_PATH vendor/bin/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+                $PHP_PATH vendor/bin/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
+		    fi
         ;;
         # clears translations cache
         t) $PHP_PATH bin/magento cache:clean translate

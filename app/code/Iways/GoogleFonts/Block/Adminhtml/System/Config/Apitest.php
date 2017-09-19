@@ -89,8 +89,8 @@ class Apitest extends extended
 
         $this->api = $api;
 
-        if ($api_key = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
-            $this->api->setApiKey($api_key);
+        if ($apiKey = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
+            $this->api->setApiKey($apiKey);
         }
 
         parent::__construct($context, $data);

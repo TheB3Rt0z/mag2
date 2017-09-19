@@ -28,7 +28,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends extended // ToDo: to be checked
+class Opening extends extended // @todo: to be checked
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -41,14 +41,14 @@ class Opening extends extended // ToDo: to be checked
      */
     protected function _getElementHtml(AbstractElement $element)
     {
-        $html_id = $element->getHtmlId();
+        $htmlId = $element->getHtmlId();
 
-        $id_array = explode('_', $html_id);
+        $idArray = explode('_', $htmlId);
 
         $this->addData(
             [
                 'values' => $element->getEscapedValue(),
-                'html_id' => $html_id,
+                'html_id' => $htmlId,
                 'name_prefix' => preg_replace(
                     '#\[value\](\[\])?$#',
                     '',
@@ -57,7 +57,7 @@ class Opening extends extended // ToDo: to be checked
             ]
         );
 
-        $template = array_pop($id_array);
+        $template = array_pop($idArray);
 
         $this->setTemplate('system/config/opening/' . $template . '.phtml');
 

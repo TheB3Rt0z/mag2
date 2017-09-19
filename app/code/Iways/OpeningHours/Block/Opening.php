@@ -31,8 +31,8 @@ use Magento\Framework\View\Element\Template\Context;
  */
 class Opening extends extended
 {
-    protected $compress_table;
-    protected $first_day;
+    protected $compressTable;
+    protected $firstDay;
 
     public static $days = [
         'sun' => 'sunday',
@@ -60,16 +60,16 @@ class Opening extends extended
     ) {
         $this->helper = $helper;
 
-        $this->opening_hours = $this->helper->getConfig('iways_openinghours/opening_hours');
+        $this->openingHours = $this->helper->getConfig('iways_openinghours/opening_hours');
 
         parent::__construct($context, $data);
 
-        if ($this->first_day === null) {
-            $this->first_day = $this->helper->getConfig('iways_openinghours/settings/first_day');
+        if ($this->firstDay === null) {
+            $this->firstDay = $this->helper->getConfig('iways_openinghours/settings/first_day');
         }
 
-        if ($this->compress_table === null) {
-            $this->compress_table = $this->helper->getConfig('iways_openinghours/settings/compress_table');
+        if ($this->compressTable === null) {
+            $this->compressTable = $this->helper->getConfig('iways_openinghours/settings/compress_table');
         }
     }
 
@@ -84,40 +84,28 @@ class Opening extends extended
      */
     public function compressMatrix(array $array)
     {
-        $last_value = $last_key = $base_key = null;
+        $lastValue = $lastKey = $baseKey = null;
 
         foreach ($array as $key => $value) {
 
-            if ($value == $last_value) {
-                unset($data[$combined_key]);
-                $last_key = $key;
+            if ($value == $lastValue) {
+                unset($data[$combinedKey]);
+                $lastKey = $key;
             } else {
-                if ($last_key) {
-                    unset($data[$base_key]);
+                if ($lastKey) {
+                    unset($data[$baseKey]);
                 }
-                $base_key = $key;
-                $last_key = null;
+                $baseKey = $key;
+                $lastKey = null;
             }
 
-            $last_value = $value;
-            $combined_key = $base_key . ($last_key ? ' - ' . $last_key : '');
-            $data[$combined_key] = $last_value;
+            $lastValue = $value;
+            $combinedKey = $baseKey . ($lastKey ? ' - ' . $lastKey : '');
+            $data[$combinedKey] = $lastValue;
         }
 
         return $data;
     }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return string
-     */
-    /*public function getHtml()
-    {
-        return $this->toHtml();
-    }*/
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -130,47 +118,47 @@ class Opening extends extended
     {
         $days = self::$days;
 
-        if ($this->first_day) {
+        if ($this->firstDay) {
             unset($days['sun']);
             $days['sun'] = 'sunday';
         }
 
         foreach ($days as $key => $value) {
 
-            $day_type = $this->opening_hours[$value];
-            switch ($day_type)
+            $dayType = $this->openingHours[$value];
+            switch ($dayType)
             {
                 case 0:
                     $opening = __("Closed");
                     break;
 
                 case 1:
-                    $type_data = explode(
+                    $typeData = explode(
                         ',',
-                        $this->opening_hours[$value . '_single']
+                        $this->openingHours[$value . '_single']
                     );
-                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
-                             . sprintf("%'.02d", $type_data[1]) . ' - '
-                             . sprintf("%'.02d", $type_data[2]) . ':'
-                             . sprintf("%'.02d", $type_data[3]) . ' '
+                    $opening = sprintf("%'.02d", $typeData[0]) . ':'
+                             . sprintf("%'.02d", $typeData[1]) . ' - '
+                             . sprintf("%'.02d", $typeData[2]) . ':'
+                             . sprintf("%'.02d", $typeData[3]) . ' '
                              . __("o'clock");
                     break;
 
                 case 2:
-                    $type_data = explode(
+                    $typeData = explode(
                         ',',
-                        $this->opening_hours[$value . '_double']
+                        $this->openingHours[$value . '_double']
                     );
-                    $opening = sprintf("%'.02d", $type_data[0]) . ':'
-                             . sprintf("%'.02d", $type_data[1]) . ' - '
-                             . sprintf("%'.02d", $type_data[2]) . ':'
-                             . sprintf("%'.02d", $type_data[3]) . ' '
+                    $opening = sprintf("%'.02d", $typeData[0]) . ':'
+                             . sprintf("%'.02d", $typeData[1]) . ' - '
+                             . sprintf("%'.02d", $typeData[2]) . ':'
+                             . sprintf("%'.02d", $typeData[3]) . ' '
                              . __("o'clock")
                              . '<br />'
-                             . sprintf("%'.02d", $type_data[4]) . ':'
-                             . sprintf("%'.02d", $type_data[5]) . ' - '
-                             . sprintf("%'.02d", $type_data[6]) . ':'
-                             . sprintf("%'.02d", $type_data[7]) . ' '
+                             . sprintf("%'.02d", $typeData[4]) . ':'
+                             . sprintf("%'.02d", $typeData[5]) . ' - '
+                             . sprintf("%'.02d", $typeData[6]) . ':'
+                             . sprintf("%'.02d", $typeData[7]) . ' '
                              . __("o'clock");
                     break;
 
@@ -187,7 +175,7 @@ class Opening extends extended
             }
         }
 
-        if ($this->compress_table) {
+        if ($this->compressTable) {
             $data = $this->compressMatrix($data);
         }
 

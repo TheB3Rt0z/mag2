@@ -48,8 +48,8 @@ class Depth extends extended
     ) {
         $this->helper = $helper;
 
-        $this->store_id = $storeManagerInterface->getStore()->getId();
-        $this->category_repository = $categoryRepository;
+        $this->storeId = $storeManagerInterface->getStore()->getId();
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -67,7 +67,7 @@ class Depth extends extended
         if ($children = $category->getChildren()) {
             $data = $depth;
             foreach (explode(',', $children) as $id) {
-                $category = $this->category_repository->get($id, $this->store_id);
+                $category = $this->categoryRepository->get($id, $this->storeId);
                 $result = $this->getMaxDepth($category, $depth + 1);
                 if ($result > $data) {
                     $data = $result;
@@ -89,10 +89,10 @@ class Depth extends extended
      */
     public function toArray()
     {
-        $data = [999 => 'All']; // todo: a zero (0) could be better than this..
+        $data = [999 => 'All']; // @todo: a zero (0) could be better than this..
 
-        $max_depth = $this->getMaxDepth($this->helper->getRootCategory());
-        for ($i = 1; $i <= $max_depth; $i++) {
+        $maxDepth = $this->getMaxDepth($this->helper->getRootCategory());
+        for ($i = 1; $i <= $maxDepth; $i++) {
             $data[$i - 1] = $i;
         }
 

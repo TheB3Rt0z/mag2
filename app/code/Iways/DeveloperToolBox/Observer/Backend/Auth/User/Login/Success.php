@@ -47,16 +47,16 @@ class Success implements extended
     {
         if (isset($_COOKIE[self::PHP_SESSION_COOKIE_NAME])) {
 
-            $session_id = $_COOKIE[self::PHP_SESSION_COOKIE_NAME];
+            $sessionId = $_COOKIE[self::PHP_SESSION_COOKIE_NAME];
 
-            $this->session_id = session_id();
+            $this->sessionId = session_id();
 
             session_write_close();
-            session_id($session_id);
+            session_id($sessionId);
             session_start();
-            $_SESSION['admin'] = [$this->session_id];
+            $_SESSION['admin'] = [$this->sessionId];
             session_write_close();
-            session_id($this->session_id);
+            session_id($this->sessionId);
             session_start();
         }
     }

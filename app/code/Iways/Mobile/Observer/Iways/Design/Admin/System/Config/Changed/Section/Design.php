@@ -76,7 +76,7 @@ class Design extends extended
                    . '}' . self::EOL;
         }
 
-        $this->styles_file = $observer->getStylesFile();
+        $this->stylesFile = $observer->getStylesFile();
 
         $this->write($data);
     }

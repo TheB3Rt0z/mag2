@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\DeveloperToolBox\Controller\Adminhtml\Modules;
+namespace Iways\DeveloperToolBox\Controller\Adminhtml\Component;
 
 use Magento\Backend\App\Action as extended;
 use Magento\Backend\App\Action\Context;
@@ -31,6 +31,8 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends extended
 {
+    const RESOURCE = 'Iways_DeveloperToolBox::menu_developertoolbox_component_index';
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -40,7 +42,7 @@ class Index extends extended
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Iways_Base::documentation');
+        return $this->_authorization->isAllowed('Iways_DeveloperToolBox::component');
     }
 
     /**
@@ -57,7 +59,7 @@ class Index extends extended
     ) {
         parent::__construct($context);
 
-        $this->page_factory = $pageFactory;
+        $this->pageFactory = $pageFactory;
     }
 
     /**
@@ -69,12 +71,13 @@ class Index extends extended
      */
     public function execute()
     {
-        $result_page = $this->page_factory->create();
+        $resultPage = $this->pageFactory->create();
 
-        $page_title = __("Developer's Tool-Box") . ' | ' . __("Modules overview");
+        $resultPage->setActiveMenu(self::RESOURCE);
 
-        $result_page->getConfig()->getTitle()->set($page_title);
+        $pageTitle = __("Developer's Tool-Box") . ' | ' . __("Components index");
+        $resultPage->getConfig()->getTitle()->set($pageTitle);
 
-        return $result_page;
+        return $resultPage;
     }
 }

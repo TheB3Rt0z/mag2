@@ -15,7 +15,7 @@
 $columnsLimit = $block->getColumnsLimit() ?: 0;
 $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
 $helper = $this->helper('Iways\Design\Helper\Data');
-$navigation_direction = $helper->getConfig('design/mobile/navigation_direction');
+$navigationDirection = $helper->getConfig('design/mobile/navigation_direction');
 
 ?>
 
@@ -31,7 +31,7 @@ $navigation_direction = $helper->getConfig('design/mobile/navigation_direction')
                 'my': 'left top',
                 'at': 'left bottom'
             },
-                'invert_direction': <?php echo $navigation_direction ?>
+                'invert_direction': <?php echo $navigationDirection ?>
             }
         }">
         <?php echo $_menu . $block->getChildHtml() ?>

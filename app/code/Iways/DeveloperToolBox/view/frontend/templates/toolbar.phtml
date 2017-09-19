@@ -12,16 +12,17 @@
  * @link     https://www.i-ways.net
  */
 
-$admin_uri = $block->helper('Magento\Backend\Helper\Data')->getHomePageUrl();
-$admin_link = $admin_uri
-            ? '<span><a href="' . $admin_uri . '" target="_BLANK">Backend</a></span>'
-            : false;
+
+$adminLink = ($adminUri = $block->getAdminUri()) // @todo move this in block ($block->getAdminLink())
+             ? '<span><a href="' . $adminUri . '"'
+             . '         target="_BLANK">Backend</a></span>'
+             : false;
 
 if ($block->helper->wasAdminLogged()) {
     ?>
     <div class="iways-toolbar">
         <?php
-        echo $block->getItemsHtml() . $admin_link;
+        echo $block->getItemsHtml() . $adminLink;
         ?>
     </div>
     <?php

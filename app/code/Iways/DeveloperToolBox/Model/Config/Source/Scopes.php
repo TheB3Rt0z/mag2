@@ -39,8 +39,8 @@ class Scopes extends extended
     public function toArray()
     {
         return [
-            'code/Iways' => __("i-ways modules only"),
-            'code' => __("all modules"),
+            'code/Iways' => __("i-ways components only"),
+            'code' => __("all components"),
         ];
     }
 }

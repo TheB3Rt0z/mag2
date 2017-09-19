@@ -73,6 +73,69 @@
                     </item>
                 </argument>
             </field>
+            <field name="body_background_src_attachment">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\Design\Model\Config\Body\Background\AttachmentOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background image attachment</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="body_background_src_size">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\Design\Model\Config\Body\Background\SizeOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background image size</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-width-height</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/select-width-height</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="body_background_src_size_custom">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="body_background_src_repeat">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\Design\Model\Config\Body\Background\RepeatOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background image repeat</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
             <field name="body_background_gradient">
                 <argument name="data"
                           xsi:type="array">

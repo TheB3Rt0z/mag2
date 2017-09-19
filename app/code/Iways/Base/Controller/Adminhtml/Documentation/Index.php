@@ -57,7 +57,7 @@ class Index extends extended
     ) {
         parent::__construct($context);
 
-        $this->result_page_factory = $resultPageFactory;
+        $this->resultPageFactory = $resultPageFactory;
     }
 
     /**
@@ -75,9 +75,9 @@ class Index extends extended
 
         $dev = $this->getRequest()->getParam('dev');
 
-        $result_page = $this->result_page_factory->create();
+        $resultPage = $this->resultPageFactory->create();
 
-        $result_page->getConfig()->getTitle()->set(
+        $resultPage->getConfig()->getTitle()->set(
             ($dev
             ? __("Developer's Reference")
             : __("Documentation"))
@@ -90,6 +90,6 @@ class Index extends extended
             : '')
         );
 
-        return $result_page;
+        return $resultPage;
     }
 }

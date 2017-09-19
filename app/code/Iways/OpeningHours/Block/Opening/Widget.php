@@ -39,7 +39,7 @@ class Widget extends extended implements implemented
      */
     protected function _construct()
     {
-        $this->first_day = $this->getFirstDay();
-        $this->compress_table = $this->getCompressTable();
+        $this->firstDay = $this->getFirstDay();
+        $this->compressTable = $this->getCompressTable();
     }
 }

@@ -40,15 +40,15 @@ class Widget extends extended implements implemented
      */
     protected function _construct()
     {
-        $this->block_title = $this->getBlockTitle();
+        $this->blockTitle = $this->getBlockTitle();
 
-        $this->tree_root = $this->getTreeRoot();
-        if ($this->tree_root == helper::ROOT_USE_CUSTOM_CATEGORY) {
-            $this->custom_root = $this->getCustomRoot();
+        $this->treeRoot = $this->getTreeRoot();
+        if ($this->treeRoot == helper::ROOT_USE_CUSTOM_CATEGORY) {
+            $this->customRoot = $this->getCustomRoot();
         }
 
-        $this->tree_depth = $this->getTreeDepth();
+        $this->treeDepth = $this->getTreeDepth();
 
-        $this->show_empty = $this->getShowEmpty();
+        $this->showEmpty = $this->getShowEmpty();
     }
 }

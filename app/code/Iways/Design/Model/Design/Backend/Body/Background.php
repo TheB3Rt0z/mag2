@@ -52,9 +52,9 @@ class Background extends extended
      */
     protected function _getUploadDir()
     {
-        $upload_dir = $this->_appendScopeInfo(self::UPLOAD_DIR);
+        $uploadDir = $this->_appendScopeInfo(self::UPLOAD_DIR);
 
-        return $this->_mediaDirectory->getRelativePath($upload_dir);
+        return $this->_mediaDirectory->getRelativePath($uploadDir);
     }
 
     /**

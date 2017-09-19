@@ -74,21 +74,21 @@ class Documentation extends extended
             $data['view_path'] = 'Iways_' . $data['module'];
         }
 
-        $this->file_path = $directoryList->getPath('app')
-                         . (isset($data['theme'])
-                         ? '/design/frontend/Iways/' . $data['theme']
-                         : '')
-                         . (isset($data['module'])
-                         ? '/code/Iways/' . $data['module']
-                         : '')
-                         . ($data['locale']
-                         ? '/documentation/' . $data['locale']
-                         : '')
-                         . '/' . self::DOC_FILE;
+        $this->filePath = $directoryList->getPath('app')
+                        . (isset($data['theme'])
+                        ? '/design/frontend/Iways/' . $data['theme']
+                        : '')
+                        . (isset($data['module'])
+                        ? '/code/Iways/' . $data['module']
+                        : '')
+                        . ($data['locale']
+                        ? '/documentation/' . $data['locale']
+                        : '')
+                        . '/' . self::DOC_FILE;
 
-        $file_reader = $readFactory->create($this->file_path, DriverPool::FILE);
+        $fileReader = $readFactory->create($this->filePath, DriverPool::FILE);
 
-        $data['contents'] = $file_reader->readAll();
+        $data['contents'] = $fileReader->readAll();
 
         parent::__construct($context, $data);
     }

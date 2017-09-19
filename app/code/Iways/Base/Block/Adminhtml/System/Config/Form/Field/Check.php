@@ -64,16 +64,16 @@ class Check extends extended
         ThemeProviderInterface $themeProviderInterface,
         array $data = []
     ) {
-        $theme_id = $context->getScopeConfig()->getValue(
+        $themeId = $context->getScopeConfig()->getValue(
             DesignInterface::XML_PATH_THEME_ID,
             ScopeInterface::SCOPE_STORE,
             $context->getStoreManager()->getStore()->getId()
         );
 
         do {
-            $this->theme = $themeProviderInterface->getThemeById($theme_id);
-            $theme_id = $this->theme->getParentId();
-        } while ($theme_id > 1); // 1 is always the blank-theme (or $this->theme->getCode() == 'Magento/blank')
+            $this->theme = $themeProviderInterface->getThemeById($themeId);
+            $themeId = $this->theme->getParentId();
+        } while ($themeId > 1); // 1 is always the blank-theme (or $this->theme->getCode() == 'Magento/blank')
 
         parent::__construct($context, $data);
     }

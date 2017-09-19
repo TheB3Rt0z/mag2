@@ -56,7 +56,7 @@ class Api extends extended
         AbstractDb $abstractDb = null,
         array $data = []
     ) {
-        $this->api_url = self::API_URL;
+        $this->apiUrl = self::API_URL;
 
         $this->curl = $curl;
 
@@ -78,7 +78,7 @@ class Api extends extended
      */
     public function call()
     {
-        $this->curl->get($this->api_url);
+        $this->curl->get($this->apiUrl);
         $response = $this->curl->getBody();
 
         $response = json_decode($response);
@@ -96,16 +96,16 @@ class Api extends extended
      *
      * PHP Version 5
      *
-     * @param string $api_key a googlefonts valid API key
+     * @param string $apiKey a googlefonts valid API key
      *
      * @return Iways\GoogleFonts\Model\Api
      */
-    public function setApiKey($api_key)
+    public function setApiKey($apiKey)
     {
-        $this->api_key = $api_key;
+        $this->apiKey = $apiKey;
 
-        if ($this->api_key) {
-            $this->api_url .= '?key=' . $this->api_key;
+        if ($this->apiKey) {
+            $this->apiUrl .= '?key=' . $this->apiKey;
         }
 
         return $this;

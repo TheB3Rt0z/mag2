@@ -45,7 +45,7 @@ class Categories extends extended
     ) {
         $this->helper = $helper;
 
-        $this->store_categories = $category->getStoreCategories();
+        $this->storeCategories = $category->getStoreCategories();
     }
 
     /**
@@ -59,7 +59,7 @@ class Categories extends extended
     {
         $data = [];
 
-        foreach ($this->store_categories as $category) {
+        foreach ($this->storeCategories as $category) {
             $data[$category->getId()] = $category->getName();
         }
 

@@ -32,9 +32,9 @@ use Magento\Framework\View\Element\Template as extended;
  */
 class Frontend extends extended
 {
-    protected $block_title;
-    protected $custom_root;
-    protected $tree_root;
+    protected $blockTitle;
+    protected $customRoot;
+    protected $treeRoot;
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -54,30 +54,30 @@ class Frontend extends extended
     ) {
         $this->helper = $helper;
 
-        $this->store_id = $context->getStoreManager()->getStore()->getId();
-        $this->category_repository = $categoryRepository;
+        $this->storeId = $context->getStoreManager()->getStore()->getId();
+        $this->categoryRepository = $categoryRepository;
 
         parent::__construct($context, $data);
 
-        if ($this->block_title === null) {
-            $this->block_title = $this->helper->getConfig('iways_categorytree/frontend/block_title');
+        if ($this->blockTitle === null) {
+            $this->blockTitle = $this->helper->getConfig('iways_categorytree/frontend/block_title');
         }
 
-        if ($this->tree_root === null) {
-            $this->tree_root = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
+        if ($this->treeRoot === null) {
+            $this->treeRoot = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
         }
-        if ($this->tree_root == helper::ROOT_USE_CUSTOM_CATEGORY) {
-            if ($this->custom_root === null) {
-                $this->custom_root = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
+        if ($this->treeRoot == helper::ROOT_USE_CUSTOM_CATEGORY) {
+            if ($this->customRoot === null) {
+                $this->customRoot = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
             }
         }
 
-        if ($this->tree_depth === null) {
-            $this->tree_depth = $this->helper->getConfig('iways_categorytree/frontend/tree_depth');
+        if ($this->treeDepth === null) {
+            $this->treeDepth = $this->helper->getConfig('iways_categorytree/frontend/tree_depth');
         }
 
-        if ($this->show_empty === null) {
-            $this->show_empty = $this->helper->getConfig('iways_categorytree/frontend/show_empty');
+        if ($this->showEmpty === null) {
+            $this->showEmpty = $this->helper->getConfig('iways_categorytree/frontend/show_empty');
         }
     }
 
@@ -86,44 +86,44 @@ class Frontend extends extended
      *
      * PHP Version 5
      *
-     * @param object  $category  Magento\Catalog\Model\Category\Interceptor
-     * @param integer $max_depth maximal category nesting level
-     * @param integer $depth     category nesting level
+     * @param object  $category Magento\Catalog\Model\Category\Interceptor
+     * @param integer $maxDepth maximal category nesting level
+     * @param integer $depth    category nesting level
      *
      * @return string
      */
-    public function getCategoryHtml($category, $max_depth = 0, $depth = 0)
+    public function getCategoryHtml($category, $maxDepth = 0, $depth = 0)
     {
         $data = '';
 
-        if ($depth <= $max_depth && $children = $category->getChildren()) {
+        if ($depth <= $maxDepth && $children = $category->getChildren()) {
 
             $items = '';
 
             foreach (explode(',', $children) as $id) {
 
-                $category = $this->category_repository->get($id, $this->store_id);
+                $category = $this->categoryRepository->get($id, $this->storeId);
 
-                if (!$this->show_empty) {
+                if (!$this->showEmpty) {
                     if (!$category->getProductCollection()->getSize()) {
                         continue;
                     }
                 }
 
-                $children_html = $this->getCategoryHtml(
+                $childrenHtml = $this->getCategoryHtml(
                     $category,
-                    $max_depth,
+                    $maxDepth,
                     $depth + 1
                 );
 
-                $class_tag = 'level_' . $category->getLevel() . ' depth_' . $depth;
+                $classTag = 'level_' . $category->getLevel() . ' depth_' . $depth;
 
-                $items .= '<li class="' . $class_tag . '">'
+                $items .= '<li class="' . $classTag . '">'
                         . '    <a href="' . $category->getUrl() . '"'
-                        . '       ' . ($children_html
+                        . '       ' . ($childrenHtml
                                       ? 'class="parent"'
                                       : '') . '>' . $category->getName() . '</a>'
-                        . '    ' . $children_html
+                        . '    ' . $childrenHtml
                         . '</li>';
             }
 
@@ -144,15 +144,15 @@ class Frontend extends extended
      */
     public function getRootCategory()
     {
-        switch ($this->tree_root)
+        switch ($this->treeRoot)
         {
             case helper::ROOT_USE_CURRENT_CATEGORY:
                 return $this->helper->getCurrentCategory();
 
             case helper::ROOT_USE_CUSTOM_CATEGORY:
-                return $this->category_repository->get(
-                    $this->custom_root,
-                    $this->store_id
+                return $this->categoryRepository->get(
+                    $this->customRoot,
+                    $this->storeId
                 );
 
             default:
@@ -167,20 +167,20 @@ class Frontend extends extended
      *
      * @return string
      */
-    public function toHtml() // todo: to be removed
+    public function toHtml() // @todo: to be removed
     {
-        $html = $this->getCategoryHtml($this->getRootCategory(), $this->tree_depth);
+        $list = $this->getCategoryHtml($this->getRootCategory(), $this->treeDepth);
 
-        if (!$html) {
+        if (!$list) {
             return '<div class="block empty"></div>';
         }
 
         $data = '<div class="block categories">'
               . '    <div class="block-title categories-title">'
-              . '        <strong>' . __($this->block_title) . '</strong>'
+              . '        <strong>' . __($this->blockTitle) . '</strong>'
               . '    </div>'
               . '    <div class="block-content iways-categories">'
-              . '        ' . $html
+              . '        ' . $list
               . '    </div>'
               . '</div>';
 

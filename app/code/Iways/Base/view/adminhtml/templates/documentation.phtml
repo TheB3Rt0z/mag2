@@ -20,20 +20,20 @@ $contents = str_replace(
     $contents
 );
 
-$parse_down = new Parsedown();
-$parse_down->setBreaksEnabled(true);
-$contents = $parse_down->text($contents);
+$parseDown = new Parsedown();
+$parseDown->setBreaksEnabled(true);
+$contents = $parseDown->text($contents);
 
-$images_path = 'Iways_Base/images/documentation/';
+$imagesPath = 'Iways_Base/images/documentation/';
 
-$markdown_url = $block->getViewFileUrl($images_path . 'logo_markdown.png');
+$markdownUrl = $block->getViewFileUrl($imagesPath . 'logo_markdown.png');
 
 ?>
 
 <div class="iways-documentation">
     <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
        target="_blank">
-        <img src="<?php echo $markdown_url ?>"
+        <img src="<?php echo $markdownUrl ?>"
              alt="MarkDown"
              title="MarkDown"
              class="logo markdown" />
@@ -41,14 +41,14 @@ $markdown_url = $block->getViewFileUrl($images_path . 'logo_markdown.png');
 
     <?php
     if ($block->getData('locale')) {
-        $image_url = $block->getViewFileUrl(
-            $images_path
+        $imageUrl = $block->getViewFileUrl(
+            $imagesPath
             . $block->getData('locale')
             . '/language_flag.png'
         );
         ?>
         <span class="language-flag">
-            <img src="<?php echo $image_url ?>"
+            <img src="<?php echo $imageUrl ?>"
                  alt="<?php echo $block->getData('locale') ?>"
                  title="<?php echo $block->getData('locale') ?>" />
         </span>

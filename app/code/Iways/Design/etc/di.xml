@@ -30,6 +30,34 @@
                               xsi:type="string">body</item>
                     </item>
                 </item>
+                <item name="body_background_src_attachment"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/body/background_src_attachment</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/body</item>
+                </item>
+                <item name="body_background_src_size"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/body/background_src_size</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/body</item>
+                </item>
+                <item name="body_background_src_size_custom"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/body/background_src_size_custom</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/body</item>
+                </item>
+                <item name="body_background_src_repeat"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/body/background_src_repeat</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/body</item>
+                </item>
                 <item name="body_background_gradient"
                       xsi:type="array">
                     <item name="path"

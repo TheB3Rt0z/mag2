@@ -39,7 +39,7 @@ class Networks extends extended
      */
     public function toArray()
     {
-        foreach (helper::$social_networks as $key => $value) {
+        foreach (helper::$socialNetworks as $key => $value) {
             $data[$key] = __($value);
         }
 

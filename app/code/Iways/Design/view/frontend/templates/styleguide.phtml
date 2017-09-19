@@ -371,14 +371,14 @@
         $('fieldset .theme-color').each(function() {
 
             var html = $(this).html(),
-                background_color = $(this).css('background-color');
+                backgroundColor = $(this).css('background-color');
 
-            if (background_color == 'rgba(0, 0, 0, 0)') {
+            if (backgroundColor == 'rgba(0, 0, 0, 0)') {
                 $(this).hide();
                 $(this).siblings('.theme-color').hide();
             }
             else
-            	$(this).html(html + '<br />' + background_color);
+            	$(this).html(html + '<br />' + backgroundColor);
 
         	if ($(this).hasClass('background-color'))
         		$(this).html($(this).html() + ' / ' + $(this).css('color'));

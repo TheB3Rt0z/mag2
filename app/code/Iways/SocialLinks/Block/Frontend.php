@@ -31,9 +31,9 @@ use Magento\Framework\View\Element\Template\Context;
  */
 class Frontend extends extended
 {
-    protected $active_social_networks;
-    protected $block_title;
-    protected $link_aspect;
+    protected $activeSocialNetworks;
+    protected $blockTitle;
+    protected $linkAspect;
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -51,17 +51,17 @@ class Frontend extends extended
     ) {
         $this->helper = $helper;
 
-        if ($this->link_aspect === null) {
-            $this->link_aspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
+        if ($this->linkAspect === null) {
+            $this->linkAspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
         }
 
-        if ($this->block_title === null) {
-            $this->block_title = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
+        if ($this->blockTitle === null) {
+            $this->blockTitle = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
         }
 
-        if ($this->active_social_networks === null) {
+        if ($this->activeSocialNetworks === null) {
             $config = $this->helper->getConfig('iways_sociallinks/social_networks/active_links');
-            $this->active_social_networks = explode(",", $config);
+            $this->activeSocialNetworks = explode(",", $config);
         }
 
         parent::__construct($context, $data);
@@ -76,7 +76,7 @@ class Frontend extends extended
      */
     public function getBlockTitle()
     {
-        return $this->block_title;
+        return $this->blockTitle;
     }
 
     /**
@@ -88,13 +88,13 @@ class Frontend extends extended
      */
     public function getSocialLinks() // assumes active font-awesome support on frontend
     {
-        foreach ($this->active_social_networks as $key) {
+        foreach ($this->activeSocialNetworks as $key) {
 
             if ($url = $this->helper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
 
-                $name = helper::$social_networks[$key];
+                $name = helper::$socialNetworks[$key];
 
-                $label = $this->link_aspect == 'icons'
+                $label = $this->linkAspect == 'icons'
                          ? '<i class="fa fa-' . $key . '" title="' . $name . '"></i>'
                          : $name;
 

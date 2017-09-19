@@ -1,0 +1,30 @@
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: inputName,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    optgroup: options,
+    value: value,
+    optionsCaption: caption,
+    optionsValue: 'value',
+    optionsText: 'label'"
+/>
+
+<span class="iways-custom-fields">
+    <span>Width:</span>
+    <input type="number" value="0" />
+    <select>
+        <option value="px">px</option>
+        <option value="%">%</option>
+    </select>
+    /
+    <span>Height:</span>
+    <input type="number" value="0" />
+    <select>
+        <option value="px">px</option>
+        <option value="%">%</option>
+    </select>
+</span>

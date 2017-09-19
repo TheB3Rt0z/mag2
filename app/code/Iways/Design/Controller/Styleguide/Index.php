@@ -46,7 +46,7 @@ class Index extends extended
         PageFactory $pageFactory,
         helper $helper
     ) {
-        $this->result_page_factory = $pageFactory;
+        $this->resultPageFactory = $pageFactory;
 
         $this->helper = $helper;
 
@@ -66,6 +66,6 @@ class Index extends extended
             $this->_redirect('admin');
         }
 
-        return $this->result_page_factory->create();
+        return $this->resultPageFactory->create();
     }
 }

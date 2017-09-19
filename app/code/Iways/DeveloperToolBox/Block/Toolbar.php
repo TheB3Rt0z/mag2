@@ -15,6 +15,7 @@
 namespace Iways\DeveloperToolBox\Block;
 
 use Iways\DeveloperToolBox\Helper\Data as helper;
+use Magento\Backend\Helper\Data as magentoBackendHelper;
 use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -50,20 +51,35 @@ class Toolbar extends extended
     public function __construct(
         Context $context,
         helper $helper,
+        magentoBackendHelper $magentoBackendHelper,
         array $data = []
     ) {
-        $this->event_manager = $context->getEventManager();
+        $this->eventManager = $context->getEventManager();
 
-        $this->event_manager->dispatch(
+        $this->eventManager->dispatch(
             'iways_base_block_toolbar',
             ['items' => &self::$items]
         );
 
         $this->helper = $helper;
 
+        $this->magentoBackendHelper = $magentoBackendHelper;
+
         parent::__construct($context, $data);
 
         $this->setData('helper', $this->helper);
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getAdminUri()
+    {
+        return $this->magentoBackendHelper->getHomePageUrl();
     }
 
     /**

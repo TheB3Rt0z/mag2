@@ -1,6 +1,22 @@
-<?php namespace Vollkorn\Adminhtml\Block\Page;
+<?php
 
-class Header extends \Magento\Backend\Block\Page\Header {
+/**
+ * Ⓒ Lord Vollkorn
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Vollkorn_Adminhtml
+ * @author   Bertozzi Matteo <web.bio.informatics@gmail.com>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://github.com/TheB3Rt0z
+ */
+
+namespace Vollkorn\Adminhtml\Block\Page;
+
+use Magento\Backend\Block\Page\Header as extended;
+
+class Header extends extended {
 
     public function getHomeLink() {
 

@@ -3,8 +3,8 @@ require([
     'matchMedia'
 ], function ($, mediaCheck) {
     
-    var toggle_class = 'open',
-        animation_delay = 125;
+    var toggleClass = 'open',
+        animationDelay = 125;
 
     mediaCheck({
         
@@ -17,12 +17,12 @@ require([
                 var content = $(this).next('.sidebar');
                 
                 content.hide();
-                $(this).removeClass(toggle_class);
+                $(this).removeClass(toggleClass);
                 
                 $(this).on('click', function () {
                     
-                    $(this).toggleClass(toggle_class);
-                    content.toggle(animation_delay);
+                    $(this).toggleClass(toggleClass);
+                    content.toggle(animationDelay);
                 });
             });
         },

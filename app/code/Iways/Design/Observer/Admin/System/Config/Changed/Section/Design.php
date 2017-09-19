@@ -15,6 +15,7 @@
 namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 
 use Iways\Design\Helper\Data as helper;
+use Iways\Design\Model\Config\Body\Background\SizeOptions;
 use Iways\Design\Model\Design\Backend\Body\Background;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface as implemented;
@@ -58,9 +59,9 @@ class Design implements implemented
     ) {
         $this->helper = $helper;
 
-        $this->store_manager_interface = $storeManagerInterface;
-        $this->write_factory = $writeFactory;
-        $this->event_manager = $context->getEventManager();
+        $this->storeManagerInterface = $storeManagerInterface;
+        $this->writeFactory = $writeFactory;
+        $this->eventManager = $context->getEventManager();
     }
 
     /**
@@ -76,42 +77,75 @@ class Design implements implemented
     {
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
-        if ($background_color = $this->helper->getConfig('design/body/background_color')) {
+        if ($backgroundColor = $this->helper->getConfig('design/body/background_color')) {
             $data .= 'html body {' . self::EOL
                    . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $background_color . ';' . self::EOL
+                   . '    background-color: ' . $backgroundColor . ';' . self::EOL
                    . '}' . self::EOL;
         }
 
-        if ($background_src = $this->helper->getConfig('design/body/background_src')) {
-            $store = $this->store_manager_interface->getStore();
-            $base_url = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+        if ($backgroundSrc = $this->helper->getConfig('design/body/background_src')) {
+            $store = $this->storeManagerInterface->getStore();
+            $baseUrl = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
             $data .= 'html body {' . self::EOL
-                   . '    background-image: url("' . $base_url
+                   . '    background-image: url("' . $baseUrl
                                                      . Background::UPLOAD_DIR
-                                                     . '/' . $background_src . '");'
+                                                     . '/' . $backgroundSrc . '");'
                                                      . self::EOL
                      . '}' . self::EOL;
+
+            if ($backgroundSrcAttachment = $this->helper->getConfig('design/body/background_src_attachment')) {
+                $data .= 'html body {' . self::EOL
+                       . '    background-attachment: ' . $backgroundSrcAttachment
+                                                       . ';' . self::EOL
+                       . '}' . self::EOL;
+            }
+
+            if ($backgroundSrcSize = $this->helper->getConfig('design/body/background_src_size')) {
+                if ($backgroundSrcSize == 1) { // identifies custom option in select
+                    $backgroundSrcSizeCustom = $this->helper->getConfig('design/body/background_src_size_custom');
+                    $backgroundSrcSizeCustomArray = explode(
+                        ';',
+                        $backgroundSrcSizeCustom
+                    );
+                    $backgroundSrcSize = $backgroundSrcSizeCustomArray[0]
+                                       . $backgroundSrcSizeCustomArray[1] . " "
+                                       . $backgroundSrcSizeCustomArray[2]
+                                       . $backgroundSrcSizeCustomArray[3];
+                }
+
+                $data .= 'html body {' . self::EOL
+                       . '    background-size: ' . $backgroundSrcSize
+                                                 . ';' . self::EOL
+                       . '}' . self::EOL;
+            }
+
+            if ($backgroundSrcRepeat = $this->helper->getConfig('design/body/background_src_repeat')) {
+                $data .= 'html body {' . self::EOL
+                       . '    background-repeat: ' . $backgroundSrcRepeat
+                                                   . ';' . self::EOL
+                       . '}' . self::EOL;
+            }
         }
 
-        if ($background_gradient = $this->helper->getConfig('design/body/background_gradient')) {
-            $straight_css = str_replace(["\n", "\r"], '', $background_gradient);
+        if ($backgroundGradient = $this->helper->getConfig('design/body/background_gradient')) {
+            $straightCss = str_replace(["\n", "\r"], '', $backgroundGradient);
             $data .= 'html body {' . self::EOL
-                   . '    ' . $straight_css . self::EOL
+                   . '    ' . $straightCss . self::EOL
                    . '}' . self::EOL;
         }
 
-        $this->styles_file = $this->write_factory->create(
+        $this->stylesFile = $this->writeFactory->create(
             self::STYLES_FILE,
             DriverPool::FILE,
             'w'
         );
         $this->write($data);
 
-        $this->event_manager->dispatch(
+        $this->eventManager->dispatch(
             'iways_design_' . $observer->getEvent()->getName(),
             [
-                'styles_file' => $this->write_factory->create(
+                'styles_file' => $this->writeFactory->create(
                     self::STYLES_FILE,
                     DriverPool::FILE,
                     'a'
@@ -135,6 +169,6 @@ class Design implements implemented
             $data = str_replace(['    ', self::EOL], '', $data);
         }
 
-        $this->styles_file->write($data);
+        $this->stylesFile->write($data);
     }
 }

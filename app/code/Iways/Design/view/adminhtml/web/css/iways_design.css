@@ -9,7 +9,6 @@
     background-position: 0 -64px;
 }
 
-
 .fieldset-wrapper[data-index=iways_settings] > .fieldset-wrapper-title {
     background-image: url('../images/icon_32x32.png') !important;
     background-position: 9px 11px !important;
@@ -18,5 +17,16 @@
 }
 
 .iways-color input {
-    width: 127px !important;
+    width: 128px !important;
+}
+
+.iways-width-height input[type=number] {
+    width: 64px;
+}
+
+.iways-custom-fields {
+    display: none;
+}
+.iways-custom-fields > * {
+    margin-left: 8px;
 }

@@ -33,11 +33,14 @@
 #menu-iways-base-menu .level-2.item-menu-documentation-theme > a::before {
     background-position: -512px 0;
 }
+#menu-iways-base-menu .level-2.item-menu-system-cleanmedia > a::before {
+    background-position: -128px -224px;
+}
 #menu-iways-base-menu .level-2.item-menu-system-cacheflush > a::before {
     background-position: -176px -16px;
 }
 #menu-iways-base-menu .level-2.item-menu-system-cacheflushall > a::before {
-    background-position: -128px -224px;
+    background-position: -144px -224px;
 }
 
 .admin__page-nav.iways .admin__page-nav-title {

@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\Direction;
+namespace Iways\Design\Model\Config\Body\Background;
 
 use Iways\Base\Model\Config\Source as extended;
 
@@ -27,8 +27,14 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Options extends extended
+class AttachmentOptions extends extended
 {
+    const ATTACHMENT_FIXED = 'fixed';
+    const ATTACHMENT_INHERIT = 'inherit';
+    const ATTACHMENT_INITIAL = 'initial';
+    const ATTACHMENT_LOCAL = 'local';
+    const ATTACHMENT_SCROLL = false;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -39,8 +45,11 @@ class Options extends extended
     public function toArray()
     {
         return [
-            0 => __("from left to right") . " ⇉",
-            1 => __("from right to left") . " ⇇",
+            self::ATTACHMENT_FIXED => __("fixed"),
+            self::ATTACHMENT_INHERIT => __("inherit"),
+            self::ATTACHMENT_INITIAL => __("initial"),
+            self::ATTACHMENT_LOCAL => __("local"),
+            self::ATTACHMENT_SCROLL => __("scroll"),
         ];
     }
 }

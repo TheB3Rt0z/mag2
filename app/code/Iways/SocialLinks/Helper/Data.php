@@ -29,7 +29,7 @@ use Iways\Base\Helper\Data as extended;
  */
 class Data extends extended
 {
-    public static $social_networks = [ // ATM they are all supported in fontawesome
+    public static $socialNetworks = [ // ATM they are all supported in fontawesome
         'facebook' => "Facebook",
         'googleplus' => "Google+",
         'instagram' => "Instagram",

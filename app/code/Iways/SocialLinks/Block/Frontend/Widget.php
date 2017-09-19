@@ -39,7 +39,7 @@ class Widget extends extended implements implemented
      */
     protected function _construct()
     {
-        $this->link_aspect = $this->getLinkAspect();
-        $this->block_title = $this->getBlockTitle();
+        $this->linkAspect = $this->getLinkAspect();
+        $this->blockTitle = $this->getBlockTitle();
     }
 }

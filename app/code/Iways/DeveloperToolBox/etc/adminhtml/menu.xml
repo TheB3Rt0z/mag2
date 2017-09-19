@@ -29,12 +29,12 @@
              parent="Iways_Base::menu"
              sortOrder="1000"
              module="Iways_DeveloperToolBox" />
-        <add id="Iways_DeveloperToolBox::menu_developertoolbox_modules_overview"
-             resource="Iways_DeveloperToolBox::menu_developertoolbox"
-             title="Modules overview"
+        <add id="Iways_DeveloperToolBox::menu_developertoolbox_component_index"
+             resource="Iways_DeveloperToolBox::menu_developertoolbox_component_index"
+             title="Components index"
              parent="Iways_DeveloperToolBox::menu_developertoolbox"
              sortOrder="1111"
              module="Iways_DeveloperToolBox"
-             action="iways_developertoolbox/modules/index" />
+             action="iways_developertoolbox/component/index" />
     </menu>
 </config>

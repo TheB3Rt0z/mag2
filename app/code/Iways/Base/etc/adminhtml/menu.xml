@@ -5,7 +5,7 @@
     	<add id="Iways_Base::menu"
     	     resource="Iways_Base::menu"
     	     title="i-ways"
-    	     sortOrder="000"
+    	     sortOrder="11"
     	     dependsOnModule="Iways_Base"
     	     module="Iways_Base" />
     	<add id="Iways_Base::menu_configuration"
@@ -47,7 +47,14 @@
              sortOrder="911"
     	     module="Iways_Base"
     	     action="adminhtml/system_config/edit/section/iways_base" />
-        <add id="Iways_Base::menu_system_cacheflush"
+    	<add id="Iways_Base::menu_system_cleanmedia"
+             resource="Iways_Base::menu_system_cleanmedia"
+             title="Flush JS/CSS Cache"
+             parent="Iways_Base::menu_system"
+             sortOrder="977"
+             module="Iways_Base"
+             action="adminhtml/cache/cleanMedia" />
+    	<add id="Iways_Base::menu_system_cacheflush"
              resource="Iways_Base::menu_system_cacheflush"
              title="Flush Magento's Cache"
              parent="Iways_Base::menu_system"

@@ -34,7 +34,7 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class Data extends extended
 {
-    const ROOT_USE_STORE_ROOT = 0,
+    const ROOT_USE_STORE_ROOT = 0, // @todo this should be moved in Model\Config\Source\RootOptions..
           ROOT_USE_CURRENT_CATEGORY = 1,
           ROOT_USE_PRODUCT_CATEGORY = 2,
           ROOT_USE_CUSTOM_CATEGORY = 3;
@@ -57,8 +57,8 @@ class Data extends extended
         CategoryRepository $categoryRepository,
         Registry $registry
     ) {
-        $this->store_manager_interface = $storeManagerInterface;
-        $this->category_repository = $categoryRepository;
+        $this->storeManagerInterface = $storeManagerInterface;
+        $this->categoryRepository = $categoryRepository;
         $this->registry = $registry;
 
         parent::__construct($context, $resolver);
@@ -89,9 +89,9 @@ class Data extends extended
      */
     public function getRootCategory()
     {
-        $store = $this->store_manager_interface->getStore();
+        $store = $this->storeManagerInterface->getStore();
 
-        return $this->category_repository->get(
+        return $this->categoryRepository->get(
             $store->getRootCategoryId(),
             $store->getId()
         );

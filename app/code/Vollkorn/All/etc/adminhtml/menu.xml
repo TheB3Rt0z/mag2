@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
     	<add id="Vollkorn_All::menu" title="Vollkorn" module="Vollkorn_All"
-    	     sortOrder="000" resource="Vollkorn_All::menu" />
+    	     sortOrder="111" resource="Vollkorn_All::menu" />
     	<add id="Vollkorn_All::menu_configuration" title="Configuration" module="Vollkorn_All"
              sortOrder="999" parent="Vollkorn_All::menu" action="adminhtml/system_config/edit/section/vollkorn_all"
              resource="Vollkorn_All::menu_configuration" />

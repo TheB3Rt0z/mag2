@@ -20,7 +20,7 @@
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
-                          xsi:type="object">Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\Direction\Options</item>
+                          xsi:type="object">Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation\DirectionOptions</item>
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
@@ -31,7 +31,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="mobile_modal_sidebars"> <!-- todo: only if sidebars do actually have a title (design module) -->
+            <field name="mobile_modal_sidebars"> <!-- @todo: only if sidebars do actually have a title (design module) -->
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"

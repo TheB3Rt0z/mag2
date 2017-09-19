@@ -2,6 +2,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
+        <design>
+            <body>
+                <body_background_src_attachment>false</body_background_src_attachment> <!-- @todo it doesn't work -->
+            </body>
+        </design>
         <iways_design>
             <frontend>
                 <minify_css>1</minify_css>
