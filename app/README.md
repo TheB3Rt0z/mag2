@@ -10,13 +10,13 @@
 
 At the moment, the i-ways Magento 2 Extensions Framework consist of following components:
 
-1. **a basic theme** (Iways/base) extending Magento's blank theme, which is a suitable starting extending-point for further themes;
+1. **a basic theme** ([Iways/base](design/frontend/Iways/base)) extending Magento's blank theme, which is a suitable starting extending-point for further themes;
 
-2. **three basic extensions** (Iways_Base, Iways_Design and Iways_Mobile) which are supposed to be used in conjunction with above template, in order to achieve an optimal frontend templating substrate;
+2. **three basic extensions** ([Iways_Base](code/Iways/Base), [Iways_Design](code/Iways/Design) and [Iways_Mobile](code/Iways/Mobile)) which are supposed to be used in conjunction with above template, in order to achieve an optimal frontend templating substrate;
 
-3. **additional aimed extensions** (actually Iways_CategoryTree, Iways_OpeningHours and Iways_SocialLinks) for multi-project purpouses.
+3. **additional aimed extensions** (actually [Iways_CategoryTree](code/Iways/CategoryTree), [Iways_OpeningHours](code/Iways/OpeningHours) and [Iways_SocialLinks](code/Iways/SocialLinks)) for multi-project purpouses.
 
-N.B.: at present date there is another extension in embrional stage, Iways_GoogleFonts, which actually could become Iways_Googlefonts (see further, modules naming conventions), in order to assist basic extensions at point 2 above on the frontend.
+N.B.: at present date there is another extension in embrional stage, [Iways_GoogleFonts](code/Iways/GoogleFonts), which actually could become Iways_Googlefonts (see further, modules naming conventions), in order to assist basic extensions at point 2 above on the frontend.
 
 <a name="conventions"></a>
 
@@ -27,10 +27,11 @@ N.B.: at present date there is another extension in embrional stage, Iways_Googl
 ### Keywords
 
 - **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
-- "**@todo **" phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
-- "**@example **" phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
+- **@todo** phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
+- **@example** phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
 - **extended** conventional alias for extended class, if applicable
 - **implemented** conventional alias for implemented interface class, if applicable
+- **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
 
 <a name="code-validation"></a>
@@ -40,16 +41,17 @@ N.B.: at present date there is another extension in embrional stage, Iways_Googl
 i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standard, furthermore PSR-1, PSR-2 and optionally EcgM2 (Magento 2 Extension Quality Program) standards could also be applied if needed, with some minimal modification:
 
 - codelines could eventually exceed limit of 85 characters in some cases:
-  1) if line follows format "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
-  2) if a doc block line follows format " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
-  3) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "$[VARIABLE_NAME] = $this->helper->getConfig('[CONFIG_PATH]');"
-  4) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
+  1) if line follows pattern "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
+  2) if a doc block line follows pattern " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
+  3) if any line follows pattern "todo [TODO_STRING]" for the same reason of above
+  4) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "$[VARIABLE_NAME] = $this->helper->getConfig('[CONFIG_PATH]');"
+  5) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
 
 - underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (l.g.: "_addWhetherScopeInfo()", "_construct()", "_isAllowed()", "_getElementHtml(AbstractElement $element)", "_getUploadDir()", "_prepareLayout()") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
 
-- usage of forbidden function (l.g.: "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (e.g.: "echo"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in DeveloperToolbox module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
+- usage of forbidden function (l.g.: "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (e.g.: "echo"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
 
-N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by DeveloperToolBox module).
+N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module).
 
 <a name="composer-json"></a>
 
@@ -100,7 +102,7 @@ Basic template identifier has 2 components, **Iways** and **base** (slash separa
 ### Module naming
 
 Basic extensions should follow pattern **Iways_[UPPERCASEFIRST_STRING]** whereas additional extensions have another element in the name, and are following pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING]**.
-The only extension with pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING]** is actually Iways_DeveloperToolBox, only for internal use.
+The only extension with pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING][UPPERCASEFIRST_STRING]** is actually [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox), only for internal use.
 
 <a name="php-doc-patterns"></a>
 
@@ -619,15 +621,17 @@ The following are functioning pattern and examples given are actually used in i-
             <field name="[LOWERCASE_IDENTIFIER]"> e.g.: "body_background_src"
                 <argument name="data"
                           xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">[MODEL_CLASS]</item> e.g.: "Iways\Design\Model\Config\Body\Background\SizeOptions"
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
                               translate="true">[FIELD_NAME]</item> e.g.: "Background image"
                         <item name="formElement"
-                              xsi:type="string">[ELEMENT_TYPE]</item> [fileUploader]
+                              xsi:type="string">[ELEMENT_TYPE]</item> [select|fileUploader]
                         <item name="componentType"
-                              xsi:type="string">[COMPONENT_TYPE]</item> [fileUploader]
+                              xsi:type="string">[COMPONENT_TYPE]</item> [select|fileUploader]
                         <item name="notice"
                               xsi:type="string"
                               translate="true">[NOTICE_STRING]</item> e.g.: "Allowed file types: png, gif, jpg, jpeg, svg."
@@ -640,6 +644,10 @@ The following are functioning pattern and examples given are actually used in i-
                             <item name="url"
                                   xsi:type="string">theme/design_config_fileUploader/save</item>
                         </item>
+                        <item name="additionalClasses"
+                              xsi:type="string">[LOWERCASE_CLASS(ES)]</item> e.g.: "iways-width-height"
+                        <item name="elementTmpl"
+                              xsi:type="string">[ELEMENT_TEMPLATE]</item> e.g.: "Iways_Design/form/element/select"
                     </item>
                 </argument>
             </field>

@@ -57,10 +57,11 @@ class Documentation extends extended
         ReadFactory $readFactory,
         array $data = []
     ) {
+        $this->urlBuilder = $context->getUrlBuilder();
+
         $data['dev'] = $http->getParam('dev');
 
-        // developers documentation only in english
-        $data['locale'] = !$data['dev'] ? $helper->getLocale() : false;
+        $data['locale'] = !$data['dev'] ? $helper->getLocale() : false; // developers documentation only in english
 
         if ($http->getParam('theme')) {
             $data['theme'] = $http->getParam('theme');
@@ -88,8 +89,37 @@ class Documentation extends extended
 
         $fileReader = $readFactory->create($this->filePath, DriverPool::FILE);
 
-        $data['contents'] = $fileReader->readAll();
+        $this->contents = $fileReader->readAll();
+
+        $this->convertLinks('design/frontend', 'theme');
+
+        $this->convertLinks('code', 'module');
+
+        $data['contents'] = $this->contents;
 
         parent::__construct($context, $data);
+    }
+
+    public function convertLinks($path, $type) {
+
+        $offSet = 0;
+        $data = [];
+        while (preg_match('/' . addcslashes($path, '/') . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/', $this->contents, $matches, PREG_OFFSET_CAPTURE, $offSet)) {
+            $data[] = $matches[$type][0];
+            $offSet = $matches[$type][1];
+        }
+        foreach (array_unique($data) as $item) {
+            $this->contents = str_replace(
+                $path . "/Iways/" . $item,
+                $this->urlBuilder->getUrl(
+                    'iways_base/documentation/index',
+                    [
+                        $type => $item,
+                        'dev' => 1,
+                    ]
+                ),
+                $this->contents
+            );
+        }
     }
 }

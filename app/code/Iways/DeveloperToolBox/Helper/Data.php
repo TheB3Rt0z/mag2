@@ -29,17 +29,4 @@ use Iways\Base\Helper\Data as extended;
  */
 class Data extends extended
 {
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
-     *
-     * @todo check and update observer for a better (isAdminLogged) method..
-     */
-    public function wasAdminLogged()
-    {
-        return isset($_SESSION['admin'][0]);
-    }
 }

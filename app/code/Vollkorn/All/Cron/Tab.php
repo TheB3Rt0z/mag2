@@ -14,10 +14,21 @@
 
 namespace Vollkorn\All\Cron;
 
-class Tab {
-
-    public function execute() {
-
-        //
+/**
+ * Ⓒ Lord Vollkorn
+ *
+ * PHP Version 5
+ *
+ * @category Class
+ * @package  Vollkorn_All
+ * @author   Bertozzi Matteo <web.bio.informatics@gmail.com>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://github.com/TheB3Rt0z
+ */
+class Tab
+{
+    public function execute()
+    {
+        // @todo exsample for cron job
     }
 }

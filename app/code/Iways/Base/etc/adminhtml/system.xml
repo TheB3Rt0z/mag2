@@ -5,7 +5,7 @@
         <tab id="iways"
              class="iways"
              translate="label"
-             sortOrder="000">
+             sortOrder="101">
             <label>i-ways</label>
         </tab>
         <section id="iways_base"

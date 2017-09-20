@@ -99,4 +99,18 @@ class Data extends extended
 
         return $data;
     }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return boolean
+     *
+     * @todo check and update observer for a better (isAdminLogged) method..
+     */
+    public function wasAdminLogged()
+    {
+        return isset($_SESSION['admin'][0]);
+    }
 }

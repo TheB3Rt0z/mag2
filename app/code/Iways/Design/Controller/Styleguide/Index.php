@@ -62,10 +62,10 @@ class Index extends extended
      */
     public function execute()
     {
-        if (!$this->helper->wasAdminLogged()) {
+        /*if (!$this->helper->wasAdminLogged()) {
             $this->_redirect('admin');
-        }
-
+        }*/
+// @todo please fix this crap
         return $this->resultPageFactory->create();
     }
 }
