@@ -34,10 +34,20 @@ class InstallSchema implements implemented
 {
     const COMPONENT_TABLE = 'iways_developertoolbox_component';
 
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $schemaSetupInterface   Magento\Framework\Setup\SchemaSetupInterface
+     * @param object $moduleContextInterface Magento\Framework\Setup\ModuleContextInterface
+     *
+     * @return void
+     */
     public function install(
         SchemaSetupInterface $schemaSetupInterface,
-        ModuleContextInterface $moduleContextInterface)
-    {
+        ModuleContextInterface $moduleContextInterface
+    ) {
         $this->schemaSetupInterface = $schemaSetupInterface;
 
         $this->schemaSetupInterface->startSetup();

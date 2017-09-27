@@ -45,23 +45,23 @@ class Data extends extended
      * PHP Version 5
      *
      * @param object $context               Magento\Framework\App\Helper\Context
+     * @param object $registry              Magento\Framework\Registry
      * @param object $resolver              Magento\Framework\Locale\Resolver
      * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
      * @param object $categoryRepository    Magento\Catalog\Model\CategoryRepository
-     * @param object $registry              Magento\Framework\Registry
      */
     public function __construct(
         Context $context,
+        Registry $registry,
         Resolver $resolver,
         StoreManagerInterface $storeManagerInterface,
-        CategoryRepository $categoryRepository,
-        Registry $registry
+        CategoryRepository $categoryRepository
     ) {
+        $this->registry = $registry;
         $this->storeManagerInterface = $storeManagerInterface;
         $this->categoryRepository = $categoryRepository;
-        $this->registry = $registry;
 
-        parent::__construct($context, $resolver);
+        parent::__construct($context, $registry, $resolver);
     }
 
     /**

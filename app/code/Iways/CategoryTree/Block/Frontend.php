@@ -34,6 +34,8 @@ class Frontend extends extended
 {
     protected $blockTitle;
     protected $customRoot;
+    protected $showEmpty;
+    protected $treeDepth;
     protected $treeRoot;
 
     /**

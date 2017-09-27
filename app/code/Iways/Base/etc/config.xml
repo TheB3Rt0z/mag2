@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <iways_base>
+            <catalog_category>
+                <show_title_on_toolbar>0</show_title_on_toolbar>
+                <show_field_limiter>0</show_field_limiter>
+                <show_position_in_sorting_options>0</show_position_in_sorting_options>
+                <use_compact_sorter>1</use_compact_sorter>
+            </catalog_category>
+        </iways_base>
+    </default>
+</config>

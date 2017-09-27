@@ -56,8 +56,8 @@
                    showInStore="1">
                 <label>Social networks</label>
                 <field id="active_links"
-                       translate="label comment"
-                       type="text"
+                       translate="label"
+                       type="multiselect"
                        sortOrder="100"
                        showInDefault="1"
                        showInWebsite="1"

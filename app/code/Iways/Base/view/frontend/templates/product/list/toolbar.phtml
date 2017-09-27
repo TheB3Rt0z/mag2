@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Ⓒ i-ways sales solutions GmbH
+ *
+ * PHP Version 5
+ *
+ * @category File
+ * @package  Iways_Base
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
+ * @link     https://www.i-ways.net
+ */
+
+$helper = $this->helper('Iways\Base\Helper\Data');
+
+if ($block->getCollection()->getSize()) {
+    ?>
+    <div class="toolbar toolbar-products"
+         data-mage-init='<?php echo $block->getWidgetOptionsJson() ?>'>
+        <?php
+        if ($helper->getConfig('iways_base/catalog_category/show_title_on_toolbar')) {
+            ?>
+            <h1>
+                <?php
+                $pageTitleBlock = $block->getLayout()->getBlock('page.main.title');
+                echo $pageTitleBlock->getPageTitle();
+                ?>
+            </h1>
+            <?php
+        }
+        ?>
+
+        <?php
+        if ($block->isExpanded()) {
+            $template = 'Magento_Catalog::product/list/toolbar/viewmode.phtml';
+            echo $block->setTemplate($template)->toHtml();
+        }
+
+        $template = 'Magento_Catalog::product/list/toolbar/amount.phtml';
+        echo $block->setTemplate($template)->toHtml();
+
+        echo $block->getPagerHtml();
+
+        if ($helper->getConfig('iways_base/catalog_category/show_field_limiter')) {
+            $template = 'Magento_Catalog::product/list/toolbar/limiter.phtml';
+            echo $block->setTemplate($template)->toHtml();
+        }
+
+        if ($block->isExpanded()) {
+            $template = ($helper->getConfig('iways_base/catalog_category/use_compact_sorter')
+                        ? 'Iways_Base'
+                        : 'Magento_Catalog') . '::product/list/toolbar/sorter.phtml';
+            echo $block->setTemplate($template)->toHtml();
+        }
+        ?>
+    </div>
+    <?php
+}

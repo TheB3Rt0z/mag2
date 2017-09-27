@@ -1206,8 +1206,10 @@ function validateWCAG2Parms(parms) {
 // Node: Export function
 if (typeof module !== "undefined" && module.exports) {
     module.exports = tinycolor;
-} else if (typeof define === 'function' && define.amd) { // AMD/requirejs: Define the module
-    define(function () {return tinycolor;});
+/*} else if (typeof define === 'function' && define.amd) { // AMD/requirejs: Define the module
+    define(function () {
+        return tinycolor;
+    });*/
 } else { // Browser: Expose to window
     window.tinycolor = tinycolor;
 }

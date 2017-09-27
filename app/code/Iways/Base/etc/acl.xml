@@ -6,7 +6,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Iways_Base::menu"
                           title="i-ways"
-                          sortOrder="000" />
+                          sortOrder="10" />
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">

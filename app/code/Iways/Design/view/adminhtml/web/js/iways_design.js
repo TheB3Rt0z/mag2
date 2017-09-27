@@ -1,8 +1,8 @@
 var delay = 125;
 
-$(document).on('change keyup', '.iways-color input', function (e) {
+jQuery(document).on('change keyup', '.iways-color input', function (e) {
     
-    var val = $(this).val();
+    var val = jQuery(this).val();
     
     if (val.length >= 3) {
     
@@ -12,24 +12,24 @@ $(document).on('change keyup', '.iways-color input', function (e) {
             
             var colorHex = color.toHexString();
             
-            $(this).val(colorHex)
+            jQuery(this).val(colorHex)
             
-            $(this).css('color', color.isLight() ? 'black' : 'white')
+            jQuery(this).css('color', color.isLight() ? 'black' : 'white')
                    .css('background-color', colorHex);
         } else {
-            $(this).css('color', 'initial')
+            jQuery(this).css('color', 'initial')
                    .css('background-color', 'initial');
         }
     }
 });
 
-$(document).on('change', '.iways-width-height select', function (e) {
+jQuery(document).on('change', '.iways-width-height select', function (e) {
     
-    var val = $(this).val(),
-        customFieldsContainer = $(this).siblings('.iways-custom-fields'),
+    var val = jQuery(this).val(),
+        customFieldsContainer = jQuery(this).siblings('.iways-custom-fields'),
         customFields = customFieldsContainer.children('input, select'),
-        hiddenField = $('input[name=' + $(this).attr('name') + '_custom]');
-    
+        hiddenField = jQuery('input[name=' + jQuery(this).attr('name') + '_custom]');
+
     function customFieldsResult() {
         
         return customFields.eq(0).val() + ";" + customFields.eq(1).val() + ";"
@@ -40,9 +40,36 @@ $(document).on('change', '.iways-width-height select', function (e) {
         customFieldsContainer.show(delay);
         hiddenField.val(customFieldsResult());
         customFields.on('change keyup', function (e) {
+            if (jQuery(this).val() == 'auto') {
+                jQuery(this).prev().val(0).hide(delay);
+            } else {
+                jQuery(this).prev().show(delay);
+            }
             hiddenField.val(customFieldsResult()).trigger('change');
         });
     } else {
         customFieldsContainer.hide(delay);
     }
 });
+
+function checkCustomFields(val, input, e) {
+    
+    jQuery(document).ready(function() {
+
+        if (val == 1) {
+
+            var control = jQuery('[name=' + input + ']'),
+                value = jQuery('[name=' + input + '_custom]').val(),
+                values = value.split(';'),
+                container = jQuery(e);
+            
+            container.children('input, select').each(function(index) {
+                jQuery(this).val(values[index]);
+            });
+            
+            control.trigger('change').siblings('.iways-custom-fields').children('select').trigger('change');
+            
+            container.show(delay);
+        }
+    });
+}

@@ -108,15 +108,36 @@ class Design implements implemented
                         ';',
                         $backgroundSrcSizeCustom
                     );
-                    $backgroundSrcSize = $backgroundSrcSizeCustomArray[0]
-                                       . $backgroundSrcSizeCustomArray[1] . " "
-                                       . $backgroundSrcSizeCustomArray[2]
-                                       . $backgroundSrcSizeCustomArray[3];
+                    $backgroundSrcSize = ($backgroundSrcSizeCustomArray[0] ?: '')
+                                       . ($backgroundSrcSizeCustomArray[1] ?: '')
+                                       . " "
+                                       . ($backgroundSrcSizeCustomArray[2] ?: '')
+                                       . ($backgroundSrcSizeCustomArray[3] ?: '');
                 }
 
                 $data .= 'html body {' . self::EOL
                        . '    background-size: ' . $backgroundSrcSize
                                                  . ';' . self::EOL
+                       . '}' . self::EOL;
+            }
+
+            if ($backgroundSrcPos = $this->helper->getConfig('design/body/background_src_position')) {
+                if ($backgroundSrcPos == 1) { // identifies custom option in select
+                    $backgroundSrcPosCustom = $this->helper->getConfig('design/body/background_src_position_custom');
+                    $backgroundSrcPosCustomArray = explode(
+                        ';',
+                        $backgroundSrcPosCustom
+                    );
+                    $backgroundSrcPos = ($backgroundSrcPosCustomArray[0] ?: '')
+                                      . ($backgroundSrcPosCustomArray[1] ?: '')
+                                      . " "
+                                      . ($backgroundSrcPosCustomArray[2] ?: '')
+                                      . ($backgroundSrcPosCustomArray[3] ?: '');
+                }
+
+                $data .= 'html body {' . self::EOL
+                       . '    background-position: ' . $backgroundSrcPosition
+                                                     . ';' . self::EOL
                        . '}' . self::EOL;
             }
 

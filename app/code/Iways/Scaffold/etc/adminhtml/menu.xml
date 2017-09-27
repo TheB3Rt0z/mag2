@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_Scaffold::menu_configuration_scaffold"
+             resource="Iways_Scaffold::menu_configuration_scaffold"
+             title="Scaffold Module"
+             parent="Iways_Base::menu_configuration"
+             sortOrder="711"
+             module="Iways_Scaffold"
+             action="adminhtml/system_config/edit/section/iways_scaffold" />
+        <add id="Iways_Scaffold::menu_documentation_scaffold"
+             resource="Iways_Scaffold::menu_documentation_scaffold"
+             title="Scaffold Module" 
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_Scaffold"
+             action="iways_base/documentation/index/module/Scaffold" />
+    </menu>
+</config>

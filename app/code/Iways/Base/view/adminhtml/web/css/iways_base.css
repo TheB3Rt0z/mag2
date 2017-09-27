@@ -127,6 +127,7 @@
 .iways-documentation pre {
     border: solid 1px #ddd;
     border-radius: 4px;
+    line-height: .9em;
     padding: 8px;
 }
 

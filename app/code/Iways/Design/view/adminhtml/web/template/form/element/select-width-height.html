@@ -13,12 +13,18 @@
     optionsText: 'label'"
 />
 
-<span class="iways-custom-fields">
+<span class="iways-custom-fields" data-bind="
+    attr: {
+        rel: uid,
+        afterRender: checkCustomFields(value._latestValue, inputName, $element)
+    }"
+>
     <span>Width:</span>
     <input type="number" value="0" />
     <select>
         <option value="px">px</option>
         <option value="%">%</option>
+        <option value="auto">auto</option>
     </select>
     /
     <span>Height:</span>
@@ -26,5 +32,6 @@
     <select>
         <option value="px">px</option>
         <option value="%">%</option>
+        <option value="auto">auto</option>
     </select>
 </span>

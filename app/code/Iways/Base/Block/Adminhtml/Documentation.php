@@ -100,11 +100,27 @@ class Documentation extends extended
         parent::__construct($context, $data);
     }
 
-    public function convertLinks($path, $type) {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param string $path [design/frontend|code]
+     * @param string $type [theme|module]
+     *
+     * @return void
+     */
+    public function convertLinks($path, $type)
+    {
         $offSet = 0;
         $data = [];
-        while (preg_match('/' . addcslashes($path, '/') . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/', $this->contents, $matches, PREG_OFFSET_CAPTURE, $offSet)) {
+        while (preg_match(
+            '/' . addcslashes($path, '/') . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/',
+            $this->contents,
+            $matches,
+            PREG_OFFSET_CAPTURE,
+            $offSet
+        )) {
             $data[] = $matches[$type][0];
             $offSet = $matches[$type][1];
         }

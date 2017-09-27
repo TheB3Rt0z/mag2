@@ -1,4 +1,4 @@
-**[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
+**[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Components dependencies](#components-dependencies) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
 
 **[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
 
@@ -29,8 +29,10 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
 - **@todo** phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
 - **@example** phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
+- **@deprecated** phpDocumentor prefix to code comment, as marker for i-ways framework on something which should be discussed ans/or removed
 - **extended** conventional alias for extended class, if applicable
 - **implemented** conventional alias for implemented interface class, if applicable
+- **model** conventional alias for required model class, usually sharing same unqualified class name
 - **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
 
@@ -44,12 +46,13 @@ i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standar
   1) if line follows pattern "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
   2) if a doc block line follows pattern " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
   3) if any line follows pattern "todo [TODO_STRING]" for the same reason of above
-  4) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "$[VARIABLE_NAME] = $this->helper->getConfig('[CONFIG_PATH]');"
+  4) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "helper->getConfig('[CONFIG_PATH]');"
   5) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
+  6) if a block calls a template inline, following pattern "$block->getTemplateFile('[TEMPLATE_FULLPATH]')", in order to allow fully qualified Magento 2 template-paths to be read anyway, e.g.: "Magento_Catalog::product/list/toolbar/viewmode.phtml"
 
 - underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (l.g.: "_addWhetherScopeInfo()", "_construct()", "_isAllowed()", "_getElementHtml(AbstractElement $element)", "_getUploadDir()", "_prepareLayout()") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
 
-- usage of forbidden function (l.g.: "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (e.g.: "echo"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
+- usage of forbidden function (l.g.: "addcslashes", "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (l.g.: "echo", "include"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
 
 N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module).
 
@@ -89,6 +92,30 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
         }
     }
 }
+```
+
+<a name="components-dependencies"></a>
+
+### Components dependencies
+
+```
+                 ┌─────────────────────────────┐   ┌─────────────────────┐
+                 │iways/module-developertoolbox│ + │iways/module-scaffold│
+                 └──────────────┬──────────────┘   └─────────────────────┘
+                                │
+                                ▼
+┌──────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
+│magento/framework │ ◄─┤iways/module-base│ ◄─┤iways/theme-base├─► │magento/theme-frontend-blank│
+│+ erusev/parsedown│   └─────────────────┘   └────────────────┘   └────────────────────────────┘
+└──────────────────┘         ▲     ▲
+                             │     │ ┌───────────────────┐   ┌───────────────────┐
+                             │     └─┤iways/design-module│ ◄─┤iways/module-mobile│
+                             │       └───────────────────┘   └───────────────────┘
+                             │
+             ┌───────────────┴──────────┬──────────────────────────┬──────────────────────────┐
+┌────────────┴────────────┐┌────────────┴────────────┐┌────────────┴────────────┐┌────────────┴───────────┐
+│iways/module-categorytree││iways/module-cgooglefonts││iways/module-openinghours││iways/module-sociallinks│  
+└─────────────────────────┘└─────────────────────────┘└─────────────────────────┘└────────────────────────┘
 ```
 
 <a name="theme-naming"></a>
@@ -303,6 +330,8 @@ The following are functioning pattern and examples given are actually used in i-
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="[DEFAULT_CLASS]" e.g.: "Magento\Catalog\Model\Config"
+                type="[OVERWRITE_CLASS]" /> e.g.: "Iways\Base\Model\Catalog\Config"
     <type name="[OBJECT_CLASS]"> e.g.: "Magento\Theme\Model\Design\Config\MetadataProvider"
         <arguments>
             <argument name="metadata"

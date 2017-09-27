@@ -60,12 +60,12 @@ class Index extends extended
      *
      * @return Magento\Framework\View\Result\Page\Interceptor
      */
-    public function execute()
+    public function execute() // @todo please fix this crap
     {
         /*if (!$this->helper->wasAdminLogged()) {
             $this->_redirect('admin');
         }*/
-// @todo please fix this crap
+
         return $this->resultPageFactory->create();
     }
 }

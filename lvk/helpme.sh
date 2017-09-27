@@ -13,9 +13,12 @@ rm -R var/view_preprocessed 2> /dev/null;
 rm -R var/di 2> /dev/null;
 mkdir var/di;
 
-while getopts "bcdghlrstu" opt
+while getopts "abcdghlrstu" opt
 do
     case $opt in
+        # analyze with custom tool
+        a ) $PHP_PATH helpme.phar -p app/code/Iways
+        ;;
         # full backend deploy
         b ) #rm -R pub/static/_requirejs 2> /dev/null
             rm -R pub/static/adminhtml 2> /dev/null
@@ -35,6 +38,7 @@ do
         ;;
         #
         h ) printf "b) full backend deploy
+a) analyze with custom tool        
 b) full backend deploy
 c) compilation
 d) base frontend deploy
@@ -50,7 +54,9 @@ u) magento setup upgrade"
         l ) $PHP_PATH bin/magento cache:clean layout
         ;;
         # reindex all indexes   
-        r ) $PHP_PATH bin/magento indexer:reindex
+        r ) $PHP_PATH bin/magento indexer:info
+            $PHP_PATH bin/magento indexer:status
+            $PHP_PATH bin/magento indexer:reindex
         ;;
         # scan i-ways app directory with phpcs
         s ) $PHP_PATH vendor/bin/phpcs -h

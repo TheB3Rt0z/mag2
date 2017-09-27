@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="2columns-left">
+    <body>
+        <referenceBlock name="product_list_toolbar">
+            <action method="setTemplate"
+                    ifconfig="iways_base/catalog_category/show_title_on_toolbar">
+                <argument name="template"
+                          xsi:type="string">Iways_Base::product/list/toolbar.phtml</argument>
+            </action>
+            <action method="setTemplate"
+                    ifconfig="iways_base/catalog_category/use_compact_sorter">
+                <argument name="template"
+                          xsi:type="string">Iways_Base::product/list/toolbar.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
