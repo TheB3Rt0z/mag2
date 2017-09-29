@@ -27,6 +27,12 @@ function analyzePath($path) {
 
     $file = file($path);
 
+    foreach ($file as $key => $value) {
+        if (preg_match('/(?:\A|[^\p{L}]+)todo([^\p{L}]+(.*)|\Z)/ui', $value, $matches) !== 0) {
+            $data['todos'][] = "found todo on line " . $key . ": " . trim($matches[1]);
+        }
+    }
+
     if (substr(end($file), -1) != "\n") {
         $data['warnings'][] = "no newline at the end of the file";
     }
@@ -67,26 +73,38 @@ function scanPath($path) {
 
 function showPath($data, $deep = 0) {
 
-    $color = (isset($data['analysis'])
-             ? (isset($data['analysis']['warnings'])
-               ? "\033[33m"
-               : "\033[32m")
-             : '');
+    if ((!defined('SUPPRESS_BLACKS') || isset($data['analysis']) || isset($data['children']))
+        && !(defined('SUPPRESS_GREENS') && empty($data['analysis']) && !isset($data['children']))
+        && !(defined('SUPPRESS_DIRS') && isset($data['children']))) {
 
-    echo str_repeat("- ", $deep) . $color . $data['filename'] . "\033[0m";
+        $color = (isset($data['analysis'])
+                 ? (isset($data['analysis']['errors'])
+                   ? "\033[31m"
+                   : (isset($data['analysis']['warnings'])
+                     ? "\033[33m"
+                     : (isset($data['analysis']['todos'])
+                       ? "\033[36m"
+                       : "\033[32m")))
+                 : '');
 
-    if (!empty($data['analysis'])) {
-        echo " => (";
-        if (isset($data['analysis']['errors'])) {
-            echo count($data['analysis']['errors']) . " error(s): " . implode($data['analysis']['errors'], ", ");
+        echo str_repeat("- ", $deep) . $color . $data['filename'] . "\033[0m";
+
+        if (!empty($data['analysis'])) {
+            echo " => (";
+            if (isset($data['analysis']['errors'])) {
+                echo count($data['analysis']['errors']) . " error(s): " . implode($data['analysis']['errors'], ", ");
+            }
+            if (isset($data['analysis']['warnings'])) {
+                echo count($data['analysis']['warnings']) . " warning(s): " . implode($data['analysis']['warnings'], ", ");
+            }
+            if (isset($data['analysis']['todos'])) {
+                echo count($data['analysis']['todos']) . " todo(s): " . implode($data['analysis']['todos'], ", ");
+            }
+            echo ")";
         }
-        if (isset($data['analysis']['warnings'])) {
-            echo count($data['analysis']['warnings']) . " warning(s): " . implode($data['analysis']['warnings'], ", ");
-        }
-        echo ")";
+
+        echo PHP_EOL;
     }
-
-    echo PHP_EOL;
 
     if (isset($data['children'])) {
         foreach ($data['children'] as $file) {
@@ -101,13 +119,25 @@ foreach ($argv as $_key => $_value) {
             echo PHP_EOL
                . "Magento 2 Lord Vollkorn Helper" . PHP_EOL
                . "------------------------------" . PHP_EOL
-               . "-h) shows this help-text" . PHP_EOL
-               . "-p) relative path to file/directory to scan". PHP_EOL
+               . "-h)  shows this help-text" . PHP_EOL
+               . "-p)  relative path to file/directory to scan". PHP_EOL
+               . "-s)  suppress not analyzed paths/files". PHP_EOL
+               . "-ss) suppress not marked files". PHP_EOL
                . PHP_EOL;
             break;
         }
         case '-p' : {
             $relativePath = trim($argv[$_key + 1]);
+            break;
+        }
+        case '-sss' : {
+            define('SUPPRESS_DIRS', true);
+        }
+        case '-ss' : {
+            define('SUPPRESS_GREENS', true);
+        }
+        case '-s' : {
+            define('SUPPRESS_BLACKS', true);
             break;
         }
     }

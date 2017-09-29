@@ -1,6 +1,6 @@
 **[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Components dependencies](#components-dependencies) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
 
-**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
+**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Cache declaration](#cache-declaration) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
 
 **[Development guidelines](#development-guidelines)** | [Theme(s) structure](#themes-structure) | [Modules structure](#modules-structure) | [Nice to have](#nice-to-have)
 
@@ -112,10 +112,10 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
                              │     └─┤iways/design-module│ ◄─┤iways/module-mobile│
                              │       └───────────────────┘   └───────────────────┘
                              │
-             ┌───────────────┴──────────┬──────────────────────────┬──────────────────────────┐
-┌────────────┴────────────┐┌────────────┴────────────┐┌────────────┴────────────┐┌────────────┴───────────┐
-│iways/module-categorytree││iways/module-cgooglefonts││iways/module-openinghours││iways/module-sociallinks│  
-└─────────────────────────┘└─────────────────────────┘└─────────────────────────┘└────────────────────────┘
+             ┌───────────────┴──────────┬─────────────────────────┬──────────────────────────┐
+┌────────────┴────────────┐┌────────────┴───────────┐┌────────────┴────────────┐┌────────────┴───────────┐
+│iways/module-categorytree││iways/module-googlefonts││iways/module-openinghours││iways/module-sociallinks│  
+└─────────────────────────┘└────────────────────────┘└─────────────────────────┘└────────────────────────┘
 ```
 
 <a name="theme-naming"></a>
@@ -240,6 +240,7 @@ The following are functioning pattern and examples given are actually used in i-
                    as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation"
                    template="[MODULE_IDENTIFIER]::[TEMPLATE_PATH]" e.g.: "Iways_Base", "documentation.phtml"
                    [POSITION_TAG] e.g.: before/after="-", before/after="[BLOCK_NAME]"
+                   cacheable="[BOOLEAN_LITERAL]" [true|false], default is true (true if not given)
                    ifconfig="[CONFIG_PATH]" /> e.g.: "design/sidebar/sidebar_title_main"
         </referenceContainer>
     </body>
@@ -299,6 +300,24 @@ The following are functioning pattern and examples given are actually used in i-
             </resource>
         </resources>
     </acl>
+</config>
+```
+
+<a name="cache-declaration"></a>
+
+### Cache declaration
+```
+<!-- etc/cache.xml -->
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="[LOWERCASE_IDENTIFIER]" e.g.: "iways_performance_model_cache_type_layerednavigation"
+          translate="label, description"
+          instance="[MODEL_CLASS]"> e.g.: "Iways\Performance\Model\Cache\Type\LayeredNavigation"
+        <label>[LABEL_STRING]</label> e.g.: "Layered Navigation Block Cache"
+        <description>[DESCRIPTION_STRING]</description> e.g.: "Layered Navigation Block Cache"
+    </type>
 </config>
 ```
 

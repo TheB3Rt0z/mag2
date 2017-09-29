@@ -17,7 +17,8 @@ while getopts "abcdghlrstu" opt
 do
     case $opt in
         # analyze with custom tool
-        a ) $PHP_PATH helpme.phar -p app/code/Iways
+        a ) /usr/bin/osascript -e 'tell application "System Events" to tell process "Terminal" to keystroke "k" using command down'
+            $PHP_PATH helpme.phar -h -ss -p app/code/Iways
         ;;
         # full backend deploy
         b ) #rm -R pub/static/_requirejs 2> /dev/null

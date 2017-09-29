@@ -144,6 +144,8 @@ class Status extends extended // @todo: to be refactored
      * PHP Version 5
      *
      * @return string
+     *
+     * @todo this should be loaded per ajax after page-loading to avoid caching issues..
      */
     public function getStatus()
     {
