@@ -169,7 +169,7 @@ class Frontend extends extended
      *
      * @return string
      */
-    public function toHtml() // @todo: to be removed
+    public function toHtml() // @todo to be removed
     {
         $list = $this->getCategoryHtml($this->getRootCategory(), $this->treeDepth);
 

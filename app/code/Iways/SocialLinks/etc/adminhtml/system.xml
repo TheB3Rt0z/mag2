@@ -36,7 +36,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Link aspect</label>
-                    <source_model>Iways\SocialLinks\Model\Config\Source\Aspects</source_model>
+                    <source_model>Iways\SocialLinks\Model\Config\Source\AspectOptions</source_model>
                 </field>
                 <field id="block_title"
                        translate="label"
@@ -63,7 +63,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Active links</label>
-                    <source_model>Iways\SocialLinks\Model\Config\Source\Networks</source_model>
+                    <source_model>Iways\SocialLinks\Model\Config\Source\NetworkOptions</source_model>
                 </field>
                 <field id="facebook_url"
                        translate="label comment"

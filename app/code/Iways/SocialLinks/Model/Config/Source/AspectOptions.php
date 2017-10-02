@@ -6,13 +6,13 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_DeveloperToolBox
+ * @package  Iways_SocialLinks
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\DeveloperToolBox\Model\Config\Source;
+namespace Iways\SocialLinks\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
 
@@ -22,12 +22,12 @@ use Iways\Base\Model\Config\Source as extended;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_DeveloperToolBox
+ * @package  Iways_SocialLinks
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Scopes extends extended
+class AspectOptionss extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -39,8 +39,8 @@ class Scopes extends extended
     public function toArray()
     {
         return [
-            'code/Iways' => __("i-ways components only"),
-            'code' => __("all components"),
+            'icons' => __("FA-icons"),
+            'labels' => __("Text-labels"),
         ];
     }
 }

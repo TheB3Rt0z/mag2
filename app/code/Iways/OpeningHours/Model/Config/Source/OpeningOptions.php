@@ -6,16 +6,15 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_CategoryTree
+ * @package  Iways_Openinghours
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\CategoryTree\Model\Config\Source;
+namespace Iways\OpeningHours\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
-use Iways\CategoryTree\Helper\Data as helper;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -23,12 +22,12 @@ use Iways\CategoryTree\Helper\Data as helper;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_CategoryTree
+ * @package  Iways_Openinghours
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Root extends extended
+class OpeningOptions extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -40,12 +39,10 @@ class Root extends extended
     public function toArray()
     {
         return [
-            helper::ROOT_USE_STORE_ROOT => __("use store root"),
-            helper::ROOT_USE_CURRENT_CATEGORY => __("use current category")
-                                               . " (" . __("if available") . ")",
-            helper::ROOT_USE_PRODUCT_CATEGORY => __("use current product's category")
-                                               . " (" . __("if available") . ")",
-            helper::ROOT_USE_CUSTOM_CATEGORY => __("custom category"),
+            __("Closed"),
+            __("Working hours"),
+            __("Discontinued time"),
+            __("All day open"),
         ];
     }
 }

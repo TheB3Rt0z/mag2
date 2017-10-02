@@ -26,7 +26,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Monday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="monday_single"
                        sortOrder="110"
@@ -56,7 +56,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Tuesday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="tuesday_single"
                        sortOrder="210"
@@ -86,7 +86,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Wednesday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="wednesday_single"
                        sortOrder="310"
@@ -116,7 +116,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Thursday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="thursday_single"
                        sortOrder="410"
@@ -146,7 +146,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Friday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="friday_single"
                        sortOrder="510"
@@ -176,7 +176,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Saturday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="saturday_single"
                        sortOrder="610"
@@ -206,7 +206,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Sunday</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Day</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\OpeningOptions</source_model>
                 </field>
                 <field id="sunday_single"
                        sortOrder="710"
@@ -244,7 +244,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>First day of the week</label>
-                    <source_model>Iways\OpeningHours\Model\Config\Source\Days\First</source_model>
+                    <source_model>Iways\OpeningHours\Model\Config\Source\Day\FirstOptions</source_model>
                 </field>
                 <field id="compress_table"
                        translate="label"

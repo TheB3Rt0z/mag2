@@ -28,7 +28,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Index scope</label>
-                    <source_model>Iways\DeveloperToolBox\Model\Config\Source\Scopes</source_model>
+                    <source_model>Iways\DeveloperToolBox\Model\Config\Source\ScopeOptions</source_model>
                 </field>
             </group>
         </section>

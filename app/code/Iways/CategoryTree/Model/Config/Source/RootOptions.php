@@ -16,7 +16,6 @@ namespace Iways\CategoryTree\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
 use Iways\CategoryTree\Helper\Data as helper;
-use Magento\Catalog\Helper\Category;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -29,25 +28,8 @@ use Magento\Catalog\Helper\Category;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Categories extends extended
+class RootOptions extends extended
 {
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $helper   Iways\CategoryTree\Helper\Data
-     * @param object $category Magento\Catalog\Helper\Category
-     */
-    public function __construct(
-        helper $helper,
-        Category $category
-    ) {
-        $this->helper = $helper;
-
-        $this->storeCategories = $category->getStoreCategories();
-    }
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -57,12 +39,13 @@ class Categories extends extended
      */
     public function toArray()
     {
-        $data = [];
-
-        foreach ($this->storeCategories as $category) {
-            $data[$category->getId()] = $category->getName();
-        }
-
-        return $data;
+        return [
+            helper::ROOT_USE_STORE_ROOT => __("use store root"),
+            helper::ROOT_USE_CURRENT_CATEGORY => __("use current category")
+                                               . " (" . __("if available") . ")",
+            helper::ROOT_USE_PRODUCT_CATEGORY => __("use current product's category")
+                                               . " (" . __("if available") . ")",
+            helper::ROOT_USE_CUSTOM_CATEGORY => __("custom category"),
+        ];
     }
 }

@@ -1,6 +1,6 @@
 **[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Components dependencies](#components-dependencies) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
 
-**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Cache declaration](#cache-declaration) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module backend UI component](#module-backend-ui-component)
+**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Cache declaration](#cache-declaration) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module webApi routes](#module-webapi-routes) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module frontend sections](#module-frontend-sections) | [Module backend UI component](#module-backend-ui-component)
 
 **[Development guidelines](#development-guidelines)** | [Theme(s) structure](#themes-structure) | [Modules structure](#modules-structure) | [Nice to have](#nice-to-have)
 
@@ -29,7 +29,7 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **ATM** acronym for "at the moment", indicates a state (usually in a code comment) that could change in the future
 - **@todo** phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
 - **@example** phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
-- **@deprecated** phpDocumentor prefix to code comment, as marker for i-ways framework on something which should be discussed ans/or removed
+- **@deprecated** phpDocumentor prefix to code comment, as marker for i-ways framework on something which should be discussed and/or removed
 - **extended** conventional alias for extended class, if applicable
 - **implemented** conventional alias for implemented interface class, if applicable
 - **model** conventional alias for required model class, usually sharing same unqualified class name
@@ -397,6 +397,38 @@ The following are functioning pattern and examples given are actually used in i-
 </config>
 ```
 
+<a name="module-webapi-routes"></a>
+
+### Module webApi routes (todo: to be documented better)
+```
+<!-- etc/webapi.xml -->
+
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/guest-carts/:cartId/place-reservation"
+           method="POST">
+        <service class="Iways\Reservation\Api\GuestPlaceReservationManagementInterface"
+                 method="placeReservation" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/mine/place-reservation"
+           method="POST">
+        <service class="Iways\Reservation\Api\PlaceReservationManagementInterface"
+                 method="placeReservation" />
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId"
+                       force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>
+```
+
 <a name="module-widgets-configuration"></a>
 
 ### Module widgets configuration
@@ -626,6 +658,26 @@ The following are functioning pattern and examples given are actually used in i-
                     before="Magento_Theme" />
         </route>
     </router>
+</config>
+```
+
+<a name="module-frontend-sections"></a>
+
+### Module frontend sections (todo: to be documented better)
+```
+<!-- etc/frontend/sections.xml -->
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="rest/*/V1/carts/*/place-reservation">
+        <section name="cart"/>
+        <section name="checkout-data" />
+    </action>
+    <action name="rest/*/V1/guest-carts/*/place-reservation">
+        <section name="cart"/>
+        <section name="checkout-data" />
+    </action>
 </config>
 ```
 

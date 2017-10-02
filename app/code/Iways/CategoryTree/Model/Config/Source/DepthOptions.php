@@ -30,7 +30,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Depth extends extended
+class DepthOptions extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -89,7 +89,7 @@ class Depth extends extended
      */
     public function toArray()
     {
-        $data = [999 => 'All']; // @todo: a zero (0) could be better than this..
+        $data = [999 => 'All']; // @todo a zero (0) could be better than this..
 
         $maxDepth = $this->getMaxDepth($this->helper->getRootCategory());
         for ($i = 1; $i <= $maxDepth; $i++) {

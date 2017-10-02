@@ -15,13 +15,13 @@
             <parameter name="tree_root"
                        xsi:type="select"
                        required="true"
-                       source_model="Iways\CategoryTree\Model\Config\Source\Root">
+                       source_model="Iways\CategoryTree\Model\Config\Source\RootOptions">
                 <label translate="true">Root category</label>
             </parameter>
             <parameter name="custom_root"
                        xsi:type="select"
                        required="false"
-                       source_model="Iways\CategoryTree\Model\Config\Source\Categories">
+                       source_model="Iways\CategoryTree\Model\Config\Source\CategoryOptions">
                 <label translate="true">Custom root category</label>
                 <depends>
                     <parameter name="tree_root"
@@ -31,7 +31,7 @@
             <parameter name="tree_depth"
                        xsi:type="select"
                        required="true"
-                       source_model="Iways\CategoryTree\Model\Config\Source\Depth">
+                       source_model="Iways\CategoryTree\Model\Config\Source\DepthOptions">
                 <label translate="true">Tree depth</label>
             </parameter>
             <parameter name="show_empty"

@@ -27,7 +27,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Days extends extended
+class DayOptions extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

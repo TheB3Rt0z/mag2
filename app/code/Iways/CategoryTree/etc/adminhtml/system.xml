@@ -35,7 +35,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Root category</label>
-                    <source_model>Iways\CategoryTree\Model\Config\Source\Root</source_model>
+                    <source_model>Iways\CategoryTree\Model\Config\Source\RootOptions</source_model>
                 </field>
                 <field id="custom_root"
                        translate="label"
@@ -45,7 +45,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Custom root category</label>
-                    <source_model>Iways\CategoryTree\Model\Config\Source\Categories</source_model>
+                    <source_model>Iways\CategoryTree\Model\Config\Source\CategoryOptions</source_model>
                     <depends>
                         <field id="iways_categorytree/frontend/tree_root">3</field>
                     </depends>
@@ -58,7 +58,7 @@
                        showInWebsite="1"
                        showInStore="1">
                     <label>Tree depth</label>
-                    <source_model>Iways\CategoryTree\Model\Config\Source\Depth</source_model>
+                    <source_model>Iways\CategoryTree\Model\Config\Source\DepthOptions</source_model>
                 </field>
                 <field id="show_empty"
                        translate="label"

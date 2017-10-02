@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\OpeningHours\Model\Config\Source\Days;
+namespace Iways\OpeningHours\Model\Config\Source\Day;
 
 use Iways\Base\Model\Config\Source as extended;
 
@@ -27,7 +27,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class First extends extended
+class FirstOptions extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

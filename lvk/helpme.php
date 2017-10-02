@@ -1,5 +1,12 @@
 <?php $scriptFile = array_shift($argv); //var_dump($argv);
 
+define('COLOR_GREEN', "\033[32m"); // for analyzed files
+define('COLOR_RED', "\033[31m"); // for errors
+define('COLOR_YELLOW', "\033[33m"); // for warnings
+define('COLOR_CYAN', "\033[36m"); // for todos
+define('COLOR_MAGENTA', "\033[35m"); // for components
+define('COLOR_CLOSE', "\033[0m"); // to close color statement
+
 define('FILES_FILTER', serialize([
     '.',
     '..',
@@ -21,87 +28,191 @@ define('EXTENSIONS_FILTER', serialize([
     'xml',
 ]));
 
-function analyzePath($path) {
+function path2class($path) {
 
-    $data = [];
+    return str_replace('/', '\\', str_replace(
+        [
+            MAGENTO_PATH,
+            '/app/code/',
+            '/app/design/frontend',
+            '/app/design/backend',
+            '.php'
+        ],
+        '',
+        $path
+    ));
+}
 
-    $file = file($path);
+function analyzePath($item) // single path tests
+{
+    $data = [];//var_dump($item);
 
-    foreach ($file as $key => $value) {
-        if (preg_match('/(?:\A|[^\p{L}]+)todo([^\p{L}]+(.*)|\Z)/ui', $value, $matches) !== 0) {
-            $data['todos'][] = "found todo on line " . $key . ": " . trim($matches[1]);
+    // semantic context tests
+    if (isset($item['context'])) {
+        switch ($item['context']) {
+            case 'FB' : { // frontend-block context tests
+                $class = new \ReflectionClass($item['class']); // http://php.net/manual/en/class.reflectionclass.php
+                switch ($parentClass = $class->getParentClass()->getName()) {
+                    case 'Magento\Framework\View\Element\Template' : {
+                        if (!file_exists($item['view_path'])) {
+                            $data['errors'][] = "missing correspondant template view at location " . COLOR_RED . $item['view_path'] . COLOR_CLOSE;
+                        }
+                        break;
+                    }
+                    default : {
+                        $data['warnings'][] = "check if this class " . COLOR_YELLOW . "is extending the right parent (" . $parentClass . ")" . COLOR_CLOSE;
+                    }
+                }
+                break;
+            }
+            case 'M' : { // model context tests
+                if ((strpos($item['path'], '/Model/Config/Source/') !== false)
+                && (substr($item['filename'], -11) != 'Options.php')) {
+                    $data['warnings'][] = "file name and class " . COLOR_YELLOW . "should follow pattern '[UCFIRST_STRING]Options.php'" . COLOR_CLOSE;
+                }
+                break;
+            }
+            case 'FT' : {
+                if (!file_exists($item['source_path'])) {
+                    $data['errors'][] = "missing correspondant source block at location " . COLOR_RED . $item['source_path'] . COLOR_CLOSE;
+                }
+                break;
+            }
         }
     }
 
+    $file = file($item['fullpath']);
+
+    foreach ($file as $key => $value) { // single line tests
+        if (preg_match('/(?:\A|[^\p{L}]+)todo([^\p{L}]+(.*)|\Z)/ui', $value, $matches) !== 0) { // searching for todo(s)
+            $data['todos'][] = "found todo on line " . ($key + 1) . " '" . COLOR_CYAN . str_replace([" -->"], '', trim($matches[1])) . COLOR_CLOSE . "'";
+        }
+        if (preg_match("/\t/", $value)) { // checking if any tab is present
+            $data['warnings'][] = "found " . COLOR_YELLOW . "tabs(s)" . COLOR_CLOSE . " on line " . ($key + 1);
+            if (defined('FIX_FILESYSTEM')) {
+                $file[$key] = preg_replace("/\t/", "    ", $value);
+            }
+        }
+    }
+
+    // file tests
     if (substr(end($file), -1) != "\n") {
         $data['warnings'][] = "no newline at the end of the file";
+    }
+
+    if (defined('FIX_FILESYSTEM')) {
+        file_put_contents($item['fullpath'], implode($file));
     }
 
     return $data;
 }
 
-function scanPath($path) {
-
+function scanPath($path)
+{
     $data = [];
 
     foreach (scandir($path) as $file) {
 
+        $item = [];
+
         if (!in_array($file, unserialize(FILES_FILTER))) {
 
-            $absolutePath = $path . '/' . $file;
-
-            $data[$absolutePath]['filename'] = $file;
+            $item['fullpath'] = $absolutePath = $path . '/' . $file;
+            $item['filename'] = $file;
+            $item['path'] = str_replace(BASE_PATH, '', $absolutePath);
+//var_dump($absolutePath);
+            if (file_exists($absolutePath . '/registration.php')) {
+                $item['flag_is_component_root'] = true;
+                $_SESSION['component_path'] = $absolutePath;
+            }
 
             if (is_dir($absolutePath)) {
-                $data[$absolutePath]['children'] = scanPath($absolutePath);
+                $item['children'] = scanPath($absolutePath);
+                $item['extension'] = 'Ω';
             } else {
-                $extension = end(explode(".", $file));
-                $data[$absolutePath]['extension'] = $extension;
+                @$item['extension'] = $extension = end(explode(".", $file));
+
+                if (isset($_SESSION['component_path'])) {
+                    if (strpos($absolutePath, $_SESSION['component_path'] . '/Block/Adminhtml') !== false) {
+                        $item['context'] = 'BB';
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/Block') !== false) {
+                        $item['context'] = 'FB';
+                        $item['class'] = path2class($absolutePath);
+                        $relativePath = strtolower(str_replace([$_SESSION['component_path'] . '/Block', '.php'], ['', '.phtml'], $absolutePath));
+                        $item['view_path'] = $_SESSION['component_path'] . '/view/frontend/templates' . $relativePath;
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/Model') !== false) {
+                        $item['context'] = 'M';
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/view/backend/layout') !== false) {
+                        $item['context'] = 'BL';
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/view/backend/templates') !== false) {
+                        $item['context'] = 'BT';
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/view/frontend/layout') !== false) {
+                        $item['context'] = 'FL';
+                    } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/view/frontend/templates') !== false) {
+                        $item['context'] = 'FT';
+                        $relativePath = [];
+                        foreach (explode('/', str_replace([$_SESSION['component_path'] . '/view/frontend/templates', '.phtml'], ['', '.php'], $absolutePath)) as $value) {
+                            $relativePath[] = ucfirst($value);
+                        }
+                        $item['source_path'] = $_SESSION['component_path'] . '/Block' . implode($relativePath, '/');
+                    }
+                }
+
                 if (in_array($extension, unserialize(EXTENSIONS_FILTER))) {
-                    $data[$absolutePath]['analysis'] = analyzePath($absolutePath);
+                    $item['analysis'] = analyzePath($item);
                 }
             }
+
+            $data[$absolutePath] = $item;
         }
     }
 
     uasort($data, function($first, $second) {
-		return strcasecmp($first['filename'], $second['filename']);
+		return strcasecmp($first['extension'] . $first['filename'],
+		                  $second['extension'] . $second['filename']);
 	});
 
     return $data;
 }
 
-function showPath($data, $deep = 0) {
-
+function showPath($data, $deep = 0)
+{
     if ((!defined('SUPPRESS_BLACKS') || isset($data['analysis']) || isset($data['children']))
         && !(defined('SUPPRESS_GREENS') && empty($data['analysis']) && !isset($data['children']))
         && !(defined('SUPPRESS_DIRS') && isset($data['children']))) {
 
         $color = (isset($data['analysis'])
                  ? (isset($data['analysis']['errors'])
-                   ? "\033[31m"
+                   ? COLOR_RED
                    : (isset($data['analysis']['warnings'])
-                     ? "\033[33m"
+                     ? COLOR_YELLOW
                      : (isset($data['analysis']['todos'])
-                       ? "\033[36m"
-                       : "\033[32m")))
-                 : '');
+                       ? COLOR_CYAN
+                       : COLOR_GREEN)))
+                 : (isset($data['flag_is_component_root'])
+                   ? COLOR_MAGENTA
+                   : ''));
 
-        echo str_repeat("- ", $deep) . $color . $data['filename'] . "\033[0m";
+        echo str_repeat("- ", $deep) . $color . $data['filename'] . COLOR_CLOSE;
 
         if (!empty($data['analysis'])) {
-            echo " => (";
+            echo " =>";
             if (isset($data['analysis']['errors'])) {
-                echo count($data['analysis']['errors']) . " error(s): " . implode($data['analysis']['errors'], ", ");
+                echo " " . count($data['analysis']['errors']) . " error(s): " . implode($data['analysis']['errors'], ", ");
             }
             if (isset($data['analysis']['warnings'])) {
-                echo count($data['analysis']['warnings']) . " warning(s): " . implode($data['analysis']['warnings'], ", ");
+                echo " " . count($data['analysis']['warnings']) . " warning(s): " . implode($data['analysis']['warnings'], ", ");
             }
             if (isset($data['analysis']['todos'])) {
-                echo count($data['analysis']['todos']) . " todo(s): " . implode($data['analysis']['todos'], ", ");
+                echo " " . count($data['analysis']['todos']) . " todo(s): " . implode($data['analysis']['todos'], ", ");
             }
-            echo ")";
         }
+
+        if (defined('SHOW_MARKERS') && isset($data['context']))
+            echo " (" . $data['context'] . ")";
+
+        if (defined('SHOW_PATHS'))
+            echo " [" . $data['path'] . "]";
 
         echo PHP_EOL;
     }
@@ -113,18 +224,39 @@ function showPath($data, $deep = 0) {
     }
 }
 
+// starting procedural code
+
 foreach ($argv as $_key => $_value) {
     switch ($_value) {
+        case '-f' : {
+            define('FIX_FILESYSTEM', true);
+            break;
+        }
         case '-h' : {
             echo PHP_EOL
                . "Magento 2 Lord Vollkorn Helper" . PHP_EOL
                . "------------------------------" . PHP_EOL
-               . "-h)  shows this help-text" . PHP_EOL
-               . "-p)  relative path to file/directory to scan". PHP_EOL
-               . "-s)  suppress not analyzed paths/files". PHP_EOL
-               . "-ss) suppress not marked files". PHP_EOL
+               . "-f)   fixes automatically filesystem" . PHP_EOL
+               . "-h)   shows this help-text" . PHP_EOL
+               . "-m)   Magento 2 root path (if not __DIR__)" . PHP_EOL
+               . "-p)   relative path to file/directory to scan" . PHP_EOL
+               . "-pp)  show context markers" . PHP_EOL
+               . "-ppp) show full-paths in output" . PHP_EOL
+               . "-s)   suppress not analyzed paths/files" . PHP_EOL
+               . "-ss)  suppress not marked files" . PHP_EOL
+               . "-sss) suppress directories lines" . PHP_EOL
                . PHP_EOL;
             break;
+        }
+        case '-m' : {
+            $magentoPath = trim($argv[$_key + 1]);
+            break;
+        }
+        case '-ppp' : {
+            define('SHOW_PATHS', true);
+        }
+        case '-pp' : {
+            define('SHOW_MARKERS', true);
         }
         case '-p' : {
             $relativePath = trim($argv[$_key + 1]);
@@ -143,10 +275,16 @@ foreach ($argv as $_key => $_value) {
     }
 }
 
+define('MAGENTO_PATH', isset($magentoPath) ? realpath($magentoPath) : __DIR__);
+
+require MAGENTO_PATH . '/app/bootstrap.php';
+
 if (isset($relativePath)) {
     $absolutePath = realpath($relativePath);
-    if (file_exists($absolutePath)) {
-        foreach (scanPath($absolutePath) as $_path => $_data) {
+    define('BASE_PATH', $absolutePath);
+    if (file_exists(BASE_PATH)) {//var_dump(scanPath($absolutePath));DIE;
+        $_SESSION['component_path'] = BASE_PATH;
+        foreach (scanPath(BASE_PATH) as $_path => $_data) {
             showPath($_data);
         }
     }

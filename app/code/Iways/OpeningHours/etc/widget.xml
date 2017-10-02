@@ -10,7 +10,7 @@
             <parameter name="first_day"
                        xsi:type="select" 
                        required="true"
-                       source_model="Iways\OpeningHours\Model\Config\Source\Days\First">
+                       source_model="Iways\OpeningHours\Model\Config\Source\Day\FirstOptions">
                 <label translate="true">First day of the week</label>
             </parameter>
             <parameter name="compress_table"

@@ -31,7 +31,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="mobile_modal_sidebars"> <!-- @todo: only if sidebars do actually have a title (design module) -->
+            <field name="mobile_modal_sidebars"> <!-- @todo only if sidebars do actually have a title (design module) -->
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
