@@ -1,5 +1,23 @@
 <?php $scriptFile = array_shift($argv); //var_dump($argv);
 
+function includePath($path) {
+
+    $paths = scandir($path);
+
+    natsort($paths);//var_dump($paths);
+
+    foreach ($paths as $file) {
+        $absolutePath = $path . '/' . $file;
+        if (is_dir($absolutePath) && !in_array($file, ['.', '..'])) {
+            includePath($absolutePath);
+        } elseif (end(explode(".", $file)) == 'php') {
+            include_once $absolutePath;
+        }
+    }
+}
+
+includePath(realpath('.') . '/phpDocumentor');
+
 define('COLOR_GREEN', "\033[32m"); // for analyzed files
 define('COLOR_RED', "\033[31m"); // for errors
 define('COLOR_YELLOW', "\033[33m"); // for warnings
@@ -45,6 +63,8 @@ function path2class($path) {
 
 function analyzePath($item) // single path tests
 {
+    $docBlockFactory = phpDocumentor\Reflection\DocBlockFactory::createInstance(/*['package' => Package::class]*/);
+
     $data = [];//var_dump($item);
 
     // semantic context tests
@@ -52,6 +72,15 @@ function analyzePath($item) // single path tests
         switch ($item['context']) {
             case 'FB' : { // frontend-block context tests
                 $class = new \ReflectionClass($item['class']); // http://php.net/manual/en/class.reflectionclass.php
+                $docBlock = $docBlockFactory->create($class->getDocComment());
+                $docBlockCategory = $docBlock->getTagsByName('category')[0]->__toString();
+                if ($docBlockCategory != 'Class')
+                    $data['warnings'][] = "wrong category tag '" . $docBlockCategory . "' for class " . COLOR_YELLOW . $class->getName() . COLOR_CLOSE;
+                if (isset($item['component'])) {
+                    $docBlockPackage = $docBlock->getTagsByName('package')[0]->__toString();
+                    if ($docBlockPackage != $item['component'])
+                        $data['warnings'][] = "wrong package tag '" . $docBlockPackage . "' (should be '" . $item['component'] . "') for class " . COLOR_YELLOW . $class->getName() . COLOR_CLOSE;
+                }
                 switch ($parentClass = $class->getParentClass()->getName()) {
                     case 'Magento\Framework\View\Element\Template' : {
                         if (!file_exists($item['view_path'])) {
@@ -124,6 +153,16 @@ function scanPath($path)
             if (file_exists($absolutePath . '/registration.php')) {
                 $item['flag_is_component_root'] = true;
                 $_SESSION['component_path'] = $absolutePath;
+                @$_SESSION['component'] = end(explode("/", $absolutePath));
+            } elseif (file_exists($path . '/registration.php')) {
+                @$_SESSION['component'] = end(explode("/", $path));
+            }
+
+            if ($_SESSION['component']) {
+                $item['component'] = "Iways"
+                                   . (preg_match("/^[A-Z]/", $_SESSION['component'])
+                                     ? "_"
+                                     : "/") . $_SESSION['component'];
             }
 
             if (is_dir($absolutePath)) {
@@ -284,6 +323,7 @@ if (isset($relativePath)) {
     define('BASE_PATH', $absolutePath);
     if (file_exists(BASE_PATH)) {//var_dump(scanPath($absolutePath));DIE;
         $_SESSION['component_path'] = BASE_PATH;
+        $_SESSION['component'] = false;
         foreach (scanPath(BASE_PATH) as $_path => $_data) {
             showPath($_data);
         }

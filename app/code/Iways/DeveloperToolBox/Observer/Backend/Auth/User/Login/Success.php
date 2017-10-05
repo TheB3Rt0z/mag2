@@ -53,7 +53,7 @@ class Success implements extended
      */
     public function execute(Observer $observer)
     {
-        if (isset($_COOKIE[self::PHP_SESSION_COOKIE_NAME])) {
+        if (isset($_COOKIE[self::PHP_SESSION_COOKIE_NAME])) { // todo no cookies for bad dog https://www.apptha.com/blog/how-to-set-get-and-delete-cookies-variables-in-magento/
 
             $sessionId = $_COOKIE[self::PHP_SESSION_COOKIE_NAME];
             $adminSessionId = $this->session->getSessionId();

@@ -24,7 +24,7 @@ use Magento\Framework\View\Element\Template\Context;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_Base
+ * @package  Iways_Design
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net

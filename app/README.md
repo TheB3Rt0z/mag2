@@ -773,6 +773,11 @@ The following are functioning pattern and examples given are actually used in i-
 
 ### Nice to have
 
-- automatic documentation generator, based on code analysis and programmatically stored in each module/theme's readme;
-- a (semi-)professional check of all used translations and usability of graphical interface, user-guide README.md files.
+- automatic documentation generator, based on code analysis and programmatically stored in each module/theme's readme
+- a (semi-)professional check of all used translations and usability of graphical interface, user-guide README.md files
+- module assistant on the basis of original M1 module, working with actual backend grids and widgets (to be conceived)
 
+#### Current tasks (with real priority)
+
+- write something for both empty paragraphs under Development guidelines (see above..)
+- integration of lvk console functionality in bin/magento, trough DeveloperToolBox Module (additional composer requires needed)

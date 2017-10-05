@@ -26,8 +26,6 @@ use Iways\Base\Model\Config\Source as extended;
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
- *
- * @todo add custom size with additional form element (double text-input + select)
  */
 class PositionOptions extends extended
 {
