@@ -45,7 +45,12 @@ class Toolbar implements implemented
 
         $items[] = [
             'label' => __("Styleguide"),
-            'link' => "/iways_design/styleguide/index/",
+            'link' => "iways_design/styleguide/index/",
+        ];
+
+        $items[] = [
+            'label' => __("Responsivity"),
+            'link' => "iways_design/responsivity/index/",
         ];
 
         $observer->setItems($items);

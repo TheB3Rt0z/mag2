@@ -4,7 +4,7 @@
     <default>
         <design>
             <body>
-                <body_background_src_attachment>false</body_background_src_attachment> <!-- @todo it doesn't work -->
+                <body_background_src_attachment>false</body_background_src_attachment> <!-- todo it doesn't work -->
             </body>
         </design>
         <iways_design>

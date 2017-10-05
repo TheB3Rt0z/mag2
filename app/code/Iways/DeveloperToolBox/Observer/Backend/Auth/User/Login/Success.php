@@ -14,6 +14,8 @@
 
 namespace Iways\DeveloperToolBox\Observer\Backend\Auth\User\Login;
 
+use Iways\DeveloperToolBox\Helper\Data as helper;
+use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface as extended;
 
@@ -32,6 +34,14 @@ class Success implements extended
 {
     const PHP_SESSION_COOKIE_NAME = 'PHPSESSID';
 
+    public function __construct(
+        helper $helper,
+        Session $session
+    ) {
+        $this->helper = $helper;
+        $this->session = $session;
+    }
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -40,24 +50,24 @@ class Success implements extended
      * @param object $observer Magento\Framework\Event\Observer
      *
      * @return void
-     *
-     * @todo new started session should last the same as for admin session..
      */
     public function execute(Observer $observer)
     {
         if (isset($_COOKIE[self::PHP_SESSION_COOKIE_NAME])) {
 
             $sessionId = $_COOKIE[self::PHP_SESSION_COOKIE_NAME];
+            $adminSessionId = $this->session->getSessionId();
 
-            $this->sessionId = session_id();
+            $this->session->writeClose();
+            $this->session->setSessionId($sessionId);
+            $this->session->start();
 
-            session_write_close();
-            session_id($sessionId);
-            session_start();
-            $_SESSION['admin'] = [$this->sessionId];
-            session_write_close();
-            session_id($this->sessionId);
-            session_start();
+            $sessionLifetime = $this->helper->getConfig(Session::XML_PATH_SESSION_LIFETIME);
+            $this->session->setAdminSessionLifetime(time() + $sessionLifetime);
+
+            $this->session->writeClose();
+            $this->session->setSessionId($adminSessionId);
+            $this->session->start();
         }
     }
 }

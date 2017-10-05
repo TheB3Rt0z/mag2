@@ -28,7 +28,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends extended // @todo to be checked
+class Opening extends extended // todo to be checked
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

@@ -6,15 +6,17 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_DeveloperToolBox
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\SocialLinks\Model\Config\Source;
+namespace Iways\DeveloperToolBox\Helper;
 
-use Iways\Base\Model\Config\Source as extended;
+use Magento\Backend\Model\Auth\Session as model;
+use Magento\Framework\App\Helper\AbstractHelper as extended;
+use Magento\Framework\App\Helper\Context;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -22,25 +24,31 @@ use Iways\Base\Model\Config\Source as extended;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_SocialLinks
+ * @package  Iways_DeveloperToolBox
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class AspectOptions extends extended
+class Session extends extended
 {
+    public function __construct(
+        Context $context,
+        model $session
+    ) {
+        $this->session = $session;
+
+        parent::__construct($context);
+    }
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @return array
+     * @return boolean
      */
-    public function toArray()
+    public function isAdminLogged()
     {
-        return [
-            'icons' => __("FA-icons"),
-            'labels' => __("Text-labels"),
-        ];
+        return $this->session->getAdminSessionLifetime() > time();
     }
 }

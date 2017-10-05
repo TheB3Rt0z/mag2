@@ -1,0 +1,28 @@
+.page-main,
+.page-wrapper .page-main,
+.page-wrapper .page-main .columns {
+    max-width: none !important;
+    padding: 0 !important;
+}
+
+.page-main table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.page-main table tr {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+.page-main table tr td {
+    margin: 0;
+    padding: 50px 0 0;
+    text-align: center;
+}
+
+.page-main table iframe {
+    border: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+}

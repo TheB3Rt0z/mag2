@@ -366,22 +366,23 @@
 <script type="text/javascript">
     require([
         'jquery'
-    ], function($) {
-
-        $('fieldset .theme-color').each(function() {
-
+    ], function($)
+    {
+        $('fieldset .theme-color').each(function()
+        {
             var html = $(this).html(),
                 backgroundColor = $(this).css('background-color');
 
             if (backgroundColor == 'rgba(0, 0, 0, 0)') {
                 $(this).hide();
                 $(this).siblings('.theme-color').hide();
-            }
-            else
+            } else {
                 $(this).html(html + '<br />' + backgroundColor);
+            }
 
-            if ($(this).hasClass('background-color'))
+            if ($(this).hasClass('background-color')) {
                 $(this).html($(this).html() + ' / ' + $(this).css('color'));
+            }
         });
     });
 </script>

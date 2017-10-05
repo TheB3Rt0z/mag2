@@ -30,7 +30,7 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Status extends extended // @todo to be refactored
+class Status extends extended // todo to be refactored
 {
     protected $openingHours;
 
@@ -145,7 +145,7 @@ class Status extends extended // @todo to be refactored
      *
      * @return string
      *
-     * @todo this should be loaded per ajax after page-loading to avoid caching issues..
+     * @todo this should be loaded per ajax after page-loading to avoid cache issues
      */
     public function getStatus()
     {

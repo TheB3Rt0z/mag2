@@ -30,8 +30,6 @@ use Magento\Store\Model\ScopeInterface;
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
- *
- * @todo refactor actual alphabetical-ordered methods to sub-classes if needed
  */
 class Data extends extended
 {
@@ -131,19 +129,5 @@ class Data extends extended
         }
 
         return $data;
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
-     *
-     * @todo check and update observer for a better (isAdminLogged) method..
-     */
-    public function wasAdminLogged()
-    {
-        return isset($_SESSION['admin'][0]);
     }
 }

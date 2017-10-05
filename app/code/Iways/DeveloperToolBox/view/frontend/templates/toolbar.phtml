@@ -12,13 +12,12 @@
  * @link     https://www.i-ways.net
  */
 
-
-$adminLink = ($adminUri = $block->getAdminUri()) // @todo move this in block ($block->getAdminLink())
+$adminLink = ($adminUri = $block->getAdminUri()) // todo move this in block ($block->getAdminLink())
              ? '<span><a href="' . $adminUri . '"'
              . '         target="_BLANK">Backend</a></span>'
              : false;
 
-if ($block->helper->wasAdminLogged()) {
+if ($block->sessionHelper->isAdminLogged()) {
     ?>
     <div class="iways-toolbar">
         <?php
@@ -27,3 +26,16 @@ if ($block->helper->wasAdminLogged()) {
     </div>
     <?php
 }
+
+?>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function($)
+    {
+        if (window.parent == window) {
+            $('.iways-toolbar').show();
+        }
+    });
+</script>

@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\Design\Controller\Styleguide;
+namespace Iways\Design\Controller\Responsivity;
 
 use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;

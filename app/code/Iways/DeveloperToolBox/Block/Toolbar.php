@@ -14,8 +14,9 @@
 
 namespace Iways\DeveloperToolBox\Block;
 
-use Iways\DeveloperToolBox\Helper\Data as helper;
+use Iways\DeveloperToolBox\Helper\Session as sessionHelper;
 use Magento\Backend\Helper\Data as magentoBackendHelper;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -35,7 +36,7 @@ class Toolbar extends extended
     public static $items = [
         [
             'label' => "Homepage",
-            'link' => "/",
+            'link' => '',
         ],
     ];
 
@@ -50,24 +51,25 @@ class Toolbar extends extended
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        sessionHelper $sessionHelper,
         magentoBackendHelper $magentoBackendHelper,
+        UrlInterface $urlInterface,
         array $data = []
     ) {
         $this->eventManager = $context->getEventManager();
 
         $this->eventManager->dispatch(
-            'iways_base_block_toolbar',
+            'iways_developertoolbox_block_toolbar',
             ['items' => &self::$items]
         );
 
-        $this->helper = $helper;
-
+        $this->sessionHelper = $sessionHelper;
         $this->magentoBackendHelper = $magentoBackendHelper;
+        $this->urlInterface = $urlInterface;
 
         parent::__construct($context, $data);
 
-        $this->setData('helper', $this->helper);
+        $this->setData('sessionHelper', $this->sessionHelper);
     }
 
     /**
@@ -93,12 +95,19 @@ class Toolbar extends extended
     {
         $data = '';
 
+        $this->currentUrl = $this->urlInterface->getCurrentUrl();
+
         foreach (self::$items as $item) {
-            $data .= '<span>'
-                   . (isset($item['link'])
-                     ? '<a href="' . $item['link'] . '">' . $item['label'] . '</a>'
-                     : $item['label'])
-                   . '</span>';
+
+            $linkUrl = $this->urlInterface->getUrl() . $item['link'] ?: '';
+
+            if ($linkUrl != $this->currentUrl) {
+                $data .= '<span>'
+                       . (isset($item['link'])
+                         ? '<a href="' . $linkUrl . '">' . $item['label'] . '</a>'
+                         : $item['label'])
+                       . '</span>';
+            }
         }
 
         return $data;

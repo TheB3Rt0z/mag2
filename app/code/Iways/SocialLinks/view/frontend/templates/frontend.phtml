@@ -21,7 +21,7 @@
         foreach ($block->getSocialLinks() as $key => $values) {
             ?>
             <li class="iways-<?php echo $key ?>">
-                <a href="<?php $values['url'] ?>"
+                <a href="<?php echo $values['url'] ?>"
                    target="_blank">
                     <?php echo $values['label'] ?>
                 </a>

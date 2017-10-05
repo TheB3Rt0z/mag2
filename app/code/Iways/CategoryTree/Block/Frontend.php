@@ -14,6 +14,7 @@
 
 namespace Iways\CategoryTree\Block;
 
+use Iways\CategoryTree\Helper\Category as categoryHelper;
 use Iways\CategoryTree\Helper\Data as helper;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Framework\View\Element\Template\Context;
@@ -45,16 +46,19 @@ class Frontend extends extended
      *
      * @param object $context            Magento\Framework\View\Element\Template\Context
      * @param object $helper             Iways\CategoryTree\Helper\Data
+     * @param object $categoryHelper     Iways\CategoryTree\Helper\Category
      * @param object $categoryRepository Magento\Catalog\Model\CategoryRepository
      * @param array  $data               object attributes
      */
     public function __construct(
         Context $context,
         helper $helper,
+        categoryHelper $categoryHelper,
         CategoryRepository $categoryRepository,
         array $data = []
     ) {
         $this->helper = $helper;
+        $this->categoryHelper = $categoryHelper;
 
         $this->storeId = $context->getStoreManager()->getStore()->getId();
         $this->categoryRepository = $categoryRepository;
@@ -68,7 +72,7 @@ class Frontend extends extended
         if ($this->treeRoot === null) {
             $this->treeRoot = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
         }
-        if ($this->treeRoot == helper::ROOT_USE_CUSTOM_CATEGORY) {
+        if ($this->treeRoot == categoryHelper::ROOT_USE_CUSTOM_CATEGORY) {
             if ($this->customRoot === null) {
                 $this->customRoot = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
             }
@@ -148,17 +152,17 @@ class Frontend extends extended
     {
         switch ($this->treeRoot)
         {
-            case helper::ROOT_USE_CURRENT_CATEGORY:
-                return $this->helper->getCurrentCategory();
+            case categoryHelper::ROOT_USE_CURRENT_CATEGORY:
+                return $this->categoryHelper->getCurrent();
 
-            case helper::ROOT_USE_CUSTOM_CATEGORY:
+            case categoryHelper::ROOT_USE_CUSTOM_CATEGORY:
                 return $this->categoryRepository->get(
                     $this->customRoot,
                     $this->storeId
                 );
 
             default:
-                return $this->helper->getRootCategory(); // as of 'root'
+                return $this->categoryHelper->getRoot(); // as of 'root'
         }
     }
 
@@ -169,7 +173,7 @@ class Frontend extends extended
      *
      * @return string
      */
-    public function toHtml() // @todo to be removed
+    public function toHtml() // todo to be removed
     {
         $list = $this->getCategoryHtml($this->getRootCategory(), $this->treeDepth);
 

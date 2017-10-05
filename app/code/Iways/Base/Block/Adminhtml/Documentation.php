@@ -114,8 +114,9 @@ class Documentation extends extended
     {
         $offSet = 0;
         $data = [];
+        $slashedPath = str_replace('/', '\/', $path);
         while (preg_match(
-            '/' . addcslashes($path, '/') . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/',
+            '/' . $slashedPath . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/',
             $this->contents,
             $matches,
             PREG_OFFSET_CAPTURE,

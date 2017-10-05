@@ -4,8 +4,8 @@
     <default>
         <design>
             <mobile>
-                <navigation_direction>0</navigation_direction> <!-- @todo it is really working? -->
-                <modal_sidebars>0</modal_sidebars> <!-- @todo it is really working? -->
+                <navigation_direction>0</navigation_direction> <!-- todo it is really working? -->
+                <modal_sidebars>0</modal_sidebars> <!-- todo it is really working? -->
             </mobile>
         </design>
     </default>

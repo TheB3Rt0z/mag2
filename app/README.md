@@ -35,6 +35,7 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **model** conventional alias for required model class, usually sharing same unqualified class name
 - **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
+- **[LOWERCASE_STRING]Helper** conventional alias for module'S additional helper [UCFIRST_STRING] e.g.: "categoryHelper"
 
 <a name="code-validation"></a>
 
@@ -99,11 +100,11 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
 ### Components dependencies
 
 ```
-                 ┌─────────────────────────────┐   ┌─────────────────────┐
-                 │iways/module-developertoolbox│ + │iways/module-scaffold│
-                 └──────────────┬──────────────┘   └─────────────────────┘
-                                │
-                                ▼
+┌───────────────────────────┐   ┌─────────────────────────────┐   ┌─────────────────────┐
+│magento-ecg/coding-standard│ ◄─┤iways/module-developertoolbox│ + │iways/module-scaffold│
+└───────────────────────────┘   └─────┬───────────────────────┘   └─────────────────────┘
+                                      │
+                                      ⯆
 ┌──────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
 │magento/framework │ ◄─┤iways/module-base│ ◄─┤iways/theme-base├─► │magento/theme-frontend-blank│
 │+ erusev/parsedown│   └─────────────────┘   └────────────────┘   └────────────────────────────┘
