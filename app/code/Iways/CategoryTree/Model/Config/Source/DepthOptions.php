@@ -16,6 +16,7 @@ namespace Iways\CategoryTree\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
 use Iways\CategoryTree\Helper\Category as categoryHelper;
+use Iways\CategoryTree\Helper\Data as helper;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -37,15 +38,18 @@ class DepthOptions extends extended
      *
      * PHP Version 5
      *
+     * @param object $helper                Iways\CategoryTree\Helper\Data
      * @param object $categoryHelper        Iways\CategoryTree\Helper\Category
      * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
      * @param object $categoryRepository    Magento\Catalog\Model\CategoryRepository
      */
     public function __construct(
+        helper $helper,
         categoryHelper $categoryHelper,
         StoreManagerInterface $storeManagerInterface,
         CategoryRepository $categoryRepository
     ) {
+        $this->helper = $helper;
         $this->categoryHelper = $categoryHelper;
 
         $this->storeId = $storeManagerInterface->getStore()->getId();

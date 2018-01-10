@@ -4,6 +4,7 @@
     <module name="Vollkorn_Adminhtml" setup_version="1.0.0">
         <sequence>
             <module name="Vollkorn_All" />
+            <module name="Magento_Theme" />
         </sequence>
     </module>
 </config>

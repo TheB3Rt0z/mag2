@@ -34,11 +34,6 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class Category extends extended
 {
-    const ROOT_USE_STORE_ROOT = 0, // todo this should be moved in Model\Config\Source\RootOptions..
-          ROOT_USE_CURRENT_CATEGORY = 1,
-          ROOT_USE_PRODUCT_CATEGORY = 2,
-          ROOT_USE_CUSTOM_CATEGORY = 3;
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *

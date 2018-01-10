@@ -16,7 +16,6 @@ namespace Iways\DeveloperToolBox\Block;
 
 use Iways\DeveloperToolBox\Helper\Session as sessionHelper;
 use Magento\Backend\Helper\Data as magentoBackendHelper;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -45,15 +44,15 @@ class Toolbar extends extended
      *
      * PHP Version 5
      *
-     * @param object $context Magento\Framework\View\Element\Template\Context
-     * @param object $helper  Iways\DeveloperToolBox\Helper\Data
-     * @param array  $data    object attributes
+     * @param object $context              Magento\Framework\View\Element\Template\Context
+     * @param object $sessionHelper        Iways\DeveloperToolBox\Helper\Session
+     * $param object $magentoBackendHelper Magento\Backend\Helper\Data
+     * @param array  $data                 object attributes
      */
     public function __construct(
         Context $context,
         sessionHelper $sessionHelper,
         magentoBackendHelper $magentoBackendHelper,
-        UrlInterface $urlInterface,
         array $data = []
     ) {
         $this->eventManager = $context->getEventManager();
@@ -65,7 +64,7 @@ class Toolbar extends extended
 
         $this->sessionHelper = $sessionHelper;
         $this->magentoBackendHelper = $magentoBackendHelper;
-        $this->urlInterface = $urlInterface;
+        $this->urlInterface = $context->getUrlBuilder();
 
         parent::__construct($context, $data);
 

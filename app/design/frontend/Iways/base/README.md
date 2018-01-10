@@ -6,7 +6,7 @@
 - defines minimal standard layout for child (production) themes extendening its logic
 - includes base static resource such as standard logo/favicon and css less framework
 
-![Frontend Screenshot](/media/documentation/frontend_screenshot.jpg)
+![Frontend Screenshot](/web/images/documentation/frontend_screenshot.jpg)
 
 ### What could this theme do?
 

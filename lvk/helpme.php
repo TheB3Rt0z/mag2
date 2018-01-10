@@ -86,10 +86,15 @@ function analyzePath($item) // single path tests
                         if (!file_exists($item['view_path'])) {
                             $data['errors'][] = "missing correspondant template view at location " . COLOR_RED . $item['view_path'] . COLOR_CLOSE;
                         }
+                        if (isset($item['widget_path']) && !file_exists($item['widget_path'])) {
+                            $data['errors'][] = "missing correspondant widget block at location " . COLOR_RED . $item['widget_path'] . COLOR_CLOSE;
+                        }
                         break;
                     }
                     default : {
-                        $data['warnings'][] = "check if this class " . COLOR_YELLOW . "is extending the right parent (" . $parentClass . ")" . COLOR_CLOSE;
+                        if (!class_exists($item['class'])) {
+                            $data['warnings'][] = "check if this class " . COLOR_YELLOW . "is extending the right parent (" . $parentClass . ")" . COLOR_CLOSE;
+                        }
                     }
                 }
                 break;
@@ -114,7 +119,7 @@ function analyzePath($item) // single path tests
 
     foreach ($file as $key => $value) { // single line tests
         if (preg_match('/(?:\A|[^\p{L}]+)todo([^\p{L}]+(.*)|\Z)/ui', $value, $matches) !== 0) { // searching for todo(s)
-            $data['todos'][] = "found todo on line " . ($key + 1) . " '" . COLOR_CYAN . str_replace([" -->"], '', trim($matches[1])) . COLOR_CLOSE . "'";
+            $data['todos'][] = "found todo on line " . ($key + 1) . " '" . COLOR_CYAN . str_replace([" -->"], '', trim($matches[1])) . COLOR_CLOSE . "' in " . $item['path'];
         }
         if (preg_match("/\t/", $value)) { // checking if any tab is present
             $data['warnings'][] = "found " . COLOR_YELLOW . "tabs(s)" . COLOR_CLOSE . " on line " . ($key + 1);
@@ -179,6 +184,8 @@ function scanPath($path)
                         $item['class'] = path2class($absolutePath);
                         $relativePath = strtolower(str_replace([$_SESSION['component_path'] . '/Block', '.php'], ['', '.phtml'], $absolutePath));
                         $item['view_path'] = $_SESSION['component_path'] . '/view/frontend/templates' . $relativePath;
+                        if ($file != 'Widget.php')
+                            $item['widget_path'] = str_replace('.php', '/Widget.php', $item['fullpath']);
                     } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/Model') !== false) {
                         $item['context'] = 'M';
                     } elseif (strpos($absolutePath, $_SESSION['component_path'] . '/view/backend/layout') !== false) {

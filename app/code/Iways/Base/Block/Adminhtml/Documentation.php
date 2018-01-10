@@ -61,12 +61,18 @@ class Documentation extends extended
 
         $data['dev'] = $http->getParam('dev');
 
-        $data['locale'] = !$data['dev'] ? $helper->getLocale() : false; // developers documentation only in english
+        $data['locale'] = !$data['dev'] ? $helper->getBackendLocale() : false; // developers documentation only in english
+
+        $data['params'] = [];
 
         if ($http->getParam('theme')) {
             $data['theme'] = $http->getParam('theme');
-            $data['static_path'] = '/web';
-            $data['view_path'] = '';
+            $data['static_path'] = '/web/images';
+            $data['view_path'] = 'images/';
+            $data['params'] = [
+                'area' => 'frontend',
+                'theme' => 'Iways/' . $data['theme'],
+            ];
         }
 
         if ($http->getParam('module')) {

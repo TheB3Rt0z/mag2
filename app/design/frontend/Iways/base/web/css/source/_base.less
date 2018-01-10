@@ -1,0 +1,28 @@
+input[type='number'].iways-base-theme {
+    background-clip: border-box;
+    border: 1px solid #c2c2c2;
+    height: 32px !important;
+    margin-left: 34px;
+    text-align: center;
+    width: 36px !important;
+    //-moz-appearance: none; // https://developer.mozilla.org/it/docs/Web/CSS/-moz-appearance
+    & ~ .number-nav {
+        border: solid 1px #c2c2c2;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 20px;
+        height: 30px;
+        padding-left: 1px;
+        text-align: center;
+        vertical-align: bottom;
+        width: 31px;
+        &.input-down {
+            left: -103px;
+            position: relative;
+        }
+        &.input-up {
+            left: -1px;
+            position: relative;
+        }
+    }
+}

@@ -4,17 +4,19 @@
     <head>
         <link rel="apple-touch-icon"
               sizes="32x32"
-              src="images/icon_32x32.png" />
+              src="Magento_Theme::images/favicon.png" />
         <link rel="icon"
-              type="image/png"
+              type="image/x-icon"
               sizes="32x32"
-              src="images/icon_32x32.png" />
+              src="Magento_Theme::images/favicon.png" />
         <link rel="shortcut icon"
-              type="image/png"
-              href="images/icon_32x32.png" />
+              type="image/x-icon"
+              src="Magento_Theme::images/favicon.png" />
         <meta name="viewport"
               content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
         <meta name="format-detection"
               content="telephone=no" />
+        <script type="text/javascript"
+                src="Magento_Checkout::js/input_type_number.js"></script>
     </head>
 </page>

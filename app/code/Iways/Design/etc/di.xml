@@ -1,6 +1,10 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Block\Product\ProductList\Toolbar"
+                type="Iways\Design\Block\Catalog\Product\ProductList\Toolbar" />
+    <preference for="Magento\Catalog\Model\Config"
+                type="Iways\Design\Model\Catalog\Config" />
     <type name="Magento\Theme\Model\Design\Config\MetadataProvider">
         <arguments>
             <argument name="metadata"
@@ -79,6 +83,13 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/body</item>
                 </item>
+                <item name="input_style_type_number"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/input/style_type_number</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/input</item>
+                </item>
                 <item name="sidebar_title_main"
                       xsi:type="array">
                     <item name="path"
@@ -92,6 +103,34 @@
                           xsi:type="string">design/sidebar/sidebar_title_additional</item>
                     <item name="fieldset"
                           xsi:type="string">iways_settings/sidebar</item>
+                </item>
+                <item name="toolbar_show_category_title"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/toolbar/show_category_title</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/toolbar</item>
+                </item>
+                <item name="toolbar_show_field_limiter"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/toolbar/show_field_limiter</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/toolbar</item>
+                </item>
+                <item name="toolbar_show_position_in_sorting_options"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/toolbar/show_position_in_sorting_options</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/toolbar</item>
+                </item>
+                <item name="toolbar_use_compact_sorter"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/toolbar/use_compact_sorter</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/toolbar</item>
                 </item>
             </argument>
         </arguments>

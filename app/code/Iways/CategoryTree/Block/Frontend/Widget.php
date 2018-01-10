@@ -6,7 +6,7 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_CategoryTree
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -15,7 +15,7 @@
 namespace Iways\CategoryTree\Block\Frontend;
 
 use Iways\CategoryTree\Block\Frontend as extended;
-use Iways\CategoryTree\Helper\Data as helper;
+use Iways\CategoryTree\Model\Config\Source\RootOptions;
 use Magento\Widget\Block\BlockInterface as implemented;
 
 /**
@@ -24,7 +24,7 @@ use Magento\Widget\Block\BlockInterface as implemented;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_SocialLinks
+ * @package  Iways_CategoryTree
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -43,7 +43,7 @@ class Widget extends extended implements implemented
         $this->blockTitle = $this->getBlockTitle();
 
         $this->treeRoot = $this->getTreeRoot();
-        if ($this->treeRoot == helper::ROOT_USE_CUSTOM_CATEGORY) {
+        if ($this->treeRoot == RootOptions::ROOT_USE_CUSTOM_CATEGORY) {
             $this->customRoot = $this->getCustomRoot();
         }
 

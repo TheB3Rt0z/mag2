@@ -6,7 +6,7 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_CategoryTree
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -16,6 +16,7 @@ namespace Iways\CategoryTree\Block;
 
 use Iways\CategoryTree\Helper\Category as categoryHelper;
 use Iways\CategoryTree\Helper\Data as helper;
+use Iways\CategoryTree\Model\Config\Source\RootOptions;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template as extended;
@@ -26,7 +27,7 @@ use Magento\Framework\View\Element\Template as extended;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_SocialLinks
+ * @package  Iways_CategoryTree
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -72,7 +73,7 @@ class Frontend extends extended
         if ($this->treeRoot === null) {
             $this->treeRoot = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
         }
-        if ($this->treeRoot == categoryHelper::ROOT_USE_CUSTOM_CATEGORY) {
+        if ($this->treeRoot == RootOptions::ROOT_USE_CUSTOM_CATEGORY) {
             if ($this->customRoot === null) {
                 $this->customRoot = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
             }
@@ -152,10 +153,10 @@ class Frontend extends extended
     {
         switch ($this->treeRoot)
         {
-            case categoryHelper::ROOT_USE_CURRENT_CATEGORY:
+            case RootOptions::ROOT_USE_CURRENT_CATEGORY:
                 return $this->categoryHelper->getCurrent();
 
-            case categoryHelper::ROOT_USE_CUSTOM_CATEGORY:
+            case RootOptions::ROOT_USE_CUSTOM_CATEGORY:
                 return $this->categoryRepository->get(
                     $this->customRoot,
                     $this->storeId

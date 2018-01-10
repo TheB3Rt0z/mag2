@@ -6,6 +6,15 @@
             <body>
                 <body_background_src_attachment>0</body_background_src_attachment>
             </body>
+            <input>
+                <input_style_type_number>1</input_style_type_number>
+            </input>
+            <toolbar>
+                <show_category_title>0</show_category_title>
+                <show_field_limiter>0</show_field_limiter>
+                <show_position_in_sorting_options>0</show_position_in_sorting_options>
+                <use_compact_sorter>1</use_compact_sorter>
+            </toolbar>
         </design>
         <iways_design>
             <frontend>

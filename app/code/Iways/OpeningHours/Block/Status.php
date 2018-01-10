@@ -6,7 +6,7 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_Openinghours
+ * @package  Iways_OpeningHours
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -25,7 +25,7 @@ use Magento\Framework\View\Element\Template\Context;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_Openinghours
+ * @package  Iways_OpeningHours
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -117,7 +117,8 @@ class Status extends extended // todo to be refactored
                     return $this->calculateStatus(
                         $hours,
                         $typeData[7] - $currentMinutes,
-                        "Today is still open for %d hours, %d minutes"
+                        //"Today is still open for %d hours, %d minutes"
+                        "We are still open for %d hours, %d minutes"
                     );
                 } else {
                     return __("Now closed");
@@ -128,7 +129,8 @@ class Status extends extended // todo to be refactored
                 return $this->calculateStatus(
                     $hours,
                     $typeData[3] - $currentMinutes,
-                    "Today is still open for %d hours, %d minutes"
+                    //"Today is still open for %d hours, %d minutes"
+                    "We are still open for %d hours, %d minutes"
                 ) . ($type == 'double'
                     ? '<br />' . __("After a pause it will be open again")
                     : '');

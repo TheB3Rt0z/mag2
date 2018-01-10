@@ -1,6 +1,7 @@
 {
 	"name": "vollkorn/module-adminhtml",
 	"require": {
+	   "vollkorn/theme-backend": "100.0.*",
 	   "vollkorn/module-all": "100.0.*"
 	},
 	"type": "magento2-module",

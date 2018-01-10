@@ -188,6 +188,36 @@
                 </argument>
             </field>
         </fieldset>
+        <fieldset name="input">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Input</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            <field name="input_style_type_number">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Style number-type inputs</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
         <fieldset name="sidebar">
              <argument name="data"
                        xsi:type="array">
@@ -233,5 +263,80 @@
                 </argument>
             </field>
         </fieldset>
+        <fieldset name="toolbar">
+             <argument name="data"
+                       xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Toolbar</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            <field name="toolbar_show_category_title">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Show category title</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="toolbar_show_field_limiter">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Show field limiter</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="toolbar_show_position_in_sorting_options">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Show position in sorting options</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="toolbar_use_compact_sorter">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Use compact sorter</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+         </fieldset>
     </fieldset>
 </form>

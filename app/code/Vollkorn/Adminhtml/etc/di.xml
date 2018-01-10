@@ -3,11 +3,10 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Backend\Block\Page\Header"
                 type="Vollkorn\Adminhtml\Block\Page\Header" />
-        
     <type name="Magento\Theme\Model\View\Design">
         <arguments>
             <argument name="themes" xsi:type="array">
-                <item name="adminhtml" xsi:type="string">Magento/backend</item>
+                <item name="adminhtml" xsi:type="string">Vollkorn/backend</item>
             </argument>
          </arguments>
     </type>

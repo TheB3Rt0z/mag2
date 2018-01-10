@@ -6,15 +6,15 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_Base
+ * @package  Iways_Design
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\Base\Block\Catalog\Product\ProductList;
+namespace Iways\Design\Block\Catalog\Product\ProductList\Toolbar;
 
-use Iways\Base\Helper\Data as helper;
+use Iways\Design\Helper\Data as helper;
 use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -24,12 +24,12 @@ use Magento\Framework\View\Element\Template\Context;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_Base
+ * @package  Iways_Design
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Toolbar extends extended
+class Sorter extends extended
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

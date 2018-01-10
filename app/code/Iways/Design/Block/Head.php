@@ -15,6 +15,7 @@
 namespace Iways\Design\Block;
 
 use Iways\Design\Helper\Data as helper;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -77,5 +78,19 @@ class Head extends extended
         }
 
         return $data . ' />';
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getMediaUrl()
+    {
+        $store = $this->_storeManager->getStore();
+
+        return $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
     }
 }

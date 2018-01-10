@@ -15,7 +15,6 @@
 namespace Iways\CategoryTree\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
-use Iways\CategoryTree\Helper\Data as helper;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -30,6 +29,11 @@ use Iways\CategoryTree\Helper\Data as helper;
  */
 class RootOptions extends extended
 {
+    const ROOT_USE_STORE_ROOT = 0;
+    const ROOT_USE_CURRENT_CATEGORY = 1;
+    const ROOT_USE_PRODUCT_CATEGORY = 2;
+    const ROOT_USE_CUSTOM_CATEGORY = 3;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -40,12 +44,12 @@ class RootOptions extends extended
     public function toArray()
     {
         return [
-            helper::ROOT_USE_STORE_ROOT => __("use store root"),
-            helper::ROOT_USE_CURRENT_CATEGORY => __("use current category")
-                                               . " (" . __("if available") . ")",
-            helper::ROOT_USE_PRODUCT_CATEGORY => __("use current product's category")
-                                               . " (" . __("if available") . ")",
-            helper::ROOT_USE_CUSTOM_CATEGORY => __("custom category"),
+            self::ROOT_USE_STORE_ROOT => __("use store root"),
+            self::ROOT_USE_CURRENT_CATEGORY => __("use current category")
+                                             . " (" . __("if available") . ")",
+            self::ROOT_USE_PRODUCT_CATEGORY => __("use current product's category")
+                                             . " (" . __("if available") . ")",
+            self::ROOT_USE_CUSTOM_CATEGORY => __("custom category"),
         ];
     }
 }

@@ -12,12 +12,10 @@
  * @link     https://www.i-ways.net
  */
 
-$contents = $block->getData('contents');
-
 $contents = str_replace(
     $block->getData('static_path'),
-    $block->getViewFileUrl($block->getData('view_path')),
-    $contents
+    $block->getViewFileUrl($block->getData('view_path'), $block->getData('params')),
+    $block->getData('contents')
 );
 
 $parseDown = new Parsedown();

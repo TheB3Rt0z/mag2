@@ -4,6 +4,7 @@
     <module name="Iways_Design" setup_version="0.0.1">
         <sequence>
             <module name="Iways_Base" />
+            <module name="Magento_Catalog" />
         </sequence>
     </module>
 </config>

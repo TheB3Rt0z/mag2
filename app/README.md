@@ -35,7 +35,7 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **model** conventional alias for required model class, usually sharing same unqualified class name
 - **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
-- **[LOWERCASE_STRING]Helper** conventional alias for module'S additional helper [UCFIRST_STRING] e.g.: "categoryHelper"
+- **[LOWERCASE_STRING]Helper** conventional alias for module's additional helper [UCFIRST_STRING] e.g.: "categoryHelper"
 
 <a name="code-validation"></a>
 
@@ -104,7 +104,7 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
 │magento-ecg/coding-standard│ ◄─┤iways/module-developertoolbox│ + │iways/module-scaffold│
 └───────────────────────────┘   └─────┬───────────────────────┘   └─────────────────────┘
                                       │
-                                      ⯆
+                                      ▼
 ┌──────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
 │magento/framework │ ◄─┤iways/module-base│ ◄─┤iways/theme-base├─► │magento/theme-frontend-blank│
 │+ erusev/parsedown│   └─────────────────┘   └────────────────┘   └────────────────────────────┘
@@ -779,5 +779,14 @@ The following are functioning pattern and examples given are actually used in i-
 
 #### Current tasks (with real priority)
 
+- javascript frontend configuration-2-script wrapper for Iways/base theme + @example for input_type_number
+- Iways_Navigation module, Gero is working on backend configuration interface, see [JIRA story 31](https://i-ways.atlassian.net/browse/IWAYS-31)
+- convert all possible rewrites to [plugins](http://devdocs.magento.com/guides/v2.0/extension-dev-guide/plugins.html), starting with blocks in Iways_Base/Design (see Iways_EnhancedEcommerceTracking as example)
+- continual development of PDD console tool, with new tests: [TEST_LIST]
 - write something for both empty paragraphs under Development guidelines (see above..)
+- Iways_SocialLinks frontend widget: testing and expansion to a different networks list (..with different links?)
+- generate a correspondant widget block for each frontend block, if reasonable
+- rewrite of Iways_Reservation module to this standards, basing on actual Alstertal/ECE version
 - integration of lvk console functionality in bin/magento, trough DeveloperToolBox Module (additional composer requires needed)
+- try some automation module-2-readme for programmatic documentation generation (DocBlock in registration.php, Reflection, Schrimp/code)
+- Iways_Maintenance module: should be a small tool for Maintenance-page and maintenance-status related aspects administration (seek possible override of /pub/errors/default/503.phtml)

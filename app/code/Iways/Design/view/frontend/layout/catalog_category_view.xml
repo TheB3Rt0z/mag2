@@ -5,14 +5,14 @@
     <body>
         <referenceBlock name="product_list_toolbar">
             <action method="setTemplate"
-                    ifconfig="iways_base/catalog_category/show_title_on_toolbar">
+                    ifconfig="design/toolbar/show_category_title">
                 <argument name="template"
-                          xsi:type="string">Iways_Base::catalog/product/productlist/toolbar.phtml</argument>
+                          xsi:type="string">Iways_Design::catalog/product/productlist/toolbar.phtml</argument>
             </action>
             <action method="setTemplate"
-                    ifconfig="iways_base/catalog_category/use_compact_sorter">
+                    ifconfig="design/toolbar/use_compact_sorter">
                 <argument name="template"
-                          xsi:type="string">Iways_Base::catalog/product/productlist/toolbar.phtml</argument>
+                          xsi:type="string">Iways_Design::catalog/product/productlist/toolbar.phtml</argument>
             </action>
         </referenceBlock>
     </body>

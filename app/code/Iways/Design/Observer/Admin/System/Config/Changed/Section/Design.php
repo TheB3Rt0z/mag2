@@ -136,7 +136,7 @@ class Design implements implemented
                 }
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-position: ' . $backgroundSrcPosition
+                       . '    background-position: ' . $backgroundSrcPos
                                                      . ';' . self::EOL
                        . '}' . self::EOL;
             }
@@ -187,7 +187,11 @@ class Design implements implemented
     public function write($data = '')
     {
         if ($this->helper->getConfig('iways_design/frontend/minify_css')) {
-            $data = str_replace(['    ', self::EOL], '', $data);
+            $data = str_replace(
+                [' {', ': ', ' + ', '    ', ';' . self::EOL . '}', self::EOL],
+                ['{', ':', '+', '', '}', ''],
+                $data
+            );
         }
 
         $this->stylesFile->write($data);

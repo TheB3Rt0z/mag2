@@ -14,6 +14,7 @@
 
 namespace Iways\Base\Helper;
 
+use Magento\Backend\Model\Locale\Manager;
 use Magento\Framework\App\Helper\AbstractHelper as extended;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Locale\Resolver;
@@ -41,16 +42,31 @@ class Data extends extended
      * @param object $context  Magento\Framework\App\Helper\Context
      * @param object $registry Magento\Framework\Registry
      * @param object $resolver Magento\Framework\Locale\Resolver
+     * @param object $manager  Magento\Backend\Model\Locale\Manager
      */
     public function __construct(
         Context $context,
         Registry $registry,
-        Resolver $resolver
+        Resolver $resolver,
+        Manager $manager
     ) {
         $this->registry = $registry;
         $this->resolver = $resolver;
+        $this->manager = $manager;
 
         parent::__construct($context);
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getBackendLocale()
+    {
+        return $this->manager->getUserInterfaceLocale();
     }
 
     /**

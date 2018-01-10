@@ -7,6 +7,24 @@
     }
 }
 
+@-moz-keyframes rotateTag {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotateTag {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
 body {
     font-family: 'Vollkorn', serif !important;
 }
@@ -72,6 +90,18 @@ table.data-grid {
 
 .admin__action-dropdown {
     background-color: transparent !important;
+}
+
+.admin__data-grid-loading-mask .spinner,
+.admin__form-loading-mask .spinner {
+    animation: rotateTag 3s linear infinite;
+    background-image: url('../images/icon_32x32.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.admin__data-grid-loading-mask .spinner > span,
+.admin__form-loading-mask .spinner > span {
+    display: none;
 }
 
 .page-main-actions:not(._hidden),
