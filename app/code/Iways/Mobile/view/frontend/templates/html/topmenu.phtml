@@ -19,21 +19,9 @@ $navigationDirection = $helper->getConfig('design/mobile/navigation_direction');
 
 ?>
 
-<nav class="navigation"
-     data-action="navigation">
-    <ul data-mage-init="{
-        'menu':
-        {
-            'responsive': true;
-            'expanded': true,
-            'position':
-            {
-                'my': 'left top',
-                'at': 'left bottom'
-            },
-                'invert_direction': <?php echo $navigationDirection ?>
-            }
-        }">
-        <?php echo $_menu . $block->getChildHtml() ?>
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu": {"responsive": true, "expanded": true, "position": {"my": "left top", "at": "left bottom"}, "invert_direction": <?php echo $navigationDirection ?>}}'>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
     </ul>
 </nav>
