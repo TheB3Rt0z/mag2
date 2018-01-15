@@ -1,25 +1,15 @@
-var delay = 125;
+var delay = 125,
+    check = false;
 
 jQuery(document).on('change keyup', '.iways-color input', function (e) {
     
+    clearTimeout(check);
+
     var val = jQuery(this).val();
-    
-    if (val.length >= 3) {
-    
-        var color = tinycolor(val); // https://github.com/bgrins/TinyColor
         
-        if (color.isValid()) {
-            
-            var colorHex = color.toHexString();
-            
-            jQuery(this).val(colorHex)
-            
-            jQuery(this).css('color', color.isLight() ? 'black' : 'white')
-                   .css('background-color', colorHex);
-        } else {
-            jQuery(this).css('color', 'initial')
-                   .css('background-color', 'initial');
-        }
+    if (val.length >= 3) {
+	
+	check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
     }
 });
 
@@ -72,4 +62,28 @@ function checkCustomFields(val, input, e) {
             container.show(delay);
         }
     });
+}
+
+function checkColorField(val, e) {
+    
+    var color = tinycolor(val); // https://github.com/bgrins/TinyColor
+    
+    if (color.isValid()) {
+        
+        var colorHex = color.toHexString();
+        
+        e.val(colorHex).css({
+            'color': color.isLight() ? 'black' : 'white',
+            'background-color': colorHex
+        });
+        
+    } else {
+        
+        e.css({
+            'color': 'initial',
+            'background-color': 'initial'
+        });
+    }
+  
+    check = false;
 }

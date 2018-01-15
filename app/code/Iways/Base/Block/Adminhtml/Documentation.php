@@ -91,7 +91,10 @@ class Documentation extends extended
                         . ($data['locale']
                         ? '/documentation/' . $data['locale']
                         : '')
-                        . '/' . self::DOC_FILE;
+                        . '/' . ((!isset($data['theme']) && !isset($data['module']) && !$data['locale'])
+                                ? 'code/Iways/DeveloperToolBox/documentation/' // here regrettably hardcoded..
+                                : '')
+                        . self::DOC_FILE;
 
         $fileReader = $readFactory->create($this->filePath, DriverPool::FILE);
 

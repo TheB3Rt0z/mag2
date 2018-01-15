@@ -97,26 +97,26 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
 
 <a name="components-dependencies"></a>
 
-### Components dependencies
+### Components dependencies (to be refined)
 
 ```
 ┌───────────────────────────┐   ┌─────────────────────────────┐   ┌─────────────────────┐
 │magento-ecg/coding-standard│ ◄─┤iways/module-developertoolbox│ + │iways/module-scaffold│
-└───────────────────────────┘   └─────┬───────────────────────┘   └─────────────────────┘
-                                      │
-                                      ▼
-┌──────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
-│magento/framework │ ◄─┤iways/module-base│ ◄─┤iways/theme-base├─► │magento/theme-frontend-blank│
-│+ erusev/parsedown│   └─────────────────┘   └────────────────┘   └────────────────────────────┘
-└──────────────────┘         ▲     ▲
+└───────────────────────────┘   └───┬─────────────────────────┘   └─────────────────────┘
+                                    │
+                                    ▼
+┌────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
+│erusev/parsedown│ ◄─┤iways/module-base│ ◄─┤iways/theme-free├─► │iways/theme-base├─► │magento/theme-frontend-blank│
+└────────────────┘   └─────────────────┘   └────────────────┘   └────────────────┘   └────────────────────────────┘
+                             ▲     ▲
                              │     │ ┌───────────────────┐   ┌───────────────────┐
-                             │     └─┤iways/design-module│ ◄─┤iways/module-mobile│
+                             │     └─┤iways/module-design│ ◄─┤iways/module-mobile│
                              │       └───────────────────┘   └───────────────────┘
                              │
-             ┌───────────────┴──────────┬─────────────────────────┬──────────────────────────┐
-┌────────────┴────────────┐┌────────────┴───────────┐┌────────────┴────────────┐┌────────────┴───────────┐
-│iways/module-categorytree││iways/module-googlefonts││iways/module-openinghours││iways/module-sociallinks│  
-└─────────────────────────┘└────────────────────────┘└─────────────────────────┘└────────────────────────┘
+             ┌───────────────┴──────────┬─────────────────────────┬───────────── PREMIUM ──────────────┐
+┌────────────┴────────────┐┌────────────┴───────────┐┌────────────┴───────────┐           ┌────────────┴────────────┐
+│iways/module-categorytree││iways/module-googlefonts││iways/module-sociallinks│           │iways/module-openinghours│  
+└─────────────────────────┘└────────────────────────┘└────────────────────────┘           └─────────────────────────┘
 ```
 
 <a name="theme-naming"></a>

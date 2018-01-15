@@ -1,10 +1,10 @@
 {
-    "name": "iways/theme-base",
+    "name": "iways/theme-free",
     "require": {
-        "iways/module-base": "^0.1.0"
+        "iways/theme-base": "^0.1.0"
     },
     "type": "magento2-theme",
-    "version": "0.1.5",
+    "version": "0.1.0",
     "autoload": {
         "files": [
             "registration.php"

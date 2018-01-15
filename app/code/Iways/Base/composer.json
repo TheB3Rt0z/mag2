@@ -1,11 +1,11 @@
 {
     "name": "iways/module-base",
     "require": {
-        "magento/framework": "100.0.*|100.1.*",
+        "magento/project-community-edition": "^2.0.0",
         "erusev/parsedown": "1.6.*"
     },
     "type": "magento2-module",
-    "version": "0.1.1",
+    "version": "0.1.5",
     "repositories": [{
         "type": "composer",
         "url": "https://repo.magento.com/"
