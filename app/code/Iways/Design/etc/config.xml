@@ -9,6 +9,9 @@
             <input>
                 <input_style_type_number>1</input_style_type_number>
             </input>
+            <sidebar>
+                <toggle_titles>0</toggle_titles>
+            </sidebar>
             <toolbar>
                 <show_category_title>0</show_category_title>
                 <show_field_limiter>0</show_field_limiter>

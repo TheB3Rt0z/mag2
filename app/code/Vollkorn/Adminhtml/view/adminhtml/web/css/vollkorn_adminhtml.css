@@ -104,8 +104,12 @@ table.data-grid {
     display: none;
 }
 
+.page-actions {
+	background: rgba(255, 255, 255, .75) !important;
+	transition: .25s;
+}
 .page-main-actions:not(._hidden),
-.page-actions._fixed {
+.page-actions:not(._fixed) {
     background: none !important;
     border-top: none !important;
 }

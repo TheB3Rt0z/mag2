@@ -90,17 +90,24 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/input</item>
                 </item>
+                <item name="sidebar_toggle_titles"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/sidebar/toggle_titles</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/sidebar</item>
+                </item>
                 <item name="sidebar_title_main"
                       xsi:type="array">
                     <item name="path"
-                          xsi:type="string">design/sidebar/sidebar_title_main</item>
+                          xsi:type="string">design/sidebar/title_main</item>
                     <item name="fieldset"
                           xsi:type="string">iways_settings/sidebar</item>
                 </item>
                 <item name="sidebar_title_additional"
                       xsi:type="array">
                     <item name="path"
-                          xsi:type="string">design/sidebar/sidebar_title_additional</item>
+                          xsi:type="string">design/sidebar/title_additional</item>
                     <item name="fieldset"
                           xsi:type="string">iways_settings/sidebar</item>
                 </item>

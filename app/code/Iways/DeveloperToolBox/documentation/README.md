@@ -73,7 +73,7 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
     "type": "magento2-[COMPONENT_TYPE]", [theme|module]
     "version": "[VERSION_NUMBER]", e.g.: "0.0.1"
     "license": [
-        "proprietary"
+        "MIT"
     ],
     "repositories": [
         {

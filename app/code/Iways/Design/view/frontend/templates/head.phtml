@@ -12,6 +12,17 @@
  * @link     https://www.i-ways.net
  */
 
+if ($block->getHelper()->getConfig('design/sidebar/toggle_titles')) {
+
+    echo $block->addTag(
+        'script',
+        [
+            'src' => $block->getViewFileUrl('Iways_Design/js/toggle_titles.js'),
+            'type' => "text/javascript",
+        ]
+    );
+}
+
 echo $block->addTag(
     'link',
     [

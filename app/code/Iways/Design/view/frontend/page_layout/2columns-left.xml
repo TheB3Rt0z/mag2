@@ -8,7 +8,7 @@
                as="iways_design_block_sidebar_title_main"
                template="Iways_Design::sidebar/title.phtml"
                before="div.sidebar.main"
-               ifconfig="design/sidebar/sidebar_title_main">
+               ifconfig="design/sidebar/title_main">
             <arguments>
                 <argument name="sidebar_type"
                           xsi:type="string">main</argument>
@@ -19,7 +19,7 @@
                as="iways_design_block_sidebar_title_additional"
                template="Iways_Design::sidebar/title.phtml"
                before="div.sidebar.additional"
-               ifconfig="design/sidebar/sidebar_title_additional">
+               ifconfig="design/sidebar/title_additional">
             <arguments>
                 <argument name="sidebar_type"
                           xsi:type="string">additional</argument>

@@ -31,7 +31,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="mobile_modal_sidebars"> <!-- todo only if sidebars do actually have a title (design module) -->
+            <field name="mobile_modal_sidebars">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -43,6 +43,9 @@
                               translate="true">Modal sidebars</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
+                        <item name="notice"
+                              xsi:type="string"
+                              translate="true">Needs at least one not empty sidebar title (see Sidebar tab)</item>
                     </item>
                 </argument>
             </field>

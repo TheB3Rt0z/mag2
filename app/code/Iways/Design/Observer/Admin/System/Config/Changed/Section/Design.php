@@ -17,10 +17,12 @@ namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 use Iways\Design\Helper\Data as helper;
 use Iways\Design\Model\Config\Body\Background\SizeOptions;
 use Iways\Design\Model\Design\Backend\Body\Background;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface as implemented;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
+use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Context;
 use Magento\Store\Model\StoreManagerInterface;
@@ -39,7 +41,8 @@ use Magento\Store\Model\StoreManagerInterface;
 class Design implements implemented
 {
     const EOL = "\n";
-    const STYLES_FILE = 'pub/media/iways/styles.css';
+    const STYLES_DIR = 'iways';
+    const STYLES_FILE = 'styles.css';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -48,18 +51,24 @@ class Design implements implemented
      *
      * @param object $helper                Iways\Design\Helper\Data
      * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
+     * @param object $directoryList         Magento\Framework\App\Filesystem\DirectoryList
+     * @param object $file                  Magento\Framework\Filesystem\Io\File
      * @param object $writeFactory          Magento\Framework\Filesystem\File\WriteFactory
      * @param object $context               Magento\Framework\View\Element\Context
      */
     public function __construct(
         helper $helper,
         StoreManagerInterface $storeManagerInterface,
+        DirectoryList $directoryList,
+        File $file,
         WriteFactory $writeFactory,
         Context $context
     ) {
         $this->helper = $helper;
 
         $this->storeManagerInterface = $storeManagerInterface;
+        $this->directoryList = $directoryList;
+        $this->file = $file;
         $this->writeFactory = $writeFactory;
         $this->eventManager = $context->getEventManager();
     }
@@ -78,6 +87,7 @@ class Design implements implemented
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
         if ($backgroundColor = $this->helper->getConfig('design/body/background_color')) {
+
             $data .= 'html body {' . self::EOL
                    . '    background-image: none;' . self::EOL
                    . '    background-color: ' . $backgroundColor . ';' . self::EOL
@@ -85,6 +95,7 @@ class Design implements implemented
         }
 
         if ($backgroundSrc = $this->helper->getConfig('design/body/background_src')) {
+
             $store = $this->storeManagerInterface->getStore();
             $baseUrl = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
             $data .= 'html body {' . self::EOL
@@ -95,6 +106,7 @@ class Design implements implemented
                      . '}' . self::EOL;
 
             if ($backgroundSrcAttachment = $this->helper->getConfig('design/body/background_src_attachment')) {
+
                 $data .= 'html body {' . self::EOL
                        . '    background-attachment: ' . $backgroundSrcAttachment
                                                        . ';' . self::EOL
@@ -102,12 +114,16 @@ class Design implements implemented
             }
 
             if ($backgroundSrcSize = $this->helper->getConfig('design/body/background_src_size')) {
+
                 if ($backgroundSrcSize == 1) { // identifies custom option in select
+
                     $backgroundSrcSizeCustom = $this->helper->getConfig('design/body/background_src_size_custom');
+
                     $backgroundSrcSizeCustomArray = explode(
                         ';',
                         $backgroundSrcSizeCustom
                     );
+
                     $backgroundSrcSize = ($backgroundSrcSizeCustomArray[0] ?: '')
                                        . ($backgroundSrcSizeCustomArray[1] ?: '')
                                        . " "
@@ -122,12 +138,16 @@ class Design implements implemented
             }
 
             if ($backgroundSrcPos = $this->helper->getConfig('design/body/background_src_position')) {
+
                 if ($backgroundSrcPos == 1) { // identifies custom option in select
+
                     $backgroundSrcPosCustom = $this->helper->getConfig('design/body/background_src_position_custom');
+
                     $backgroundSrcPosCustomArray = explode(
                         ';',
                         $backgroundSrcPosCustom
                     );
+
                     $backgroundSrcPos = ($backgroundSrcPosCustomArray[0] ?: '')
                                       . ($backgroundSrcPosCustomArray[1] ?: '')
                                       . " "
@@ -142,6 +162,7 @@ class Design implements implemented
             }
 
             if ($backgroundSrcRepeat = $this->helper->getConfig('design/body/background_src_repeat')) {
+
                 $data .= 'html body {' . self::EOL
                        . '    background-repeat: ' . $backgroundSrcRepeat
                                                    . ';' . self::EOL
@@ -150,14 +171,43 @@ class Design implements implemented
         }
 
         if ($backgroundGradient = $this->helper->getConfig('design/body/background_gradient')) {
+
             $straightCss = str_replace(["\n", "\r"], '', $backgroundGradient);
             $data .= 'html body {' . self::EOL
                    . '    ' . $straightCss . self::EOL
                    . '}' . self::EOL;
         }
 
+        if ($this->helper->getConfig('design/sidebar/toggle_titles')) {
+
+            $data .= '.sidebar .block .block-title,' . self::EOL
+                   . '.sidebar .block .filter-options-title {' . self::EOL
+                   . '    cursor: pointer;' . self::EOL
+                   . '}' . self::EOL
+                   . '.sidebar .block .block-content dl > dt {' . self::EOL
+                   . '    border-top: 1px solid #d1d1d1;' . self::EOL
+                   . '    padding: 10px 0 0;' . self::EOL
+                   . '}' . self::EOL
+                   . '.sidebar .block .block-content dl > dt::after {' . self::EOL
+                   . '    content: "−";' . self::EOL
+                   . '    float: right;' . self::EOL
+                   . '    font-size: 1.5em;' . self::EOL
+                   . '    line-height: .75em;' . self::EOL
+                   . '}' . self::EOL
+                   . '.sidebar .block .block-content dl > dt.closed::after {' . self::EOL
+                   . '    content: "+";' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        $filePath = $this->directoryList->getPath('media') . '/' . self::STYLES_DIR;
+        if (!is_dir($filePath)) { // checking for existing directory (will not be created automatically)
+
+            $this->file->mkdir($filePath, 0775);
+        }
+        $filePath .= '/' . self::STYLES_FILE;
+
         $this->stylesFile = $this->writeFactory->create(
-            self::STYLES_FILE,
+            $filePath,
             DriverPool::FILE,
             'w'
         );
@@ -167,7 +217,7 @@ class Design implements implemented
             'iways_design_' . $observer->getEvent()->getName(),
             [
                 'styles_file' => $this->writeFactory->create(
-                    self::STYLES_FILE,
+                    $filePath,
                     DriverPool::FILE,
                     'a'
                 ),
@@ -187,6 +237,7 @@ class Design implements implemented
     public function write($data = '')
     {
         if ($this->helper->getConfig('iways_design/frontend/minify_css')) {
+
             $data = str_replace(
                 [' {', ': ', ' + ', '    ', ';' . self::EOL . '}', self::EOL],
                 ['{', ':', '+', '', '}', ''],

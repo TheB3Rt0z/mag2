@@ -52,7 +52,7 @@ class Title extends extended
         parent::__construct($context, $data);
 
         if ($this->title === null) {
-            $this->title = $this->helper->getConfig('design/sidebar/sidebar_title_' . $this->getSidebarType());
+            $this->title = $this->helper->getConfig('design/sidebar/title_' . $this->getSidebarType());
         }
     }
 

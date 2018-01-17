@@ -232,6 +232,21 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            <field name="sidebar_toggle_titles">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Toggle blocks contents</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
             <field name="sidebar_title_main">
                 <argument name="data"
                           xsi:type="array">
