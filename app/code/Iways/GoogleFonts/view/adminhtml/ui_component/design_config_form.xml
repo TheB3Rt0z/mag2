@@ -16,6 +16,21 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            <field name="fonts_body_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Main font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
         </fieldset>
     </fieldset>
 </form>

@@ -14,7 +14,10 @@
 
 namespace Iways\GoogleFonts\Model;
 
+use Iways\Base\Model\Cache as iwaysCache;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\HTTP\Client\Curl;
 use Magento\Framework\Model\AbstractModel as extended;
 use Magento\Framework\Model\Context;
@@ -41,18 +44,19 @@ class Api extends extended
      *
      * PHP Version 5
      *
-     * @param object $context           Magento\Framework\Model\Context
-     * @param object $registry          Magento\Framework\Registry
-     * @param object $curl              Magento\Framework\HTTP\Client\Curl
-     * @param object $abstractRresource Magento\Framework\Model\ResourceModel\AbstractResource
-     * @param object $abstractDb        Magento\Framework\Data\Collection\AbstractDb
-     * @param array  $data              object attributes
+     * @param object $context          Magento\Framework\Model\Context
+     * @param object $registry         Magento\Framework\Registry
+     * @param object $curl             Magento\Framework\HTTP\Client\Curl
+     * @param object $abstractResource Magento\Framework\Model\ResourceModel\AbstractResource
+     * @param object $abstractDb       Magento\Framework\Data\Collection\AbstractDb
+     * @param array  $data             object attributes
      */
     public function __construct(
         Context $context,
         Registry $registry,
         Curl $curl,
-        AbstractResource $abstractRresource = null,
+        iwaysCache $iwaysCache,
+        AbstractResource $abstractResource = null,
         AbstractDb $abstractDb = null,
         array $data = []
     ) {
@@ -60,10 +64,12 @@ class Api extends extended
 
         $this->curl = $curl;
 
+        $this->iwaysCache = $iwaysCache;
+
         parent::__construct(
             $context,
             $registry,
-            $abstractRresource,
+            $abstractResource,
             $abstractDb,
             $data
         );
@@ -78,14 +84,20 @@ class Api extends extended
      */
     public function call()
     {
-        $this->curl->get($this->apiUrl);
-        $response = $this->curl->getBody();
+        if (!$response = unserialize($this->iwaysCache->load('iways_googlefonts_api_call_response'))) {
 
-        $response = json_decode($response);
+            $this->curl->get($this->apiUrl);
+            $response = $this->curl->getBody();
 
-        if (($this->curl->getStatus() != 200) && isset($response->error)) {
-            return '<font color="red">ERROR ' . $response->error->code . ': '
-                 . $response->error->message . '</font>';
+            $response = json_decode($response);
+
+            if (($this->curl->getStatus() != 200) && isset($response->error)) {
+
+                return '<font color="red">ERROR ' . $response->error->code . ': '
+                     . $response->error->message . '</font>';
+            }
+
+            $this->iwaysCache->save(serialize($response), 'iways_googlefonts_api_call_response', [iwaysCache::CACHE_TAG], 86400);
         }
 
         return $response;
@@ -105,6 +117,7 @@ class Api extends extended
         $this->apiKey = $apiKey;
 
         if ($this->apiKey) {
+
             $this->apiUrl .= '?key=' . $this->apiKey;
         }
 

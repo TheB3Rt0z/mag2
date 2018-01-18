@@ -6,16 +6,17 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\SocialLinks\Model\Config\Source;
+namespace Iways\GoogleFonts\Model\Config\Source;
 
 use Iways\Base\Model\Config\Source as extended;
-use Iways\SocialLinks\Helper\Data as helper;
+use Iways\GoogleFonts\Helper\Data as helper;
+use Iways\GoogleFonts\Model\Api;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -23,13 +24,29 @@ use Iways\SocialLinks\Helper\Data as helper;
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class NetworkOptions extends extended
+class FontOptions extends extended
 {
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param object $helper Iways\GoogleFonts\Helper\Data
+     */
+    public function __construct(
+        helper $helper,
+        Api $api
+    ) {
+        $this->helper = $helper;
+
+        $this->api = $api;
+    }
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -39,9 +56,12 @@ class NetworkOptions extends extended
      */
     public function toArray()
     {
-        foreach (helper::$socialNetworks as $key => $value) {
+        if ($response = $this->api->call()) {
 
-            $data[$key] = __($value);
+            foreach ($response->items as $key => $item) {
+
+                $data[$item->family] = $item->family . " (" . $item->category . ")";
+            }
         }
 
         return $data;

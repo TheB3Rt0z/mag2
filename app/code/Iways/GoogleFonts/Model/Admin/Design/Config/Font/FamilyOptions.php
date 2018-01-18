@@ -6,30 +6,31 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_SocialLinks
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\SocialLinks\Model\Config\Source;
+namespace Iways\GoogleFonts\Model\Admin\Design\Config\Font;
 
 use Iways\Base\Model\Config\Source as extended;
-use Iways\SocialLinks\Helper\Data as helper;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
  * PHP Version 5
  *
- * @category File
- * @package  Iways_SocialLinks
+ * @category Class
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class NetworkOptions extends extended
+class FamilyOptions extends extended
 {
+    const FAMILY_DEFAULT = false;
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -39,9 +40,15 @@ class NetworkOptions extends extended
      */
     public function toArray()
     {
-        foreach (helper::$socialNetworks as $key => $value) {
+        $data = [
+            self::FAMILY_DEFAULT => __("default") . " (\"Open Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif)"
+        ];
 
-            $data[$key] = __($value);
+        foreach (explode(",", $this->helper->getConfig('iways_googlefonts/settings/active_fonts')) as $label) {
+
+            $value = str_replace(" ", "+", $label);
+
+            $data[$value] = $label;
         }
 
         return $data;

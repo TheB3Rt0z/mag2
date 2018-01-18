@@ -38,6 +38,24 @@
                     <frontend_model>Iways\GoogleFonts\Block\Adminhtml\System\Config\Apitest</frontend_model>
                 </field>
             </group>
+            <group id="settings"
+                   translate="label"
+                   sortOrder="111"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Settings</label>
+                <field id="active_fonts"
+                       translate="label"
+                       type="multiselect"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Active fonts</label>
+                    <source_model>Iways\GoogleFonts\Model\Config\Source\FontOptions</source_model>
+                </field>
+            </group>
         </section>
     </system>
 </config>
