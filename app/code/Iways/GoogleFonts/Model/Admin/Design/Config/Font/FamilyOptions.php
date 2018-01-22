@@ -29,7 +29,7 @@ use Iways\Base\Model\Config\Source as extended;
  */
 class FamilyOptions extends extended
 {
-    const FAMILY_DEFAULT = false;
+    const FAMILY_DEFAULT = 'Open+Sans';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -46,7 +46,7 @@ class FamilyOptions extends extended
 
         foreach (explode(",", $this->helper->getConfig('iways_googlefonts/settings/active_fonts')) as $label) {
 
-            $value = str_replace(" ", "+", $label);
+            $value = preg_replace('/ /', "+", $label);
 
             $data[$value] = $label;
         }

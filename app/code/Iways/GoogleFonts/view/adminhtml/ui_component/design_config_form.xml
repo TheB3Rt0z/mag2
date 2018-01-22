@@ -16,6 +16,20 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            <field name="fonts_body_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
             <field name="fonts_body_family">
                 <argument name="data"
                           xsi:type="array">
@@ -28,6 +42,10 @@
                               translate="true">Main font family</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                     </item>
                 </argument>
             </field>

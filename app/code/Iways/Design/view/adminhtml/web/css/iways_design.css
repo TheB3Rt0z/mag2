@@ -24,9 +24,9 @@
     width: 64px;
 }
 
-.iways-custom-fields {
+.iways-width-height-fields {
     display: none;
 }
-.iways-custom-fields > * {
+.iways-width-height-fields > * {
     margin-left: 8px;
 }

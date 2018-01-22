@@ -3,3 +3,25 @@
     background-position: -544px -80px;
     left: 17px;
 }
+
+.iways-font-face-fields {
+	display: inline-block;
+	margin-top: 8px;
+}
+.iways-font-face-fields > * {
+    margin-right: 8px;
+}
+
+.iways-font-face-fields select.loading {
+    background-image: url('../../images/ajax-loader.gif');
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+    min-width: 43px;
+}
+
+.iways-font-face-fields > .iways-preview {
+	background-color: white;
+	border-radius: 4px;
+	margin-top: 8px;
+	padding: 8px;
+}

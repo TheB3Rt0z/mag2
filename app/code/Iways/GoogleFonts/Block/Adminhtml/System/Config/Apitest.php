@@ -63,6 +63,7 @@ class Apitest extends extended
         parent::_prepareLayout();
 
         if (!$this->getTemplate()) {
+
             $this->setTemplate('system/config/apitest.phtml');
         }
 
@@ -90,6 +91,7 @@ class Apitest extends extended
         $this->api = $api;
 
         if ($apiKey = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
+
             $this->api->setApiKey($apiKey);
         }
 

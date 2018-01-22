@@ -38,6 +38,7 @@ use Magento\Framework\Registry;
 class Api extends extended
 {
     const API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts';
+    const CSS_URL = 'https://fonts.googleapis.com/css?family=';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -101,6 +102,62 @@ class Api extends extended
         }
 
         return $response;
+    }
+
+    public function getFontByFamily($fontFamily) {
+
+        foreach ($this->call()->items as $item) {
+
+            if ($item->family == $fontFamily) {
+
+                return $item;
+            }
+        }
+
+        return false;
+    }
+
+    public function getFontCss($fontFamily, $fontVariants = []) {
+
+        $cssUrl = SELF::CSS_URL + $fontFamily;
+
+        if ($fontVariants) {
+
+            $cssUrl += ':' + implode($fontVariants, ',');
+        }
+
+        $this->curl->get($cssUrl);
+        $response = $this->curl->getBody();
+
+        if ($this->curl->getStatus() != 200) {
+
+            return false;
+        }
+
+        return $response;
+    }
+
+    public function getFontVariants($fontFamily) {
+
+        $output = [];
+
+        foreach ($this->getFontByFamily($fontFamily)->variants as $variant) {
+
+            if ($variant == 'regular') {
+
+                $variant = '400';
+
+            } else if ($variant == 'italic') {
+
+                $variant = '400italic';
+            }
+
+            $key = str_replace('italic', 'i', $variant);
+
+            $output[$key] = str_replace('italic', ' italic', $variant);
+        }
+
+        return $output;
     }
 
     /**

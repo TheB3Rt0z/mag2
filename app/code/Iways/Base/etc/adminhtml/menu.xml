@@ -5,7 +5,7 @@
         <add id="Iways_Base::menu"
              resource="Iways_Base::menu"
              title="i-ways"
-             sortOrder="10"
+             sortOrder="11"
              dependsOnModule="Iways_Base"
              module="Iways_Base" />
         <add id="Iways_Base::menu_configuration"

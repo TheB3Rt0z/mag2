@@ -3,5 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
      <head>
          <css src="Iways_GoogleFonts::css/iways_googlefonts.css" />
+         <link src="jquery.js" />
+         <link src="Iways_GoogleFonts::js/iways_googlefonts.js" />
      </head>
 </page>

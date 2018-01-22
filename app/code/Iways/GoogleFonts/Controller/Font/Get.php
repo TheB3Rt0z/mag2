@@ -6,15 +6,16 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways_Base
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 
-namespace Iways\Base\Controller\Configuration;
+namespace Iways\GoogleFonts\Controller\Font;
 
-use Iways\Base\Helper\Data as helper;
+use Iways\GoogleFonts\Helper\Data as helper;
+use Iways\GoogleFonts\Model\Api;
 use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
@@ -25,37 +26,34 @@ use Magento\Framework\Controller\Result\JsonFactory;
  * PHP Version 5
  *
  * @category Class
- * @package  Iways_Base
+ * @package  Iways_GoogleFonts
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
 class Get extends extended
 {
-    public static $whiteList = [
-        'design' => [
-            'input' => [
-                'style_type_number',
-            ],
-        ],
-    ];
-
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $context     Magento\Framework\App\Action\Context
-     * @param object $jsonFactory Magento\Framework\Controller\Result\JsonFactory
-     * @param object $helper      Iways\Base\Helper\Data
+     * @param object $context           Magento\Backend\App\Action\Context
      */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
-        helper $helper
+        helper $helper,
+        Api $api
     ) {
         $this->jsonFactory = $jsonFactory;
         $this->helper = $helper;
+        $this->api = $api;
+
+        if ($apiKey = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
+
+            $this->api->setApiKey($apiKey);
+        }
 
         parent::__construct($context);
     }
@@ -65,7 +63,7 @@ class Get extends extended
      *
      * PHP Version 5
      *
-     * @return Magento\Framework\Controller\Result\Json
+     * @return object
      */
     public function execute()
     {
@@ -73,21 +71,6 @@ class Get extends extended
 
         $this->params = $this->getRequest()->getParams();
 
-        foreach (self::$whiteList as $scope => $values) { // returns value only if it was whitelisted
-
-            foreach ($this->params as $key => $value) {
-
-                $data[$key][$value] = null;
-
-                if (isset($values[$key]) && in_array($value, $values[$key])) {
-
-                    $setting = $scope . '/' . $key . '/' . $value;
-
-                    $data[$key][$value] = $this->helper->getConfig($setting); // retrieves corresponding value
-                }
-            }
-        }
-
-        return $json->setData($data);
+        return $json->setData($this->api->getFontVariants($this->params['font_family']));
     }
 }

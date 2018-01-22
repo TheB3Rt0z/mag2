@@ -60,7 +60,13 @@ class FontOptions extends extended
 
             foreach ($response->items as $key => $item) {
 
-                $data[$item->family] = $item->family . " (" . $item->category . ")";
+                if ($item->family == 'Open Sans') { // excludes default family
+
+                    continue;
+                }
+
+                $data[$item->family] = $item->family . " (" . $item->category . ") "
+                                     . implode($item->variants, " | ");
             }
         }
 

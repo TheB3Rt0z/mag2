@@ -8,5 +8,4 @@
 
 ## What will this module do?
 
-- [X] 
-- [ ] 
+- [ ] https://github.com/typekit/webfontloader
