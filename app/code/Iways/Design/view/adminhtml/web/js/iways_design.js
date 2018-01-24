@@ -50,7 +50,7 @@ jQuery(document).on('change', '.iways-width-height select', function (e) {
     }
 });
 
-function checkWidthHeightFields(val, input, e) {
+function checkWidthHeightFields(val, input, e) { // @todo define here the onchange events
     
     jQuery(document).ready(function() {
 

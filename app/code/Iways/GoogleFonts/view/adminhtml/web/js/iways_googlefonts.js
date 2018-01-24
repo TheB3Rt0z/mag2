@@ -1,7 +1,8 @@
 function updatePreview(e) {
     
     e.css({
-	'font-family': "'" + jQuery('.iways-font-face select.admin__control-select').val().replace('+', ' ') + "'"
+	'font-family': "'" + jQuery('.iways-font-face select.admin__control-select').val().replace('+', ' ') + "'",
+	'font-size': "20px"
     });
 }
 
@@ -47,18 +48,18 @@ function resetFontFaceField(e, font_family) {
 
 function checkFontFaceFields(val, input, e) {
     
-    var element = jQuery(e).children('select');
+    var element = jQuery(e).children('select.iways-empty');
   
     resetFontFaceField(element, 'Open+Sans');
+    
+    jQuery('.iways-font-face select.admin__control-select').on('change', function () {
+	    
+	var customFieldsContainer = jQuery(this).siblings('.iways-font-face-fields'),
+	    element = customFieldsContainer.children('select.iways-empty');
+	    
+	resetFontFaceField(element, jQuery(this).val());
+    });
 }
-
-jQuery(document).on('change', '.iways-font-face select.admin__control-select', function (e) {
-    
-    var customFieldsContainer = jQuery(this).siblings('.iways-font-face-fields'),
-        element = customFieldsContainer.children('select');
-    
-    resetFontFaceField(element, jQuery(this).val());
-});
 
 /*var delay = 125,
     check = false;

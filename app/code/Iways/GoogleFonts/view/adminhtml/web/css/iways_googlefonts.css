@@ -4,6 +4,10 @@
     left: 17px;
 }
 
+.iways-font-face input[type=number] {
+    width: 64px;
+}
+
 .iways-font-face-fields {
 	display: inline-block;
 	margin-top: 8px;
