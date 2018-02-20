@@ -14,14 +14,17 @@
 
 namespace Vollkorn\Adminhtml\Block;
 
+use Magento\Backend\Model\Auth\Session as AuthSession;
+use Magento\Backend\Model\Session;
 use Magento\Framework\View\Element\Template as extended;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Ⓒ Lord Vollkorn
  *
  * PHP Version 5
  *
- * @category File
+ * @category Class
  * @package  Vollkorn_Adminhtml
  * @author   Bertozzi Matteo <web.bio.informatics@gmail.com>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
@@ -29,10 +32,20 @@ use Magento\Framework\View\Element\Template as extended;
  */
 class Audio extends extended
 {
+    /**
+     * Ⓒ Lord Vollkorn
+     *
+     * PHP Version 5
+     *
+     * @param object $context     Magento\Framework\View\Element\Template\Context
+     * @param object $authSession Magento\Backend\Model\Auth\Session
+     * @param object $session     Magento\Backend\Model\Session
+     * @param array  $data        object attributes
+     */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Backend\Model\Auth\Session $authSession,
-        \Magento\Backend\Model\Session $session,
+        Context $context,
+        AuthSession $authSession,
+        Session $session,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -41,19 +54,25 @@ class Audio extends extended
 
         if (!$authSession->getUser()) {
 
+            $mp3Url = $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/som.mp3');
+
             echo '<audio autoplay loop>'
-               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/som.mp3') . '" type="audio/mpeg"></source>'
+               . '    <source src="' . $mp3Url . '" type="audio/mpeg"></source>'
                . '</audio>';
-        }
-        elseif (!$session->getAudioPlayed()) {
+
+        } elseif (!$session->getAudioPlayed()) {
 
             $session->setAudioPlayed(true);
 
+            $mp4Url = $assetRepository->getUrl('Vollkorn_Adminhtml::mp4/ben.mp4');
+
+            $mp3Url = $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/tod.mp3');
+
             echo '<video width="800" height="450" autoplay preload>'
-               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp4/ben.mp4') . '" type="video/mp4">'
+               . '    <source src="' . $mp4Url . '" type="video/mp4">'
                . '</video>'
                . '<audio autoplay preload>'
-               . '    <source src="' . $assetRepository->getUrl('Vollkorn_Adminhtml::mp3/tod.mp3') . '" type="audio/mpeg"></source>'
+               . '    <source src="' . $mp3Url . '" type="audio/mpeg"></source>'
                . '</audio>';
         }
     }

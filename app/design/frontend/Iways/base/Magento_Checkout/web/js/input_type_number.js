@@ -12,12 +12,12 @@ function initInputTypeNumber(wrapper = null)
     });
 
     if (!check) {
-	
+
         return; // blocks execution if boolean setting returns false
     }
     
     jQuery((wrapper ? wrapper + ' ' : '') + 'input[type="number"]:not(.iways-base-theme)').each(function () {
-	
+
         var input = jQuery(this),
             down = jQuery('<span class="number-nav input-down">&#x25bc;</span>').insertAfter(input),
             up = jQuery('<span class="number-nav input-up">&#x25b2;</span>').insertAfter(input),

@@ -41,7 +41,7 @@ body .page-wrapper {
     background-color: white;
     background-image: url('../images/background_125.png');
     background-position: left top;
-}    
+}
 body.adminhtml-auth-login .page-wrapper {
     animation: animatedBackground 30s linear infinite;
 }
@@ -105,8 +105,8 @@ table.data-grid {
 }
 
 .page-actions {
-	background: rgba(255, 255, 255, .75) !important;
-	transition: .25s;
+    background: rgba(255, 255, 255, .75) !important;
+    transition: .25s;
 }
 .page-main-actions:not(._hidden),
 .page-actions:not(._fixed) {

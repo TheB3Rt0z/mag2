@@ -27,6 +27,13 @@ namespace Vollkorn\All\Cron;
  */
 class Tab
 {
+    /**
+     * Ⓒ Lord Vollkorn
+     *
+     * PHP Version 5
+     *
+     * @return void
+     */
     public function execute()
     {
         // @todo exsample for cron job
