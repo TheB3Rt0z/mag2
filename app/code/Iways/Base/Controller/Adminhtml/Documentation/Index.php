@@ -31,6 +31,8 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends extended
 {
+    const ADMIN_RESOURCE = 'Iways_Base::menu_documentation';
+
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
@@ -38,26 +40,26 @@ class Index extends extended
      *
      * @return boolean
      */
-    protected function _isAllowed()
+    /*protected function _isAllowed() @todo to be deleted?
     {
         return $this->_authorization->isAllowed('Iways_Base::documentation');
-    }
+    }*/
 
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $context           Magento\Backend\App\Action\Context
-     * @param object $resultPageFactory Magento\Framework\View\Result\PageFactory
+     * @param object $context     Magento\Backend\App\Action\Context
+     * @param object $pageFactory Magento\Framework\View\Result\PageFactory
      */
     public function __construct(
         Context $context,
-        PageFactory $resultPageFactory
+        PageFactory $pageFactory
     ) {
         parent::__construct($context);
 
-        $this->resultPageFactory = $resultPageFactory;
+        $this->pageFactory = $pageFactory;
     }
 
     /**
@@ -70,14 +72,14 @@ class Index extends extended
     public function execute()
     {
         $theme = $this->getRequest()->getParam('theme');
-
         $module = $this->getRequest()->getParam('module');
-
         $dev = $this->getRequest()->getParam('dev');
 
-        $resultPage = $this->resultPageFactory->create();
+        $resultPage = $this->pageFactory->create();
+        
+        $resultPage->setActiveMenu(self::ADMIN_RESOURCE);
 
-        $resultPage->getConfig()->getTitle()->set(
+        $resultPage->getConfig()->getTitle()->prepend(
             ($dev
             ? __("Developer's Reference")
             : __("Documentation"))

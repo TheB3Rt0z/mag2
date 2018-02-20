@@ -68,12 +68,14 @@ class Head extends extended
         $attributes = '';
 
         foreach ($data as $id => $value) {
+        	
             $attributes .= ' ' . $id . '="' . $value . '"';
         }
 
         $data = '<' . $type . $attributes;
 
         if ($type == 'script') {
+        	
             return $data . '></' . $type . '>';
         }
 

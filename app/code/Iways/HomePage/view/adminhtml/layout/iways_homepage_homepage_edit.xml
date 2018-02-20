@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!--<update handle="styles" />
+    <update handle="editor" />
+    <body>
+        <referenceContainer name="page-content">
+            <uiComponent name="homepage_editor" />
+        </referenceContainer>
+    </body>-->
+    
+    <referenceContainer name="content">
+    	<block class="Iways\HomePage\Block\Adminhtml\Homepage\Edit\Actions"
+    	       name="iways_homepage_block_adminhtml_homepage_edit_actions"
+    	       as="iways_homepage_block_adminhtml_homepage_edit_actions"
+    	       template="Magento_Backend::widget/form/container.phtml">
+    	    <block class="Iways\HomePage\Block\Adminhtml\Homepage\Edit\Form"
+    	           name="iways_homepage_block_adminhtml_homepage_edit_form"
+    	           as="form" />
+    	</block>
+    </referenceContainer>
+</page>

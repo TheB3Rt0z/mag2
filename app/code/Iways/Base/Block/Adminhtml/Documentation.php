@@ -91,7 +91,8 @@ class Documentation extends extended
                         . ($data['locale']
                         ? '/documentation/' . $data['locale']
                         : '')
-                        . '/' . ((!isset($data['theme']) && !isset($data['module']) && !$data['locale'])
+                        . '/' . ((!isset($data['theme']) && !isset($data['module'])
+                                 && !$data['locale'])
                                 ? 'code/Iways/DeveloperToolBox/documentation/' // here regrettably hardcoded..
                                 : '')
                         . self::DOC_FILE;

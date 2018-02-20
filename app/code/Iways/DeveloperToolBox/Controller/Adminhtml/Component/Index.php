@@ -31,7 +31,7 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends extended
 {
-    const RESOURCE = 'Iways_DeveloperToolBox::menu_developertoolbox_component_index';
+    const ADMIN_RESOURCE = 'Iways_DeveloperToolBox::menu_developertoolbox_component_index';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -40,10 +40,10 @@ class Index extends extended
      *
      * @return boolean
      */
-    protected function _isAllowed()
+    /*protected function _isAllowed() @todo really required?
     {
         return $this->_authorization->isAllowed('Iways_DeveloperToolBox::component');
-    }
+    }*/
 
     /**
      * Ⓒ i-ways sales solutions GmbH

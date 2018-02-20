@@ -1,0 +1,6 @@
+#menu-iways-base-menu .level-2.item-design-homepage > a::before,
+#menu-iways-base-menu .level-2.item-menu-documentation-homepage > a::before {
+    background-position: -240px 0;
+    left: 17px;
+    top: 15px;
+}

@@ -1,6 +1,6 @@
 **[Conventions](#conventions)** | [Keywords](#keywords) | [Code validation](#code-validation) | [composer.json](#composer-json) | [Components dependencies](#components-dependencies) | [Theme naming](#theme-naming) | [Module naming](#module-naming) | [PHP Doc patterns](#php-doc-patterns)
 
-**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resurce-acl) | [Cache declaration](#cache-declaration) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module webApi routes](#module-webapi-routes) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module frontend sections](#module-frontend-sections) | [Module backend UI component](#module-backend-ui-component)
+**[XML attributes](#xml-attributes)** | [Theme declaration](#theme-declaration) | [General layout](#general-layout) | [Page type layout](#page-type-layout) | [Module resource ACL](#module-resource-acl) | [Cache declaration](#cache-declaration) | [Module default settings](#module-default-settings) | [Dependency injection](#dependency-injection) | [Module declaration](#module-declaration) | [Module webApi routes](#module-webapi-routes) | [Module widgets configuration](#module-widgets-configuration) | [Module backend events](#module-backend-events) | [Module backend menu](#module-backend-menu) | [Module backend router](#module-backend-router) | [Module backend configuration](#module-backend-configuration) | [Module frontend events](#module-frontend-events) | [Module frontend router](#module-frontend-router) | [Module frontend sections](#module-frontend-sections) | [Module backend UI component](#module-backend-ui-component)
 
 **[Development guidelines](#development-guidelines)** | [Theme(s) structure](#themes-structure) | [Modules structure](#modules-structure) | [Nice to have](#nice-to-have)
 
@@ -53,7 +53,7 @@ i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standar
 
 - underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (l.g.: "_addWhetherScopeInfo()", "_construct()", "_isAllowed()", "_getElementHtml(AbstractElement $element)", "_getUploadDir()", "_prepareLayout()") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
 
-- usage of forbidden function (l.g.: "addcslashes", "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (l.g.: "echo", "include"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
+- usage of forbidden function (l.g.: "addcslashes", "curl_close", "curl_exec", "curl_init", "curl_setopt", "file", "file_get_contents", "fread", "filesystem", "image", "readfile", "session_destroy", "session_id", "session_start", "session_write_close", "var_dump"), discouraged language constructs (l.g.: "echo", "include", "print"), direct access to superglobals (l.g.: "$_COOKIE", "$_SESSION") and pass-by-reference calls are only permitted in [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module, not following EcgM2 (neither PSR-1 or PSR-2) Standard and as for internal purposes not meant to be marketed.
 
 N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) are also ignored, because of the continual development state of i-ways framework (alternatively, they are processed by [Iways_DeveloperToolbox](code/Iways/DeveloperToolbox) module).
 
@@ -110,13 +110,16 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
 └────────────────┘   └─────────────────┘   └────────────────┘   └────────────────┘   └────────────────────────────┘
                              ▲     ▲
                              │     │ ┌───────────────────┐   ┌───────────────────┐
-                             │     └─┤iways/module-design│ ◄─┤iways/module-mobile│
-                             │       └───────────────────┘   └───────────────────┘
-                             │
-             ┌───────────────┴──────────┬─────────────────────────┬───────────── PREMIUM ──────────────┐
-┌────────────┴────────────┐┌────────────┴───────────┐┌────────────┴───────────┐           ┌────────────┴────────────┐
-│iways/module-categorytree││iways/module-googlefonts││iways/module-sociallinks│           │iways/module-openinghours│  
-└─────────────────────────┘└────────────────────────┘└────────────────────────┘           └─────────────────────────┘
+                           ──┴──   └─┤iways/module-design│ ◄─┤iways/module-mobile│
+                           BASIC     └───────────────────┘   └───────────────────┘
+                             ▼
+             ┌───────────────┴────────┬───────────────────────┬────────────┤PREMIUM ►─────────────┐
+┌────────────┴───────────┐┌───────────┴─────────┐┌────────────┴───────────┐          ┌────────────┴────────────┐
+│iways/module-googlefonts││iways/module-homepage││iways/module-sociallinks│          │iways/module-categorytree│
+└────────────────────────┘└─────────────────────┘└────────────────────────┘          └────────────┬────────────┘
+                                                                                     ┌────────────┴────────────┐
+                                                                                     │iways/module-openinghours│
+                                                                                     └─────────────────────────┘
 ```
 
 <a name="theme-naming"></a>
@@ -193,7 +196,7 @@ The following are functioning pattern and examples given are actually used in i-
 
 <a name="general-layout"></a>
 
-### General layout
+### General layout (also page configuration type)
 ```
 <!-- */layout/[LOWERCASE_LAYOUT].xml --> e.g.: "default", "default_head_blocks"
 
@@ -238,7 +241,7 @@ The following are functioning pattern and examples given are actually used in i-
         <referenceContainer name="[CONTAINER_NAME]"> e.g.: "content"
             <block class="[CLASS_NAME]" e.g.: "Iways\Base\Block\Adminhtml\Documentation"
                    name="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation"
-                   as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation"
+                   as="[LOWERCASE_IDENTIFIER]" e.g.: "iways_base_block_adminhtml_documentation", or [form]
                    template="[MODULE_IDENTIFIER]::[TEMPLATE_PATH]" e.g.: "Iways_Base", "documentation.phtml"
                    [POSITION_TAG] e.g.: before/after="-", before/after="[BLOCK_NAME]"
                    cacheable="[BOOLEAN_LITERAL]" [true|false], default is true (true if not given)
@@ -282,12 +285,12 @@ The following are functioning pattern and examples given are actually used in i-
 
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="[MODULE_IDENTIFIER]::menu" e.g.: "Iways_Base"
-                          title="[MANU_TITLE]" e.g.: "i-ways"
+                          title="[MENU_TITLE]" e.g.: "i-ways"
                           sortOrder="[SORTING_WEIGHT]" /> e.g.: "000"
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">

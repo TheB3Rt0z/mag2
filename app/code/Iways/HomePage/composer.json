@@ -1,0 +1,16 @@
+{
+    "name": "iways/module-homepage",
+    "require": {
+        "iways/module-design": "^0.1.0"
+    },
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\HomePage\\": ""
+        }
+    }
+}

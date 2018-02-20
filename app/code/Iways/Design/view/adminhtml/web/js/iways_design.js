@@ -18,7 +18,7 @@ jQuery(document).on('change', '.iways-width-height select', function (e) {
     var val = jQuery(this).val(),
         customFieldsContainer = jQuery(this).siblings('.iways-width-height-fields'),
         customFields = customFieldsContainer.children('input, select'),
-        hiddenField = jQuery('input[name=' + jQuery(this).attr('name') + '_custom]');
+        hiddenField = jQuery('input[name=' + jQuery(this).attr('name') + '_variant]');
 
     function customFieldsResult() {
         

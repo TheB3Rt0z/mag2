@@ -4,4 +4,12 @@
      <head>
          <css src="Iways_Base::css/iways_base.css" />
      </head>
+     <body>
+		 <referenceBlock name="menu">
+		 	<action method="setTemplate">
+                <argument name="template"
+                          xsi:type="string">Iways_Base::menu.phtml</argument>
+            </action>
+        </referenceBlock>
+     </body>
 </page>

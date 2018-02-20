@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_HomePage::design_homepage"
+             resource="Iways_HomePage::design_homepage"
+             title="Homepage Editor"
+             parent="Iways_Design::design"
+             sortOrder="333"
+             module="Iways_HomePage"
+             action="iways_homepage/homepage/edit" />
+		<add id="Iways_HomePage::menu_documentation_homepage"
+             resource="Iways_HomePage::menu_documentation_homepage"
+             title="Homepage Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_HomePage"
+             action="iways_base/documentation/index/module/HomePage" />        
+    </menu>
+</config>

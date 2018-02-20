@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Iways_HomePage::css/iways_homepage.css"/>
+    </head>
+    <body>
+        <referenceContainer name="main.content">
+            <referenceContainer name="columns">
+                <referenceContainer name="main">
+                    <block class="Iways\HomePage\Block\Homepage" name="iways_layout" template="Iways_HomePage::homepage.phtml"/>
+                </referenceContainer>
+            </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

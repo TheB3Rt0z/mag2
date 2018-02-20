@@ -119,7 +119,7 @@ class Api extends extended
 
     public function getFontCss($fontFamily, $fontVariants = []) { // @todo to be tested..
 
-        $cssUrl = SELF::CSS_URL + $fontFamily;
+        $cssUrl = SELF::CSS_URL . $fontFamily;
 
         if ($fontVariants) {
 
