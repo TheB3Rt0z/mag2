@@ -117,13 +117,13 @@ class Api extends extended
         return false;
     }
 
-    public function getFontCss($fontFamily, $fontVariants = []) { // @todo to be tested..
+    public function getFontCss($fontFamily, $fontVariants = []) {
 
         $cssUrl = SELF::CSS_URL . $fontFamily;
 
         if ($fontVariants) {
 
-            $cssUrl += ':' + implode($fontVariants, ',');
+            $cssUrl .= ':' . implode($fontVariants, ',');
         }
 
         $this->curl->get($cssUrl);

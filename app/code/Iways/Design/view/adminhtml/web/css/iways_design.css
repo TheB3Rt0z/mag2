@@ -17,6 +17,7 @@
 }
 
 .iways-color input {
+	transition: .125s;
     width: 128px !important;
 }
 

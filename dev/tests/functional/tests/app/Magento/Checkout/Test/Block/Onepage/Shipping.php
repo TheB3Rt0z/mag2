@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -23,6 +23,13 @@ class Shipping extends Form
     private $newAddressButton = '[data-bind*="isNewAddressAdded"]';
 
     /**
+     * CSS Selector for "Edit" button.
+     *
+     * @var string
+     */
+    private $editAddressButton = '.edit-address-link';
+
+    /**
      * Wait element.
      *
      * @var string
@@ -30,15 +37,13 @@ class Shipping extends Form
     private $waitElement = '.loading-mask';
 
     /**
-     * CSS Selector for Address Modal block.
+     * SCC Selector for Address Modal block.
      *
      * @var string
      */
     private $addressModalBlock = '//*[@id="opc-new-shipping-address"]/../..';
 
     /**
-     * Locator for selected shipping address block.
-     *
      * @var string
      */
     private $selectedAddress = '.shipping-address-item.selected-item';
@@ -65,11 +70,70 @@ class Shipping extends Form
     private $shippingAddressBlock = '.shipping-address-item';
 
     /**
-     * Locator for selected address block.
+     * Locator for shipping address select block.
      *
      * @var string
      */
     private $selectedShippingAddressBlock = '.selected-item';
+
+    /**
+     * Email instructions selector.
+     *
+     * @var string
+     */
+    private $emailInstructions = '#customer-email-fieldset .note span';
+
+    /**
+     * Email tooltip button selector.
+     *
+     * @var string
+     */
+    private $emailTooltipButton = '#customer-email-fieldset .field-tooltip-action';
+
+    /**
+     * Email tooltip content selector.
+     *
+     * @var string
+     */
+    private $emailTooltipContent = '#customer-email-fieldset .field-tooltip-content';
+
+    /**
+     * Email error selector.
+     *
+     * @var string
+     */
+    private $emailError = '#customer-email-error';
+
+    /**
+     * Get email error.
+     *
+     * @return string
+     */
+    public function getEmailError()
+    {
+        return $this->_rootElement->find($this->emailError)->getText();
+    }
+
+    /**
+     * Get email tooltip.
+     *
+     * @return string
+     */
+    public function getEmailTooltip()
+    {
+        $this->_rootElement->find($this->emailTooltipButton)->click();
+        return $this->_rootElement->find($this->emailTooltipContent)->getText();
+    }
+
+    /**
+     * Get email instructions.
+     *
+     * @return string
+     */
+    public function getEmailInstructions()
+    {
+        return $this->_rootElement->find($this->emailInstructions)->getText();
+    }
 
     /**
      * Click on "New Address" button.
@@ -96,14 +160,37 @@ class Shipping extends Form
     }
 
     /**
-     * Return selected address text.
+     * Returns form's required elements
      *
-     * @return string
+     * @return \Magento\Mtf\Client\ElementInterface[]
+     */
+    public function getRequiredFields()
+    {
+        return $this->_rootElement->getElements("div .field._required");
+    }
+
+    /**
+     * @return array
      */
     public function getSelectedAddress()
     {
-        $this->waitForElementNotVisible($this->waitElement);
-        return $this->_rootElement->find($this->selectedAddress)->getText();
+        return $this->_rootElement->find($this->selectedAddress, Locator::SELECTOR_CSS)->getText();
+    }
+
+    /**
+     * Get address block.
+     *
+     * @param String $address
+     */
+    public function editAddress($address)
+    {
+        $addresses = $this->_rootElement->getElements($this->shippingAddressBlock);
+        foreach ($addresses as $addressBlock) {
+            if (strpos($addressBlock->getText(), $address) === 0) {
+                $addressBlock->find($this->editAddressButton)->click();
+                break;
+            }
+        }
     }
 
     /**
@@ -144,7 +231,6 @@ class Shipping extends Form
     public function isPopupNewAddressButtonVisible()
     {
         $button = $this->_rootElement->find($this->popupSelector);
-        
         return $button->isVisible();
     }
 

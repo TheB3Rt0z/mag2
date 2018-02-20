@@ -1,20 +1,20 @@
 var delay = 125,
     check = false;
 
-jQuery(document).on('change keyup', '.iways-color input', function (e) {
-    
+jQuery(document).on('change keyup', '.iways-color input', function (e)
+{
     clearTimeout(check);
 
     var val = jQuery(this).val();
         
     if (val.length >= 3) {
 	
-	check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
+    	check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
     }
 });
 
-jQuery(document).on('change', '.iways-width-height select', function (e) {
-    
+jQuery(document).on('change', '.iways-width-height select', function (e)
+{
     var val = jQuery(this).val(),
         customFieldsContainer = jQuery(this).siblings('.iways-width-height-fields'),
         customFields = customFieldsContainer.children('input, select'),
@@ -50,10 +50,10 @@ jQuery(document).on('change', '.iways-width-height select', function (e) {
     }
 });
 
-function checkWidthHeightFields(val, input, e) { // @todo define here the onchange events
-    
-    jQuery(document).ready(function() {
-
+function checkWidthHeightFields(val, input, e) // @todo define here the onchange events
+{    
+    jQuery(document).ready(function ()
+    {
         if (val == 1) {
 
             var control = jQuery('[name=' + input + ']'),
@@ -61,8 +61,8 @@ function checkWidthHeightFields(val, input, e) { // @todo define here the onchan
                 values = value.split(';'),
                 container = jQuery(e);
             
-            container.children('input, select').each(function(index) {
-        	
+            container.children('input, select').each(function (index)
+            {
                 jQuery(this).val(values[index]);
             });
             
@@ -71,13 +71,18 @@ function checkWidthHeightFields(val, input, e) { // @todo define here the onchan
             container.show(delay);
         }
     });
+    
+    jQuery('.iways-color input').each(function ()
+    {
+    	checkColorField(jQuery(this).val(), jQuery(this));
+    });
 }
 
-function checkColorField(val, e) {
-    
+function checkColorField(val, e)
+{    
     var color = tinycolor(val); // https://github.com/bgrins/TinyColor
     
-    if (color.isValid()) {
+    if (val && color.isValid()) {
         
         var colorHex = color.toHexString();
         

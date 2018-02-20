@@ -12,9 +12,6 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/fonts</item>
                 </item>
-            </argument>
-            <argument name="metadata"
-                      xsi:type="array">
                 <item name="fonts_body_family"
                       xsi:type="array">
                     <item name="path"
@@ -22,7 +19,102 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/fonts</item>
                 </item>
-            </argument>
+	            <item name="fonts_body_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/fonts/body_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/fonts</item>
+	            </item>
+
+                <item name="fonts_h1_family_variant"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h1_family_variant</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+                <item name="fonts_h1_family"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h1_family</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+	            <item name="fonts_h1_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/fonts/h1_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/fonts</item>
+	            </item>
+
+                <item name="fonts_h2_family_variant"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h2_family_variant</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+                <item name="fonts_h2_family"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h2_family</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+	            <item name="fonts_h2_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/fonts/h2_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/fonts</item>
+	            </item>
+
+                <item name="fonts_h3_family_variant"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h3_family_variant</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+                <item name="fonts_h3_family"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/h3_family</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+	            <item name="fonts_h3_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/fonts/h3_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/fonts</item>
+	            </item>
+	            
+	            <item name="fonts_nav_family_variant"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/nav_family_variant</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+                <item name="fonts_nav_family"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/fonts/nav_family</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/fonts</item>
+                </item>
+	            <item name="fonts_nav_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/fonts/nav_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/fonts</item>
+	            </item>
+	        </argument>
         </arguments>
     </type>
 </config>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -44,7 +44,7 @@ abstract class AbstractFormContainers extends Form
      *
      * @var string
      */
-    protected $closeButton = '*//aside[@style!=\'\']//button[@data-role="closeBtn"]';
+    protected $closeButton = 'aside[style]:not([style=""]) [data-role="closeBtn"]';
 
     /**
      * Initialize.
@@ -158,7 +158,7 @@ abstract class AbstractFormContainers extends Form
 
     /**
      * Fill specified form with containers data.
-     * 
+     *
      * Input data in format
      * [[container => [field => [attribute_name => attribute_value, ..], ..], ..]
      * where container name can be empty if a field is not assigned to any container.
@@ -201,8 +201,8 @@ abstract class AbstractFormContainers extends Form
                         unset($this->unassignedFields[$fieldName]);
                     }
                 }
-                if ($this->browser->find($this->closeButton, Locator::SELECTOR_XPATH)->isVisible()) {
-                    $this->browser->find($this->closeButton, Locator::SELECTOR_XPATH)->click();
+                if ($this->browser->find($this->closeButton)->isVisible()) {
+                    $this->browser->find($this->closeButton)->click();
                 }
                 if (empty($this->unassignedFields)) {
                     break;

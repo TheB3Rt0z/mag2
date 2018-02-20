@@ -16,6 +16,7 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            
             <field name="fonts_body_family_variant">
                 <argument name="data"
                           xsi:type="array">
@@ -46,6 +47,227 @@
                               xsi:type="string">iways-font-face</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_body_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Main font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="fonts_h1_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h1_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H1 font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h1_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H1 font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="fonts_h2_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h2_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H2 font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h2_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H2 font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="fonts_h3_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h3_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H3 font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_h3_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">H3 font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="fonts_nav_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_nav_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="fonts_nav_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
                     </item>
                 </argument>
             </field>
