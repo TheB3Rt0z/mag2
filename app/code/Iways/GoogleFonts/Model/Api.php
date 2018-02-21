@@ -39,6 +39,7 @@ class Api extends extended
 {
     const API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts';
     const CSS_URL = 'https://fonts.googleapis.com/css?family=';
+    const IWAYS_CACHE_CALL = 'iways_googlefonts_api_call_response';
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -48,6 +49,7 @@ class Api extends extended
      * @param object $context          Magento\Framework\Model\Context
      * @param object $registry         Magento\Framework\Registry
      * @param object $curl             Magento\Framework\HTTP\Client\Curl
+     * @param object $iwaysCache       Iways\Base\Model\Cache
      * @param object $abstractResource Magento\Framework\Model\ResourceModel\AbstractResource
      * @param object $abstractDb       Magento\Framework\Data\Collection\AbstractDb
      * @param array  $data             object attributes
@@ -85,7 +87,9 @@ class Api extends extended
      */
     public function call()
     {
-        if (!$response = unserialize($this->iwaysCache->load('iways_googlefonts_api_call_response'))) {
+        $cachedCall = $this->iwaysCache->load(self::IWAYS_CACHE_CALL);
+
+        if (!$response = unserialize($cachedCall)) {
 
             $this->curl->get($this->apiUrl);
             $response = $this->curl->getBody();
@@ -98,14 +102,28 @@ class Api extends extended
                      . $response->error->message . '</font>';
             }
 
-            $this->iwaysCache->save(serialize($response), 'iways_googlefonts_api_call_response', [iwaysCache::CACHE_TAG], 86400);
+            $this->iwaysCache->save(
+                serialize($response),
+                self::IWAYS_CACHE_CALL,
+                [iwaysCache::CACHE_TAG],
+                86400
+            );
         }
 
         return $response;
     }
 
-    public function getFontByFamily($fontFamily) {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param string $fontFamily a googlefonts valid font family
+     *
+     * @return object
+     */
+    public function getFontByFamily($fontFamily)
+    {
         foreach ($this->call()->items as $item) {
 
             if ($item->family == $fontFamily) {
@@ -117,8 +135,18 @@ class Api extends extended
         return false;
     }
 
-    public function getFontCss($fontFamily, $fontVariants = []) {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param string $fontFamily   a googlefonts valid font family
+     * @param array  $fontVariants an array with valid googlefonts variant items
+     *
+     * @return string
+     */
+    public function getFontCss($fontFamily, $fontVariants = [])
+    {
         $cssUrl = SELF::CSS_URL . $fontFamily;
 
         if ($fontVariants) {
@@ -137,8 +165,17 @@ class Api extends extended
         return $response;
     }
 
-    public function getFontVariants($fontFamily) {
-
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param string $fontFamily a googlefonts valid font family
+     *
+     * @return array
+     */
+    public function getFontVariants($fontFamily)
+    {
         $output = [];
 
         foreach ($this->getFontByFamily($fontFamily)->variants as $variant) {

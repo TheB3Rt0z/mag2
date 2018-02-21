@@ -37,6 +37,7 @@ class FontOptions extends extended
      * PHP Version 5
      *
      * @param object $helper Iways\GoogleFonts\Helper\Data
+     * @param object $api    Iways\GoogleFonts\Model\Api
      */
     public function __construct(
         helper $helper,

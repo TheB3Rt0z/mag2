@@ -9,7 +9,7 @@
 }
 
 .iways-font-face-fields {
-    display: inline-block;
+    display: block;
     margin-top: 8px;
 }
 .iways-font-face-fields > * {
@@ -24,7 +24,7 @@
 }
 
 .iways-font-face-fields select.loading ~ * {
-	display: none;	
+    display: none;    
 }
 
 .iways-font-face-fields > .iways-preview {

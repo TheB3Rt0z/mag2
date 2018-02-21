@@ -38,7 +38,10 @@ class Get extends extended
      *
      * PHP Version 5
      *
-     * @param object $context           Magento\Backend\App\Action\Context
+     * @param object $context     Magento\Backend\App\Action\Context
+     * @param object $jsonFactory Magento\Framework\Controller\Result\JsonFactory
+     * @param object $helper      Iways\GoogleFonts\Helper\Data
+     * @param object $api         Iways\GoogleFonts\Model\Api
      */
     public function __construct(
         Context $context,
@@ -71,6 +74,8 @@ class Get extends extended
 
         $this->params = $this->getRequest()->getParams();
 
-        return $json->setData($this->api->getFontVariants($this->params['font_family']));
+        $fontVariants = $this->api->getFontVariants($this->params['font_family']);
+
+        return $json->setData($fontVariants);
     }
 }

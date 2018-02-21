@@ -30,6 +30,7 @@ use Iways\Base\Model\Config\Source as extended;
 class FamilyOptions extends extended
 {
     const FAMILY_DEFAULT = 'Open+Sans';
+    const DEFAULT_LABEL = "Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif";
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -41,7 +42,7 @@ class FamilyOptions extends extended
     public function toArray()
     {
         $data = [
-            self::FAMILY_DEFAULT => __("default") . " (\"Open Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif)"
+            self::FAMILY_DEFAULT => __("default") . " (" . self::DEFAULT_LABEL . ")"
         ];
 
         foreach (explode(",", $this->helper->getConfig('iways_googlefonts/settings/active_fonts')) as $label) {

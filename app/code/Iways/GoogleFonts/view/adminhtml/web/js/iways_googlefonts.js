@@ -27,56 +27,56 @@ function updatePreview(e)
 
 function initFontFaceFields(e, data, font_family)
 {
-	var variants = [],
-	    container = e.parent(),
-	    control = container.siblings('select'),
-	    name = control.attr('name'),
-	    value = jQuery('[name=' + name + '_variant]').val(),
-	    values = value.split(';');
+    var variants = [],
+        container = e.parent(),
+        control = container.siblings('select'),
+        name = control.attr('name'),
+        value = jQuery('[name=' + name + '_variant]').val(),
+        values = value.split(';');
 
-	for (var property in data) {
-	    
-	    if (data.hasOwnProperty(property)) {
-	    
-	        variants.push(property);
-	        
-	        e.append('<option value="' + property + '">' + data[property] + '</option>');
-	    }
-	}
-	
-	container.children('input, select').each(function (index)
-	{
-		if (values[index]) {
-			
-			jQuery(this).val(values[index]);
-		}
-	});
-	
-	jQuery.get('https://fonts.googleapis.com/css?family=' + font_family + ':' + variants.join(','), function(data)
-	{
-	    e.siblings('.iways-preview').children('style').text(data);
-	    
-	    updatePreview(e.siblings('.iways-preview'));
-	});
-	
-	e.removeClass('loading');
+    for (var property in data) {
+        
+        if (data.hasOwnProperty(property)) {
+        
+            variants.push(property);
+            
+            e.append('<option value="' + property + '">' + data[property] + '</option>');
+        }
+    }
+    
+    container.children('input, select').each(function (index)
+    {
+        if (values[index]) {
+            
+            jQuery(this).val(values[index]);
+        }
+    });
+    
+    jQuery.get('https://fonts.googleapis.com/css?family=' + font_family + ':' + variants.join(','), function(data)
+    {
+        e.siblings('.iways-preview').children('style').text(data);
+        
+        updatePreview(e.siblings('.iways-preview'));
+    });
+    
+    e.removeClass('loading');
 }
 
 function populateFontFaceFields(e, font_family)
 {
-	if (data = font_families[font_family]) {
-		
-		return initFontFaceFields(e, data, font_family);
-	}
-	
+    if (data = font_families[font_family]) {
+        
+        return initFontFaceFields(e, data, font_family);
+    }
+    
     jQuery.ajax({
         url: '/iways_googlefonts/font/get/font_family/' + font_family + '/',
         //async: false,
         dataType: 'json'
     }).done(function(data)
     {
-    	font_families[font_family] = data;
-    	
+        font_families[font_family] = data;
+        
         initFontFaceFields(e, data, font_family);
     });
 }
@@ -96,7 +96,7 @@ function resetFontFaceFields(e, font_family)
 }
 
 function checkFontFaceFields(val, input, e) 
-{	
+{    
     var element = jQuery(e).children('select.iways-empty'),
         mainField = jQuery('.iways-font-face select.admin__control-select'),
         customFieldsContainer = mainField.siblings('.iways-font-face-fields'),
@@ -106,10 +106,10 @@ function checkFontFaceFields(val, input, e)
     
     jQuery(document).ready(function ()
     {
-    	jQuery('.iways-color input').each(function ()
-    	{
-    		checkColorField(jQuery(this).val(), jQuery(this));
-    	});
+        jQuery('.iways-color input').each(function ()
+        {
+            checkColorField(jQuery(this).val(), jQuery(this));
+        });
     });
     
     mainField.on('change', function ()

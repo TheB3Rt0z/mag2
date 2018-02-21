@@ -246,7 +246,7 @@ class Design extends extended
             }
             $this->loadedFonts[] = $navFamily . $navFamilyVariant;
 
-            $data .= '.navigation .level0 > .level-top {' . self::EOL
+            $data .= '.navigation .level0 a {' . self::EOL
                    . '    font-family: ' . str_replace("+", " ", $navFamily) . ';' . self::EOL
                    . '    font-size: ' . $navFamilySize . ';' . self::EOL
                    . '    font-style: ' . $navFamilyStyle . ';' . self::EOL
@@ -256,8 +256,8 @@ class Design extends extended
 
         if ($navColor = $this->helper->getConfig('design/fonts/nav_color')) {
 
-            $data .= '.navigation .level0 > .level-top {' . self::EOL
-                   . '    color: ' . $navColor . ';' . self::EOL
+            $data .= '.navigation .level0 a {' . self::EOL
+                   . '    color: ' . $navColor . ' !important;' . self::EOL
                    . '}' . self::EOL;
         }
 
