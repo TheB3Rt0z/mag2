@@ -5,6 +5,7 @@ if [ -f bin/magento ]; then
 fi
 
 rm -R var/generation 2> /dev/null;
+rm -R generated 2> /dev/null;
 
 rm -R var/cache 2> /dev/null;
 rm -R var/page_cache 2> /dev/null;
