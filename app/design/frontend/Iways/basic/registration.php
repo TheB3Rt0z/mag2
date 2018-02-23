@@ -6,7 +6,7 @@
  * PHP Version 5
  *
  * @category File
- * @package  Iways/free
+ * @package  Iways/basic
  * @author   Bertozzi Matteo <bertozzi@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
@@ -16,6 +16,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::THEME,
-    'frontend/Iways/free',
+    'frontend/Iways/basic',
     __DIR__
 );

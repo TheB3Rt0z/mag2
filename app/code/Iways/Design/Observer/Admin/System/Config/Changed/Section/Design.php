@@ -22,7 +22,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface as implemented;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
-use Magento\Framework\Filesystem\Io\File;
+use Magento\Framework\Filesystem\Io\File as IOFile; // only to get rid of strict sniffers
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Context;
 use Magento\Store\Model\StoreManagerInterface;
@@ -60,7 +60,7 @@ class Design implements implemented
         helper $helper,
         StoreManagerInterface $storeManagerInterface,
         DirectoryList $directoryList,
-        File $file,
+        IOFile $file,
         WriteFactory $writeFactory,
         Context $context
     ) {
@@ -194,7 +194,8 @@ class Design implements implemented
                    . '    font-size: 1.5em;' . self::EOL
                    . '    line-height: .75em;' . self::EOL
                    . '}' . self::EOL
-                   . '.sidebar .block .block-content dl > dt.closed::after {' . self::EOL
+                   . '.sidebar .block .block-content dl > dt.closed::after {'
+                   . self::EOL
                    . '    content: "+";' . self::EOL
                    . '}' . self::EOL;
         }

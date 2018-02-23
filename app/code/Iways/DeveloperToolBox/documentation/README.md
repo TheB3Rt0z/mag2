@@ -44,12 +44,14 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 i-ways code is validated against Squizlabs PHP CodeSniffer (v3+) generic standard, furthermore PSR-1, PSR-2 and optionally EcgM2 (Magento 2 Extension Quality Program) standards could also be applied if needed, with some minimal modification:
 
 - codelines could eventually exceed limit of 85 characters in some cases:
+  0) on namespace declaration, following pattern "namespace Iways\", to allow long fully qualified class names
   1) if line follows pattern "use \[CLASS_NAMESPACE]\[CLASS_NAME] [as [CLASS_NAME]]", in order to allow typing full long class names on one single line
   2) if a doc block line follows pattern " * @param object $[VARIABLE_NAME] [CLASS_NAMESPACE]\[CLASS_NAME]" for the same reason of above
   3) if any line follows pattern "todo [TODO_STRING]" for the same reason of above
   4) if on a single line a variable is getting its value from long but self-explaining config path through an helper, following pattern "helper->getConfig('[CONFIG_PATH]');"
   5) if there is an inline single-line comment, following pattern "[CODE_STRING] // [COMMENT_STRING]"
   6) if a block calls a template inline, following pattern "$block->getTemplateFile('[TEMPLATE_FULLPATH]')", in order to allow fully qualified Magento 2 template-paths to be read anyway, e.g.: "Magento_Catalog::product/list/toolbar/viewmode.phtml"
+  7) if a mage-init call in a template file is present as data attribute of a tag, following pattern "data-mage-init=", in order to allow long initialization parameters objects on a single line
 
 - underscores (_) should not be used as prefix in variable and method names to indicate visibility, some Magento methods rewrites (l.g.: "_addWhetherScopeInfo()", "_construct()", "_isAllowed()", "_getElementHtml(AbstractElement $element)", "_getUploadDir()", "_prepareLayout()") can be howewer prefixed with an underscore, in order to assure working signature in children classes.
 
@@ -105,15 +107,15 @@ N.B.: warnings concerning "todo" tasks (both in php_doc as in inline comments) a
 └───────────────────────────┘   └───┬─────────────────────────┘   └─────────────────────┘
                                     │
                                     ▼
-┌────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
-│erusev/parsedown│ ◄─┤iways/module-base│ ◄─┤iways/theme-free├─► │iways/theme-base├─► │magento/theme-frontend-blank│
-└────────────────┘   └─────────────────┘   └────────────────┘   └────────────────┘   └────────────────────────────┘
+┌────────────────┐   ┌─────────────────┐   ┌─────────────────┐   ┌────────────────┐   ┌────────────────────────────┐
+│erusev/parsedown│ ◄─┤iways/module-base│ ◄─┤iways/theme-basic├─► │iways/theme-base├─► │magento/theme-frontend-blank│
+└────────────────┘   └─────────────────┘   └─────────────────┘   └────────────────┘   └────────────────────────────┘
                              ▲     ▲
                              │     │ ┌───────────────────┐   ┌───────────────────┐
                            ──┴──   └─┤iways/module-design│ ◄─┤iways/module-mobile│
                            BASIC     └───────────────────┘   └───────────────────┘
                              ▼
-             ┌───────────────┴────────┬───────────────────────┬────────────┤ PREMIUM ►─────────────┬─────────────► ENTERPRISE
+             ┌───────────────┴────────┬───────────────────────┬────────────┤ PREMIUM ►─────────────┬──────────────► ENTERPRISE
 ┌────────────┴───────────┐┌───────────┴─────────┐┌────────────┴───────────┐           ┌────────────┴────────────┐
 │iways/module-googlefonts││iways/module-homepage││iways/module-sociallinks│           │iways/module-categorytree│
 └────────────────────────┘└─────────────────────┘└────────────────────────┘           └────────────┬────────────┘

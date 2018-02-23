@@ -68,13 +68,13 @@ u) magento setup upgrade"
            
             PATH_TO_SNIFF="app/code/Iways"
             printf "\nsniffing $PATH_TO_SNIFF with EcgM2 standard:";
-            ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
             printf "\nsniffing $PATH_TO_SNIFF with PSR2 standard:";
-            ics/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            ics/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
             printf "\nsniffing $PATH_TO_SNIFF with PSR1 standard:";
-            ics/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox
+            ics/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
             printf "\nsniffing $PATH_TO_SNIFF with default standard:";
-            ics/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox # to be deleted
+            ics/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus # to be deleted
             if [ -d "app/code/Vollkorn" ]; then
                 PATH_TO_SNIFF="app/code/Vollkorn"
                 printf "\nsniffing $PATH_TO_SNIFF with EcgM2 standard:";

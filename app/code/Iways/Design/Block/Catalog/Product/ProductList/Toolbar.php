@@ -78,7 +78,8 @@ class Toolbar extends extended
         if ($this->getCurrentOrder()) {
             if ($useCompactSorter) {
                 $orderDir = explode('-', $this->getCurrentOrder());
-                $this->_collection->setOrder($orderDir[0], isset($orderDir[1]) ? $orderDir[1] : null);
+                $direction = isset($orderDir[1]) ? $orderDir[1] : null;
+                $this->_collection->setOrder($orderDir[0], $direction);
             } else {
                 $this->_collection->setOrder(
                     $this->getCurrentOrder(),

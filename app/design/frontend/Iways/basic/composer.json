@@ -1,5 +1,5 @@
 {
-    "name": "iways/theme-free",
+    "name": "iways/theme-basic",
     "require": {
         "iways/theme-base": "^0.1.0"
         "iways/module-mobile": "^0.1.0",

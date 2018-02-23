@@ -184,7 +184,7 @@ class Api extends extended
 
                 $variant = '400';
 
-            } else if ($variant == 'italic') {
+            } elseif ($variant == 'italic') {
 
                 $variant = '400italic';
             }

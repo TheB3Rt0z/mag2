@@ -1,4 +1,4 @@
-## i-ways Magento 2 Free Theme
+## i-ways Magento 2 Basic Theme
 
 ### What does this theme do?
 

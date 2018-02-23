@@ -27,13 +27,13 @@
              sortOrder="801"
              module="Iways_Base"
              action="iways_base/documentation/index/theme/base/dev/0" />
-        <add id="Iways_Base::menu_documentation_freetheme"
-             resource="Iways_Base::menu_documentation_freetheme"
-             title="Free Theme"
+        <add id="Iways_Base::menu_documentation_basictheme"
+             resource="Iways_Base::menu_documentation_basictheme"
+             title="Basic Theme"
              parent="Iways_Base::menu_documentation"
              sortOrder="802"
              module="Iways_Base"
-             action="iways_base/documentation/index/theme/free/dev/0" />
+             action="iways_base/documentation/index/theme/basic/dev/0" />
         <add id="Iways_Base::menu_documentation_base"
              resource="Iways_Base::menu_documentation_base"
              title="Base Module"

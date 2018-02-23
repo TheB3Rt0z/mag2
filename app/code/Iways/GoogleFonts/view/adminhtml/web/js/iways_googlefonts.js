@@ -1,7 +1,7 @@
 var font_families = [];
 
 function updatePreview(e)
-{    
+{
     var mainField = e.parent().siblings('select.admin__control-select'),
         customFieldsContainer = mainField.siblings('.iways-font-face-fields'),
         customFields = customFieldsContainer.children('input, select'),
@@ -95,8 +95,8 @@ function resetFontFaceFields(e, font_family)
     populateFontFaceFields(e, font_family);
 }
 
-function checkFontFaceFields(val, input, e) 
-{    
+function checkFontFaceFields(val, input, e)
+{
     var element = jQuery(e).children('select.iways-empty'),
         mainField = jQuery('.iways-font-face select.admin__control-select'),
         customFieldsContainer = mainField.siblings('.iways-font-face-fields'),
