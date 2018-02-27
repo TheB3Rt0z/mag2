@@ -1,0 +1,48 @@
+<?php
+/**
+ * @var \Iways\Widgerama\Block\Widget\ThreeBoxes $this
+ * @codingStandardsIgnoreFile
+ */
+$title = $this->getTitle();
+$content = $this->getContent();
+?>
+<div class="main-box-full-width-wrapper boxes three<?php echo $content ? ' content': ''; echo $title ? ' title':''; ?>">
+    <div class="main-box-wrapper">
+        <div class="inner-content-wrapper">
+            <?php if ($title) : ?>
+                <h2><?php echo __($title); ?></h2>
+            <?php endif; ?>
+            <?php if ($content) : ?>
+                <div class="content-box-desc">
+                    <?php echo __($content); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="boxes-wrapper three">
+            <div class="boxes-box first">
+                <h3><?php echo $this->getBoxOneTitle(); ?></h3>
+                <p class="boxes-description">
+                    <?php echo $this->getBoxOneDesc(); ?>
+                </p>
+                <a href="<?php echo $this->getBoxOneLink(); ?>"
+                   class="cta-link inverted"><?php echo $this->getBoxOneLinkTitle(); ?></a>
+            </div>
+            <div class="three-boxes-box second">
+                <h3><?php echo $this->getBoxTwoTitle(); ?></h3>
+                <p class="three-boxes-description">
+                    <?php echo $this->getBoxTwoDesc(); ?>
+                </p>
+                <a href="<?php echo $this->getBoxTwoLink(); ?>"
+                   class="cta-link"><?php echo $this->getBoxTwoLinkTitle(); ?></a>
+            </div>
+            <div class="boxes-box third">
+                <h3><?php echo $this->getBoxThreeTitle(); ?></h3>
+                <p class="boxes-description">
+                    <?php echo $this->getBoxThreeDesc(); ?>
+                </p>
+                <a href="<?php echo $this->getBoxThreeLink(); ?>"
+                   class="cta-link inverted"><?php echo $this->getBoxThreeLinkTitle(); ?></a>
+            </div>
+        </div>
+    </div>
+</div>

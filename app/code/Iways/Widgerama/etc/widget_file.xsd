@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="urn:magento:module:Magento_Widget:etc/widget_file.xsd"/>
+    <xs:complexType name="editor">
+        <xs:annotation>
+            <xs:documentation>Parameter type which is WYSIWYG editor</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="parameterType">
+                <xs:sequence>
+                    <xs:element name="value" type="translatableType" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="image">
+        <xs:annotation>
+            <xs:documentation>Parameter type which is image</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="parameterType">
+                <xs:sequence>
+                    <xs:element name="value" type="translatableType" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * Author Robert Hillebrand - hillebrand@i-ways.de - i-ways sales solutions GmbH
+ * Copyright i-ways sales solutions GmbH © 2015. All Rights Reserved.
+ * License http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="iways" translate="label" sortOrder="0">
+            <label>i-ways</label>
+        </tab>
+        <section id="iways_enhancedecommercetracking" translate="label" type="text" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Enhanced Ecommerce Tracking</label>
+            <tab>iways</tab>
+            <resource>Iways_EnhancedEcommerceTracking::tracking</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="attributes" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Attributes</label>
+                <field id="brand" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Brand</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension1" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 1</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension2" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 2</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension3" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 3</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension4" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 4</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension5" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 5</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension6" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 6</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension7" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 7</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension8" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 8</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension9" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 9</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+                <field id="dimension0" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dimension 0</label>
+                    <source_model>Iways\EnhancedEcommerceTracking\Model\Config\Source\AttributeList</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Iways" translate="label" sortOrder="10">
+            <label>Iways</label>
+        </tab>
+        <section id="navigation" translate="label" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>seperator-top</class>
+            <label>Navigation</label>
+            <tab>Iways</tab>
+            <resource>Iways_Navigation::navigation_configuration</resource>
+            <group id="test_frontend" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Navigation Structure</label>
+                <field id="navigation_links" type="text" translate="label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tree</label>
+                    <frontend_model>Iways\Navigation\Block\Adminhtml\Form\Field\Tree</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

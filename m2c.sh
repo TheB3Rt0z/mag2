@@ -63,22 +63,23 @@ u) magento setup upgrade"
         # scan i-ways app directory with phpcs
         s ) ics/phpcs -h
             EXTENSIONS_TO_CHECK="inc,php,phtml,js,json,css"
+            IGNORED_MODULES="--ignore=DeveloperToolBox --ignore=PayPalPlus --ignore=Slider --ignore=Widgerama"
             #PATH_TO_SNIFF="app/code/Iways/DeveloperToolBox"
             #ics/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
            
             PATH_TO_SNIFF="app/code/Iways"
             printf "\nsniffing $PATH_TO_SNIFF with EcgM2 standard:";
-            ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
+            ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK $IGNORED_MODULES
             printf "\nsniffing $PATH_TO_SNIFF with PSR2 standard:";
-            ics/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
+            ics/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK $IGNORED_MODULES
             printf "\nsniffing $PATH_TO_SNIFF with PSR1 standard:";
-            ics/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus
+            ics/phpcs --standard=PSR1 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK $IGNORED_MODULES
             printf "\nsniffing $PATH_TO_SNIFF with default standard:";
-            ics/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=DeveloperToolBox --ignore=PayPalPlus # to be deleted
+            ics/phpcs $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK $IGNORED_MODULES # to be deleted
             if [ -d "app/code/Vollkorn" ]; then
                 PATH_TO_SNIFF="app/code/Vollkorn"
                 printf "\nsniffing $PATH_TO_SNIFF with EcgM2 standard:";
-            	ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=Adminhtml
+            	ics/phpcs --standard=EcgM2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK --ignore=Adminhtml # because of tricks
                 printf "\nsniffing $PATH_TO_SNIFF with PSR2 standard:";
             	ics/phpcs --standard=PSR2 $PATH_TO_SNIFF --extensions=$EXTENSIONS_TO_CHECK
                 printf "\nsniffing $PATH_TO_SNIFF with PSR1 standard:";

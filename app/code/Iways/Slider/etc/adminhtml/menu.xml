@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_Slider::menu" title="Slider" module="Iways_Slider"
+             sortOrder="200" parent="Iways_Basis::menu"
+             resource="Iways_Slider::menu"/>
+        <add id="Iways_Slider::menu_slider" title="Slider" module="Iways_Slider"
+             sortOrder="210" parent="Iways_Slider::menu" action="iways_slider/slider/index"
+             resource="Iways_Slider::menu"/>
+        <add id="Iways_Slider::menu_banner" title="Banner" module="Iways_Slider"
+             sortOrder="220" parent="Iways_Slider::menu" action="iways_slider/banner/index"
+             resource="Iways_Slider::menu"/>
+    </menu>
+</config>

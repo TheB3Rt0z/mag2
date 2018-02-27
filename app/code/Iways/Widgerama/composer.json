@@ -1,0 +1,11 @@
+{
+  "name": "iways/module-iways-widgerama",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Iways\\Widgerama\\": ""
+    }
+  }
+}

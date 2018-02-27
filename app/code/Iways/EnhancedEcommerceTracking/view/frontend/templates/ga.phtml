@@ -1,0 +1,21 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php /** @var $block \Iways\EnhancedEcommerceTracking\Block\Ga */ ?>
+<?php $accountId = $block->getConfig(\Magento\GoogleAnalytics\Helper\Data::XML_PATH_ACCOUNT) ?>
+<!-- BEGIN GOOGLE ANALYTICS CODE -->
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Iways_EnhancedEcommerceTracking/js/google-analytics": {
+            "isCookieRestrictionModeEnabled": <?= (int)$block->isCookieRestrictionModeEnabled() ?>,
+            "currentWebsite": <?= (int)$block->getCurrentWebsiteId() ?>,
+            "cookieName": "<?= /* @escapeNotVerified */ \Magento\Cookie\Helper\Cookie::IS_USER_ALLOWED_SAVE_COOKIE ?>",
+            "ordersTrackingData": <?= /* @escapeNotVerified */ json_encode($block->getOrdersTrackingData()) ?>,
+            "pageTrackingData": <?= /* @escapeNotVerified */ json_encode($block->getPageTrackingData($accountId)) ?>,
+            "productsTrackingData": <?= /* @escapeNotVerified */ json_encode($block->getProductsTrackingData()) ?>
+        }
+    }
+}
+</script>
+<!-- END GOOGLE ANALYTICS CODE -->

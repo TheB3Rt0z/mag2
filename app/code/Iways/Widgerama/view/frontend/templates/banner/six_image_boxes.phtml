@@ -1,0 +1,114 @@
+<?php
+/**
+ * @var \Iways\Widgerama\Block\Widget\SixImageBoxes $this
+ * @codingStandardsIgnoreFile
+ */
+$title = $this->getTitle();
+$subtitle = $this->getSubtitle();
+$content = $this->getContent();
+$bottomTitle = $this->getBottomTitle();
+$bottomContent = $this->getBottomContent();
+?>
+<div class="main-box-full-width-wrapper boxes six images<?php echo $content ? ' content': ''; echo $bottomContent ? ' bottom-content': ''; echo $title ? ' title':''; echo $subtitle ? ' subtitle' : ''; echo $bottomTitle ? ' bottom-title' : ''; ?>"<?php echo $this->getBoxStyle(); ?>>
+    <div class="main-box-wrapper">
+        <div class="inner-content-wrapper">
+            <?php if ($title) : ?>
+                <h2><?php echo __($title); ?></h2>
+            <?php endif; ?>
+            <div class="left">
+                <?php if ($subtitle) : ?>
+                    <h3><?php echo __($subtitle); ?></h3>
+                <?php endif; ?>
+                <?php if ($content) : ?>
+                    <div class="content-box-desc">
+                        <?php echo __($content); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="right">
+                <?php if ($this->getCtaLink() && $this->getCtaLinkTitle()) : ?>
+                    <div class="cta-wrapper">
+                        <a class="cta-link"
+                           href="<?php echo __($this->getCtaLink()); ?>"><?php echo __($this->getCtaLinkTitle()); ?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="boxes-wrapper six">
+            <div class="boxes-box first">
+                <a href="<?php echo $this->getBoxOneLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxOneBackground()) ?>"
+                             title="<?php echo $this->getBoxOneTitle() ?>" alt="<?php echo $this->getBoxOneTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxOneTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box second">
+                <a href="<?php echo $this->getBoxTwoLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxTwoBackground()) ?>"
+                             title="<?php echo $this->getBoxTwoTitle() ?>" alt="<?php echo $this->getBoxTwoTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxTwoTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box third">
+                <a href="<?php echo $this->getBoxThreeLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxThreeBackground()) ?>"
+                             title="<?php echo $this->getBoxThreeTitle() ?>"
+                             alt="<?php echo $this->getBoxThreeTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxThreeTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box fourth">
+                <a href="<?php echo $this->getBoxFourLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxFourBackground()) ?>"
+                             title="<?php echo $this->getBoxFourTitle() ?>"
+                             alt="<?php echo $this->getBoxFourTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxFourTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box fifth">
+                <a href="<?php echo $this->getBoxFiveLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxFiveBackground()) ?>"
+                             title="<?php echo $this->getBoxFiveTitle() ?>"
+                             alt="<?php echo $this->getBoxFiveTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxFiveTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box sixth">
+                <a href="<?php echo $this->getBoxSixLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxSixBackground()) ?>"
+                             title="<?php echo $this->getBoxSixTitle() ?>"
+                             alt="<?php echo $this->getBoxSixTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxSixTitle() ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="inner-content-wrapper bottom">
+            <?php if ($bottomTitle) : ?>
+                <h2><?php echo __($bottomTitle); ?></h2>
+            <?php endif; ?>
+            <?php if ($bottomContent) : ?>
+                <div class="content-box-desc">
+                    <?php echo __($bottomContent); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

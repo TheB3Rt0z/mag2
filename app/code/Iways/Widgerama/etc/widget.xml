@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Iways_Widgerama:etc/widget.xsd">
+    <widget id="iways_widgerama_three_boxes" class="Iways\Widgerama\Block\Widget\ThreeBoxes"
+            placeholder_image="Iways_Widgerama::editor/three-boxes.jpg">
+        <label translate="true">Iways Three Boxes</label>
+        <description translate="true">Adds three CTA Buttons</description>
+        <parameters>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/three_boxes.phtml</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="subtitle" xsi:type="text" visible="true">
+                <label translate="true">Subtitle</label>
+            </parameter>
+            <parameter name="content" xsi:type="block" visible="true">
+                <label translate="true">Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html" />
+            </parameter>
+            <parameter name="box_one_title" xsi:type="text" visible="true">
+                <label translate="true">Box 1. Title</label>
+            </parameter>
+            <parameter name="box_one_desc" xsi:type="editor" visible="true">
+                <label translate="true">Box 1. Description</label>
+            </parameter>
+            <parameter name="box_one_link_title" xsi:type="text" visible="true">
+                <label translate="true">Box 1. Linktitle</label>
+            </parameter>
+            <parameter name="box_one_link" xsi:type="text" visible="true">
+                <label translate="true">Box 1. Link</label>
+            </parameter>
+
+            <parameter name="box_two_title" xsi:type="text" visible="true">
+                <label translate="true">Box 2. Title</label>
+            </parameter>
+            <parameter name="box_two_desc" xsi:type="editor" visible="true">
+                <label translate="true">Box 2. Description</label>
+            </parameter>
+            <parameter name="box_two_link_title" xsi:type="text" visible="true">
+                <label translate="true">Box 2. Linktitle</label>
+            </parameter>
+            <parameter name="box_two_link" xsi:type="text" visible="true">
+                <label translate="true">Box 2. Link</label>
+            </parameter>
+
+            <parameter name="box_three_title" xsi:type="text" visible="true">
+                <label translate="true">Box 3. Title</label>
+            </parameter>
+            <parameter name="box_three_desc" xsi:type="editor" visible="true">
+                <label translate="true">Box 3. Description</label>
+            </parameter>
+            <parameter name="box_three_link_title" xsi:type="text" visible="true">
+                <label translate="true">Box 3. Linktitle</label>
+            </parameter>
+            <parameter name="box_three_link" xsi:type="text" visible="true">
+                <label translate="true">Box 3. Link</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="iways_widgerama_three_image_boxes" class="Iways\Widgerama\Block\Widget\ThreeImageBoxes"
+            placeholder_image="Iways_Widgerama::editor/three-image-boxes.jpg">
+        <label translate="true">Iways Three Image Boxes</label>
+        <description translate="true">Adds three CTA Image Boxes</description>
+        <parameters>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/three_image_boxes.phtml</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="subtitle" xsi:type="text" visible="true">
+                <label translate="true">Subtitle</label>
+            </parameter>
+            <parameter name="content" xsi:type="block" visible="true">
+                <label translate="true">Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html"/>
+            </parameter>
+            <parameter name="box_one_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Title</label>
+            </parameter>
+            <parameter name="box_one_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_one_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 1. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_two_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Title</label>
+            </parameter>
+            <parameter name="box_two_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_two_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 2. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_three_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Title</label>
+            </parameter>
+            <parameter name="box_three_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_three_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 3. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="iways_widgerama_four_image_boxes" class="Iways\Widgerama\Block\Widget\FourImageBoxes"
+            placeholder_image="Iways_Widgerama::editor/four-image-boxes.jpg">
+        <label translate="true">Iways Four Image Boxes</label>
+        <description translate="true">Adds four CTA Image Boxes</description>
+        <parameters>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/four_image_boxes.phtml</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="subtitle" xsi:type="text" visible="true">
+                <label translate="true">Subtitle</label>
+            </parameter>
+            <parameter name="content" xsi:type="block" visible="true">
+                <label translate="true">Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html" />
+            </parameter>
+            <parameter name="cta_link_title" xsi:type="text" visible="true">
+                <label translate="true">Linktitle</label>
+            </parameter>
+            <parameter name="cta_link" xsi:type="text" visible="true">
+                <label translate="true">Link</label>
+            </parameter>
+            <parameter name="cta_link_position" xsi:type="select" visible="true">
+                <label translate="true">Linkposition</label>
+                <options>
+                    <option name="left" value="text-left" selected="true">
+                        <label translate="true">Left</label>
+                    </option>
+                    <option name="middle" value="text-middle">
+                        <label translate="true">Middle</label>
+                    </option>
+                    <option name="right" value="text-right">
+                        <label translate="true">Right</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="content_position" xsi:type="select" visible="true">
+                <label translate="true">Content position</label>
+                <options>
+                    <option name="top" value="top" selected="true">
+                        <label translate="true">Top</label>
+                    </option>
+                    <option name="bottom" value="bottom">
+                        <label translate="true">Bottom</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="box_one_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Title</label>
+            </parameter>
+            <parameter name="box_one_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_one_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 1. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_two_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Title</label>
+            </parameter>
+            <parameter name="box_two_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_two_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 2. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_three_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Title</label>
+            </parameter>
+            <parameter name="box_three_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_three_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 3. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="box_four_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 4. Title</label>
+            </parameter>
+            <parameter name="box_four_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 4. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_four_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 4. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="iways_widgerama_content" class="Iways\Widgerama\Block\Widget\Content"
+            placeholder_image="Iways_Widgerama::editor/content.jpg">
+        <label translate="true">Iways Content</label>
+        <description translate="true">Default content block</description>
+        <parameters>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/content.phtml</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="content" xsi:type="block" visible="true">
+                <label translate="true">Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html"/>
+            </parameter>
+            <parameter name="cta_link_title" xsi:type="text" visible="true">
+                <label translate="true">Linktitle</label>
+            </parameter>
+            <parameter name="cta_link" xsi:type="text" visible="true">
+                <label translate="true">Link</label>
+            </parameter>
+            <parameter name="cta_link_position" xsi:type="select" visible="true">
+                <label translate="true">Linkposition</label>
+                <options>
+                    <option name="left" value="text-left" selected="true">
+                        <label translate="true">Left</label>
+                    </option>
+                    <option name="middle" value="text-middle">
+                        <label translate="true">Middle</label>
+                    </option>
+                    <option name="right" value="text-right">
+                        <label translate="true">Right</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="white_overlay" xsi:type="select" visible="true">
+                <label translate="true">White overlay</label>
+                <description>Add a white overlay over the background.</description>
+                <options>
+                    <option name="No" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                    <option name="Yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="iw_media_background" xsi:type="block" visible="true">
+                <label translate="true">Inner Block Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="iw_media_background_full_width" xsi:type="block" visible="true">
+                <label translate="true">Full width Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="min_height" xsi:type="text" visible="true">
+                <label translate="true">Block min height.</label>
+                <description translate="true">Example: 750px</description>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="iways_widgerama_products_list" class="Iways\Widgerama\Block\Widget\ProductsList"
+            is_email_compatible="true"
+            placeholder_image="Iways_Widgerama::editor/products-list.jpg" ttl="86400">
+        <label translate="true">Iways Products List</label>
+        <description translate="true">List of Products</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products to Display</label>
+                <value>4</value>
+            </parameter>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/products_list.phtml</value>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">86400 by default, if not set. To refresh instantly, clear the Blocks HTML
+                    Output cache.
+                </description>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="true" required="true" sort_order="10"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default"/>
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default"/>
+            </container>
+            <container name="content.bottom">
+                <template name="grid" value="default"/>
+            </container>
+        </containers>
+    </widget>
+    <widget id="iways_widgerama_six_image_boxes" class="Iways\Widgerama\Block\Widget\SixImageBoxes"
+            placeholder_image="Iways_Widgerama::editor/six-image-boxes.jpg">
+        <label translate="true">Iways (Special) Six Image Boxes</label>
+        <description translate="true">Adds six CTA Image Boxes</description>
+        <parameters>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <label translate="true">Template</label>
+                <value>Iways_Widgerama::banner/six_image_boxes.phtml</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="subtitle" xsi:type="text" visible="true">
+                <label translate="true">Subtitle</label>
+            </parameter>
+            <parameter name="content" xsi:type="block" visible="true">
+                <label translate="true">Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html"/>
+            </parameter>
+            <parameter name="bottom_title" xsi:type="text" visible="true">
+                <label translate="true">Bottom Title</label>
+            </parameter>
+            <parameter name="bottom_content" xsi:type="block" visible="true">
+                <label translate="true">Bottom Description</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\Html"/>
+            </parameter>
+            <parameter name="cta_link_title" xsi:type="text" visible="true">
+                <label translate="true">Linktitle</label>
+            </parameter>
+            <parameter name="cta_link" xsi:type="text" visible="true">
+                <label translate="true">Link</label>
+            </parameter>
+            <parameter name="iw_media_background_full_width" xsi:type="block" visible="true">
+                <label translate="true">Full width Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="min_height" xsi:type="text" visible="true">
+                <label translate="true">Block min height.</label>
+                <description translate="true">Example: 750px</description>
+            </parameter>
+            <parameter name="box_one_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Title</label>
+            </parameter>
+            <parameter name="box_one_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 1. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_one_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 1. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_two_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Title</label>
+            </parameter>
+            <parameter name="box_two_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 2. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_two_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 2. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="box_three_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Title</label>
+            </parameter>
+            <parameter name="box_three_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 3. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_three_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 3. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="box_four_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 4. Title</label>
+            </parameter>
+            <parameter name="box_four_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 4. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_four_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 4. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="box_five_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 5. Title</label>
+            </parameter>
+            <parameter name="box_five_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 5. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_five_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 5. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="box_six_title" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 6. Title</label>
+            </parameter>
+            <parameter name="box_six_link" xsi:type="text" visible="true" required="true">
+                <label translate="true">Box 6. Link</label>
+            </parameter>
+            <parameter name="iw_media_box_six_background" xsi:type="block" visible="true" required="true">
+                <label translate="true">Box 6. Background Image</label>
+                <block class="Iways\Widgerama\Block\Adminhtml\Widget\Parameter\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

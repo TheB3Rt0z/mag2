@@ -1,0 +1,36 @@
+<?php
+/**
+ * @var \Iways\Widgerama\Block\Widget\ProductsList $block
+ * @codingStandardsIgnoreFile
+ */
+?>
+
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())):?>
+    <?php
+    $image = 'new_products_content_widget_grid';
+
+    $title = $block->getTitle() ? __($block->getTitle()) : '';
+    $items = $block->getProductCollection()->getItems();
+    ?>
+    <div class="main-box-full-width-wrapper products-list<?php echo $title ? ' title' : ''; ?>">
+        <div class="main-box-wrapper">
+            <div class="inner-content-wrapper">
+                <?php if ($title) : ?>
+                    <h2><?php echo $title; ?></h2>
+                <?php endif; ?>
+                <div class="main-box-product-list">
+                    <dl class="products-grid">
+                        <?php foreach ($items as $_item): ?>
+                            <dd class="with-img">
+                                <a class="img-container" href="<?php /* @escapeNotVerified */
+                                echo $block->getProductUrl($_item) ?>"><?php echo $block->getImage($_item, $image)->toHtml(); ?></a>
+                                <a href="<?php /* @escapeNotVerified */
+                                echo $block->getProductUrl($_item) ?>"><?php echo $block->escapeHtml($_item->getName()) ?></a>
+                            </dd>
+                        <?php endforeach ?>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

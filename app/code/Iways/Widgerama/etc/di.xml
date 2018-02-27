@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <arguments>
+            <argument name="extensions" xsi:type="array">
+                <item name="allowed" xsi:type="array">
+                    <item name="ogv" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Widget\Model\Config\Reader">
+        <arguments>
+            <argument name="schemaLocator" xsi:type="object">Iways\Widgerama\Model\Config\SchemaLocator</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Widget\Model\Widget">
+        <plugin name="image_prepare" type="Iways\Widgerama\Model\Widget" sortOrder="1" disabled="false"/>
+    </type>
+</config>

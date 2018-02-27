@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var \Iways\Widgerama\Block\Widget\Content $this
+ * @codingStandardsIgnoreFile
+ */
+$minHeight = $this->getMinHeight();
+?>
+<div class="main-box-full-width-wrapper content-box"<?php echo $this->getBoxStyle(); ?>>
+    <div class="<?php echo $this->getWhiteOverlay() ? 'white-overlay' : ''; ?>">
+        <div class="main-box-wrapper"<?php echo $this->getBackgroundImageUrl() ? ' style="background-image: url(' . $this->getBackgroundFullWidthImageUrl() . ')""' : ''; ?>>
+            <div class="inner-content-wrapper">
+                <?php if ($this->getTitle()) : ?>
+                    <h2 id="<?php echo $this->getTitleId(); ?>"><?php echo __($this->getTitle()); ?></h2>
+                <?php endif; ?>
+                <?php if ($this->getContent()) : ?>
+                    <div class="content-box-desc">
+                        <?php echo __($this->getContent()); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->getCtaLink() && $this->getCtaLinkTitle()) : ?>
+                    <div class="cta-wrapper <?php echo $this->getCtaLinkPosition(); ?>">
+                        <a class="cta-link"
+                           href="<?php echo __($this->getCtaLink()); ?>"><?php echo __($this->getCtaLinkTitle()); ?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

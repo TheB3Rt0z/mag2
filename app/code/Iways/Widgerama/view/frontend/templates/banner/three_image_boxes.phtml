@@ -1,0 +1,59 @@
+<?php
+/**
+ * @var \Iways\Widgerama\Block\Widget\ThreeImageBoxes $this
+ * @codingStandardsIgnoreFile
+ */
+$title = $this->getTitle();
+$subtitle = $this->getSubtitle();
+$content = $this->getContent();
+?>
+<div class="main-box-full-width-wrapper boxes three images<?php echo $content ? ' content': ''; echo $title ? ' title':''; echo $subtitle ? ' subtitle' : ''; ?>">
+    <div class="main-box-wrapper">
+        <div class="inner-content-wrapper">
+            <?php if ($title) : ?>
+                <h2><?php echo __($title); ?></h2>
+            <?php endif; ?>
+            <?php if ($subtitle) : ?>
+                <h3><?php echo __($subtitle); ?></h3>
+            <?php endif; ?>
+            <?php if ($content) : ?>
+                <div class="content-box-desc">
+                    <?php echo __($content); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="boxes-wrapper three">
+            <div class="boxes-box first">
+                <a href="<?php echo $this->getBoxOneLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxOneBackground()) ?>"
+                             title="<?php echo $this->getBoxOneTitle() ?>" alt="<?php echo $this->getBoxOneTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxOneTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box second">
+                <a href="<?php echo $this->getBoxTwoLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxTwoBackground()) ?>"
+                             title="<?php echo $this->getBoxTwoTitle() ?>" alt="<?php echo $this->getBoxTwoTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxTwoTitle() ?></span>
+                </a>
+            </div>
+            <div class="boxes-box third">
+                <a href="<?php echo $this->getBoxThreeLink() ?>">
+                    <div class="box-image-wrapper">
+                        <img class="box-cta-link-image cta-image"
+                             src="<?php echo $this->getImageUrl($this->getIwMediaBoxThreeBackground()) ?>"
+                             title="<?php echo $this->getBoxThreeTitle() ?>"
+                             alt="<?php echo $this->getBoxThreeTitle() ?>">
+                    </div>
+                    <span class="box-cta-link-text cta-text"><?php echo $this->getBoxThreeTitle() ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

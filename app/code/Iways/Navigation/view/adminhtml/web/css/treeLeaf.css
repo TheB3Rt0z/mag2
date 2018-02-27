@@ -1,0 +1,44 @@
+.jstree-leaf > a > .jstree-icon {background:url("blank-file-3-16.png") !important;}
+.jstree-hovered{background:#b7d2ff !important;}
+.jstree-clicked{background:#88b4fc !important;}
+#saveWarning{
+    position: absolute;
+    top:72px;
+    left: -100px;
+    border: 1px solid red;
+    border-radius: 8px;
+    width: 86px;
+    height:30px;
+    float: right;
+    text-align: center;
+    line-height: 29px;
+    background: #ff0000;
+    color: white;
+    display:none;
+}
+
+#preventInput{
+    position: absolute;
+    width:850px;
+    top:119px;
+    left: 0;
+    background-color: white;
+    display:none;
+    opacity: 0.7;
+}
+
+#linkInput{
+    width: 70%;
+}
+
+#treeButtons{
+    position: relative;
+}
+
+.button{
+    background: #eeeeee;
+}
+
+.button:hover{
+    background:#b7d2ff;
+}
