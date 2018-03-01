@@ -1,11 +1,14 @@
 <?php
+
 namespace Iways\Widgerama\Helper;
+
+use Iways\Base\Helper\Data as extended;
 
 /**
  * Class Encoder
  * @package Iways\Widgerama\Helper
  */
-class Encoder extends \Iways\Basis\Helper\Data
+class Encoder extends extended
 {
     const IDENTIFIER = 'iwbase64::';
 

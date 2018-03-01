@@ -57,7 +57,9 @@ class FontOptions extends extended
      */
     public function toArray()
     {
-        if ($response = $this->api->call()) {
+        $data = [];
+
+        if (($response = $this->api->call()) && isset($response->items)) {
 
             foreach ($response->items as $key => $item) {
 

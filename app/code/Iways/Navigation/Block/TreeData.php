@@ -46,8 +46,8 @@ class TreeData extends Template
     public function getTreeArray()
     {
         $data = $this->helper->getGeneralConfig('navigation_links');
-        $treeArray = json_decode($data, true);
-        return $treeArray;
+
+        return $data ? json_decode($data, true) : [];
     }
 
     /**

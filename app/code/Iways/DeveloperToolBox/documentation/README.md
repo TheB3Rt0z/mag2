@@ -598,7 +598,7 @@ The following are functioning pattern and examples given are actually used in i-
                        showInDefault="1"
                        showInWebsite="1"
                        showInStore="1">
-                    <label>[CDATA_STRING]</label> e.g.: "<![CDATA[Copyright &copy; 2011-2017<br /><br /><a href="http://www.i-ways.net" target="_blank">i-ways sales solutions GmbH<br />Kurfürstendamm 125A<br />D-10711 Berlin</a><br /><br />]]>"
+                    <label>[CDATA_STRING]</label> e.g.: "<![CDATA[Copyright &copy; 2011-2018<br /><br /><a href="http://www.i-ways.net" target="_blank">i-ways sales solutions GmbH<br />Kurfürstendamm 125A<br />D-10711 Berlin</a><br /><br />]]>"
                     <source_model>[MODEL_CLASS]</source_model> e.g.: "Iways\CategoryTree\Model\Config\Source\Root"
                 </field>
             </group>

@@ -14,7 +14,7 @@ class Actions extends extended
     protected function _construct()
     {
         //DataObject::__construct();
-        
+
         $this->buttonList->add(
             'save',
             [
