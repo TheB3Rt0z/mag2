@@ -35,6 +35,7 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **model** conventional alias for required model class, usually sharing same unqualified class name
 - **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
 - **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
+- **subject** conventional alias for plugin's original overridden class (to be used in before/after/around method)
 - **[LOWERCASE_STRING]Helper** conventional alias for module's additional helper [UCFIRST_STRING] e.g.: "categoryHelper"
 
 <a name="code-validation"></a>
@@ -384,6 +385,10 @@ The following are functioning pattern and examples given are actually used in i-
                 </item>
             </argument>
         </arguments>
+    </type>
+    <type name="[PLUGGED_CLASS]"> e.g.: "Magento\Framework\View\Element\Template\File\Validator"
+        <plugin name="[MODULE_IDENTIFIER]::[PLUGIN_TYPE][METHOD_NAME]" e.g.: "Iways_DeveloperToolBox", [before|after|around], "IsValid"
+                type="[PLUGIN_CLASS]" /> e.g.: "Iways\DeveloperToolBox\Plugin\Magento\Framework\View\Element\Template\File\Validator"
     </type>
 </config>
 ```
@@ -757,6 +762,8 @@ The following are functioning pattern and examples given are actually used in i-
                               xsi:type="string">[LOWERCASE_CLASS(ES)]</item> e.g.: "iways-width-height"
                         <item name="elementTmpl"
                               xsi:type="string">[ELEMENT_TEMPLATE]</item> e.g.: "Iways_Design/form/element/select"
+                        <item name="component"
+                              xsi:type="string">[UI_COMPONENT]</item> e.g.: "Iways_Design/js/form/element/color-picker"
                     </item>
                 </argument>
             </field>

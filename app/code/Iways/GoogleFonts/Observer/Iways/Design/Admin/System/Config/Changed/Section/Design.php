@@ -16,6 +16,7 @@ namespace Iways\GoogleFonts\Observer\Iways\Design\Admin\System\Config\Changed\Se
 
 use Iways\Design\Observer\Admin\System\Config\Changed\Section\Design as extended;
 use Iways\Design\Helper\Data as helper;
+//use Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions;
 use Iways\GoogleFonts\Model\Api;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
@@ -101,7 +102,8 @@ class Design extends extended
             $familyStyle = $familyVariantArray[4] ?: 'initial';
             $familyWeight = $familyVariantArray[3] ?: 'initial';
 
-            if (!in_array($family, $this->loadedFonts)) {
+            if (//($family != FamilyOptions::FAMILY_DEFAULT) &&
+                !in_array($family, $this->loadedFonts)) {
 
                 $css = $this->api->getFontCss($family, [$familyVariant]);
 

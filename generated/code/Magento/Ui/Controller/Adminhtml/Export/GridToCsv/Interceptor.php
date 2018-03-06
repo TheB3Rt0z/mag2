@@ -8,10 +8,10 @@ class Interceptor extends \Magento\Ui\Controller\Adminhtml\Export\GridToCsv impl
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Backend\App\Action\Context $context, \Magento\Ui\Model\Export\ConvertToCsv $converter, \Magento\Framework\App\Response\Http\FileFactory $fileFactory)
+    public function __construct(\Magento\Backend\App\Action\Context $context, \Magento\Ui\Model\Export\ConvertToCsv $converter, \Magento\Framework\App\Response\Http\FileFactory $fileFactory, \Magento\Ui\Component\MassAction\Filter $filter = null, \Psr\Log\LoggerInterface $logger = null)
     {
         $this->___init();
-        parent::__construct($context, $converter, $fileFactory);
+        parent::__construct($context, $converter, $fileFactory, $filter, $logger);
     }
 
     /**

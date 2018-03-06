@@ -12,10 +12,31 @@
             <label>DeveloperToolBox</label>
             <tab>iways</tab>
             <resource>Iways_DeveloperToolBox::config</resource>
-            <group id="components"
+            
+            <group id="developer"
                    translate="label"
                    type="text"
                    sortOrder="000"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Developer</label>
+                <field id="show_toolbar_on_frontend"
+                       translate="label"
+                       type="select"
+                       sortOrder="000"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Show toolbar on frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            
+            <group id="components"
+                   translate="label"
+                   type="text"
+                   sortOrder="100"
                    showInDefault="1"
                    showInWebsite="1"
                    showInStore="1">

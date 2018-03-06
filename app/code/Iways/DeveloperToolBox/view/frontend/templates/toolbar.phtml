@@ -17,7 +17,7 @@ $adminLink = ($adminUri = $block->getAdminUri()) // todo move this in block ($bl
              . '         target="_BLANK">Backend</a></span>'
              : false;
 
-if ($block->sessionHelper->isAdminLogged()) {
+if ($block->showToolbar()) {
     ?>
     <div class="iways-toolbar">
         <?php

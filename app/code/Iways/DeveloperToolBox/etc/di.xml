@@ -1,6 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!--<preference for="Magento\Framework\Filesystem\Driver\File"
+	            type="Iways\DeveloperToolBox\Magento\Framework\Filesystem\Driver\File" />
+	<type name="Magento\Framework\Filesystem\Driver\File">
+        <plugin name="Iways_DeveloperToolBox::aroundGetAbsolutePath"
+                type="Iways\DeveloperToolBox\Plugin\Magento\Framework\Filesystem\Driver\File" />
+    </type>-->
     <type name="Magento\Framework\View\Element\Template\File\Validator">
         <plugin name="Iways_DeveloperToolBox::afterIsValid"
                 type="Iways\DeveloperToolBox\Plugin\Magento\Framework\View\Element\Template\File\Validator" />

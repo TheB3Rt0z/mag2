@@ -1,13 +1,13 @@
 {
     "name": "iways/theme-basic",
     "require": {
-        "iways/theme-base": "^0.1.0"
+        "iways/theme-base": "^0.1.0",
         "iways/module-mobile": "^0.1.0",
         "iways/module-googlefonts": "^0.1.0",
-        "iways/module-sociallinks": "^0.1.0",
+        "iways/module-sociallinks": "^0.1.0"
     },
     "type": "magento2-theme",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "autoload": {
         "files": [
             "registration.php"

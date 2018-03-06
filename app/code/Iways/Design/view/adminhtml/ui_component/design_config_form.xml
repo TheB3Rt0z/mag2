@@ -15,6 +15,193 @@
                       xsi:type="string">iways-settings</item>
             </item>
         </argument>
+        
+        <fieldset name="header">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Header</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+        	<field name="header_panel_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Panel background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="header_wrapper_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+        
+        <fieldset name="navigation">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Navigation</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+        	<field name="navigation_section_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation bar background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_items_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation items background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_active_item_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation active item background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_submenus_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenus background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_submenus_hover_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenus hover background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+        
         <fieldset name="body">
             <argument name="data"
                       xsi:type="array">
@@ -29,6 +216,7 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            
             <field name="body_background_color">
                 <argument name="data"
                           xsi:type="array">
@@ -43,9 +231,14 @@
                               xsi:type="string">input</item>
                         <item name="additionalClasses"
                               xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_src">
                 <argument name="data"
                           xsi:type="array">
@@ -73,6 +266,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_src_attachment">
                 <argument name="data"
                           xsi:type="array">
@@ -88,6 +282,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_src_size_custom">
                 <argument name="data"
                           xsi:type="array">
@@ -121,6 +316,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_src_position_custom">
                 <argument name="data"
                           xsi:type="array">
@@ -154,6 +350,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_src_repeat">
                 <argument name="data"
                           xsi:type="array">
@@ -169,6 +366,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="body_background_gradient">
                 <argument name="data"
                           xsi:type="array">
@@ -188,6 +386,67 @@
                 </argument>
             </field>
         </fieldset>
+        
+        <fieldset name="footer">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Footer</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+        	<field name="footer_wrapper_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="footer_copyright_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Copyright background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+        
         <fieldset name="input">
             <argument name="data"
                       xsi:type="array">
@@ -202,6 +461,7 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            
             <field name="input_style_type_number">
                 <argument name="data"
                           xsi:type="array">
@@ -218,6 +478,7 @@
                 </argument>
             </field>
         </fieldset>
+        
         <fieldset name="sidebar">
              <argument name="data"
                        xsi:type="array">
@@ -232,6 +493,7 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            
             <field name="sidebar_toggle_titles">
                 <argument name="data"
                           xsi:type="array">
@@ -247,6 +509,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="sidebar_title_main">
                 <argument name="data"
                           xsi:type="array">
@@ -262,6 +525,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="sidebar_title_additional">
                 <argument name="data"
                           xsi:type="array">
@@ -278,6 +542,7 @@
                 </argument>
             </field>
         </fieldset>
+        
         <fieldset name="toolbar">
              <argument name="data"
                        xsi:type="array">
@@ -292,6 +557,7 @@
                           xsi:type="number">1</item>
                 </item>
             </argument>
+            
             <field name="toolbar_show_category_title">
                 <argument name="data"
                           xsi:type="array">
@@ -307,6 +573,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="toolbar_show_field_limiter">
                 <argument name="data"
                           xsi:type="array">
@@ -322,6 +589,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="toolbar_show_position_in_sorting_options">
                 <argument name="data"
                           xsi:type="array">
@@ -337,6 +605,7 @@
                     </item>
                 </argument>
             </field>
+            
             <field name="toolbar_use_compact_sorter">
                 <argument name="data"
                           xsi:type="array">

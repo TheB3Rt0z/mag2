@@ -14,6 +14,7 @@
 
 namespace Iways\DeveloperToolBox\Block;
 
+use Iways\DeveloperToolBox\Helper\Data as helper;
 use Iways\DeveloperToolBox\Helper\Session as sessionHelper;
 use Magento\Backend\Helper\Data as magentoBackendHelper;
 use Magento\Framework\View\Element\Template as extended;
@@ -45,12 +46,14 @@ class Toolbar extends extended
      * PHP Version 5
      *
      * @param object $context              Magento\Framework\View\Element\Template\Context
+     * @param object $heper                Iways\DeveloperToolBox\Helper\Data
      * @param object $sessionHelper        Iways\DeveloperToolBox\Helper\Session
-     * $param object $magentoBackendHelper Magento\Backend\Helper\Data
+     * @param object $magentoBackendHelper Magento\Backend\Helper\Data
      * @param array  $data                 object attributes
      */
     public function __construct(
         Context $context,
+        helper $helper,
         sessionHelper $sessionHelper,
         magentoBackendHelper $magentoBackendHelper,
         array $data = []
@@ -62,6 +65,7 @@ class Toolbar extends extended
             ['items' => &self::$items]
         );
 
+        $this->helper = $helper;
         $this->sessionHelper = $sessionHelper;
         $this->magentoBackendHelper = $magentoBackendHelper;
         $this->urlInterface = $context->getUrlBuilder();
@@ -110,5 +114,11 @@ class Toolbar extends extended
         }
 
         return $data;
+    }
+
+    public function showToolbar()
+    {
+        return $this->helper->getConfig('iways_developertoolbox/developer/show_toolbar_on_frontend')
+             + $this->sessionHelper->isAdminLogged();
     }
 }

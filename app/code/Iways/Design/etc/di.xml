@@ -9,6 +9,55 @@
         <arguments>
             <argument name="metadata"
                       xsi:type="array">
+            	<item name="header_panel_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/header/panel_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/header</item>
+	            </item>
+	            <item name="header_wrapper_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/header/wrapper_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/header</item>
+	            </item>
+	            <item name="navigation_section_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/section_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
+	            <item name="navigation_items_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/items_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
+	            <item name="navigation_active_item_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/active_item_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
+	            <item name="navigation_submenus_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/submenus_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
+	            <item name="navigation_submenus_hover_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/submenus_hover_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
                 <item name="body_background_color"
                       xsi:type="array">
                     <item name="path"
@@ -83,6 +132,20 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/body</item>
                 </item>
+                <item name="footer_wrapper_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/footer/wrapper_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/footer</item>
+	            </item>
+	            <item name="footer_copyright_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/footer/copyright_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/footer</item>
+	            </item>
                 <item name="input_style_type_number"
                       xsi:type="array">
                     <item name="path"

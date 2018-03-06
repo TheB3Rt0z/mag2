@@ -5,7 +5,7 @@
         <arguments>
             <argument name="metadata"
                       xsi:type="array">
-                <item name="fonts_body_family_variant"
+            	<item name="fonts_body_family_variant"
                       xsi:type="array">
                     <item name="path"
                           xsi:type="string">design/fonts/body_family_variant</item>

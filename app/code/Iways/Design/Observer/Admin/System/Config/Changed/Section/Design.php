@@ -86,7 +86,106 @@ class Design implements implemented
     {
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
+        if ($headerPanelBackgroundColor = $this->helper->getConfig('design/header/panel_background_color')) {
+
+            if (substr($headerPanelBackgroundColor, 0, 1) != '#') {
+
+                $headerPanelBackgroundColor = '#' . $headerPanelBackgroundColor;
+            }
+
+            $data .= 'header.page-header .panel.wrapper {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $headerPanelBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($headerWrapperBackgroundColor = $this->helper->getConfig('design/header/wrapper_background_color')) {
+
+            if (substr($headerWrapperBackgroundColor, 0, 1) != '#') {
+
+                $headerWrapperBackgroundColor = '#' . $headerWrapperBackgroundColor;
+            }
+
+            $data .= 'header.page-header {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $headerWrapperBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($navigationSectionBackgroundColor = $this->helper->getConfig('design/navigation/section_background_color')) {
+
+            if (substr($navigationSectionBackgroundColor, 0, 1) != '#') {
+
+                $navigationSectionBackgroundColor = '#' . $navigationSectionBackgroundColor;
+            }
+
+            $data .= '.sections.nav-sections, nav.navigation {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $navigationSectionBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($navigationItemsBackgroundColor = $this->helper->getConfig('design/navigation/items_background_color')) {
+
+            if (substr($navigationItemsBackgroundColor, 0, 1) != '#') {
+
+                $navigationItemsBackgroundColor = '#' . $navigationItemsBackgroundColor;
+            }
+
+            $data .= 'nav.navigation ul {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $navigationItemsBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($navigationActiveItemBackgroundColor = $this->helper->getConfig('design/navigation/active_item_background_color')) {
+
+            if (substr($navigationActiveItemBackgroundColor, 0, 1) != '#') {
+
+                $navigationActiveItemBackgroundColor = '#' . $navigationActiveItemBackgroundColor;
+            }
+
+            $data .= 'nav.navigation .level0.active > .level-top,'
+                   //. 'nav.navigation .level0.has-active > .level-top,'
+                   . 'nav.navigation .has-active > a,'
+                   . 'nav.navigation .level0 .submenu .active > a {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $navigationActiveItemBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($navigationSubmenusBackgroundColor = $this->helper->getConfig('design/navigation/submenus_background_color')) {
+
+            if (substr($navigationSubmenusBackgroundColor, 0, 1) != '#') {
+
+                $navigationSubmenusBackgroundColor = '#' . $navigationSubmenusBackgroundColor;
+            }
+
+            $data .= 'nav.navigation .level0 .submenu {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $navigationSubmenusBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($navigationSubmenusHoverBackgroundColor = $this->helper->getConfig('design/navigation/submenus_hover_background_color')) {
+
+            if (substr($navigationSubmenusHoverBackgroundColor, 0, 1) != '#') {
+
+                $navigationSubmenusHoverBackgroundColor = '#' . $navigationSubmenusHoverBackgroundColor;
+            }
+
+            $data .= '.navigation .level0 .submenu a:hover, .navigation .level0 .submenu a.ui-state-focus {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $navigationSubmenusHoverBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
         if ($backgroundColor = $this->helper->getConfig('design/body/background_color')) {
+
+            if (substr($backgroundColor, 0, 1) != '#') {
+
+                $backgroundColor = '#' . $backgroundColor;
+            }
 
             $data .= 'html body {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -175,6 +274,32 @@ class Design implements implemented
             $straightCss = str_replace(["\n", "\r"], '', $backgroundGradient);
             $data .= 'html body {' . self::EOL
                    . '    ' . $straightCss . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($footerWrapperBackgroundColor = $this->helper->getConfig('design/footer/wrapper_background_color')) {
+
+            if (substr($footerWrapperBackgroundColor, 0, 1) != '#') {
+
+                $footerWrapperBackgroundColor = '#' . $footerWrapperBackgroundColor;
+            }
+
+            $data .= 'footer.page-footer {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $footerWrapperBackgroundColor . ';' . self::EOL
+                   . '}' . self::EOL;
+        }
+
+        if ($footerCopyrightBackgroundColor = $this->helper->getConfig('design/footer/copyright_background_color')) {
+
+            if (substr($footerCopyrightBackgroundColor, 0, 1) != '#') {
+
+                $footerCopyrightBackgroundColor = '#' . $footerCopyrightBackgroundColor;
+            }
+
+            $data .= 'footer.page-footer .copyright {' . self::EOL
+                   . '    background-image: none;' . self::EOL
+                   . '    background-color: ' . $footerCopyrightBackgroundColor . ';' . self::EOL
                    . '}' . self::EOL;
         }
 

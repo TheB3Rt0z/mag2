@@ -3,13 +3,13 @@ var delay = 125,
 
 jQuery(document).on('change keyup', '.iways-color input', function (e)
 {
-    clearTimeout(check);
+    //clearTimeout(check);
 
     var val = jQuery(this).val();
         
-    if (val.length >= 3) {
+    if (val.length >= 6) {
     
-        check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
+    	checkColorField(val, jQuery(this));//check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
     }
 });
 
@@ -58,7 +58,7 @@ function checkWidthHeightFields(val, input, e) // @todo define here the onchange
 
             var control = jQuery('[name=' + input + ']'),
                 value = jQuery('[name=' + input + '_custom]').val(),
-                values = value.split(';'),
+                values = value ? value.split(';') : [],
                 container = jQuery(e);
             
             container.children('input, select').each(function (index)
@@ -71,16 +71,12 @@ function checkWidthHeightFields(val, input, e) // @todo define here the onchange
             container.show(delay);
         }
     });
-    
-    jQuery('.iways-color input').each(function ()
-    {
-        checkColorField(jQuery(this).val(), jQuery(this));
-    });
 }
 
 function checkColorField(val, e)
 {
-    var color = tinycolor(val); // https://github.com/bgrins/TinyColor
+    var color = tinycolor(val), // https://github.com/bgrins/TinyColor
+        e = (typeof e == 'string') ? jQuery('#' + e) : e;
 
     if (val && color.isValid()) {
         

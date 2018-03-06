@@ -1,11 +1,14 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="page.top">
-            <referenceBlock name="store.menu">
-                <referenceBlock name="catalog.topnav" remove="true"/>
-                <block name="iways_tree_data" class="Iways\Navigation\Block\TreeData" template="Iways_Navigation::default/treeData.phtml"/>
-            </referenceBlock>
-        </referenceContainer>
+    	<referenceBlock name="store.menu">
+    	    <referenceBlock name="catalog.topnav" remove="true" />
+    	    <block class="Iways\Navigation\Block\TreeData"
+                   name="iways_navigation_block_treedata"
+                   as="iways_navigation_block_treedata"
+                   template="Iways_Navigation::default/treeData.phtml"
+                   before="-" />
+    	</referenceBlock>
     </body>
 </page>
