@@ -2,13 +2,12 @@
 
 namespace Iways\Widgerama\Helper;
 
-use Iways\Base\Helper\Data as extended;
 
 /**
  * Class Encoder
  * @package Iways\Widgerama\Helper
  */
-class Encoder extends extended
+class Encoder extends \Iways\Base\Helper\Data
 {
     const IDENTIFIER = 'iwbase64::';
 

@@ -2,9 +2,8 @@
 
 namespace Iways\HomePage\Controller\Adminhtml;
 
-use Magento\Backend\App\Action as extended;
 
-abstract class Homepage extends extended
+abstract class Homepage extends \Magento\Backend\App\Action
 {
 	const ADMIN_RESOURCE = 'Iways_HomePage::design_homepage';
 }

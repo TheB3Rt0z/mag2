@@ -4,11 +4,10 @@ namespace Iways\HomePage\Block\Adminhtml\Homepage\Edit;
 
 use Iways\HomePage\Model\Config\Homepage\LayoutOptions;
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Form\Generic as extended;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Registry;
 
-class Form extends extended
+class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
 	protected function _prepareForm()
 	{

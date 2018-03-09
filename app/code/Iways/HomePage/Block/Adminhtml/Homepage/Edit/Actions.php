@@ -2,10 +2,7 @@
 
 namespace Iways\HomePage\Block\Adminhtml\Homepage\Edit;
 
-use Magento\Backend\Block\Widget\Form\Container as extended;
-//use Magento\Framework\DataObject;
-
-class Actions extends extended
+class Actions extends \Magento\Backend\Block\Widget\Form\Container
 {
     //protected $_blockGroup = null;
 

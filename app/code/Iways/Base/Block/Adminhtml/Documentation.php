@@ -14,8 +14,6 @@
 
 namespace Iways\Base\Block\Adminhtml;
 
-use Iways\Base\Helper\Data as helper;
-use Magento\Backend\Block\Template as extended;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Filesystem\DirectoryList;
@@ -33,25 +31,25 @@ use Magento\Framework\Filesystem\File\ReadFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Documentation extends extended
+class Documentation extends \Magento\Backend\Block\Template
 {
     const DOC_FILE = 'README.md';
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
+     * Documentation constructor.
      *
      * @param object $context       Magento\Backend\Block\Template\Context
-     * @param object $helper        Iways\Base\Helper\Data
+     * @param object $baseHelper    Iways\Base\Helper\Data
      * @param object $http          Magento\Framework\App\Request\Http
      * @param object $directoryList Magento\Framework\Filesystem\DirectoryList
      * @param object $readFactory   Magento\Framework\Filesystem\File\ReadFactory
      * @param array  $data          object attributes
+     *
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        \Iways\Base\Helper\Data $baseHelper,
         Http $http,
         DirectoryList $directoryList,
         ReadFactory $readFactory,
@@ -61,7 +59,7 @@ class Documentation extends extended
 
         $data['dev'] = $http->getParam('dev');
 
-        $data['locale'] = !$data['dev'] ? $helper->getBackendLocale() : false; // developers documentation only in english
+        $data['locale'] = !$data['dev'] ? $baseHelper->getBackendLocale() : false; // developers documentation only in english
 
         $data['params'] = [];
 
@@ -125,6 +123,7 @@ class Documentation extends extended
         $offSet = 0;
         $data = [];
         $slashedPath = str_replace('/', '\/', $path);
+
         while (preg_match(
             '/' . $slashedPath . '\/Iways\/(?P<' . $type . '>[a-zA-Z]+)/',
             $this->contents,
@@ -135,6 +134,7 @@ class Documentation extends extended
             $data[] = $matches[$type][0];
             $offSet = $matches[$type][1];
         }
+
         foreach (array_unique($data) as $item) {
             $this->contents = str_replace(
                 $path . "/Iways/" . $item,

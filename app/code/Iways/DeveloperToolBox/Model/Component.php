@@ -14,7 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Model;
 
-use Magento\Framework\Model\AbstractModel as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,6 +26,6 @@ use Magento\Framework\Model\AbstractModel as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Component extends extended
+class Component extends \Magento\Framework\Model\AbstractModel
 {
 }

@@ -14,7 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Block\Adminhtml;
 
-use Magento\Backend\Block\Widget\Grid\Container as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,7 +26,7 @@ use Magento\Backend\Block\Widget\Grid\Container as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Component extends extended
+class Component extends \Magento\Backend\Block\Widget\Grid\Container
 {
     protected function _construct()
     {

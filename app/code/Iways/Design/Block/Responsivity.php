@@ -14,9 +14,7 @@
 
 namespace Iways\Design\Block;
 
-use Iways\Design\Helper\Data as helper;
 use Magento\Framework\App\Response\RedirectInterface;
-use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -30,31 +28,38 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Responsivity extends extended
+class Responsivity extends \Magento\Framework\View\Element\Template
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context           Magento\Framework\View\Element\Context
-     * @param object $helper            Iways\Design\Helper\Data
-     * @param object $redirectInterface Magento\Framework\App\Response\RedirectInterface
-     * @param array  $data              object attributes
+     * @var \Iways\Design\Helper\Data
+     */
+    protected $designHelper;
+
+    /**
+     * @var RedirectInterface
+     */
+    protected $redirectInterface;
+
+    /**
+     * Responsivity constructor.
+     * @param Context $context
+     * @param \Iways\Design\Helper\Data $designHelper
+     * @param RedirectInterface $redirectInterface
+     * @param array $data
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        \Iways\Design\Helper\Data $designHelper,
         RedirectInterface $redirectInterface,
         array $data = []
     ) {
-        $this->helper = $helper;
+        $this->designHelper = $designHelper;
 
         $this->redirectInterface = $redirectInterface;
 
         parent::__construct($context, $data);
 
-        $this->setData('helper', $this->helper);
+        $this->setData('helper', $this->designHelper);
     }
 
     /**

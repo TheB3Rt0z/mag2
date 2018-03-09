@@ -1,7 +1,7 @@
 {
     "name": "iways/module-design",
     "type": "magento2-module",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "require": {
         "iways/module-base": "^0.1.0"
     },

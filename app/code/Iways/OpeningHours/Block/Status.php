@@ -14,9 +14,7 @@
 
 namespace Iways\OpeningHours\Block;
 
-use Iways\OpeningHours\Helper\Data as helper;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -30,9 +28,22 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Status extends extended // todo to be refactored
+class Status extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var mixed
+     */
     protected $openingHours;
+
+    /**
+     * @var \Iways\OpeningHours\Helper\Data
+     */
+    protected $openingHoursHelper;
+
+    /**
+     * @var DateTime|object
+     */
+    protected $dateTime;
 
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -46,16 +57,16 @@ class Status extends extended // todo to be refactored
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        \Iways\OpeningHours\Helper\Data $openingHoursHelper,
         DateTime $dateTime,
         array $data = []
     ) {
-        $this->helper = $helper;
+        $this->openingHoursHelper = $openingHoursHelper;
 
         $this->dateTime = $dateTime;
 
         if ($this->openingHours === null) {
-            $this->openingHours = $this->helper->getConfig('iways_openinghours/opening_hours');
+            $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours');
         }
 
         parent::__construct($context, $data);

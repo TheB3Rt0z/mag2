@@ -14,9 +14,6 @@
 
 namespace Iways\OpeningHours\Block\Opening;
 
-use Iways\OpeningHours\Block\Opening as extended;
-use Magento\Widget\Block\BlockInterface as implemented;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -28,7 +25,7 @@ use Magento\Widget\Block\BlockInterface as implemented;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Widget extends extended implements implemented
+class Widget extends \Iways\OpeningHours\Block\Opening implements \Magento\Widget\Block\BlockInterface
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

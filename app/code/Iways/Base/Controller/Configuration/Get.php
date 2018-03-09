@@ -14,8 +14,6 @@
 
 namespace Iways\Base\Controller\Configuration;
 
-use Iways\Base\Helper\Data as helper;
-use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 
@@ -30,7 +28,7 @@ use Magento\Framework\Controller\Result\JsonFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Get extends extended
+class Get extends \Magento\Framework\App\Action\Action
 {
     public static $whiteList = [
         'design' => [
@@ -41,21 +39,19 @@ class Get extends extended
     ];
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * Get constructor.
      *
-     * PHP Version 5
-     *
-     * @param object $context     Magento\Framework\App\Action\Context
-     * @param object $jsonFactory Magento\Framework\Controller\Result\JsonFactory
-     * @param object $helper      Iways\Base\Helper\Data
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param \Iways\Base\Helper\Data $baseHelper
      */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
-        helper $helper
+        \Iways\Base\Helper\Data $baseHelper
     ) {
         $this->jsonFactory = $jsonFactory;
-        $this->helper = $helper;
+        $this->baseHelper = $baseHelper;
 
         parent::__construct($context);
     }
@@ -83,7 +79,7 @@ class Get extends extended
 
                     $setting = $scope . '/' . $key . '/' . $value;
 
-                    $data[$key][$value] = $this->helper->getConfig($setting); // retrieves corresponding value
+                    $data[$key][$value] = $this->baseHelper->getConfig($setting); // retrieves corresponding value
                 }
             }
         }

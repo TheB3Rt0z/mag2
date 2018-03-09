@@ -14,12 +14,8 @@
 
 namespace Iways\GoogleFonts\Model;
 
-use Iways\Base\Model\Cache as iwaysCache;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\HTTP\Client\Curl;
-use Magento\Framework\Model\AbstractModel as extended;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
@@ -35,30 +31,42 @@ use Magento\Framework\Registry;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Api extends extended
+class Api extends \Magento\Framework\Model\AbstractModel
 {
     const API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts';
     const CSS_URL = 'https://fonts.googleapis.com/css?family=';
     const IWAYS_CACHE_CALL = 'iways_googlefonts_api_call_response';
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context          Magento\Framework\Model\Context
-     * @param object $registry         Magento\Framework\Registry
-     * @param object $curl             Magento\Framework\HTTP\Client\Curl
-     * @param object $iwaysCache       Iways\Base\Model\Cache
-     * @param object $abstractResource Magento\Framework\Model\ResourceModel\AbstractResource
-     * @param object $abstractDb       Magento\Framework\Data\Collection\AbstractDb
-     * @param array  $data             object attributes
+     * @var string
+     */
+    protected $apiUrl;
+
+    /**
+     * @var Curl
+     */
+    protected $curl;
+
+    /**
+     * @var \Iways\Base\Model\Cache
+     */
+    protected $iwaysCache;
+
+    /**
+     * Api constructor.
+     * @param Context $context
+     * @param Registry $registry
+     * @param Curl $curl
+     * @param \Iways\Base\Model\Cache $iwaysCache
+     * @param AbstractResource|null $abstractResource
+     * @param AbstractDb|null $abstractDb
+     * @param array $data
      */
     public function __construct(
         Context $context,
         Registry $registry,
         Curl $curl,
-        iwaysCache $iwaysCache,
+        \Iways\Base\Model\Cache $iwaysCache,
         AbstractResource $abstractResource = null,
         AbstractDb $abstractDb = null,
         array $data = []
@@ -105,7 +113,7 @@ class Api extends extended
             $this->iwaysCache->save(
                 serialize($response),
                 self::IWAYS_CACHE_CALL,
-                [iwaysCache::CACHE_TAG],
+                [\Iways\Base\Model\Cache::CACHE_TAG],
                 86400
             );
         }
@@ -120,7 +128,7 @@ class Api extends extended
      *
      * @param string $fontFamily a googlefonts valid font family
      *
-     * @return object
+     * @return bool
      */
     public function getFontByFamily($fontFamily)
     {
@@ -204,7 +212,7 @@ class Api extends extended
      *
      * @param string $apiKey a googlefonts valid API key
      *
-     * @return Iways\GoogleFonts\Model\Api
+     * @return $this
      */
     public function setApiKey($apiKey)
     {

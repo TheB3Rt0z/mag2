@@ -14,8 +14,6 @@
 
 namespace Iways\Design\Model\Config\Body\Background;
 
-use Iways\Base\Model\Config\Source as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class AttachmentOptions extends extended
+class AttachmentOptions extends \Iways\Base\Model\Config\Source
 {
     const ATTACHMENT_FIXED = 'fixed';
     const ATTACHMENT_INHERIT = 'inherit';

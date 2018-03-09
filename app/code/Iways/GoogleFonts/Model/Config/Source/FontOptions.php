@@ -14,8 +14,6 @@
 
 namespace Iways\GoogleFonts\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source as extended;
-use Iways\GoogleFonts\Helper\Data as helper;
 use Iways\GoogleFonts\Model\Api;
 
 /**
@@ -29,23 +27,32 @@ use Iways\GoogleFonts\Model\Api;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class FontOptions extends extended
+class FontOptions extends \Iways\Base\Model\Config\Source
 {
+
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $helper Iways\GoogleFonts\Helper\Data
-     * @param object $api    Iways\GoogleFonts\Model\Api
+     * @var \Iways\GoogleFonts\Helper\Data
+     */
+    protected $googleFontsHelper;
+
+    /**
+     * @var Api
+     */
+    protected $api;
+
+    /**
+     * FontOptions constructor.
+     * @param \Iways\GoogleFonts\Helper\Data $googleFontsHelper
+     * @param Api $api
      */
     public function __construct(
-        helper $helper,
+        \Iways\Base\Helper\Data $baseHelper,
+        \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
         Api $api
     ) {
-        $this->helper = $helper;
-
+        $this->googleFontsHelper = $googleFontsHelper;
         $this->api = $api;
+        parent::__construct($baseHelper);
     }
 
     /**

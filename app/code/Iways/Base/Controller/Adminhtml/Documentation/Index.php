@@ -14,7 +14,6 @@
 
 namespace Iways\Base\Controller\Adminhtml\Documentation;
 
-use Magento\Backend\App\Action as extended;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -29,29 +28,20 @@ use Magento\Framework\View\Result\PageFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Index extends extended
+class Index extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Iways_Base::menu_documentation';
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
+     * @var PageFactory
      */
-    /*protected function _isAllowed() @todo to be deleted?
-    {
-        return $this->_authorization->isAllowed('Iways_Base::documentation');
-    }*/
+    protected $pageFactory;
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * Index constructor.
      *
-     * PHP Version 5
-     *
-     * @param object $context     Magento\Backend\App\Action\Context
-     * @param object $pageFactory Magento\Framework\View\Result\PageFactory
+     * @param Context $context
+     * @param PageFactory $pageFactory
      */
     public function __construct(
         Context $context,
@@ -63,11 +53,8 @@ class Index extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return object
+     * Execute Documentation Index
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {

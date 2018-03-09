@@ -14,7 +14,6 @@
 
 namespace Iways\Design\Model\Catalog;
 
-use Magento\Catalog\Model\Config as extended;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -28,13 +27,10 @@ use Magento\Store\Model\ScopeInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Config extends extended
+class Config extends \Magento\Catalog\Model\Config
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * Get Attribute Used For Sort By Array
      * @return array
      */
     public function getAttributeUsedForSortByArray()

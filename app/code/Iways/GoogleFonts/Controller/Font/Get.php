@@ -14,9 +14,7 @@
 
 namespace Iways\GoogleFonts\Controller\Font;
 
-use Iways\GoogleFonts\Helper\Data as helper;
 use Iways\GoogleFonts\Model\Api;
-use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 
@@ -31,29 +29,41 @@ use Magento\Framework\Controller\Result\JsonFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Get extends extended
+class Get extends \Magento\Framework\App\Action\Action
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context     Magento\Backend\App\Action\Context
-     * @param object $jsonFactory Magento\Framework\Controller\Result\JsonFactory
-     * @param object $helper      Iways\GoogleFonts\Helper\Data
-     * @param object $api         Iways\GoogleFonts\Model\Api
+     * @var \Iways\GoogleFonts\Helper\Data
+     */
+    protected $googleFontsHelper;
+
+    /**
+     * @var JsonFactory
+     */
+    protected $jsonFactory;
+
+    /**
+     * @var Api
+     */
+    protected $api;
+
+    /**
+     * Get constructor.
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param \Iways\GoogleFonts\Helper\Data $googleFontsHelper
+     * @param Api $api
      */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
-        helper $helper,
+        \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
         Api $api
     ) {
         $this->jsonFactory = $jsonFactory;
-        $this->helper = $helper;
+        $this->googleFontsHelper = $googleFontsHelper;
         $this->api = $api;
 
-        if ($apiKey = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
+        if ($apiKey = $this->googleFontsHelper->getConfig('iways_googlefonts/credentials/api_key')) {
 
             $this->api->setApiKey($apiKey);
         }

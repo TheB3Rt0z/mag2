@@ -14,7 +14,6 @@
 
 namespace Iways\Design\Controller\Responsivity;
 
-use Magento\Framework\App\Action\Action as extended;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Result\PageFactory;
@@ -30,16 +29,23 @@ use Magento\Framework\View\Result\PageFactory;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Index extends extended
+class Index extends \Magento\Framework\App\Action\Action
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context     Magento\Framework\App\Action\Context
-     * @param object $pageFactory Magento\Framework\View\Result\PageFactory
-     * @param object $manager     Magento\Framework\Module\Manager
+     * @var PageFactory
+     */
+    protected $resultPageFactory;
+
+    /**
+     * @var Manager
+     */
+    protected $manager;
+
+    /**
+     * Index constructor.
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param Manager $manager
      */
     public function __construct(
         Context $context,
@@ -53,11 +59,8 @@ class Index extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return Magento\Framework\View\Result\Page\Interceptor
+     * Execute
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {

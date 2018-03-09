@@ -14,12 +14,9 @@
 
 namespace Iways\CategoryTree\Block;
 
-use Iways\CategoryTree\Helper\Category as categoryHelper;
-use Iways\CategoryTree\Helper\Data as helper;
 use Iways\CategoryTree\Model\Config\Source\RootOptions;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\View\Element\Template as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -32,7 +29,7 @@ use Magento\Framework\View\Element\Template as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Frontend extends extended
+class Frontend extends \Magento\Framework\View\Element\Template
 {
     protected $blockTitle;
     protected $customRoot;
@@ -41,25 +38,32 @@ class Frontend extends extended
     protected $treeRoot;
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context            Magento\Framework\View\Element\Template\Context
-     * @param object $helper             Iways\CategoryTree\Helper\Data
-     * @param object $categoryHelper     Iways\CategoryTree\Helper\Category
-     * @param object $categoryRepository Magento\Catalog\Model\CategoryRepository
-     * @param array  $data               object attributes
+     * @var \Iways\CategoryTree\Helper\Data
+     */
+    protected $categoryTreeHelper;
+
+    /**
+     * @var \Iways\CategoryTree\Helper\Category
+     */
+    protected $categoryTreeCategoryHelper;
+
+    /**
+     * Frontend constructor.
+     * @param Context $context
+     * @param \Iways\CategoryTree\Helper\Data $categoryTreeHelper
+     * @param \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper
+     * @param CategoryRepository $categoryRepository
+     * @param array $data
      */
     public function __construct(
         Context $context,
-        helper $helper,
-        categoryHelper $categoryHelper,
+        \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
+        \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper,
         CategoryRepository $categoryRepository,
         array $data = []
     ) {
-        $this->helper = $helper;
-        $this->categoryHelper = $categoryHelper;
+        $this->categoryTreeHelper = $categoryTreeHelper;
+        $this->categoryTreeCategoryHelper = $categoryTreeCategoryHelper;
 
         $this->storeId = $context->getStoreManager()->getStore()->getId();
         $this->categoryRepository = $categoryRepository;
@@ -67,37 +71,34 @@ class Frontend extends extended
         parent::__construct($context, $data);
 
         if ($this->blockTitle === null) {
-            $this->blockTitle = $this->helper->getConfig('iways_categorytree/frontend/block_title');
+            $this->blockTitle = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/block_title');
         }
 
         if ($this->treeRoot === null) {
-            $this->treeRoot = $this->helper->getConfig('iways_categorytree/frontend/tree_root');
+            $this->treeRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_root');
         }
         if ($this->treeRoot == RootOptions::ROOT_USE_CUSTOM_CATEGORY) {
             if ($this->customRoot === null) {
-                $this->customRoot = $this->helper->getConfig('iways_categorytree/frontend/custom_root');
+                $this->customRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/custom_root');
             }
         }
 
         if ($this->treeDepth === null) {
-            $this->treeDepth = $this->helper->getConfig('iways_categorytree/frontend/tree_depth');
+            $this->treeDepth = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_depth');
         }
 
         if ($this->showEmpty === null) {
-            $this->showEmpty = $this->helper->getConfig('iways_categorytree/frontend/show_empty');
+            $this->showEmpty = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/show_empty');
         }
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object  $category Magento\Catalog\Model\Category\Interceptor
-     * @param integer $maxDepth maximal category nesting level
-     * @param integer $depth    category nesting level
-     *
+     * Get Category Html
+     * @param $category
+     * @param int $maxDepth
+     * @param int $depth
      * @return string
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getCategoryHtml($category, $maxDepth = 0, $depth = 0)
     {
@@ -143,18 +144,16 @@ class Frontend extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return Magento\Catalog\Model\Category\Interceptor
+     * Get Root Category
+     * @return \Iways\CategoryTree\Helper\Magento\Catalog\Model\Category\Interceptor|\Magento\Catalog\Api\Data\CategoryInterface|mixed
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getRootCategory()
     {
         switch ($this->treeRoot)
         {
             case RootOptions::ROOT_USE_CURRENT_CATEGORY:
-                return $this->categoryHelper->getCurrent();
+                return $this->categoryTreeCategoryHelper->getCurrent();
 
             case RootOptions::ROOT_USE_CUSTOM_CATEGORY:
                 return $this->categoryRepository->get(
@@ -163,16 +162,14 @@ class Frontend extends extended
                 );
 
             default:
-                return $this->categoryHelper->getRoot(); // as of 'root'
+                return $this->categoryTreeCategoryHelper->getRoot(); // as of 'root'
         }
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * To Html
      * @return string
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function toHtml() // todo to be removed
     {

@@ -14,9 +14,6 @@
 
 namespace Iways\Base\Model\Config;
 
-use Iways\Base\Helper\Data as helper;
-use Magento\Framework\Option\ArrayInterface as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -28,39 +25,33 @@ use Magento\Framework\Option\ArrayInterface as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-abstract class Source implements extended
+abstract class Source implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $helper Iways\Base\Helper\Data
+     * @var \Iways\Base\Helper\Data
+     */
+    protected $baseHelper;
+
+    /**
+     * Source constructor.
+     * @param \Iways\Base\Helper\Data $baseHelper
      */
     public function __construct(
-        helper $helper
+        \Iways\Base\Helper\Data $baseHelper
     ) {
-        $this->helper = $helper;
+        $this->baseHelper = $baseHelper;
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return array
+     * @return mixed
      */
     abstract public function toArray();
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return boolean
+     * @return array
      */
     public function toOptionArray()
     {
-        return $this->helper->toOptionArray($this->toArray());
+        return $this->baseHelper->toOptionArray($this->toArray());
     }
 }

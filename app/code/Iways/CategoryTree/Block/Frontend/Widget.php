@@ -14,9 +14,7 @@
 
 namespace Iways\CategoryTree\Block\Frontend;
 
-use Iways\CategoryTree\Block\Frontend as extended;
 use Iways\CategoryTree\Model\Config\Source\RootOptions;
-use Magento\Widget\Block\BlockInterface as implemented;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -29,13 +27,12 @@ use Magento\Widget\Block\BlockInterface as implemented;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Widget extends extended implements implemented
+class Widget
+    extends \Iways\CategoryTree\Block\Frontend
+    implements \Magento\Widget\Block\BlockInterface
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * Internal constructor, that is called from real constructor
      * @return void
      */
     protected function _construct()

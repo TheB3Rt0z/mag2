@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -f bin/magento ]; then
-    bin/magento maintenance:enable;
+	bin/magento maintenance:enable;
 fi
 
 rm -R var/generation 2> /dev/null;
@@ -123,5 +123,5 @@ printf "\nhelping process took $SECONDS seconds\n\n";
 osascript -e 'display notification "May the VOLLKORN PASTA be always with you!" with title "Lord Vollkorn says: FERTIG in '$SECONDS' seconds" sound name "Glass"';
 
 if [ -f bin/magento ]; then
-    bin/magento maintenance:disable;
+bin/magento maintenance:disable;
 fi

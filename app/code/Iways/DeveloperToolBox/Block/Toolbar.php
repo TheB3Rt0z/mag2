@@ -14,10 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Block;
 
-use Iways\DeveloperToolBox\Helper\Data as helper;
-use Iways\DeveloperToolBox\Helper\Session as sessionHelper;
-use Magento\Backend\Helper\Data as magentoBackendHelper;
-use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -31,7 +27,7 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Toolbar extends extended
+class Toolbar extends \Magento\Framework\View\Element\Template
 {
     public static $items = [
         [
@@ -41,21 +37,43 @@ class Toolbar extends extended
     ];
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context              Magento\Framework\View\Element\Template\Context
-     * @param object $heper                Iways\DeveloperToolBox\Helper\Data
-     * @param object $sessionHelper        Iways\DeveloperToolBox\Helper\Session
-     * @param object $magentoBackendHelper Magento\Backend\Helper\Data
-     * @param array  $data                 object attributes
+     * @var string
+     */
+    public $currentUrl;
+
+    /**
+     * @var \Iways\DeveloperToolBox\Helper\Data
+     */
+    protected $developerToolBoxHelper;
+
+    /**
+     * @var \Iways\DeveloperToolBox\Helper\Session
+     */
+    protected $developerToolBoxSessionHelper;
+
+    /**
+     * @var \Magento\Backend\Helper\Data
+     */
+    protected $magentoBackendHelper;
+
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $urlInterface;
+
+    /**
+     * Toolbar constructor.
+     * @param Context $context
+     * @param \Iways\DeveloperToolBox\Helper\Data $developerToolBoxHelper
+     * @param \Iways\DeveloperToolBox\Helper\Session $developerToolBoxSessionHelper
+     * @param \Magento\Backend\Helper\Data $magentoBackendHelper
+     * @param array $data
      */
     public function __construct(
         Context $context,
-        helper $helper,
-        sessionHelper $sessionHelper,
-        magentoBackendHelper $magentoBackendHelper,
+        \Iways\DeveloperToolBox\Helper\Data $developerToolBoxHelper,
+        \Iways\DeveloperToolBox\Helper\Session $developerToolBoxSessionHelper,
+        \Magento\Backend\Helper\Data $magentoBackendHelper,
         array $data = []
     ) {
         $this->eventManager = $context->getEventManager();
@@ -65,14 +83,14 @@ class Toolbar extends extended
             ['items' => &self::$items]
         );
 
-        $this->helper = $helper;
-        $this->sessionHelper = $sessionHelper;
+        $this->developerToolBoxHelper = $developerToolBoxHelper;
+        $this->developerToolBoxSessionHelper = $developerToolBoxSessionHelper;
         $this->magentoBackendHelper = $magentoBackendHelper;
         $this->urlInterface = $context->getUrlBuilder();
 
         parent::__construct($context, $data);
 
-        $this->setData('sessionHelper', $this->sessionHelper);
+        $this->setData('sessionHelper', $this->developerToolBoxSessionHelper);
     }
 
     /**

@@ -14,7 +14,6 @@
 
 namespace Iways\Mobile\Observer\Iways\Design\Admin\System\Config\Changed\Section;
 
-use Iways\Design\Observer\Admin\System\Config\Changed\Section\Design as extended;
 use Magento\Framework\Event\Observer;
 
 /**
@@ -28,14 +27,14 @@ use Magento\Framework\Event\Observer;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Design extends extended
+class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\Design
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $observer Magento\Framework\Event\Observer
+     * @param Observer $observer
      *
      * @return void
      */
@@ -43,7 +42,7 @@ class Design extends extended
     {
         $data = '';
 
-        if ($this->helper->getConfig('design/mobile/navigation_direction')) {
+        if ($this->designHelper->getConfig('design/mobile/navigation_direction')) {
 
             $data .= '.nav-open .page-wrapper {' . self::EOL
                    . '    left: 0 !important;' . self::EOL
@@ -64,7 +63,7 @@ class Design extends extended
                    . '}' . self::EOL;
         }
 
-        if ($this->helper->getConfig('design/mobile/modal_sidebars')) {
+        if ($this->designHelper->getConfig('design/mobile/modal_sidebars')) {
 
             $data .= '@media only screen and (max-width: 768px) {' . self::EOL
                    . '    .sidebar.title {' . self::EOL

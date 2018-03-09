@@ -14,8 +14,6 @@
 
 namespace Iways\Mobile\Model\Admin\Design\Config\Mobile\Navigation;
 
-use Iways\Base\Model\Config\Source as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class DirectionOptions extends extended
+class DirectionOptions extends \Iways\Base\Model\Config\Source
 {
     const DIRECTION_LR = false;
     const DIRECTION_RL = true;

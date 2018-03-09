@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  * Ⓒ i-ways sales solutions GmbH

@@ -14,7 +14,6 @@
 
 namespace Iways\OpeningHours\Block\Adminhtml\System\Config;
 
-use Magento\Config\Block\System\Config\Form\Field as extended;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
@@ -28,16 +27,16 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends extended
+class Opening extends \Magento\Config\Block\System\Config\Form\Field
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
      *
-     * @param object $element Magento\Framework\Data\Form\Element\AbstractElement
+     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      *
-     * @return void
+     * @return string
      */
     protected function _getElementHtml(AbstractElement $element)
     {

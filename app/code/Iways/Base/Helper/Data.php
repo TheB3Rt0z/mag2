@@ -15,7 +15,6 @@
 namespace Iways\Base\Helper;
 
 use Magento\Backend\Model\Locale\Manager;
-use Magento\Framework\App\Helper\AbstractHelper as extended;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Locale\Resolver;
 use Magento\Framework\Registry;
@@ -32,17 +31,29 @@ use Magento\Store\Model\ScopeInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Data extends extended
+class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context  Magento\Framework\App\Helper\Context
-     * @param object $registry Magento\Framework\Registry
-     * @param object $resolver Magento\Framework\Locale\Resolver
-     * @param object $manager  Magento\Backend\Model\Locale\Manager
+     * @var Registry
+     */
+    protected $registry;
+
+    /**
+     * @var Resolver
+     */
+    protected $resolver;
+
+    /**
+     * @var Manager
+     */
+    protected $manager;
+
+    /**
+     * Data constructor.
+     * @param Context $context
+     * @param Registry $registry
+     * @param Resolver $resolver
+     * @param Manager $manager
      */
     public function __construct(
         Context $context,
@@ -58,10 +69,7 @@ class Data extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * Get Backend Locale
      * @return string
      */
     public function getBackendLocale()
@@ -70,12 +78,8 @@ class Data extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * Get Config
      * @param string $path e.g.: 'general/store_information/name'
-     *
      * @return mixed
      */
     public function getConfig($path)
@@ -84,12 +88,8 @@ class Data extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
+     * Get Custom Var
      * @param string $key the key of registry entry
-     *
      * @return mixed
      */
     public function getCustomVar($key)

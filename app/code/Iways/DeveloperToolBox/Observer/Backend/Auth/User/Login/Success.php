@@ -14,10 +14,8 @@
 
 namespace Iways\DeveloperToolBox\Observer\Backend\Auth\User\Login;
 
-use Iways\DeveloperToolBox\Helper\Data as helper;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -30,26 +28,39 @@ use Magento\Framework\Event\ObserverInterface as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Success implements extended
+class Success implements \Magento\Framework\Event\ObserverInterface
 {
     const PHP_SESSION_COOKIE_NAME = 'PHPSESSID';
 
+    /**
+     * @var \Iways\DeveloperToolBox\Helper\Data
+     */
+    protected $developerToolBoxHelper;
+
+    /**
+     * @var Session
+     */
+    protected $session;
+
+    /**
+     * Success constructor.
+     *
+     * @param \Iways\DeveloperToolBox\Helper\Data $developerToolBoxHelper
+     * @param Session $session
+     */
     public function __construct(
-        helper $helper,
+        \Iways\DeveloperToolBox\Helper\Data $developerToolBoxHelper,
         Session $session
     ) {
-        $this->helper = $helper;
+        $this->developerToolBoxHelper = $developerToolBoxHelper;
         $this->session = $session;
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * Execute
      *
-     * PHP Version 5
-     *
-     * @param object $observer Magento\Framework\Event\Observer
-     *
-     * @return void
+     * @param Observer $observer
+     * @throws \Magento\Framework\Exception\SessionException
      */
     public function execute(Observer $observer)
     {

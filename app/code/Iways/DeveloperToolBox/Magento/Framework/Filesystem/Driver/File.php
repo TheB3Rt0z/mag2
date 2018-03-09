@@ -2,9 +2,8 @@
 
 namespace Iways\DeveloperToolBox\Magento\Framework\Filesystem\Driver;
 
-use Magento\Framework\Filesystem\Driver\File as extended;
 
-class File extends extended
+class File extends \Magento\Framework\Filesystem\Driver\File
 {
     public function getAbsolutePath($basePath, $path, $scheme = null)
     {

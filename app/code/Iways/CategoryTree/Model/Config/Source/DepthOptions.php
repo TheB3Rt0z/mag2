@@ -14,9 +14,6 @@
 
 namespace Iways\CategoryTree\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source as extended;
-use Iways\CategoryTree\Helper\Category as categoryHelper;
-use Iways\CategoryTree\Helper\Data as helper;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -31,40 +28,57 @@ use Magento\Store\Model\StoreManagerInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class DepthOptions extends extended
+class DepthOptions extends \Iways\Base\Model\Config\Source
 {
+
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * @var \Iways\CategoryTree\Helper\Data
+     */
+    protected $categoryTreeHelper;
+
+    /**
+     * @var \Iways\CategoryTree\Helper\Category
+     */
+    protected $categoryTreeCategoryHelper;
+
+    /**
+     * @var int
+     */
+    protected $storeId;
+
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
+     * DepthOptions constructor.
      *
-     * PHP Version 5
-     *
-     * @param object $helper                Iways\CategoryTree\Helper\Data
-     * @param object $categoryHelper        Iways\CategoryTree\Helper\Category
-     * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
-     * @param object $categoryRepository    Magento\Catalog\Model\CategoryRepository
+     * @param \Iways\CategoryTree\Helper\Data $categoryTreeHelper
+     * @param \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper
+     * @param StoreManagerInterface $storeManagerInterface
+     * @param CategoryRepository $categoryRepository
      */
     public function __construct(
-        helper $helper,
-        categoryHelper $categoryHelper,
+        \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
+        \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper,
         StoreManagerInterface $storeManagerInterface,
         CategoryRepository $categoryRepository
     ) {
-        $this->helper = $helper;
-        $this->categoryHelper = $categoryHelper;
+        $this->categoryTreeHelper = $categoryTreeHelper;
+        $this->categoryTreeCategoryHelper = $categoryTreeCategoryHelper;
 
         $this->storeId = $storeManagerInterface->getStore()->getId();
         $this->categoryRepository = $categoryRepository;
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * Get Max Depth
      *
-     * PHP Version 5
-     *
-     * @param object  $category Magento\Catalog\Model\Category\Interceptor
-     * @param integer $depth    category nesting level
-     *
-     * @return integer
+     * @param $category
+     * @param int $depth
+     * @return int
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getMaxDepth($category, $depth = 0)
     {
@@ -85,17 +99,16 @@ class DepthOptions extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
+     * To Array
      *
      * @return array
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function toArray()
     {
         $data = [999 => 'All']; // todo a zero (0) could be better than this..
 
-        $maxDepth = $this->getMaxDepth($this->categoryHelper->getRoot());
+        $maxDepth = $this->getMaxDepth($this->categoryTreeCategoryHelper->getRoot());
         for ($i = 1; $i <= $maxDepth; $i++) {
             $data[$i - 1] = $i;
         }

@@ -43,7 +43,7 @@ body .page-wrapper {
     background-position: left top;
 }
 body.adminhtml-auth-login .page-wrapper {
-    animation: animatedBackground 30s linear infinite;
+    animation: animatedBackground 33s linear infinite;
 }
 
 .page-layout-admin-login .page-wrapper,

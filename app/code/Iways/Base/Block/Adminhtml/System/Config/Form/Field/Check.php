@@ -15,7 +15,6 @@
 namespace Iways\Base\Block\Adminhtml\System\Config\Form\Field;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Config\Block\System\Config\Form\Field as extended;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 use Magento\Framework\View\DesignInterface;
@@ -32,7 +31,7 @@ use Magento\Store\Model\ScopeInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Check extends extended
+class Check extends \Magento\Config\Block\System\Config\Form\Field
 {
     /**
      * Ⓒ i-ways sales solutions GmbH

@@ -30,12 +30,6 @@ N.B.: at present date there is another extension in embrional stage, [Iways_Goog
 - **@todo** phpDocumentor prefix to code comment, indicating required development, needed enhancements of code or simply a desired improvement
 - **@example** phpDocumentor prefix to code comment for files/classes/methods or code lines of particular interest
 - **@deprecated** phpDocumentor prefix to code comment, as marker for i-ways framework on something which should be discussed and/or removed
-- **extended** conventional alias for extended class, if applicable
-- **implemented** conventional alias for implemented interface class, if applicable
-- **model** conventional alias for required model class, usually sharing same unqualified class name
-- **resource** conventional alias for model's resource-model, usually sharing same unqualified class name
-- **helper** conventional alias for module main helper (data), if needed, which extends from base module helper
-- **subject** conventional alias for plugin's original overridden class (to be used in before/after/around method)
 - **[LOWERCASE_STRING]Helper** conventional alias for module's additional helper [UCFIRST_STRING] e.g.: "categoryHelper"
 
 <a name="code-validation"></a>
@@ -149,8 +143,6 @@ The only extension with pattern **Iways_[UPPERCASEFIRST_STRING][UPPERCASEFIRST_S
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
- * PHP Version 5
- *
  * @category [File|Class]
  * @package  [MODULE_IDENTIFIER|THEME_IDENTIFIER]
  * @author   [AUTHOR_NAME] <[AUTHOR_EMAIL]>
@@ -165,13 +157,9 @@ In case of class methods:
 
 ```
 /**
- * Ⓒ i-ways sales solutions GmbH
- *
- * PHP Version 5
- *
- * @param [string|integer|float|boolean|array|object|null|resource|mixed] [PARAMETER_NAME] [PARAMETER_DESCRIPTION]
- *
- * @return [string|integer|float|boolean|array|object|null|resource|mixed]
+ * [DESCIRPTION]
+ * @param [OBEJCT_TYPE] [PARAMETER_NAME] [PARAMETER_DESCRIPTION]
+ * @return [OBEJCT_TYPE]
  *
  * @todo [TODO_STRING]
  */
@@ -193,6 +181,7 @@ The following are functioning pattern and examples given are actually used in i-
 <theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
     <title>[THEME_NAME]</title> e.g.: "i-ways Base Theme"
+    <version>[THEME_VERSION]</version> e.g.: "0.0.1"
     <parent>[PARENT_IDENTIFIER]</parent> e.g.: "Magento/blank"
     <media>
         <preview_image>media/preview.jpg</preview_image>

@@ -14,8 +14,6 @@
 
 namespace Iways\Design\Model\Design\Backend\Body;
 
-use Magento\Theme\Model\Design\Backend\Image as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Magento\Theme\Model\Design\Backend\Image as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Background extends extended
+class Background extends \Magento\Theme\Model\Design\Backend\Image
 {
     const UPLOAD_DIR = 'body';
 

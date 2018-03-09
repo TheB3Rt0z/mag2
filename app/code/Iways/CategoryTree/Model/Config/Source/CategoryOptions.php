@@ -14,8 +14,6 @@
 
 namespace Iways\CategoryTree\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source as extended;
-use Iways\CategoryTree\Helper\Data as helper;
 use Magento\Catalog\Helper\Category;
 
 /**
@@ -29,21 +27,29 @@ use Magento\Catalog\Helper\Category;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class CategoryOptions extends extended
+class CategoryOptions extends \Iways\Base\Model\Config\Source
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * @var \Iways\CategoryTree\Helper\Data
+     */
+    protected $categoryTreeHelper;
+
+    /**
+     * @var \Magento\Framework\Data\Tree\Node\Collection
+     */
+    protected $storeCategories;
+
+    /**
+     * CategoryOptions constructor.
      *
-     * PHP Version 5
-     *
-     * @param object $helper   Iways\CategoryTree\Helper\Data
-     * @param object $category Magento\Catalog\Helper\Category
+     * @param \Iways\CategoryTree\Helper\Data $categoryTreeHelper
+     * @param Category $category
      */
     public function __construct(
-        helper $helper,
+        \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
         Category $category
     ) {
-        $this->helper = $helper;
+        $this->categoryTreeHelper = $categoryTreeHelper;
 
         $this->storeCategories = $category->getStoreCategories();
     }

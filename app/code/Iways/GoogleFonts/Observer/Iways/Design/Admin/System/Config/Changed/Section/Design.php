@@ -14,9 +14,6 @@
 
 namespace Iways\GoogleFonts\Observer\Iways\Design\Admin\System\Config\Changed\Section;
 
-use Iways\Design\Observer\Admin\System\Config\Changed\Section\Design as extended;
-use Iways\Design\Helper\Data as helper;
-//use Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions;
 use Iways\GoogleFonts\Model\Api;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
@@ -32,45 +29,46 @@ use Magento\Store\Model\StoreManagerInterface;
  *
  * @category Class
  * @package  Iways_GoogleFonts
- * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>, Robert Hillebradn <hillebrand@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Design extends extended
+class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\Design
 {
     protected $loadedFonts = [];
 
+    protected $fontSelectors = [];
+
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $helper                Iways\Design\Helper\Data
-     * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
-     * @param object $directoryList         Magento\Framework\App\Filesystem\DirectoryList
-     * @param object $file                  Magento\Framework\Filesystem\Io\File
-     * @param object $writeFactory          Magento\Framework\Filesystem\File\WriteFactory
-     * @param object $context               Magento\Framework\View\Element\Context
-     * @param object $api                   Iways\GoogleFonts\Model\Api
+     * Design constructor.
+     * @param \Iways\Design\Helper\Data $designHelper
+     * @param StoreManagerInterface $storeManagerInterface
+     * @param DirectoryList $directoryList
+     * @param IOFile $file
+     * @param WriteFactory $writeFactory
+     * @param Context $context
+     * @param Api $api
+     * @param array $fontSelectors
      */
     public function __construct(
-        helper $helper,
+        \Iways\Design\Helper\Data $designHelper,
         StoreManagerInterface $storeManagerInterface,
         DirectoryList $directoryList,
         IOFile $file,
         WriteFactory $writeFactory,
         Context $context,
-        Api $api
+        Api $api,
+        array $fontSelectors = []
     ) {
         parent::__construct(
-            $helper,
+            $designHelper,
             $storeManagerInterface,
             $directoryList,
             $file,
             $writeFactory,
             $context
         );
-
+        $this->fontSelectors = $fontSelectors;
         $this->api = $api;
     }
 
@@ -88,9 +86,9 @@ class Design extends extended
     {
         $data = '';
 
-        if ($family = $this->helper->getConfig($configPath)) {
+        if ($family = $this->designHelper->getConfig($configPath)) {
 
-            $familyVariant = $this->helper->getConfig($configPath . '_variant');
+            $familyVariant = $this->designHelper->getConfig($configPath . '_variant');
 
             $familyVariantArray = explode(
                 ';',
@@ -137,59 +135,15 @@ class Design extends extended
     {
         $data = '';
 
-        $cssSelector = 'html body';
+        foreach ($this->fontSelectors as  $configPath => $cssSelector) {
+            $data .= $this->getFamilyCss($configPath . '_family', $cssSelector);
 
-        $data .= $this->getFamilyCss('design/fonts/body_family', $cssSelector);
+            if ($color = $this->designHelper->getConfig($configPath . '_color')) {
 
-        if ($bodyColor = $this->helper->getConfig('design/fonts/body_color')) {
-
-            $data .= $cssSelector . ' {' . self::EOL
-                   . '    color: ' . $bodyColor . ';' . self::EOL
-                   . '}' . self::EOL;
-        }
-
-        $cssSelector = 'h1';
-
-        $data .= $this->getFamilyCss('design/fonts/h1_family', $cssSelector);
-
-        if ($h1Color = $this->helper->getConfig('design/fonts/h1_color')) {
-
-            $data .= $cssSelector . ' {' . self::EOL
-                   . '    color: ' . $h1Color . ';' . self::EOL
-                   . '}' . self::EOL;
-        }
-
-        $cssSelector = 'h2';
-
-        $data .= $this->getFamilyCss('design/fonts/h2_family', $cssSelector);
-
-        if ($h2Color = $this->helper->getConfig('design/fonts/h2_color')) {
-
-            $data .= $cssSelector . ' {' . self::EOL
-                   . '    color: ' . $h2Color . ';' . self::EOL
-                   . '}' . self::EOL;
-        }
-
-        $cssSelector = 'h3';
-
-        $data .= $this->getFamilyCss('design/fonts/h3_family', $cssSelector);
-
-        if ($h3Color = $this->helper->getConfig('design/fonts/h3_color')) {
-
-            $data .= $cssSelector . ' {' . self::EOL
-                   . '    color: ' . $h3Color . ';' . self::EOL
-                   . '}' . self::EOL;
-        }
-
-        $cssSelector = '.navigation .level0 a';
-
-        $data .= $this->getFamilyCss('design/fonts/nav_family', $cssSelector);
-
-        if ($navColor = $this->helper->getConfig('design/fonts/nav_color')) {
-
-            $data .= $cssSelector . ' {' . self::EOL
-                   . '    color: ' . $navColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                $data .= $cssSelector . ' {' . self::EOL
+                    . '    color: ' . $this->designHelper->checkColorCode($color) . ';' . self::EOL
+                    . '}' . self::EOL;
+            }
         }
 
         $this->stylesFile = $observer->getStylesFile();

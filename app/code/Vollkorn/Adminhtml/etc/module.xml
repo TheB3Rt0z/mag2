@@ -3,8 +3,9 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Vollkorn_Adminhtml" setup_version="1.0.0">
         <sequence>
-            <module name="Vollkorn_All" />
+            <module name="Magento_Backend" />
             <module name="Magento_Theme" />
+            <module name="Vollkorn_All" />
         </sequence>
     </module>
 </config>

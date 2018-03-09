@@ -1,23 +1,19 @@
 {
-  "name": "iways/module-navigation",
-  "require": {
-    "iways/module-base": "^0.1.0"
-  },
-  "type": "magento2-module",
-  "version": "0.0.1",
-  "license":
-  [
-    "proprietary"
-  ],
-  "autoload":
-  {
-    "files":
-    [
-      "registration.php"
+    "name": "iways/module-navigation",
+    "require": {
+        "iways/module-base": "^0.1.0"
+    },
+    "type": "magento2-module",
+    "version": "0.0.3",
+    "license": [
+        "proprietary"
     ],
-    "psr-4":
-    {
-      "Iways\\Navigation\\": ""
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Iways\\Navigation\\": ""
+        }
     }
-  }
 }

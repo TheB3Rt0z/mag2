@@ -14,8 +14,6 @@
 
 namespace Iways\OpeningHours\Block;
 
-use Iways\OpeningHours\Helper\Data as helper;
-use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -29,7 +27,7 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Opening extends extended
+class Opening extends \Magento\Framework\View\Element\Template
 {
     protected $compressTable;
     protected $firstDay;
@@ -45,31 +43,28 @@ class Opening extends extended
     ];
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context Magento\Framework\View\Element\Template\Context
-     * @param object $helper  Iways\OpeningHours\Helper\Data
-     * @param array  $data    object attributes
+     * Opening constructor.
+     * @param Context $context
+     * @param \Iways\OpeningHours\Helper\Data $openingHoursHelper
+     * @param array $data
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        \Iways\OpeningHours\Helper\Data $openingHoursHelper,
         array $data = []
     ) {
-        $this->helper = $helper;
+        $this->openingHoursHelper = $openingHoursHelper;
 
-        $this->openingHours = $this->helper->getConfig('iways_openinghours/opening_hours');
+        $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours');
 
         parent::__construct($context, $data);
 
         if ($this->firstDay === null) {
-            $this->firstDay = $this->helper->getConfig('iways_openinghours/settings/first_day');
+            $this->firstDay = $this->openingHoursHelper->getConfig('iways_openinghours/settings/first_day');
         }
 
         if ($this->compressTable === null) {
-            $this->compressTable = $this->helper->getConfig('iways_openinghours/settings/compress_table');
+            $this->compressTable = $this->openingHoursHelper->getConfig('iways_openinghours/settings/compress_table');
         }
     }
 
@@ -81,11 +76,12 @@ class Opening extends extended
      * @param array $array plain data matrix
      *
      * @return array
+     *
+     * @TODO Declare objects/variables before use
      */
     public function compressMatrix(array $array)
     {
         $lastValue = $lastKey = $baseKey = null;
-
         foreach ($array as $key => $value) {
 
             if ($value == $lastValue) {
@@ -122,6 +118,7 @@ class Opening extends extended
             unset($days['sun']);
             $days['sun'] = 'sunday';
         }
+        $data = '';
 
         foreach ($days as $key => $value) {
 

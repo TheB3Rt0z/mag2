@@ -14,8 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Model\ResourceModel\Component;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection as ex
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Collection extends extended
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected function _construct()
     {

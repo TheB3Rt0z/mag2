@@ -14,8 +14,6 @@
 
 namespace Iways\Mobile\Block;
 
-use Iways\Design\Block\Head as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,6 +25,6 @@ use Iways\Design\Block\Head as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Head extends extended
+class Head extends \Iways\Design\Block\Head
 {
 }

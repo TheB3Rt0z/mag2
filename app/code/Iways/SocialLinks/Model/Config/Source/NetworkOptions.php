@@ -14,9 +14,6 @@
 
 namespace Iways\SocialLinks\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source as extended;
-use Iways\SocialLinks\Helper\Data as helper;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -28,7 +25,7 @@ use Iways\SocialLinks\Helper\Data as helper;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class NetworkOptions extends extended
+class NetworkOptions extends \Iways\Base\Model\Config\Source
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
@@ -39,7 +36,9 @@ class NetworkOptions extends extended
      */
     public function toArray()
     {
-        foreach (helper::$socialNetworks as $key => $value) {
+        $data = [];
+
+        foreach (\Iways\SocialLinks\Helper\Data::$socialNetworks as $key => $value) {
 
             $data[$key] = __($value);
         }

@@ -14,16 +14,12 @@
 
 namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 
-use Iways\Design\Helper\Data as helper;
-use Iways\Design\Model\Config\Body\Background\SizeOptions;
-use Iways\Design\Model\Design\Backend\Body\Background;
+
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface as implemented;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\Filesystem\Io\File as IOFile; // only to get rid of strict sniffers
-use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Context;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -34,38 +30,64 @@ use Magento\Store\Model\StoreManagerInterface;
  *
  * @category Class
  * @package  Iways_Design
- * @author   Bertozzi Matteo <bertozzi@i-ways.net>
+ * @author   Bertozzi Matteo <bertozzi@i-ways.net>, Robert Hillebrand <hillebrand@i-ways.net>
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Design implements implemented
+class Design implements \Magento\Framework\Event\ObserverInterface
 {
     const EOL = "\n";
     const STYLES_DIR = 'iways';
     const STYLES_FILE = 'styles.css';
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $helper                Iways\Design\Helper\Data
-     * @param object $storeManagerInterface Magento\Store\Model\StoreManagerInterface
-     * @param object $directoryList         Magento\Framework\App\Filesystem\DirectoryList
-     * @param object $file                  Magento\Framework\Filesystem\Io\File
-     * @param object $writeFactory          Magento\Framework\Filesystem\File\WriteFactory
-     * @param object $context               Magento\Framework\View\Element\Context
+     * @var \Iways\Design\Helper\Data
+     */
+    protected $designHelper;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    protected $storeManagerInterface;
+
+    /**
+     * @var DirectoryList
+     */
+    protected $directoryList;
+
+    /**
+     * @var IOFile
+     */
+    protected $file;
+
+    /**
+     * @var WriteFactory
+     */
+    protected $writeFactory;
+
+    /**
+     * @var \Magento\Framework\Event\ManagerInterface
+     */
+    protected $eventManager;
+
+    /**
+     * Design constructor.
+     * @param \Iways\Design\Helper\Data $designHelper
+     * @param StoreManagerInterface $storeManagerInterface
+     * @param DirectoryList $directoryList
+     * @param IOFile $file
+     * @param WriteFactory $writeFactory
+     * @param Context $context
      */
     public function __construct(
-        helper $helper,
+        \Iways\Design\Helper\Data $designHelper,
         StoreManagerInterface $storeManagerInterface,
         DirectoryList $directoryList,
         IOFile $file,
         WriteFactory $writeFactory,
         Context $context
     ) {
-        $this->helper = $helper;
-
+        $this->designHelper = $designHelper;
         $this->storeManagerInterface = $storeManagerInterface;
         $this->directoryList = $directoryList;
         $this->file = $file;
@@ -74,37 +96,28 @@ class Design implements implemented
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
+     * Execute Design Observer
      *
-     * PHP Version 5
-     *
-     * @param object $observer Magento\Framework\Event\Observer
-     *
-     * @return void
+     * @param Observer $observer
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function execute(Observer $observer)
     {
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
-        if ($headerPanelBackgroundColor = $this->helper->getConfig('design/header/panel_background_color')) {
+        if ($headerPanelBackgroundColor = $this->designHelper->getConfig('design/header/panel_background_color')) {
 
-            if (substr($headerPanelBackgroundColor, 0, 1) != '#') {
+            $headerPanelBackgroundColor = $this->designHelper->checkColorCode($headerPanelBackgroundColor);
 
-                $headerPanelBackgroundColor = '#' . $headerPanelBackgroundColor;
-            }
-
-            $data .= 'header.page-header .panel.wrapper {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $headerPanelBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+            $data .= '.page-header .panel.wrapper {' . self::EOL
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $headerPanelBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
-        if ($headerWrapperBackgroundColor = $this->helper->getConfig('design/header/wrapper_background_color')) {
+        if ($headerWrapperBackgroundColor = $this->designHelper->getConfig('design/header/wrapper_background_color')) {
 
-            if (substr($headerWrapperBackgroundColor, 0, 1) != '#') {
-
-                $headerWrapperBackgroundColor = '#' . $headerWrapperBackgroundColor;
-            }
+            $headerWrapperBackgroundColor = $this->designHelper->checkColorCode($headerWrapperBackgroundColor);
 
             $data .= 'header.page-header {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -112,12 +125,9 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($navigationSectionBackgroundColor = $this->helper->getConfig('design/navigation/section_background_color')) {
+        if ($navigationSectionBackgroundColor = $this->designHelper->getConfig('design/navigation/section_background_color')) {
 
-            if (substr($navigationSectionBackgroundColor, 0, 1) != '#') {
-
-                $navigationSectionBackgroundColor = '#' . $navigationSectionBackgroundColor;
-            }
+            $navigationSectionBackgroundColor = $this->designHelper->checkColorCode($navigationSectionBackgroundColor);
 
             $data .= '.sections.nav-sections, nav.navigation {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -125,12 +135,9 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($navigationItemsBackgroundColor = $this->helper->getConfig('design/navigation/items_background_color')) {
+        if ($navigationItemsBackgroundColor = $this->designHelper->getConfig('design/navigation/items_background_color')) {
 
-            if (substr($navigationItemsBackgroundColor, 0, 1) != '#') {
-
-                $navigationItemsBackgroundColor = '#' . $navigationItemsBackgroundColor;
-            }
+            $navigationItemsBackgroundColor = $this->designHelper->checkColorCode($navigationItemsBackgroundColor);
 
             $data .= 'nav.navigation ul {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -138,12 +145,9 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($navigationActiveItemBackgroundColor = $this->helper->getConfig('design/navigation/active_item_background_color')) {
+        if ($navigationActiveItemBackgroundColor = $this->designHelper->getConfig('design/navigation/active_item_background_color')) {
 
-            if (substr($navigationActiveItemBackgroundColor, 0, 1) != '#') {
-
-                $navigationActiveItemBackgroundColor = '#' . $navigationActiveItemBackgroundColor;
-            }
+            $navigationActiveItemBackgroundColor = $this->designHelper->checkColorCode($navigationActiveItemBackgroundColor);
 
             $data .= 'nav.navigation .level0.active > .level-top,'
                    //. 'nav.navigation .level0.has-active > .level-top,'
@@ -154,12 +158,9 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($navigationSubmenusBackgroundColor = $this->helper->getConfig('design/navigation/submenus_background_color')) {
+        if ($navigationSubmenusBackgroundColor = $this->designHelper->getConfig('design/navigation/submenus_background_color')) {
 
-            if (substr($navigationSubmenusBackgroundColor, 0, 1) != '#') {
-
-                $navigationSubmenusBackgroundColor = '#' . $navigationSubmenusBackgroundColor;
-            }
+            $navigationSubmenusBackgroundColor = $this->designHelper->checkColorCode($navigationSubmenusBackgroundColor);
 
             $data .= 'nav.navigation .level0 .submenu {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -167,12 +168,9 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($navigationSubmenusHoverBackgroundColor = $this->helper->getConfig('design/navigation/submenus_hover_background_color')) {
+        if ($navigationSubmenusHoverBackgroundColor = $this->designHelper->getConfig('design/navigation/submenus_hover_background_color')) {
 
-            if (substr($navigationSubmenusHoverBackgroundColor, 0, 1) != '#') {
-
-                $navigationSubmenusHoverBackgroundColor = '#' . $navigationSubmenusHoverBackgroundColor;
-            }
+            $navigationSubmenusHoverBackgroundColor = $this->designHelper->checkColorCode($navigationSubmenusHoverBackgroundColor);
 
             $data .= '.navigation .level0 .submenu a:hover, .navigation .level0 .submenu a.ui-state-focus {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -180,43 +178,40 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($backgroundColor = $this->helper->getConfig('design/body/background_color')) {
+        if ($backgroundColor = $this->designHelper->getConfig('design/body/background_color')) {
 
-            if (substr($backgroundColor, 0, 1) != '#') {
-
-                $backgroundColor = '#' . $backgroundColor;
-            }
+            $backgroundColor = $this->designHelper->checkColorCode($backgroundColor);
 
             $data .= 'html body {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $backgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $backgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
-        if ($backgroundSrc = $this->helper->getConfig('design/body/background_src')) {
+        if ($backgroundSrc = $this->designHelper->getConfig('design/body/background_src')) {
 
             $store = $this->storeManagerInterface->getStore();
             $baseUrl = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
             $data .= 'html body {' . self::EOL
-                   . '    background-image: url("' . $baseUrl
-                                                     . Background::UPLOAD_DIR
-                                                     . '/' . $backgroundSrc . '");'
-                                                     . self::EOL
-                     . '}' . self::EOL;
+                . '    background-image: url("' . $baseUrl
+                . Background::UPLOAD_DIR
+                . '/' . $backgroundSrc . '");'
+                . self::EOL
+                . '}' . self::EOL;
 
-            if ($backgroundSrcAttachment = $this->helper->getConfig('design/body/background_src_attachment')) {
+            if ($backgroundSrcAttachment = $this->designHelper->getConfig('design/body/background_src_attachment')) {
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-attachment: ' . $backgroundSrcAttachment
-                                                       . ';' . self::EOL
-                       . '}' . self::EOL;
+                    . '    background-attachment: ' . $backgroundSrcAttachment
+                    . ';' . self::EOL
+                    . '}' . self::EOL;
             }
 
-            if ($backgroundSrcSize = $this->helper->getConfig('design/body/background_src_size')) {
+            if ($backgroundSrcSize = $this->designHelper->getConfig('design/body/background_src_size')) {
 
                 if ($backgroundSrcSize == 1) { // identifies custom option in select
 
-                    $backgroundSrcSizeCustom = $this->helper->getConfig('design/body/background_src_size_custom');
+                    $backgroundSrcSizeCustom = $this->designHelper->getConfig('design/body/background_src_size_custom');
 
                     $backgroundSrcSizeCustomArray = explode(
                         ';',
@@ -224,23 +219,23 @@ class Design implements implemented
                     );
 
                     $backgroundSrcSize = ($backgroundSrcSizeCustomArray[0] ?: '')
-                                       . ($backgroundSrcSizeCustomArray[1] ?: '')
-                                       . " "
-                                       . ($backgroundSrcSizeCustomArray[2] ?: '')
-                                       . ($backgroundSrcSizeCustomArray[3] ?: '');
+                        . ($backgroundSrcSizeCustomArray[1] ?: '')
+                        . " "
+                        . ($backgroundSrcSizeCustomArray[2] ?: '')
+                        . ($backgroundSrcSizeCustomArray[3] ?: '');
                 }
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-size: ' . $backgroundSrcSize
-                                                 . ';' . self::EOL
-                       . '}' . self::EOL;
+                    . '    background-size: ' . $backgroundSrcSize
+                    . ';' . self::EOL
+                    . '}' . self::EOL;
             }
 
-            if ($backgroundSrcPos = $this->helper->getConfig('design/body/background_src_position')) {
+            if ($backgroundSrcPos = $this->designHelper->getConfig('design/body/background_src_position')) {
 
                 if ($backgroundSrcPos == 1) { // identifies custom option in select
 
-                    $backgroundSrcPosCustom = $this->helper->getConfig('design/body/background_src_position_custom');
+                    $backgroundSrcPosCustom = $this->designHelper->getConfig('design/body/background_src_position_custom');
 
                     $backgroundSrcPosCustomArray = explode(
                         ';',
@@ -248,41 +243,38 @@ class Design implements implemented
                     );
 
                     $backgroundSrcPos = ($backgroundSrcPosCustomArray[0] ?: '')
-                                      . ($backgroundSrcPosCustomArray[1] ?: '')
-                                      . " "
-                                      . ($backgroundSrcPosCustomArray[2] ?: '')
-                                      . ($backgroundSrcPosCustomArray[3] ?: '');
+                        . ($backgroundSrcPosCustomArray[1] ?: '')
+                        . " "
+                        . ($backgroundSrcPosCustomArray[2] ?: '')
+                        . ($backgroundSrcPosCustomArray[3] ?: '');
                 }
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-position: ' . $backgroundSrcPos
-                                                     . ';' . self::EOL
-                       . '}' . self::EOL;
+                    . '    background-position: ' . $backgroundSrcPos
+                    . ';' . self::EOL
+                    . '}' . self::EOL;
             }
 
-            if ($backgroundSrcRepeat = $this->helper->getConfig('design/body/background_src_repeat')) {
+            if ($backgroundSrcRepeat = $this->designHelper->getConfig('design/body/background_src_repeat')) {
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-repeat: ' . $backgroundSrcRepeat
-                                                   . ';' . self::EOL
-                       . '}' . self::EOL;
+                    . '    background-repeat: ' . $backgroundSrcRepeat
+                    . ';' . self::EOL
+                    . '}' . self::EOL;
             }
         }
 
-        if ($backgroundGradient = $this->helper->getConfig('design/body/background_gradient')) {
+        if ($backgroundGradient = $this->designHelper->getConfig('design/body/background_gradient')) {
 
             $straightCss = str_replace(["\n", "\r"], '', $backgroundGradient);
             $data .= 'html body {' . self::EOL
-                   . '    ' . $straightCss . self::EOL
-                   . '}' . self::EOL;
+                . '    ' . $straightCss . self::EOL
+                . '}' . self::EOL;
         }
 
-        if ($footerWrapperBackgroundColor = $this->helper->getConfig('design/footer/wrapper_background_color')) {
+        if ($footerWrapperBackgroundColor = $this->designHelper->getConfig('design/footer/wrapper_background_color')) {
 
-            if (substr($footerWrapperBackgroundColor, 0, 1) != '#') {
-
-                $footerWrapperBackgroundColor = '#' . $footerWrapperBackgroundColor;
-            }
+            $footerWrapperBackgroundColor = $this->designHelper->checkColorCode($footerWrapperBackgroundColor);
 
             $data .= 'footer.page-footer {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -290,12 +282,10 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($footerCopyrightBackgroundColor = $this->helper->getConfig('design/footer/copyright_background_color')) {
+        if ($footerCopyrightBackgroundColor = $this->designHelper->getConfig('design/footer/copyright_background_color')) {
 
-            if (substr($footerCopyrightBackgroundColor, 0, 1) != '#') {
+            $footerCopyrightBackgroundColor = $this->designHelper->checkColorCode($footerCopyrightBackgroundColor);
 
-                $footerCopyrightBackgroundColor = '#' . $footerCopyrightBackgroundColor;
-            }
 
             $data .= 'footer.page-footer .copyright {' . self::EOL
                    . '    background-image: none;' . self::EOL
@@ -303,26 +293,26 @@ class Design implements implemented
                    . '}' . self::EOL;
         }
 
-        if ($this->helper->getConfig('design/sidebar/toggle_titles')) {
+        if ($this->designHelper->getConfig('design/sidebar/toggle_titles')) {
 
             $data .= '.sidebar .block .block-title,' . self::EOL
-                   . '.sidebar .block .filter-options-title {' . self::EOL
-                   . '    cursor: pointer;' . self::EOL
-                   . '}' . self::EOL
-                   . '.sidebar .block .block-content dl > dt {' . self::EOL
-                   . '    border-top: 1px solid #d1d1d1;' . self::EOL
-                   . '    padding: 10px 0 0;' . self::EOL
-                   . '}' . self::EOL
-                   . '.sidebar .block .block-content dl > dt::after {' . self::EOL
-                   . '    content: "−";' . self::EOL
-                   . '    float: right;' . self::EOL
-                   . '    font-size: 1.5em;' . self::EOL
-                   . '    line-height: .75em;' . self::EOL
-                   . '}' . self::EOL
-                   . '.sidebar .block .block-content dl > dt.closed::after {'
-                   . self::EOL
-                   . '    content: "+";' . self::EOL
-                   . '}' . self::EOL;
+                . '.sidebar .block .filter-options-title {' . self::EOL
+                . '    cursor: pointer;' . self::EOL
+                . '}' . self::EOL
+                . '.sidebar .block .block-content dl > dt {' . self::EOL
+                . '    border-top: 1px solid #d1d1d1;' . self::EOL
+                . '    padding: 10px 0 0;' . self::EOL
+                . '}' . self::EOL
+                . '.sidebar .block .block-content dl > dt::after {' . self::EOL
+                . '    content: "−";' . self::EOL
+                . '    float: right;' . self::EOL
+                . '    font-size: 1.5em;' . self::EOL
+                . '    line-height: .75em;' . self::EOL
+                . '}' . self::EOL
+                . '.sidebar .block .block-content dl > dt.closed::after {'
+                . self::EOL
+                . '    content: "+";' . self::EOL
+                . '}' . self::EOL;
         }
 
         $filePath = $this->directoryList->getPath('media') . '/' . self::STYLES_DIR;
@@ -362,7 +352,7 @@ class Design implements implemented
      */
     public function write($data = '')
     {
-        if ($this->helper->getConfig('iways_design/frontend/minify_css')) {
+        if ($this->designHelper->getConfig('iways_design/frontend/minify_css')) {
 
             $data = str_replace(
                 [' {', ': ', ' + ', '    ', ';' . self::EOL . '}', self::EOL],

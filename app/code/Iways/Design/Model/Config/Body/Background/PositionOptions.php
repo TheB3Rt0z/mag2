@@ -14,7 +14,6 @@
 
 namespace Iways\Design\Model\Config\Body\Background;
 
-use Iways\Base\Model\Config\Source as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,7 +26,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class PositionOptions extends extended
+class PositionOptions extends \Iways\Base\Model\Config\Source
 {
     const POSITION_CENTER_BOTH = 'center center';
     const POSITION_CENTER_TOP = 'center top';

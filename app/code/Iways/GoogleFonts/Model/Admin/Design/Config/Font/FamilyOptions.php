@@ -14,8 +14,6 @@
 
 namespace Iways\GoogleFonts\Model\Admin\Design\Config\Font;
 
-use Iways\Base\Model\Config\Source as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class FamilyOptions extends extended
+class FamilyOptions extends \Iways\Base\Model\Config\Source
 {
     const FAMILY_DEFAULT = 'Open+Sans';
     const DEFAULT_LABEL = "Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif";
@@ -45,7 +43,7 @@ class FamilyOptions extends extended
             self::FAMILY_DEFAULT => __("default") . " (" . self::DEFAULT_LABEL . ")"
         ];
 
-        foreach (explode(",", $this->helper->getConfig('iways_googlefonts/settings/active_fonts')) as $label) {
+        foreach (explode(",", $this->baseHelper->getConfig('iways_googlefonts/settings/active_fonts')) as $label) {
 
             $value = preg_replace('/ /', "+", $label);
 

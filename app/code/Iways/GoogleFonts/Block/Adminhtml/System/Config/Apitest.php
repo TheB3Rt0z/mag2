@@ -14,10 +14,7 @@
 
 namespace Iways\GoogleFonts\Block\Adminhtml\System\Config;
 
-use Iways\GoogleFonts\Helper\Data as helper;
 use Iways\GoogleFonts\Model\Api;
-use Magento\Backend\Block\Template\Context;
-use Magento\Config\Block\System\Config\Form\Field as extended;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
@@ -31,15 +28,47 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Apitest extends extended
+class Apitest extends \Magento\Config\Block\System\Config\Form\Field
 {
+
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $element Magento\Framework\Data\Form\Element\AbstractElement
-     *
+     * @var \Iways\GoogleFonts\Helper\Data
+     */
+    protected $googleFontsHelper;
+
+    /**
+     * @var Api|object
+     */
+    protected $api;
+
+    /**
+     * Apitest constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Iways\GoogleFonts\Helper\Data $googleFontsHelper
+     * @param Api $api
+     * @param array $data
+     */
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context,
+        \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
+        Api $api,
+        array $data = []
+    ) {
+        $this->googleFontsHelper = $googleFontsHelper;
+
+        $this->api = $api;
+
+        if ($apiKey = $this->googleFontsHelper->getConfig('iways_googlefonts/credentials/api_key')) {
+
+            $this->api->setApiKey($apiKey);
+        }
+
+        parent::__construct($context, $data);
+    }
+
+    /**
+     * Get Element Html
+     * @param AbstractElement $element
      * @return string
      */
     protected function _getElementHtml(AbstractElement $element)
@@ -52,11 +81,7 @@ class Apitest extends extended
     }
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return Iways\GoogleFonts\Block\Adminhtml\System\Config\Apitest
+     * @return $this
      */
     protected function _prepareLayout()
     {
@@ -70,31 +95,5 @@ class Apitest extends extended
         return $this;
     }
 
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context Magento\Backend\Block\Template\Context
-     * @param object $helper  Iways\GoogleFonts\Helper\Data
-     * @param object $api     Iways\GoogleFonts\Model\Api
-     * @param array  $data    object attributes
-     */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        helper $helper,
-        Api $api,
-        array $data = []
-    ) {
-        $this->helper = $helper;
 
-        $this->api = $api;
-
-        if ($apiKey = $this->helper->getConfig('iways_googlefonts/credentials/api_key')) {
-
-            $this->api->setApiKey($apiKey);
-        }
-
-        parent::__construct($context, $data);
-    }
 }

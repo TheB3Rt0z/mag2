@@ -15,7 +15,6 @@
 namespace Iways\Base\Model;
 
 use Magento\Framework\App\Cache\Type\FrontendPool;
-use Magento\Framework\Cache\Frontend\Decorator\TagScope as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -28,7 +27,7 @@ use Magento\Framework\Cache\Frontend\Decorator\TagScope as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Cache extends extended
+class Cache extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
 {
     const TYPE_IDENTIFIER = 'iways_base_cache';
     const CACHE_TAG = 'IWAYS_BASE_CACHE';

@@ -6,8 +6,9 @@
     "type": "magento2-module",
     "version": "0.1.2",
     "license": [
-        "MIT"
+        "proprietary"
     ],
+    
     "autoload": {
         "files": [
             "registration.php"

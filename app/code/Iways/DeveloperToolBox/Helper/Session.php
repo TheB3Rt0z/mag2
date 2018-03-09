@@ -14,8 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Helper;
 
-use Magento\Backend\Model\Auth\Session as model;
-use Magento\Framework\App\Helper\AbstractHelper as extended;
 use Magento\Framework\App\Helper\Context;
 
 /**
@@ -29,11 +27,16 @@ use Magento\Framework\App\Helper\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Session extends extended
+class Session extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    /**
+     * @var \Magento\Backend\Model\Auth\Session
+     */
+    protected $session;
+
     public function __construct(
         Context $context,
-        model $session
+        \Magento\Backend\Model\Auth\Session $session
     ) {
         $this->session = $session;
 

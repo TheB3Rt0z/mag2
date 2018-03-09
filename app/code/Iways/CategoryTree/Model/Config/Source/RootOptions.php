@@ -14,8 +14,6 @@
 
 namespace Iways\CategoryTree\Model\Config\Source;
 
-use Iways\Base\Model\Config\Source as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,7 +25,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class RootOptions extends extended
+class RootOptions extends \Iways\Base\Model\Config\Source
 {
     const ROOT_USE_STORE_ROOT = 0;
     const ROOT_USE_CURRENT_CATEGORY = 1;

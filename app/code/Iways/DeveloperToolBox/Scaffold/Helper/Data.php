@@ -14,8 +14,6 @@
 
 namespace Iways\Scaffold\Helper;
 
-use Iways\Base\Helper\Data as extended;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -27,6 +25,6 @@ use Iways\Base\Helper\Data as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Data extends extended
+class Data extends \Iways\Base\Helper\Data
 {
 }

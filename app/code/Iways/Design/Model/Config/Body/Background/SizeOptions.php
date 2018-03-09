@@ -14,7 +14,6 @@
 
 namespace Iways\Design\Model\Config\Body\Background;
 
-use Iways\Base\Model\Config\Source as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,7 +26,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class SizeOptions extends extended
+class SizeOptions extends \Iways\Base\Model\Config\Source
 {
     const SIZE_AUTO = false;
     const SIZE_CONTAIN = 'contain';

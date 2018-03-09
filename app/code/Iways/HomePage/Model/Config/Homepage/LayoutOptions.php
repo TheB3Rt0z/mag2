@@ -14,7 +14,6 @@
 
 namespace Iways\HomePage\Model\Config\Homepage;
 
-use Iways\Base\Model\Config\Source as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -27,7 +26,7 @@ use Iways\Base\Model\Config\Source as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class LayoutOptions extends extended
+class LayoutOptions extends \Iways\Base\Model\Config\Source
 {
     const LAYOUT_0 = false; // also, no layout at all
     const LAYOUT_1 = 'layout_1';

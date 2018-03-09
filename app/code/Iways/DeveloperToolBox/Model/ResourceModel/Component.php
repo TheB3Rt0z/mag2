@@ -15,7 +15,6 @@
 namespace Iways\DeveloperToolBox\Model\ResourceModel;
 
 use Iways\DeveloperToolBox\Setup\InstallSchema;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb as extended;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -28,7 +27,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Component extends extended
+class Component extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     protected function _construct()
     {

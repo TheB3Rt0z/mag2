@@ -14,10 +14,6 @@
 
 namespace Iways\DeveloperToolBox\Model\ResourceModel\Component\Grid;
 
-use Magento\Framework\Api\Search\SearchResultInterface as implemented;
-use Iways\DeveloperToolBox\Model\ResourceModel\Component\Collection as extended;
-//use Magento\Framework\Search\AggregationInterface;
-
 /**
  * Ⓒ i-ways sales solutions GmbH
  *
@@ -29,8 +25,9 @@ use Iways\DeveloperToolBox\Model\ResourceModel\Component\Collection as extended;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-abstract
-class Collection extends extended implements implemented
+abstract class Collection
+    extends \Iways\DeveloperToolBox\Model\ResourceModel\Component\Collection
+    implements \Magento\Framework\Api\Search\SearchResultInterface
 {
 /*
     protected $aggregations;

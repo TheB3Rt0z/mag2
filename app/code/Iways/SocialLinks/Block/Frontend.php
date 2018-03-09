@@ -14,8 +14,6 @@
 
 namespace Iways\SocialLinks\Block;
 
-use Iways\SocialLinks\Helper\Data as helper;
-use Magento\Framework\View\Element\Template as extended;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -29,38 +27,40 @@ use Magento\Framework\View\Element\Template\Context;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Frontend extends extended
+class Frontend extends \Magento\Framework\View\Element\Template
 {
     protected $activeSocialNetworks;
     protected $blockTitle;
     protected $linkAspect;
 
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param object $context Magento\Framework\View\Element\Template\Context
-     * @param object $helper  Iways\SocialLinks\Helper\Data
-     * @param array  $data    object attributes
+     * @var \Iways\SocialLinks\Helper\Data
+     */
+    protected $socialLinksHelper;
+
+    /**
+     * Frontend constructor.
+     * @param Context $context
+     * @param \Iways\SocialLinks\Helper\Data $socialLinksHelper
+     * @param array $data
      */
     public function __construct(
         Context $context,
-        helper $helper,
+        \Iways\SocialLinks\Helper\Data $socialLinksHelper,
         array $data = []
     ) {
-        $this->helper = $helper;
+        $this->socialLinksHelper = $socialLinksHelper;
 
         if ($this->linkAspect === null) {
-            $this->linkAspect = $this->helper->getConfig('iways_sociallinks/frontend/link_aspect');
+            $this->linkAspect = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/link_aspect');
         }
 
         if ($this->blockTitle === null) {
-            $this->blockTitle = $this->helper->getConfig('iways_sociallinks/frontend/block_title');
+            $this->blockTitle = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/block_title');
         }
 
         if ($this->activeSocialNetworks === null) {
-            $config = $this->helper->getConfig('iways_sociallinks/social_networks/active_links');
+            $config = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/active_links');
             $this->activeSocialNetworks = explode(",", $config);
         }
 
@@ -88,11 +88,13 @@ class Frontend extends extended
      */
     public function getSocialLinks() // assumes active font-awesome support on frontend
     {
+        $data = [];
+
         foreach ($this->activeSocialNetworks as $key) {
 
-            if ($url = $this->helper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
+            if ($url = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
 
-                $name = helper::$socialNetworks[$key];
+                $name = \Iways\SocialLinks\Helper\Data::$socialNetworks[$key];
 
                 $label = $this->linkAspect == 'icons'
                          ? '<i class="fa fa-' . $key . '" title="' . $name . '"></i>'

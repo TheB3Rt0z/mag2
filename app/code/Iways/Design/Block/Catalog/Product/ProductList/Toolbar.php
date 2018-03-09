@@ -14,9 +14,7 @@
 
 namespace Iways\Design\Block\Catalog\Product\ProductList;
 
-use Iways\Design\Helper\Data as helper;
-use Magento\Catalog\Block\Product\ProductList\Toolbar as extended;
-use Magento\Framework\View\Element\Template\Context;
+
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -30,7 +28,7 @@ use Magento\Store\Model\ScopeInterface;
  * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
  * @link     https://www.i-ways.net
  */
-class Toolbar extends extended
+class Toolbar extends \Magento\Catalog\Block\Product\ProductList\Toolbar
 {
     /**
      * Ⓒ i-ways sales solutions GmbH
