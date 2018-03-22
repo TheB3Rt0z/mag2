@@ -60,6 +60,7 @@ class DepthOptions extends \Iways\Base\Model\Config\Source
      * @param CategoryRepository $categoryRepository
      */
     public function __construct(
+        \Iways\Base\Helper\Data $baseHelper,
         \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
         \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper,
         StoreManagerInterface $storeManagerInterface,
@@ -70,6 +71,7 @@ class DepthOptions extends \Iways\Base\Model\Config\Source
 
         $this->storeId = $storeManagerInterface->getStore()->getId();
         $this->categoryRepository = $categoryRepository;
+        parent::__construct($baseHelper);
     }
 
     /**

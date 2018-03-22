@@ -2,6 +2,326 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <fieldset name="iways_settings">
+    	<fieldset name="navigation">
+    		<field name="navigation_nav_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_nav_hover_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_hover_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation hover font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_hover_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation hover font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="navigation_nav_submenu_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="navigation_nav_submenu_hover_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_hover_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu hover font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_hover_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu hover font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="navigation_nav_active_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_active_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation active font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_active_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation active font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="navigation_nav_submenu_active_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_active_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu active font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="navigation_nav_submenu_active_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation submenu active font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+    	</fieldset>
+    
         <fieldset name="fonts">
             <argument name="data"
                       xsi:type="array">
@@ -62,8 +382,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -117,8 +435,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -172,8 +488,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -227,337 +541,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-            
-            <field name="fonts_nav_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_hover_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_hover_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation hover font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_hover_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation hover font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-
-            <field name="fonts_nav_submenu_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-
-            <field name="fonts_nav_submenu_hover_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_hover_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu hover font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_hover_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu hover font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-
-            <field name="fonts_nav_active_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_active_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation active font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_active_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation active font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                        <item name="component"
-                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
-                    </item>
-                </argument>
-            </field>
-
-            <field name="fonts_nav_submenu_active_family_variant">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="formElement"
-                              xsi:type="string">hidden</item>
-                        <item name="showFallbackReset"
-                              xsi:type="string">true</item>
-                        <item name="dataType"
-                              xsi:type="string">string</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_active_family">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="options"
-                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu active font family</item>
-                        <item name="formElement"
-                              xsi:type="string">select</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-font-face</item>
-                        <item name="elementTmpl"
-                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
-                    </item>
-                </argument>
-            </field>
-            <field name="fonts_nav_submenu_active_color">
-                <argument name="data"
-                          xsi:type="array">
-                    <item name="config"
-                          xsi:type="array">
-                        <item name="label"
-                              xsi:type="string"
-                              translate="true">Navigation submenu active font color</item>
-                        <item name="formElement"
-                              xsi:type="string">input</item>
-                        <item name="componentType"
-                              xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -611,8 +594,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -666,8 +647,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -675,8 +654,24 @@
                     </item>
                 </argument>
             </field>
-
-            <field name="fonts_primary_button_family_variant">
+        </fieldset>
+        
+        <fieldset name="buttons">
+        	<argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Buttons</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+            <field name="buttons_primary_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -690,7 +685,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_primary_button_family">
+            <field name="buttons_primary_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -709,7 +704,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_primary_button_color">
+            <field name="buttons_primary_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -721,8 +716,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -731,7 +724,7 @@
                 </argument>
             </field>
 
-            <field name="fonts_primary_button_hover_family_variant">
+            <field name="buttons_primary_hover_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -745,7 +738,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_primary_button_hover_family">
+            <field name="buttons_primary_hover_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -764,7 +757,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_primary_button_hover_color">
+            <field name="buttons_primary_hover_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -776,8 +769,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -786,7 +777,7 @@
                 </argument>
             </field>
 
-            <field name="fonts_button_family_variant">
+            <field name="buttons_button_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -800,7 +791,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_button_family">
+            <field name="buttons_button_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -819,7 +810,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_button_color">
+            <field name="buttons_button_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -831,8 +822,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -841,7 +830,7 @@
                 </argument>
             </field>
 
-            <field name="fonts_button_hover_family_variant">
+            <field name="buttons_button_hover_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -855,7 +844,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_button_hover_family">
+            <field name="buttons_button_hover_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -874,7 +863,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_button_hover_color">
+            <field name="buttons_button_hover_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -886,8 +875,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -895,8 +882,24 @@
                     </item>
                 </argument>
             </field>
-
-            <field name="fonts_category_product_name_family_variant">
+        </fieldset>
+        
+        <fieldset name="category_page">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Category page</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+            <field name="category_page_title_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -910,7 +913,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_category_product_name_family">
+            <field name="category_page_title_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -919,7 +922,7 @@
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Category product name font family</item>
+                              translate="true">Title font family</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
                         <item name="additionalClasses"
@@ -929,20 +932,18 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_category_product_name_color">
+            <field name="category_page_title_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Category product name font color</item>
+                              translate="true">Title font color</item>
                         <item name="formElement"
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -950,8 +951,8 @@
                     </item>
                 </argument>
             </field>
-
-            <field name="fonts_category_product_price_family_variant">
+            
+            <field name="category_page_product_name_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -965,7 +966,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_category_product_price_family">
+            <field name="category_page_product_name_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -974,7 +975,7 @@
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Category product price font family</item>
+                              translate="true">Product name font family</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
                         <item name="additionalClasses"
@@ -984,20 +985,18 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_category_product_price_color">
+            <field name="category_page_product_name_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Category product price font color</item>
+                              translate="true">Product name font color</item>
                         <item name="formElement"
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -1006,7 +1005,7 @@
                 </argument>
             </field>
 
-            <field name="fonts_product_view_product_name_family_variant">
+            <field name="category_page_product_price_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -1020,7 +1019,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_product_view_product_name_family">
+            <field name="category_page_product_price_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -1029,7 +1028,7 @@
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Product view product name font family</item>
+                              translate="true">Product price font family</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
                         <item name="additionalClasses"
@@ -1039,20 +1038,18 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_product_view_product_name_color">
+            <field name="category_page_product_price_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Product view product name font color</item>
+                              translate="true">Product price font color</item>
                         <item name="formElement"
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -1060,8 +1057,24 @@
                     </item>
                 </argument>
             </field>
-
-            <field name="fonts_product_view_product_price_family_variant">
+         </fieldset>
+        
+        <fieldset name="product_page">
+        	<argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Product page</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+            <field name="product_page_product_name_family_variant">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
@@ -1075,7 +1088,7 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_product_view_product_price_family">
+            <field name="product_page_product_name_family">
                 <argument name="data"
                           xsi:type="array">
                     <item name="options"
@@ -1084,7 +1097,7 @@
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Product view product price font family</item>
+                              translate="true">Product name font family</item>
                         <item name="formElement"
                               xsi:type="string">select</item>
                         <item name="additionalClasses"
@@ -1094,20 +1107,71 @@
                     </item>
                 </argument>
             </field>
-            <field name="fonts_product_view_product_price_color">
+            <field name="product_page_product_name_color">
                 <argument name="data"
                           xsi:type="array">
                     <item name="config"
                           xsi:type="array">
                         <item name="label"
                               xsi:type="string"
-                              translate="true">Product view product price font color</item>
+                              translate="true">Product name font color</item>
                         <item name="formElement"
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="product_page_product_price_family_variant">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">hidden</item>
+                        <item name="showFallbackReset"
+                              xsi:type="string">true</item>
+                        <item name="dataType"
+                              xsi:type="string">string</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_page_product_price_family">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Product price font family</item>
+                        <item name="formElement"
+                              xsi:type="string">select</item>
                         <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
+                              xsi:type="string">iways-font-face</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_page_product_price_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Product price font color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"

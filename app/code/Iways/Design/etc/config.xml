@@ -22,6 +22,7 @@
         <iways_design>
             <frontend>
                 <minify_css>1</minify_css>
+                <disable_product_comparison>1</disable_product_comparison>
             </frontend>
         </iways_design>
     </default>

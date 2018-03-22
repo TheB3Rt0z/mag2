@@ -50,6 +50,8 @@ class Get extends \Magento\Framework\App\Action\Action
         JsonFactory $jsonFactory,
         \Iways\Base\Helper\Data $baseHelper
     ) {
+        $this->store = $context->getStoreManager()->getStore();
+
         $this->jsonFactory = $jsonFactory;
         $this->baseHelper = $baseHelper;
 
@@ -79,7 +81,7 @@ class Get extends \Magento\Framework\App\Action\Action
 
                     $setting = $scope . '/' . $key . '/' . $value;
 
-                    $data[$key][$value] = $this->baseHelper->getConfig($setting); // retrieves corresponding value
+                    $data[$key][$value] = $this->baseHelper->getConfig($setting, $this->store->getCode()); // retrieves corresponding value
                 }
             }
         }

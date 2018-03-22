@@ -46,12 +46,14 @@ class CategoryOptions extends \Iways\Base\Model\Config\Source
      * @param Category $category
      */
     public function __construct(
+        \Iways\Base\Helper\Data $baseHelper,
         \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
         Category $category
     ) {
         $this->categoryTreeHelper = $categoryTreeHelper;
 
         $this->storeCategories = $category->getStoreCategories();
+        parent::__construct($baseHelper);
     }
 
     /**

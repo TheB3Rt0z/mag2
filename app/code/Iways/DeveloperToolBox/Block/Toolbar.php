@@ -76,6 +76,8 @@ class Toolbar extends \Magento\Framework\View\Element\Template
         \Magento\Backend\Helper\Data $magentoBackendHelper,
         array $data = []
     ) {
+        $this->store = $context->getStoreManager()->getStore();
+
         $this->eventManager = $context->getEventManager();
 
         $this->eventManager->dispatch(
@@ -136,7 +138,8 @@ class Toolbar extends \Magento\Framework\View\Element\Template
 
     public function showToolbar()
     {
-        return $this->helper->getConfig('iways_developertoolbox/developer/show_toolbar_on_frontend')
-             + $this->sessionHelper->isAdminLogged();
+        return $this->developerToolBoxHelper->getConfig('iways_developertoolbox/developer/show_toolbar_on_frontend',
+                                                        $this->store->getCode())
+             + $this->developerToolBoxSessionHelper->isAdminLogged();
     }
 }

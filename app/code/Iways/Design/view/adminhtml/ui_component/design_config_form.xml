@@ -43,8 +43,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -65,8 +63,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -103,8 +99,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -125,8 +119,26 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
+                        <item name="elementTmpl"
+                              xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                        <item name="component"
+                              xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="navigation_items_hover_background_color">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Navigation items hover background color</item>
+                        <item name="formElement"
+                              xsi:type="string">input</item>
+                        <item name="componentType"
+                              xsi:type="string">input</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -147,8 +159,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -169,8 +179,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -191,8 +199,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -229,8 +235,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -414,8 +418,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"
@@ -436,8 +438,6 @@
                               xsi:type="string">input</item>
                         <item name="componentType"
                               xsi:type="string">input</item>
-                        <item name="additionalClasses"
-                              xsi:type="string">iways-color</item>
                         <item name="elementTmpl"
                               xsi:type="string">Iways_Design/form/element/input-color-picker</item>
                         <item name="component"

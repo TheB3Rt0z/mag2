@@ -53,18 +53,25 @@ class Opening extends \Magento\Framework\View\Element\Template
         \Iways\OpeningHours\Helper\Data $openingHoursHelper,
         array $data = []
     ) {
+        $store = $context->getStoreManager()->getStore();
+
         $this->openingHoursHelper = $openingHoursHelper;
 
-        $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours');
+        $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours',
+                                                                   $store->getCode());
 
         parent::__construct($context, $data);
 
         if ($this->firstDay === null) {
-            $this->firstDay = $this->openingHoursHelper->getConfig('iways_openinghours/settings/first_day');
+
+            $this->firstDay = $this->openingHoursHelper->getConfig('iways_openinghours/settings/first_day',
+                                                                   $store->getCode());
         }
 
         if ($this->compressTable === null) {
-            $this->compressTable = $this->openingHoursHelper->getConfig('iways_openinghours/settings/compress_table');
+
+            $this->compressTable = $this->openingHoursHelper->getConfig('iways_openinghours/settings/compress_table',
+                                                                        $store->getCode());
         }
     }
 
@@ -85,12 +92,17 @@ class Opening extends \Magento\Framework\View\Element\Template
         foreach ($array as $key => $value) {
 
             if ($value == $lastValue) {
+
                 unset($data[$combinedKey]);
                 $lastKey = $key;
+
             } else {
+
                 if ($lastKey) {
+
                     unset($data[$baseKey]);
                 }
+
                 $baseKey = $key;
                 $lastKey = null;
             }
@@ -115,6 +127,7 @@ class Opening extends \Magento\Framework\View\Element\Template
         $days = self::$days;
 
         if ($this->firstDay) {
+
             unset($days['sun']);
             $days['sun'] = 'sunday';
         }
@@ -123,6 +136,7 @@ class Opening extends \Magento\Framework\View\Element\Template
         foreach ($days as $key => $value) {
 
             $dayType = $this->openingHours[$value];
+
             switch ($dayType)
             {
                 case 0:
@@ -168,11 +182,13 @@ class Opening extends \Magento\Framework\View\Element\Template
             }
 
             if ($opening) {
+
                 $data[(string)__(ucfirst($key))] = $opening;
             }
         }
 
         if ($this->compressTable) {
+
             $data = $this->compressMatrix($data);
         }
 

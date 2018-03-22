@@ -42,7 +42,8 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
     {
         $data = '';
 
-        if ($this->designHelper->getConfig('design/mobile/navigation_direction')) {
+        if ($this->designHelper->getConfig('design/mobile/navigation_direction',
+                                           $observer->getStoreCode())) {
 
             $data .= '.nav-open .page-wrapper {' . self::EOL
                    . '    left: 0 !important;' . self::EOL
@@ -63,7 +64,8 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
                    . '}' . self::EOL;
         }
 
-        if ($this->designHelper->getConfig('design/mobile/modal_sidebars')) {
+        if ($this->designHelper->getConfig('design/mobile/modal_sidebars',
+                                           $observer->getStoreCode())) {
 
             $data .= '@media only screen and (max-width: 768px) {' . self::EOL
                    . '    .sidebar.title {' . self::EOL

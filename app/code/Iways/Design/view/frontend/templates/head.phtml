@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-if ($block->getHelper()->getConfig('design/sidebar/toggle_titles')) {
+if ($block->getHelper()->getConfig('design/sidebar/toggle_titles', $block->getStoreCode())) {
 
     echo $block->addTag(
         'script',
@@ -29,6 +29,6 @@ echo $block->addTag(
         'rel' => "stylesheet",
         'type' => "text/css",
         'media' => "all",
-        'href' => $block->getMediaUrl() . "iways/styles.css",
+        'href' => $block->getStylesUrl(),
     ]
 ); // because of https://magento.stackexchange.com/questions/99239/remove-pub-media-styles-css-from-theme-in-magento-2-0

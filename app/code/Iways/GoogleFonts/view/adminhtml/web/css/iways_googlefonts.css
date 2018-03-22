@@ -4,6 +4,11 @@
     left: 17px;
 }
 
+.iways-font-face:nth-child(1n+3) {
+	border-top: 1px solid #ededed !important;
+	padding-top: 30px !important;
+}
+
 .iways-font-face input[type=number] {
     width: 64px;
 }

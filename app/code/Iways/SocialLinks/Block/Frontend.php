@@ -49,18 +49,24 @@ class Frontend extends \Magento\Framework\View\Element\Template
         \Iways\SocialLinks\Helper\Data $socialLinksHelper,
         array $data = []
     ) {
+        $this->store = $context->getStoreManager()->getStore();
+
         $this->socialLinksHelper = $socialLinksHelper;
 
         if ($this->linkAspect === null) {
-            $this->linkAspect = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/link_aspect');
+
+            $this->linkAspect = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/link_aspect', $this->store->getCode());
         }
 
         if ($this->blockTitle === null) {
-            $this->blockTitle = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/block_title');
+
+            $this->blockTitle = $this->socialLinksHelper->getConfig('iways_sociallinks/frontend/block_title', $this->store->getCode());
         }
 
         if ($this->activeSocialNetworks === null) {
-            $config = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/active_links');
+
+            $config = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/active_links', $this->store->getCode());
+
             $this->activeSocialNetworks = explode(",", $config);
         }
 
@@ -92,7 +98,7 @@ class Frontend extends \Magento\Framework\View\Element\Template
 
         foreach ($this->activeSocialNetworks as $key) {
 
-            if ($url = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/' . $key . '_url')) {
+            if ($url = $this->socialLinksHelper->getConfig('iways_sociallinks/social_networks/' . $key . '_url', $this->store->getCode())) {
 
                 $name = \Iways\SocialLinks\Helper\Data::$socialNetworks[$key];
 

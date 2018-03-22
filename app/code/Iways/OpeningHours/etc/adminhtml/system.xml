@@ -8,7 +8,7 @@
                  showInDefault="1"
                  showInWebsite="1"
                  showInStore="1">
-            <label>OpeningHours</label>
+            <label>Opening Hours</label>
             <tab>iways</tab>
             <resource>Iways_OpeningHours::config</resource>
             <group id="opening_hours"

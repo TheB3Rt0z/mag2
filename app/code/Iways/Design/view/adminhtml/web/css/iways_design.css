@@ -16,7 +16,7 @@
     padding-left: 52px;
 }
 
-.iways-color input {
+input.iways-color {
     transition: .125s;
     width: 128px !important;
 }

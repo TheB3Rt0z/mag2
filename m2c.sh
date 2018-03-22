@@ -118,10 +118,10 @@ u) magento setup upgrade"
     esac
 done
 
+if [ -f bin/magento ]; then
+    bin/magento maintenance:disable;
+fi
+
 printf "\nhelping process took $SECONDS seconds\n\n";
 
 osascript -e 'display notification "May the VOLLKORN PASTA be always with you!" with title "Lord Vollkorn says: FERTIG in '$SECONDS' seconds" sound name "Glass"';
-
-if [ -f bin/magento ]; then
-bin/magento maintenance:disable;
-fi

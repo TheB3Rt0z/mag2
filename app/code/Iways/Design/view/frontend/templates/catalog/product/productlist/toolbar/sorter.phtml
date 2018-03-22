@@ -12,14 +12,13 @@
  * @link     https://www.i-ways.net
  */
 
-$helper = $this->helper('Iways\Base\Helper\Data');
 $currentOrder = $block->getCurrentOrder();
 
 ?>
 
 <div class="toolbar-sorter sorter">
     <?php
-    if (!$helper->getConfig('iways_base/catalog_category/use_compact_sorter')) {
+    if (!$block->useCompactSorter()) {
         ?>
         <label class="sorter-label" for="sorter"><?php echo __('Sort By') ?></label>
         <?php

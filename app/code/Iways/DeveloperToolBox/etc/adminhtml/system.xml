@@ -9,7 +9,7 @@
                  showInDefault="1"
                  showInWebsite="1"
                  showInStore="1">
-            <label>DeveloperToolBox</label>
+            <label>Developer Tool Box</label>
             <tab>iways</tab>
             <resource>Iways_DeveloperToolBox::config</resource>
             

@@ -12,5 +12,23 @@
                           xsi:type="number">50</argument>
             </arguments>
         </referenceBlock>
+        
+        <!--<referenceContainer name="compare-link-wrapper"
+        	                remove="true" />
+        <referenceBlock name="catalog.compare.sidebar"
+        	            remove="true" /> working but not ifconfigable -->
+        
+        <referenceContainer name="footer">
+        	<referenceBlock name="copyright" remove="true" />
+        	<referenceBlock name="report.bugs" remove="true" />
+        </referenceContainer>
+        
+        <referenceContainer name="footer-container">
+            <block class="Magento\Theme\Block\Html\Footer"
+                   name="magento_theme_block_html_footer"
+                   as="magento_theme_block_html_footer"
+                   template="Magento_Theme::html/copyright.phtml"
+                   after="-" />
+        </referenceContainer>
     </body>
 </page>

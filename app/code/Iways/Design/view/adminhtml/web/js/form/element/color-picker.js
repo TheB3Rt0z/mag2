@@ -26,7 +26,8 @@ define([
 
         initColorPickerCallback: function (element)
         {
-            var self = this;
+            var self = this,
+                reset = $(element).siblings('.admin__field-fallback-reset');
             
             checkColorField($(element).val(), $(element));
 
@@ -52,6 +53,11 @@ define([
             }).bind('keyup', function()
             {
                 $(this).ColorPickerSetColor(this.value);
+            });
+            
+            reset.on('click', function ()
+            {
+            	checkColorField(false, $(element));
             });
         }
     });

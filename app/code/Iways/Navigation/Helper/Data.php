@@ -8,12 +8,12 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\ScopeInterface;
 
-class Data extends AbstractHelper{
-
+class Data extends AbstractHelper
+{
     protected $storeManager;
     protected $objectManager;
 
-    const XML_PATH_TREESTRUCTURE = 'navigation/test_frontend/';
+    const XML_PATH_TREESTRUCTURE = 'iways_navigation/structure/';
 
     public function __construct(Context $context, ObjectManagerInterface $objectManager, StoreManagerInterface $storeManager){
 

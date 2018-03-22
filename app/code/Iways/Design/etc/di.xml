@@ -37,6 +37,13 @@
 	                <item name="fieldset"
 	                      xsi:type="string">iways_settings/navigation</item>
 	            </item>
+	            <item name="navigation_items_hover_background_color"
+	                  xsi:type="array">
+	                <item name="path"
+	                      xsi:type="string">design/navigation/items_hover_background_color</item>
+	                <item name="fieldset"
+	                      xsi:type="string">iways_settings/navigation</item>
+	            </item>
 	            <item name="navigation_active_item_background_color"
 	                  xsi:type="array">
 	                <item name="path"

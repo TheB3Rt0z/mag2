@@ -12,7 +12,7 @@
  * @link     https://www.i-ways.net
  */
 
-if ($block->getHelper()->getConfig('design/mobile/modal_sidebars')) {
+if ($block->getHelper()->getConfig('design/mobile/modal_sidebars', $block->getStoreCode())) {
 
     echo $block->addTag(
         'script',

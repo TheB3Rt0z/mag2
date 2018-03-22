@@ -12,14 +12,12 @@
  * @link     https://www.i-ways.net
  */
 
-$helper = $this->helper('Iways\Base\Helper\Data');
-
 if ($block->getCollection()->getSize()) {
     ?>
     <div class="toolbar toolbar-products"
          data-mage-init='<?php echo $block->getWidgetOptionsJson() ?>'>
         <?php
-        if ($helper->getConfig('design/toolbar/show_category_title')) {
+        if ($block->showCategoryTitle()) {
             ?>
             <h1>
                 <?php
@@ -33,7 +31,9 @@ if ($block->getCollection()->getSize()) {
 
         <?php
         if ($block->isExpanded()) {
+
             $template = 'Magento_Catalog::product/list/toolbar/viewmode.phtml';
+
             echo $block->setTemplate($template)->toHtml();
         }
 
@@ -42,12 +42,15 @@ if ($block->getCollection()->getSize()) {
 
         echo $block->getPagerHtml();
 
-        if ($helper->getConfig('design/toolbar/show_field_limiter')) {
+        if ($block->showFieldLimiter()) {
+
             $template = 'Magento_Catalog::product/list/toolbar/limiter.phtml';
+
             echo $block->setTemplate($template)->toHtml();
         }
 
         if ($block->isExpanded()) {
+
             echo $block->setTemplate($block->getSorterTemplate())->toHtml();
         }
         ?>

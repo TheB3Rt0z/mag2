@@ -65,30 +65,43 @@ class Frontend extends \Magento\Framework\View\Element\Template
         $this->categoryTreeHelper = $categoryTreeHelper;
         $this->categoryTreeCategoryHelper = $categoryTreeCategoryHelper;
 
-        $this->storeId = $context->getStoreManager()->getStore()->getId();
+        $this->store = $context->getStoreManager()->getStore();
+        $this->storeId = $store()->getId();
+        $this->storeCode = $store()->getCode();
         $this->categoryRepository = $categoryRepository;
 
         parent::__construct($context, $data);
 
         if ($this->blockTitle === null) {
-            $this->blockTitle = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/block_title');
+
+            $this->blockTitle = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/block_title',
+                                                                     $this->storeCode);
         }
 
         if ($this->treeRoot === null) {
-            $this->treeRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_root');
+
+            $this->treeRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_root',
+                                                                   $this->storeCode);
         }
         if ($this->treeRoot == RootOptions::ROOT_USE_CUSTOM_CATEGORY) {
+
             if ($this->customRoot === null) {
-                $this->customRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/custom_root');
+
+                $this->customRoot = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/custom_root',
+                                                                         $this->storeCode);
             }
         }
 
         if ($this->treeDepth === null) {
-            $this->treeDepth = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_depth');
+
+            $this->treeDepth = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/tree_depth',
+                                                                    $this->storeCode);
         }
 
         if ($this->showEmpty === null) {
-            $this->showEmpty = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/show_empty');
+
+            $this->showEmpty = $this->categoryTreeHelper->getConfig('iways_categorytree/frontend/show_empty',
+                                                                    $this->storeCode);
         }
     }
 

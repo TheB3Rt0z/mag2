@@ -8,7 +8,7 @@
                  showInDefault="1"
                  showInWebsite="1"
                  showInStore="1">
-            <label>SocialLinks</label>
+            <label>Social Links</label>
             <tab>iways</tab>
             <resource>Iways_SocialLinks::config</resource>
             <group id="frontend"

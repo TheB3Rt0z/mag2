@@ -378,7 +378,7 @@
                 text-decoration: none;
                 font-size: 1.4rem;
                 padding: 0 15px 0 0;
-                &:before {
+                /*:before {
                     font-family: 'luma-icons';
                     width: 18px;
                     font-size: 16px;
@@ -389,13 +389,31 @@
                     display: inline-block;
                     font-weight: normal;
                     text-align: center;
+                }*/
+                &::before {
+                	-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+					font-size: 29px;
+					line-height: 24px;
+					color: #7d7d7d;
+					font-family: 'icons-blank-theme';
+					vertical-align: middle;
+					display: inline-block;
+					font-weight: normal;
+					overflow: hidden;
+					speak: none;
+					text-align: center;
+					content: @icon-wishlist-full !important;//'\e600';
+					top: -1px;
+					position: relative;
                 }
+                &.tocompare::before {
+	                //content: @icon-compare-full;
+	                content: @icon-compare-full !important;//'\e61e'; OK!
+	            }
                 &:hover{
                     color: #333333;
                 }
-            }
-            .tocompare::before{
-                content: @icon-compare-full;
             }
         }
         .action.mailto.friend{
@@ -406,9 +424,11 @@
             font-size: 1.4rem;
             padding: 0 0 0 9px;
             &:before{
-                font-size: 16px;
-                line-height: 20px;
-                margin-right: 5px;
+                font-size: 29px;
+				line-height: 20px;
+				margin-right: 5px;
+				top: -1px;
+				position: relative;
             }
             &:hover{
                 color: #333333;

@@ -30,25 +30,6 @@ use Magento\Backend\App\Action\Context;
 class Edit extends \Iways\HomePage\Controller\Adminhtml\Homepage
 {
     /**
-     * @var \Iways\Base\Helper\Data
-     */
-    protected $baseHelper;
-
-    /**
-     * Edit constructor.
-     * @param Context $context
-     * @param \Iways\Base\Helper\Data $baseHelper
-     */
-    public function __construct(
-        Context $context,
-        \Iways\Base\Helper\Data $baseHelper
-    ) {
-        parent::__construct($context);
-
-        $this->baseHelper = $baseHelper;
-    }
-
-    /**
      * Ⓒ i-ways sales solutions GmbH
      *
      * PHP Version 5
@@ -63,7 +44,10 @@ class Edit extends \Iways\HomePage\Controller\Adminhtml\Homepage
 
         $this->_view->getPage()->getConfig()->getTitle()->prepend(__("Homepage Editor"));
 
-        if ($config = $this->helper->getConfig('iways_homepage/homepage/editor')) {
+        if ($config = $this->_scopeConfig->getValue(
+            'iways_homepage/homepage/editor',
+            ScopeInterface::SCOPE_STORE
+        )) {
 
             $form = $this->_view->getLayout()->getBlock('iways_homepage_block_adminhtml_homepage_edit_form');
 

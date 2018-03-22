@@ -61,12 +61,15 @@ class Status extends \Magento\Framework\View\Element\Template
         DateTime $dateTime,
         array $data = []
     ) {
+        $store = $context->getStoreManager()->getStore();
+
         $this->openingHoursHelper = $openingHoursHelper;
 
         $this->dateTime = $dateTime;
 
         if ($this->openingHours === null) {
-            $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours');
+
+            $this->openingHours = $this->openingHoursHelper->getConfig('iways_openinghours/opening_hours', $store->getCode());
         }
 
         parent::__construct($context, $data);
@@ -86,6 +89,7 @@ class Status extends \Magento\Framework\View\Element\Template
     public function calculateStatus($hours, $minutes, $text)
     {
         if ($minutes < 0) {
+
             $hours--;
             $minutes += 60;
         }
@@ -111,32 +115,44 @@ class Status extends \Magento\Framework\View\Element\Template
         $currentMinutes = $this->dateTime->gmtDate('i');
 
         if ($currentHours < $typeData[0]) {
+
             return $this->calculateStatus(
                 $typeData[0] - $currentHours,
                 $typeData[1] - $currentMinutes,
                 "Today it will open in %d hours, %d minutes"
             );
+
         } elseif ($type == 'double' && $currentHours > $typeData[2]) { // in or after the pause
+
             if ($currentHours < $typeData[4]) {
+
                 return $this->calculateStatus(
                     $typeData[4] - $currentHours,
                     $typeData[5] - $currentMinutes,
                     "Today it will open again in %d hours, %d minutes"
                 );
+
             } elseif ($currentHours < $typeData[6]) {
+
                 if ($hours = $typeData[6] - $currentHours) {
+
                     return $this->calculateStatus(
                         $hours,
                         $typeData[7] - $currentMinutes,
                         //"Today is still open for %d hours, %d minutes"
                         "We are still open for %d hours, %d minutes"
                     );
+
                 } else {
+
                     return __("Now closed");
                 }
             }
+
         } else {
+
             if ($hours = $typeData[2] - $currentHours) {
+
                 return $this->calculateStatus(
                     $hours,
                     $typeData[3] - $currentMinutes,

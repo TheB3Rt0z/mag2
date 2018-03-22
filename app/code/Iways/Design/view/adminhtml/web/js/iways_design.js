@@ -1,15 +1,16 @@
 var delay = 125,
     check = false;
 
-jQuery(document).on('change keyup', '.iways-color input', function (e)
+jQuery(document).on('change keyup', 'input.iways-color', function (e)
 {
     //clearTimeout(check);
 
-    var val = jQuery(this).val();
+    var input = jQuery(this),
+        val = input.val().replace("#", '');
         
-    if (val.length >= 6) {
+    if (!val || val.length >= 6) {
     
-    	checkColorField(val, jQuery(this));//check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
+    	checkColorField(val, input);//check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
     }
 });
 

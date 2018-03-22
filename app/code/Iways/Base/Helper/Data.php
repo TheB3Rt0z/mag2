@@ -82,9 +82,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param string $path e.g.: 'general/store_information/name'
      * @return mixed
      */
-    public function getConfig($path)
+    public function getConfig($path, $code = null)
     {
-        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE, $code);
     }
 
     /**

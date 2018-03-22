@@ -16,6 +16,7 @@ namespace Iways\Design\Block;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
+use Iways\Design\Observer\Admin\System\Config\Changed\Section\Design;
 
 /**
  * Ⓒ i-ways sales solutions GmbH
@@ -46,6 +47,8 @@ class Head extends \Magento\Framework\View\Element\Template
         \Iways\Design\Helper\Data $designHelper,
         array $data = []
     ) {
+        $this->store = $context->getStoreManager()->getStore();
+
         $this->designHelper = $designHelper;
 
         parent::__construct($context, $data);
@@ -89,10 +92,25 @@ class Head extends \Magento\Framework\View\Element\Template
      *
      * @return string
      */
-    public function getMediaUrl()
-    {
-        $store = $this->_storeManager->getStore();
+    public function getStoreCode() {
 
-        return $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+        return $this->store->getCode();
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @return string
+     */
+    public function getStylesUrl() {
+
+        return $this->store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
+             . Design::STYLES_DIR
+             . '/' . $this->store->getWebsiteId()
+             . '/' . $this->store->getGroupId()
+             . '/' . $this->store->getId()
+             . '/' . Design::STYLES_FILE;
     }
 }

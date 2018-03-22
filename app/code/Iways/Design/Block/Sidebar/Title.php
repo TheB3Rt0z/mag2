@@ -52,7 +52,9 @@ class Title extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
 
         if ($this->title === null) {
-            $this->title = $this->designHelper->getConfig('design/sidebar/title_' . $this->getSidebarType());
+
+            $this->title = $this->designHelper->getConfig('design/sidebar/title_' . $this->getSidebarType(),
+                                                          $context->getStoreManager()->getStore()->getCode());
         }
     }
 

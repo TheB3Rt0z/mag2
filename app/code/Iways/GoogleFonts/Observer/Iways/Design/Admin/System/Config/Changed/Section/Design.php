@@ -82,13 +82,13 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
      *
      * @return string
      */
-    public function getFamilyCss($configPath, $cssSelector)
+    public function getFamilyCss($configPath, $cssSelector, $code = null)
     {
         $data = '';
 
-        if ($family = $this->designHelper->getConfig($configPath)) {
+        if ($family = $this->designHelper->getConfig($configPath, $code)) {
 
-            $familyVariant = $this->designHelper->getConfig($configPath . '_variant');
+            $familyVariant = $this->designHelper->getConfig($configPath . '_variant', $code);
 
             $familyVariantArray = explode(
                 ';',
@@ -135,10 +135,12 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
     {
         $data = '';
 
-        foreach ($this->fontSelectors as  $configPath => $cssSelector) {
-            $data .= $this->getFamilyCss($configPath . '_family', $cssSelector);
+        foreach ($this->fontSelectors as $configPath => $cssSelector) {
 
-            if ($color = $this->designHelper->getConfig($configPath . '_color')) {
+            $data .= $this->getFamilyCss($configPath . '_family', $cssSelector, $observer->getStoreCode());
+
+            if ($color = $this->designHelper->getConfig($configPath . '_color',
+                                                        $observer->getStoreCode())) {
 
                 $data .= $cssSelector . ' {' . self::EOL
                     . '    color: ' . $this->designHelper->checkColorCode($color) . ';' . self::EOL

@@ -104,7 +104,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
             <div id="treeDiv">
             </div>' .
             '<script>
-            
+
             require(["jquery", "jstree", "mage/translate"],
                 function($) {
                     //determines for what purpose the yes and no buttons where displayed (remove category nodes or insert node with duplicate link)
@@ -114,7 +114,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     //only children of default category are shown
                     categories = categories[0].children;
                     var jstreeDiv = $("#treeDiv");
-                    var saveTextField = $("#navigation_test_frontend_navigation_links").hide();
+                    var saveTextField = $("#iways_navigation_structure_navigation_tree").hide();
                     var saveMessage = $("#treeSaveMessage").hide();
                     var nodeLink = $("#linkInput");
                     var insertCatButton = $("#insertCategory");
@@ -134,25 +134,25 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     var linkDuplicate = false;
                     //array of all the node-links used in the tree
                     var usedLinksArray = [];
-                    
+
                     if(saveTextField.val() === ""){
                         saveTextField.val("[]");
                     }
-                    
+
                     /**
                     Builds an array with all the Links currently in use
                     */
                     function linkUsed(json) {
                         for(var i = 0; i < json.length; i++){
                             if(json[i].metadata.link !== ""){
-                                usedLinksArray.push(json[i].metadata.link); 
-                            }                                                          
+                                usedLinksArray.push(json[i].metadata.link);
+                            }
                             if(json[i].children !== undefined){
                                 linkUsed(json[i].children);
                             }
                         }
                     }
-                    
+
                     /**
                     disables or enables certain buttons
                     is called when a yes/no question is asked
@@ -173,7 +173,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             $("#preventInput").fadeOut(200);
                         }
                     }
-                    
+
                     /**
                     Creates Parent/Child Nodes or displays warning if the given link for the node already exists
                     */
@@ -210,7 +210,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                         usedLinksArray.length = 0;
                     }
                     '.'
-                    
+
                     /**
                     createNode button handler
                     Calls createNode and determines if a child or parent node should be created
@@ -225,25 +225,25 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                 }
                             }else{
                                 nodeType = "child";
-                                createNode("new Child"); 
+                                createNode("new Child");
                             }
                         }else{
                             nodeType = "parent";
                             createNode("new Parent");
                         }
                     }
-                    
+
                     /**
                     createNode button handler
                     Calls createNodeHandler
                     */
                     $("#createNode").click(function() {
-                        createNodeHandler();                        
+                        createNodeHandler();
                     });
-                    
+
                     /**
                     Determines if there are Category Nodes in the Tree and sets the Label of the Category Button
-                    
+
                     @param json - json: the tree json
                     @param start - boolean: determines if the function was called when the page was loaded or by a click event
                     @return boolean - wether Category nodes exist or not
@@ -264,9 +264,9 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                         }
                         return false;
                     }
-                    categoriesExist(JSON.parse(saveTextField.val()), true);              
-                   
-                    
+                    categoriesExist(JSON.parse(saveTextField.val()), true);
+
+
                     /**
                     insertCategory button handler
                     calls categoryHandler
@@ -274,7 +274,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     insertCatButton.click(function() {
                         categoryHandler();
                     });
-                    
+
                     /**
                     inserts all child categories of the magento default category and their children into the tree
                     */
@@ -289,7 +289,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                     }
                                 }
                             }
-                        autoSave(JSON.stringify(jstreeDiv.jstree("get_json", -1)));                   
+                        autoSave(JSON.stringify(jstreeDiv.jstree("get_json", -1)));
                         }else{
                             disableButtons(true);
                             saveMessage.html($.mage.__("Do you really want to remove the Categories?")).css("color", "red");
@@ -299,7 +299,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             noButton.fadeIn();
                         }
                     }
-                                        
+
                     /**
                     recursively adds all children to a parent
                     */
@@ -314,7 +314,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         }
                     }
-                    
+
                     /**
                     checks if the selected node is not a category node and if not deletes it
                     else an error message is displayed
@@ -334,7 +334,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         }
                     }
-                    
+
                     /**
                     removeNode button handler
                     Removes the currently selected node
@@ -342,14 +342,14 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     $("#removeNode").click(function() {
                         removeNode();
                     });
-                    
+
                     /**
                     yesButton/noButton button handler
                     calls yes/no functions;
                     */
                     yesButton.click(function() {yesFunc();});
                     noButton.click(function() {noFunc();});
-                    
+
                     /**
                     Calls createNode and sets linkDuplicate to true, so a node with an already existing
                     link can be created anyways
@@ -372,7 +372,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                         choice = "";
                         disableButtons(false);
                     }
-                    
+
                     /**
                     noButton button handler
                     The node with an already existing link is not created
@@ -384,20 +384,20 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                         }
                         saveMessage.fadeOut();
                         yesButton.fadeOut();
-                        noButton.fadeOut(); 
+                        noButton.fadeOut();
                         choice = "";
                         disableButtons(false);
                     }
-                    
+
                     /**
                     updateLink button handler
-                    Calls the update link function and displays info that the link has been updated 
-                    or why it couldnt be updated                   
+                    Calls the update link function and displays info that the link has been updated
+                    or why it couldnt be updated
                     */
                     $("#updateLink").click(function() {
                         updateLinkHandler();
-                    }); 
-                    
+                    });
+
                     function updateLinkHandler(){
                         if($(".jstree-clicked")[0] === undefined){
                             saveMessage.html($.mage.__("You need to select a Node to update a Link!")).css("color", "red");
@@ -422,7 +422,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         }
                     }
-                    
+
                     /**
                     Enables double click on a node to rename it
                     Displays error if node is the category node
@@ -438,11 +438,11 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                 }else{
                                     jstreeDiv.jstree("rename");
                                     $(".jstree-rename-input").attr("maxLength", 30);
-                                } 
+                                }
                             }
                         }
-                    });  
-                    
+                    });
+
                     /**
                     deselect all nodes, reset the link-input and set the button text to create parent
                     */
@@ -454,15 +454,15 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                         }
                         $("#createNode").html($.mage.__("Create Parent"));
                     }
-                    
+
                     /**
                     Enables deleting the currently selected nodes with the del key and
-                    deselecting the selected nodes with the esc key                    
+                    deselecting the selected nodes with the esc key
                     */
                     $("html").keyup(function(e) {
                         if(!yesButton.is(":visible") && !$(".jstree-rename-input")[0]){
                             if(!nodeLink.is(":focus")){
-                                switch(e.keyCode){                                
+                                switch(e.keyCode){
                                     case 27: //esc
                                         deselectNodes();
                                         break;
@@ -477,7 +477,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                         break;
                                 }
                             }else if(e.keyCode === 13){ //enter
-                                updateLinkHandler(); 
+                                updateLinkHandler();
                             }
                         }else{
                             if(e.keyCode === 13){ //enter
@@ -487,7 +487,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         }
                     });
-                    
+
                     /**
                     checks if there was a click event on the window and if it was not on a node/button/input, the
                     selected nodes are unselected
@@ -499,7 +499,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         }
                     });
-                                       
+
                     /**
                     Gets the link of the currently selected node
                     */
@@ -512,27 +512,27 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                 getLink(json[i].children);
                             }
                         }
-                    }                    
-                    
+                    }
+
                     /**
                     Sets the link of the currently selected node to the value of the linkInput field
                     */
                     function updateLink(json) {
                         for(var i = 0; i < json.length; i++){
-                            if(json[i].attr.id === selectedNodeId){  
+                            if(json[i].attr.id === selectedNodeId){
                                 var nodeLinkText =  nodeLink.val();
                                 if(!nodeLinkText.endsWith(".html") && nodeLinkText !== "" && !nodeLinkText.startsWith("http://")){
                                     nodeLinkText += ".html";
                                 }
                                 json[i].metadata.link = nodeLinkText;
-                                nodeLink.val(nodeLinkText);          
+                                nodeLink.val(nodeLinkText);
                             }
                             if(json[i].children !== undefined){
                                 updateLink(json[i].children);
                             }
                         }
                     }
-                    
+
                     /**
                     Searches for the highest id of any node and sets the global variable nodeId
                     to that value + 1
@@ -542,20 +542,20 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             nodeId = 0;
                         }else{
                             for(var i = 0; i < json.length; i++){
-                                if(json[i].attr.id.substr(6) >= nodeId){                                    
+                                if(json[i].attr.id.substr(6) >= nodeId){
                                     nodeId = parseInt(json[i].attr.id.substr(6)) + 1;
-                                }                                                          
+                                }
                                 if(json[i].children !== undefined){
                                     setHighestId(json[i].children);
                                 }
                             }
-                        }                        
+                        }
                     }
-                    
+
                     /**
                     gets called whenever a change is made to the tree. Saves the tree and if the Tree
                     has changed since the last magento-save displays a save-warning.
-                    
+
                     @param value - the json-string that should be saved in the saveTextField
                     */
                     function autoSave(value){
@@ -566,7 +566,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             $("#saveWarning").fadeOut(200);
                         }
                     }
-                    
+
                     /**
                     Creates tree with various plugins from the json given in the magento textfield
                     */
@@ -582,7 +582,7 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                                     if($(m.o[0]).hasClass("category") || $(m.o[0]).hasClass("category-root")){
                                         return false;
                                     }
-                                    //moving other nodes around the category nodes                                    
+                                    //moving other nodes around the category nodes
                                     if($(m.r[0]).hasClass("category")){
                                         return false;
                                     }
@@ -596,13 +596,13 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                             }
                         },
                         "hotkeys":{
-                            "del": 
+                            "del":
                             function(){
                                 if(!yesButton.is(":visible")){
                                     removeNode();
                                 }
                             },
-                            "f2": 
+                            "f2":
                             function(){
                                 if(!yesButton.is(":visible")){
                                     if(jstreeDiv.jstree("get_selected").length !== 0){
@@ -628,11 +628,11 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     })
                     /**
                     Event listener for if a node is renamed/moved/closed
-                    saves the tree                   
+                    saves the tree
                     */
                     .bind("rename.jstree move_node.jstree close_node.jstree", function(event, data){
                         autoSave(JSON.stringify(jstreeDiv.jstree("get_json", -1)));
-                        
+
                     })
                     /**
                     Event listener for if a node is created/opened
@@ -645,17 +645,17 @@ class Tree extends \Magento\Config\Block\System\Config\Form\Field
                     })
                     /**
                     Event listener for if a node is selected
-                    Sets global variable selectNodeId to the id of the selected node 
-                    and the linkInput input field text to the link of that node                    
+                    Sets global variable selectNodeId to the id of the selected node
+                    and the linkInput input field text to the link of that node
                     */
                     .bind("select_node.jstree", function(event, data) {
                         $("#createNode").html($.mage.__("Create Child"));
                         selectedNodeId = data.rslt.obj[0].id;
                         getLink(jstreeDiv.jstree("get_json", -1));
                         nodeLink.val(selectedNodeLink);
-                    });  
-                }  
-                             
+                    });
+                }
+
             );
             </script>';
 

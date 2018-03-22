@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framwork/App/etc/routes.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framwork/App/etc/routes.xsd">
     <router id="standard">
-        <route id="iways" frontName="iways">
-            <module name="Iways_Navigation" />
+        <route id="iways_navigation"
+        	   frontName="iways_navigation">
+            <module name="Iways_Navigation"
+                    before="Magento_Theme" />
         </route>
     </router>
 </config>

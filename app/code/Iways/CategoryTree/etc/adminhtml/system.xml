@@ -8,7 +8,7 @@
                  showInDefault="1"
                  showInWebsite="1"
                  showInStore="1">
-            <label>CategoryTree</label>
+            <label>Category Tree</label>
             <tab>iways</tab>
             <resource>Iways_CategoryTree::config</resource>
             <group id="frontend"

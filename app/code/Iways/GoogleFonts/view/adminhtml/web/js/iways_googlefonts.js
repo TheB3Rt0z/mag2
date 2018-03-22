@@ -104,14 +104,6 @@ function checkFontFaceFields(val, input, e)
   
     resetFontFaceFields(element, mainField.val());
     
-    /*jQuery(document).ready(function ()
-    {
-        jQuery('.iways-color input').each(function ()
-        {
-            checkColorField(jQuery(this).val(), jQuery(this));
-        });
-    });*/
-    
     mainField.on('change', function ()
     {
         var customFieldsContainer = jQuery(this).siblings('.iways-font-face-fields'),

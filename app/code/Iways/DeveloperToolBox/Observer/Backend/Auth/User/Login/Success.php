@@ -73,7 +73,10 @@ class Success implements \Magento\Framework\Event\ObserverInterface
             $this->session->setSessionId($sessionId);
             $this->session->start();
 
-            $sessionLifetime = $this->helper->getConfig(Session::XML_PATH_SESSION_LIFETIME);
+            $sessionLifetime = $this->_scopeConfig->getValue(
+                Session::XML_PATH_SESSION_LIFETIME,
+                ScopeInterface::SCOPE_STORE
+            );
             $this->session->setAdminSessionLifetime(time() + $sessionLifetime);
 
             $this->session->writeClose();

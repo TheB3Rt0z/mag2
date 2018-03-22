@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iways_Navigation::menu_configuration_navigation"
+             resource="Iways_Navigation::menu_configuration_navigation"
+             title="Navigation Module"
+             parent="Iways_Base::menu_configuration"
+             sortOrder="711"
+             module="Iways_Navigation"
+             action="adminhtml/system_config/edit/section/iways_navigation" />
+        <add id="Iways_Navigation::menu_documentation_navigation"
+             resource="Iways_Navigation::menu_documentation_navigation"
+             title="Navigation Module"
+             parent="Iways_Base::menu_documentation"
+             sortOrder="811"
+             module="Iways_Navigation"
+             action="iways_base/documentation/index/module/Navigation" />
+    </menu>
+</config>
