@@ -61,9 +61,10 @@ class DepthOptions extends \Iways\Base\Model\Config\Source
      */
     public function __construct(
         \Iways\Base\Helper\Data $baseHelper,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver,
         \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
         \Iways\CategoryTree\Helper\Category $categoryTreeCategoryHelper,
-        StoreManagerInterface $storeManagerInterface,
         CategoryRepository $categoryRepository
     ) {
         $this->categoryTreeHelper = $categoryTreeHelper;
@@ -71,7 +72,8 @@ class DepthOptions extends \Iways\Base\Model\Config\Source
 
         $this->storeId = $storeManagerInterface->getStore()->getId();
         $this->categoryRepository = $categoryRepository;
-        parent::__construct($baseHelper);
+
+        parent::__construct($baseHelper, $storeManagerInterface, $storeResolver);
     }
 
     /**

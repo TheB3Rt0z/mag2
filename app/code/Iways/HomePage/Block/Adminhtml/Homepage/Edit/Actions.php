@@ -25,9 +25,4 @@ class Actions extends \Magento\Backend\Block\Widget\Form\Container
             1
         );
     }
-
-    /*public function getHeaderText()
-    {
-        return __('Encryption Key');
-    }*/
 }

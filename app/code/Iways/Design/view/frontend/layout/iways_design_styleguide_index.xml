@@ -5,6 +5,8 @@
     <head>
         <title>i-ways | Styleguide</title>
         <link src="Iways_Design::css/styleguide.css" />
+        <script type="text/javascript"
+                src="Magento_Checkout::js/input_type_number.js"></script>
     </head>
     <body>
         <referenceBlock name="page.main.title"

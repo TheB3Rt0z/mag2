@@ -52,16 +52,17 @@ class Apitest extends \Magento\Config\Block\System\Config\Form\Field
         \Magento\Backend\Block\Template\Context $context,
         \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
         Api $api,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver,
         array $data = []
     ) {
+        $store = $storeManagerInterface->getStore($storeResolver->getCurrentStoreId());
+
         $this->googleFontsHelper = $googleFontsHelper;
 
         $this->api = $api;
 
-        if ($apiKey = $this->_scopeConfig->getValue(
-            'iways_googlefonts/credentials/api_key',
-            ScopeInterface::SCOPE_STORE
-        )) {
+        if ($apiKey = $this->googleFontsHelper->getConfig('iways_googlefonts/credentials/api_key', $store->getCode())) {
 
             $this->api->setApiKey($apiKey);
         }

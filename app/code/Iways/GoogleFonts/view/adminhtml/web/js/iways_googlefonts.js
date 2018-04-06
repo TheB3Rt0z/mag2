@@ -71,7 +71,7 @@ function populateFontFaceFields(e, font_family)
     
     jQuery.ajax({
         url: '/iways_googlefonts/font/get/font_family/' + font_family + '/',
-        //async: false,
+        async: false,
         dataType: 'json'
     }).done(function(data)
     {

@@ -1,0 +1,5 @@
+<?php
+$hotSellers = $block->getHotSellerIds();
+if($hotSellers["enable_hot_sellers"]){
+    echo $block->renderTopSellerHtml();
+}

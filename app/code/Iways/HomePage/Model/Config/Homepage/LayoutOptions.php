@@ -29,10 +29,10 @@ namespace Iways\HomePage\Model\Config\Homepage;
 class LayoutOptions extends \Iways\Base\Model\Config\Source
 {
     const LAYOUT_0 = false; // also, no layout at all
-    const LAYOUT_1 = 'layout_1';
-    const LAYOUT_2 = 'layout_2';
-    const LAYOUT_3 = 'layout_3';
-    const LAYOUT_4 = 'layout_4';
+    const LAYOUT_1 = 'layout-1';
+    const LAYOUT_2 = 'layout-2';
+    const LAYOUT_3 = 'layout-3';
+    const LAYOUT_4 = 'layout-4';
 
     /**
      * Ⓒ i-ways sales solutions GmbH

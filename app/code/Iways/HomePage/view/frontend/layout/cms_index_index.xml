@@ -11,6 +11,11 @@
                    as="iways_homepage_block_homepage"
                    template="Iways_HomePage::homepage.phtml"
                    before="-" />
+            <block class="Iways\HomePage\Block\Topseller"
+                   name="iways_homepage_block_topseller"
+                   as="iways_homepage_block_topseller"
+                   template="Iways_HomePage::topseller.phtml"
+                   after="iways_homepage_block_homepage" />
         </referenceContainer>
     </body>
 </page>

@@ -14,7 +14,7 @@
                 <item name="design/fonts/h3"
                       xsi:type="string">h3</item>
                 <item name="design/fonts/link"
-                      xsi:type="string">a, .alink</item>
+                      xsi:type="string">a, .alink, a:visited, .alink:visited</item>
                 <item name="design/fonts/link_hover"
                       xsi:type="string">a:hover, .alink:hover</item>
                 

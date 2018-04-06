@@ -47,12 +47,16 @@ class FontOptions extends \Iways\Base\Model\Config\Source
      */
     public function __construct(
         \Iways\Base\Helper\Data $baseHelper,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver,
         \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
         Api $api
     ) {
         $this->googleFontsHelper = $googleFontsHelper;
+
         $this->api = $api;
-        parent::__construct($baseHelper);
+
+        parent::__construct($baseHelper, $storeManagerInterface, $storeResolver);
     }
 
     /**

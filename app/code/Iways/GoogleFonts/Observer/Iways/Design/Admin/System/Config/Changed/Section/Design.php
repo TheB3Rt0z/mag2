@@ -17,6 +17,7 @@ namespace Iways\GoogleFonts\Observer\Iways\Design\Admin\System\Config\Changed\Se
 use Iways\GoogleFonts\Model\Api;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Filesystem\File\Write;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\Filesystem\Io\File as IOFile; // only to get rid of strict sniffers
 use Magento\Framework\View\Element\Context;
@@ -35,9 +36,26 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\Design
 {
+    /**
+     * @var array
+     */
     protected $loadedFonts = [];
 
+    /**
+     * Filled via di.xml
+     * @var array
+     */
     protected $fontSelectors = [];
+
+    /**
+     * @var Write
+     */
+    protected $stylesFile;
+
+    /**
+     * @var Api
+     */
+    protected $api;
 
     /**
      * Design constructor.
@@ -95,10 +113,10 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
                 $familyVariant
             );
 
-            $familyVariant = $familyVariantArray[0] ?: 'initial';
-            $familySize = $familyVariantArray[5] ?: 'initial';
-            $familyStyle = $familyVariantArray[4] ?: 'initial';
-            $familyWeight = $familyVariantArray[3] ?: 'initial';
+            $familyVariant = $familyVariantArray[0] ?? 'initial';
+            $familySize = $familyVariantArray[5] ?? 'initial';
+            $familyStyle = $familyVariantArray[4] ?? 'initial';
+            $familyWeight = $familyVariantArray[3] ?? 'initial';
 
             if (//($family != FamilyOptions::FAMILY_DEFAULT) &&
                 !in_array($family, $this->loadedFonts)) {
@@ -150,6 +168,6 @@ class Design extends \Iways\Design\Observer\Admin\System\Config\Changed\Section\
 
         $this->stylesFile = $observer->getStylesFile();
 
-        $this->write($data);
+        $this->write($data, $observer->getStoreCode());
     }
 }

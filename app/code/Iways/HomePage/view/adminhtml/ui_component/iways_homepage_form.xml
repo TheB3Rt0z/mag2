@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">iways_homepage_form.iways_homepage_form_data_source</item>
+            <item name="deps" xsi:type="string">iways_homepage_form.iways_homepage_form_data_source</item>
+        </item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">iways_homepage_form</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Iways\HomePage\Block\Adminhtml\Homepage\Edit\SaveButton</item>
+        </item>
+    </argument>
+    <dataSource name="iways_homepage_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Iways\HomePage\Model\HomePage\DataProvider</argument>
+            <argument name="name" xsi:type="string">iways_homepage_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="iways_homepage/homepage/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="iways_homepage_settings">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Homepage Settings</item>
+                <item name="sortOrder" xsi:type="number">1</item>
+            </item>
+        </argument>
+        <fieldset name="homepage_tile_settings">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Tile Settings</item>
+                    <item name="collapsible" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <field name="layout_dropdown">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\LayoutOptions</item>
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Select Layout</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
+            <fieldset name="first_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">First Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="componentType" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: 1240 x 450</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <!--
+                <field name="layout_img_src_alternative">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_HomePage/custom-button</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/tryout</item>
+                            <item name="elementId" xsi:type="string">custom_attribute_code</item>
+                            <item name="dialogUrl" xsi:type="url" path="cms/wysiwyg_images/index">
+                                <param name="target_element_id">custom_attribute_code</param>
+                                <param name="type">file</param>
+                            </item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                        </item>
+                    </argument>
+                </field>-->
+
+
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+            <fieldset name="second_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Second Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: (Layout 1: 390 x 338, Layout 2: 403 x 543, Layout 3: 405 x 645, Layout 4: 407 x 616)</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+            <fieldset name="third_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Third Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="componentType" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: (Layout 1: 390 x 338, Layout 2: 830 x 266, Layout 3: 405 x 645, Layout 4: 815 x 261)</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+            <fieldset name="fourth_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Fourth Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="componentType" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: (Layout 1: 390 x 338, Layout 2: 830 x 266, Layout 3: 405 x 645, Layout 4: 815 x 261)</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+            <fieldset name="fifth_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Fifth Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="componentType" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: 391 x 338</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+            <fieldset name="sixth_image">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Sixth Tile</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <field name="layout_img_src">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">string</item>
+                            <item name="name" xsi:type="string">layout_img_src</item>
+                            <item name="source" xsi:type="string">Iways</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">fileUploader</item>
+                            <item name="componentType" xsi:type="string">fileUploader</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                            <item name="previewTmpl" xsi:type="string">Iways_HomePage/image-preview</item>
+                            <item name="required" xsi:type="boolean">false</item>
+                            <item name="notice" xsi:type="string" translate="true">Allowed file types: png, gif, jpg, jpeg, svg.</item>
+                            <item name="noticeExtra" xsi:type="string" translate="true">Recommended image size: 407 x 618</item>
+                            <item name="maxFileSize" xsi:type="number">5242880</item>
+                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                            <item name="uploaderConfig" xsi:type="array">
+                                <item name="url" xsi:type="url" path="iways_homepage/homepage/upload"/>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Image Text</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">textarea</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_color">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
+                            <item name="template" xsi:type="string">ui/form/field</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
+                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="labelVisible" xsi:type="boolean">true</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="img_text_position">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\HomePage\Model\Config\Homepage\TextPositionOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Position</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="use_button_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">boolean</item>
+                            <item name="formElement" xsi:type="string">checkbox</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="prefer" xsi:type="string">toggle</item>
+                            <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                            <item name="valueMap" xsi:type="array">
+                                <item name="true" xsi:type="string">1</item>
+                                <item name="false" xsi:type="string">0</item>
+                            </item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">false</item>
+                            </item>
+                            <item name="default" xsi:type="string">1</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="button_text">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                        </item>
+                    </argument>
+                </field>
+            </fieldset>
+        </fieldset>
+        <fieldset name="hot_sellers">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Hot Sellers</item>
+                    <item name="collapsible" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <field name="enable_hot_sellers">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">boolean</item>
+                        <item name="formElement" xsi:type="string">checkbox</item>
+                        <item name="source" xsi:type="string">homepage</item>
+                        <item name="prefer" xsi:type="string">toggle</item>
+                        <item name="label" xsi:type="string" translate="true">Enable Hotsellers</item>
+                        <item name="valueMap" xsi:type="array">
+                            <item name="true" xsi:type="string">1</item>
+                            <item name="false" xsi:type="string">0</item>
+                        </item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">false</item>
+                        </item>
+                        <item name="default" xsi:type="string">1</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_id_1">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="formElement" xsi:type="string">input</item>
+                        <!--<item name="notice" xsi:type="string">The categroy has to be saved after selecting an image</item>-->
+                        <item name="elementTmpl" xsi:type="string">Iways_HomePage/product-choose-button</item>
+                        <item name="elementId" xsi:type="string">first_product_id</item>
+                        <item name="dialogUrl" xsi:type="url" path="catalog/product_widget/chooser">
+                            <param name="input_element_id">first_product_id</param>
+                        </item>
+                        <!--<item name="component" xsi:type="string">Vendor_Module/js/form/element/button</item>-->
+                        <item name="label" xsi:type="string" translate="true">1. Product ID</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_id_2">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="formElement" xsi:type="string">input</item>
+                        <!--<item name="notice" xsi:type="string">The categroy has to be saved after selecting an image</item>-->
+                        <item name="elementTmpl" xsi:type="string">Iways_HomePage/product-choose-button</item>
+                        <item name="elementId" xsi:type="string">second_product_id</item>
+                        <item name="dialogUrl" xsi:type="url" path="catalog/product_widget/chooser">
+                            <param name="input_element_id">second_product_id</param>
+                        </item>
+                        <!--<item name="component" xsi:type="string">Vendor_Module/js/form/element/button</item>-->
+                        <item name="label" xsi:type="string" translate="true">2. Product ID</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_id_3">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="formElement" xsi:type="string">input</item>
+                        <!--<item name="notice" xsi:type="string">The categroy has to be saved after selecting an image</item>-->
+                        <item name="elementTmpl" xsi:type="string">Iways_HomePage/product-choose-button</item>
+                        <item name="elementId" xsi:type="string">third_product_id</item>
+                        <item name="dialogUrl" xsi:type="url" path="catalog/product_widget/chooser">
+                            <param name="input_element_id">third_product_id</param>
+                        </item>
+                        <!--<item name="component" xsi:type="string">Vendor_Module/js/form/element/button</item>-->
+                        <item name="label" xsi:type="string" translate="true">3. Product ID</item>
+                    </item>
+                </argument>
+            </field>
+            <field name="product_id_4">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="formElement" xsi:type="string">input</item>
+                        <!--<item name="notice" xsi:type="string">The categroy has to be saved after selecting an image</item>-->
+                        <item name="elementTmpl" xsi:type="string">Iways_HomePage/product-choose-button</item>
+                        <item name="elementId" xsi:type="string">fourth_product_id</item>
+                        <item name="dialogUrl" xsi:type="url" path="catalog/product_widget/chooser">
+                            <param name="input_element_id">fourth_product_id</param>
+                        </item>
+                        <!--<item name="component" xsi:type="string">Vendor_Module/js/form/element/button</item>-->
+                        <item name="label" xsi:type="string" translate="true">4. Product ID</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+    </fieldset>
+</form>

@@ -37,9 +37,13 @@ abstract class Source implements \Magento\Framework\Option\ArrayInterface
      * @param \Iways\Base\Helper\Data $baseHelper
      */
     public function __construct(
-        \Iways\Base\Helper\Data $baseHelper
+        \Iways\Base\Helper\Data $baseHelper,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver
     ) {
         $this->baseHelper = $baseHelper;
+        $this->storeManager = $storeManagerInterface;
+        $this->storeResolver = $storeResolver;
     }
 
     /**
@@ -53,5 +57,10 @@ abstract class Source implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return $this->baseHelper->toOptionArray($this->toArray());
+    }
+
+    public function getStoreCode() {
+
+        return $this->storeManager->getStore($this->storeResolver->getCurrentStoreId())->getCode();
     }
 }

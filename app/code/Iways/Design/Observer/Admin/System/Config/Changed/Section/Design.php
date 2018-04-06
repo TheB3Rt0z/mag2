@@ -15,12 +15,14 @@
 namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\Filesystem\Io\File as IOFile; // only to get rid of strict sniffers
 use Magento\Framework\View\Element\Context;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -103,12 +105,41 @@ class Design implements \Magento\Framework\Event\ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $this->store = $observer->getStore();
+        $stores = $this->storeManagerInterface->getStores(true);
 
+        foreach ($stores as $store) {
+            $this->writeStoreCss($observer, $store);
+        }
+    }
+
+    /**
+     * Ⓒ i-ways sales solutions GmbH
+     *
+     * PHP Version 5
+     *
+     * @param string $data Contents for file
+     *
+     * @return void
+     */
+    public function write($data = '', $storeCode = 'default')
+    {
+        if ($this->designHelper->getConfig('iways_design/frontend/minify_css', $storeCode)) {
+
+            $data = str_replace(
+                [' {', ': ', ' + ', '    ', ';' . self::EOL . '}', self::EOL],
+                ['{', ':', '+', '', '}', ''],
+                $data
+            );
+        }
+
+        $this->stylesFile->write($data);
+    }
+
+    public function writeStoreCss(Observer $observer, $store) {
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
         if ($headerPanelBackgroundColor = $this->designHelper->getConfig('design/header/panel_background_color',
-                                                                         $this->store->getCode())) {
+            $store->getCode())) {
 
             $headerPanelBackgroundColor = $this->designHelper->checkColorCode($headerPanelBackgroundColor);
 
@@ -119,130 +150,130 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         }
 
         if ($headerWrapperBackgroundColor = $this->designHelper->getConfig('design/header/wrapper_background_color',
-                                                                           $this->store->getCode())) {
+            $store->getCode())) {
 
             $headerWrapperBackgroundColor = $this->designHelper->checkColorCode($headerWrapperBackgroundColor);
 
             $data .= 'header.page-header {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $headerWrapperBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $headerWrapperBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationSectionBackgroundColor = $this->designHelper->getConfig('design/navigation/section_background_color',
-                                                                               $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationSectionBackgroundColor = $this->designHelper->checkColorCode($navigationSectionBackgroundColor);
 
             $data .= '.sections.nav-sections,' . self::EOL
-                   . 'nav.navigation {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationSectionBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . 'nav.navigation {' . self::EOL
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationSectionBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationItemsBackgroundColor = $this->designHelper->getConfig('design/navigation/items_background_color',
-                                                                             $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationItemsBackgroundColor = $this->designHelper->checkColorCode($navigationItemsBackgroundColor);
 
             $data .= 'nav.navigation ul {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationItemsBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationItemsBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationItemsHoverBackgroundColor = $this->designHelper->getConfig('design/navigation/items_hover_background_color',
-                                                                                  $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationItemsHoverBackgroundColor = $this->designHelper->checkColorCode($navigationItemsHoverBackgroundColor);
 
             $data .= '.navigation li.level0:hover {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationItemsHoverBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationItemsHoverBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationActiveItemBackgroundColor = $this->designHelper->getConfig('design/navigation/active_item_background_color',
-                                                                                  $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationActiveItemBackgroundColor = $this->designHelper->checkColorCode($navigationActiveItemBackgroundColor);
 
             $data .= 'nav.navigation .level0.active > .level-top,' . self::EOL
-                   //. 'nav.navigation .level0.has-active > .level-top,' . self::EOL
-                   . 'nav.navigation .has-active > a,' . self::EOL
-                   . 'nav.navigation .level0 .submenu .active > a {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationActiveItemBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                //. 'nav.navigation .level0.has-active > .level-top,' . self::EOL
+                . 'nav.navigation .has-active > a,' . self::EOL
+                . 'nav.navigation .level0 .submenu .active > a {' . self::EOL
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationActiveItemBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationSubmenusBackgroundColor = $this->designHelper->getConfig('design/navigation/submenus_background_color',
-                                                                                $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationSubmenusBackgroundColor = $this->designHelper->checkColorCode($navigationSubmenusBackgroundColor);
 
             $data .= 'nav.navigation .level0 .submenu {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationSubmenusBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationSubmenusBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($navigationSubmenusHoverBackgroundColor = $this->designHelper->getConfig('design/navigation/submenus_hover_background_color',
-                                                                                     $this->store->getCode())) {
+            $store->getCode())) {
 
             $navigationSubmenusHoverBackgroundColor = $this->designHelper->checkColorCode($navigationSubmenusHoverBackgroundColor);
 
             $data .= 'nav.navigation .level0 .submenu a:hover,' . self::EOL
-                   . 'nav.navigation .level0 .submenu a.ui-state-focus,' . self::EOL
-                   . 'nav.navigation .level0.active > .level-top.ui-state-focus,' . self::EOL
-                   . 'nav.navigation .level0.active > .level-top.ui-state-active,' . self::EOL
-                   . 'nav.navigation .has-active > a.ui-state-focus,' . self::EOL
-                   . 'nav.navigation .has-active > a.ui-state-active,' . self::EOL
-                   . 'nav.navigation .level0 .submenu .active > a.ui-state-focus {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $navigationSubmenusHoverBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . 'nav.navigation .level0 .submenu a.ui-state-focus,' . self::EOL
+                . 'nav.navigation .level0.active > .level-top.ui-state-focus,' . self::EOL
+                . 'nav.navigation .level0.active > .level-top.ui-state-active,' . self::EOL
+                . 'nav.navigation .has-active > a.ui-state-focus,' . self::EOL
+                . 'nav.navigation .has-active > a.ui-state-active,' . self::EOL
+                . 'nav.navigation .level0 .submenu .active > a.ui-state-focus {' . self::EOL
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $navigationSubmenusHoverBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($backgroundColor = $this->designHelper->getConfig('design/body/background_color',
-                                                              $this->store->getCode())) {
+            $store->getCode())) {
 
             $backgroundColor = $this->designHelper->checkColorCode($backgroundColor);
 
             $data .= 'html body {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $backgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $backgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($backgroundSrc = $this->designHelper->getConfig('design/body/background_src',
-                                                            $this->store->getCode())) {
+            $store->getCode())) {
 
-            $baseUrl = $this->store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+            $baseUrl = $store->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
             $data .= 'html body {' . self::EOL
-                  . '    background-image: url("' . $baseUrl
-                  . Background::UPLOAD_DIR
-                  . '/' . $backgroundSrc . '");'
-                  . self::EOL
-                  . '}' . self::EOL;
+                . '    background-image: url("' . $baseUrl
+                . Background::UPLOAD_DIR
+                . '/' . $backgroundSrc . '");'
+                . self::EOL
+                . '}' . self::EOL;
 
             if ($backgroundSrcAttachment = $this->designHelper->getConfig('design/body/background_src_attachment',
-                                                                          $this->store->getCode())) {
+                $store->getCode())) {
 
                 $data .= 'html body {' . self::EOL
-                       . '    background-attachment: ' . $backgroundSrcAttachment
-                       . ';' . self::EOL
-                       . '}' . self::EOL;
+                    . '    background-attachment: ' . $backgroundSrcAttachment
+                    . ';' . self::EOL
+                    . '}' . self::EOL;
             }
 
             if ($backgroundSrcSize = $this->designHelper->getConfig('design/body/background_src_size',
-                                                                    $this->store->getCode())) {
+                $store->getCode())) {
 
                 if ($backgroundSrcSize == 1) { // identifies custom option in select
 
                     $backgroundSrcSizeCustom = $this->designHelper->getConfig('design/body/background_src_size_custom',
-                                                                              $this->store->getCode());
+                        $store->getCode());
 
                     $backgroundSrcSizeCustomArray = explode(
                         ';',
@@ -263,12 +294,12 @@ class Design implements \Magento\Framework\Event\ObserverInterface
             }
 
             if ($backgroundSrcPos = $this->designHelper->getConfig('design/body/background_src_position',
-                                                                   $this->store->getCode())) {
+                $store->getCode())) {
 
                 if ($backgroundSrcPos == 1) { // identifies custom option in select
 
                     $backgroundSrcPosCustom = $this->designHelper->getConfig('design/body/background_src_position_custom',
-                                                                             $this->store->getCode());
+                        $store->getCode());
 
                     $backgroundSrcPosCustomArray = explode(
                         ';',
@@ -289,7 +320,7 @@ class Design implements \Magento\Framework\Event\ObserverInterface
             }
 
             if ($backgroundSrcRepeat = $this->designHelper->getConfig('design/body/background_src_repeat',
-                                                                      $this->store->getCode())) {
+                $store->getCode())) {
 
                 $data .= 'html body {' . self::EOL
                     . '    background-repeat: ' . $backgroundSrcRepeat
@@ -299,7 +330,7 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         }
 
         if ($backgroundGradient = $this->designHelper->getConfig('design/body/background_gradient',
-                                                                 $this->store->getCode())) {
+            $store->getCode())) {
 
             $straightCss = str_replace(["\n", "\r"], '', $backgroundGradient);
             $data .= 'html body {' . self::EOL
@@ -308,30 +339,30 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         }
 
         if ($footerWrapperBackgroundColor = $this->designHelper->getConfig('design/footer/wrapper_background_color',
-                                                                           $this->store->getCode())) {
+            $store->getCode())) {
 
             $footerWrapperBackgroundColor = $this->designHelper->checkColorCode($footerWrapperBackgroundColor);
 
             $data .= 'footer.page-footer {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $footerWrapperBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $footerWrapperBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($footerCopyrightBackgroundColor = $this->designHelper->getConfig('design/footer/copyright_background_color',
-                                                                             $this->store->getCode())) {
+            $store->getCode())) {
 
             $footerCopyrightBackgroundColor = $this->designHelper->checkColorCode($footerCopyrightBackgroundColor);
 
 
             $data .= 'footer.page-footer .copyright {' . self::EOL
-                   . '    background-image: none;' . self::EOL
-                   . '    background-color: ' . $footerCopyrightBackgroundColor . ';' . self::EOL
-                   . '}' . self::EOL;
+                . '    background-image: none;' . self::EOL
+                . '    background-color: ' . $footerCopyrightBackgroundColor . ';' . self::EOL
+                . '}' . self::EOL;
         }
 
         if ($this->designHelper->getConfig('design/sidebar/toggle_titles',
-                                           $this->store->getCode())) {
+            $store->getCode())) {
 
             $data .= '.sidebar .block .block-title,' . self::EOL
                 . '.sidebar .block .filter-options-title {' . self::EOL
@@ -356,9 +387,9 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         // @todo additional css to hide compare if config: https://coderwall.com/p/vsqmbw/remove-product-compare-functionality-on-magento-2-frontend
 
         $filePath = $this->directoryList->getPath('media') . '/' . self::STYLES_DIR
-                  . '/' . $this->store->getWebsiteId()
-                  . '/' . $this->store->getGroupId()
-                  . '/' . $this->store->getId();
+            . '/' . $store->getWebsiteId()
+            . '/' . $store->getGroupId()
+            . '/' . $store->getId();
 
         if (!is_dir($filePath)) { // checking for existing directory (will not be created automatically)
 
@@ -371,7 +402,7 @@ class Design implements \Magento\Framework\Event\ObserverInterface
             DriverPool::FILE,
             'w'
         );
-        $this->write($data);
+        $this->write($data, $store->getCode());
 
         $this->eventManager->dispatch(
             'iways_design_' . $observer->getEvent()->getName(),
@@ -381,31 +412,8 @@ class Design implements \Magento\Framework\Event\ObserverInterface
                     DriverPool::FILE,
                     'a'
                 ),
-                'store_code' => $this->store->getCode(),
+                'store_code' => $store->getCode(),
             ]
         );
-    }
-
-    /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @param string $data Contents for file
-     *
-     * @return void
-     */
-    public function write($data = '')
-    {
-        if ($this->designHelper->getConfig('iways_design/frontend/minify_css', $this->store->getCode())) {
-
-            $data = str_replace(
-                [' {', ': ', ' + ', '    ', ';' . self::EOL . '}', self::EOL],
-                ['{', ':', '+', '', '}', ''],
-                $data
-            );
-        }
-
-        $this->stylesFile->write($data);
     }
 }

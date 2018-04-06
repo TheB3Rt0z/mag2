@@ -43,10 +43,7 @@ class FamilyOptions extends \Iways\Base\Model\Config\Source
             self::FAMILY_DEFAULT => __("default") . " (" . self::DEFAULT_LABEL . ")"
         ];
 
-        $activeFonts = $this->_scopeConfig->getValue(
-            'iways_googlefonts/settings/active_fonts',
-            ScopeInterface::SCOPE_STORE
-        );
+        $activeFonts = $this->baseHelper->getConfig('iways_googlefonts/settings/active_fonts', $this->getStoreCode());
 
         foreach (explode(",", $activeFonts) as $label) {
 

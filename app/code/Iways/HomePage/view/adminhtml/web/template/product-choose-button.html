@@ -1,0 +1,24 @@
+<label attr="id: elementId+'_label'"></label>
+<input type="text" class="admin__control-text" data-bind="
+        event: {change: userChanges},
+        value: value,
+        hasFocus: focused,
+        valueUpdate: 'blur',
+        attr: {
+            title: elementId,
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid,
+            disabled: disabled
+    }" />
+<br/>
+<button type="button"
+        css="
+            'action-advanced': $data.displayAsLink,
+            'action-secondary': !$data.displayAsLink
+        "
+        attr="'data-index': index, 'data-url': dialogUrl, id: elementId+'_button'"
+        onClick="MediabrowserUtility.openDialog(this.getAttribute('data-url'))">
+    <span attr="id: elementId+'_bttext'">Select Item</span>
+</button>

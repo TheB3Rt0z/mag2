@@ -57,16 +57,17 @@ class Get extends \Magento\Framework\App\Action\Action
         Context $context,
         JsonFactory $jsonFactory,
         \Iways\GoogleFonts\Helper\Data $googleFontsHelper,
-        Api $api
+        Api $api,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver
     ) {
+        $store = $storeManagerInterface->getStore($storeResolver->getCurrentStoreId());
+
         $this->jsonFactory = $jsonFactory;
         $this->googleFontsHelper = $googleFontsHelper;
         $this->api = $api;
 
-        if ($apiKey = $this->_scopeConfig->getValue(
-            'iways_googlefonts/credentials/api_key',
-            ScopeInterface::SCOPE_STORE
-        )) {
+        if ($apiKey = $googleFontsHelper->getConfig('iways_googlefonts/credentials/api_key', $store->getCode())) {
 
             $this->api->setApiKey($apiKey);
         }

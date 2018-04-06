@@ -1,17 +1,4 @@
 <?php
-
-/**
- * Ⓒ i-ways sales solutions GmbH
- *
- * PHP Version 5
- *
- * @category File
- * @package  Iways_HomePage
- * @author   Bertozzi Matteo <bertozzi@i-ways.net>
- * @license  The PHP License, Version 3.0 - PHP.net (http://php.net/license/3_0.txt)
- * @link     https://www.i-ways.net
- */
-
 namespace Iways\HomePage\Controller\Adminhtml\Homepage;
 
 use Magento\Backend\App\Action\Context;
@@ -30,13 +17,29 @@ use Magento\Backend\App\Action\Context;
 class Edit extends \Iways\HomePage\Controller\Adminhtml\Homepage
 {
     /**
-     * Ⓒ i-ways sales solutions GmbH
-     *
-     * PHP Version 5
-     *
-     * @return object
+     * @var \Iways\Base\Helper\Data
      */
+    protected $resultPageFactory;
+
+    /**
+     * Edit constructor.
+     * @param Context $context
+     * @param \Iways\Base\Helper\Data $baseHelper
+     */
+    public function __construct(
+        Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+    ) {
+        parent::__construct($context);
+
+        $this->resultPageFactory = $resultPageFactory;
+    }
     public function execute()
+    {
+        return $this->resultPageFactory->create();
+    }
+
+    public function getDataSourceData()
     {
         $this->_view->loadLayout();
 

@@ -1,7 +1,8 @@
 {
     "name": "iways/module-homepage",
     "require": {
-        "iways/module-design": "^0.1.0"
+        "iways/module-design": "^0.1.0",
+        "magento/module-ui": "*"
     },
     "type": "magento2-module",
     "version": "0.0.1",

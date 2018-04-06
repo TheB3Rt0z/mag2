@@ -2,6 +2,7 @@
 
 namespace Iways\HomePage\Controller\Adminhtml\Homepage;
 
+use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Backend\App\Action\Context;
 use Magento\Config\Model\ResourceModel\Config;
 
@@ -11,18 +12,20 @@ class Save extends \Iways\HomePage\Controller\Adminhtml\Homepage
      * @var Config
      */
     protected $config;
-    /**
-     * Save constructor.
-     * @param Context $context
-     * @param Config $config
-     */
+
+    protected $_coreRegistry = null;
+
+    protected $cacheTypeList;
+
     public function __construct(
         Context $context,
-        Config $config
-    ) {
-        $this->config = $config;
-
+        Config $config,
+        TypeListInterface $cacheTypeList
+    )
+    {
         parent::__construct($context);
+        $this->config = $config;
+        $this->cacheTypeList = $cacheTypeList;
     }
 
     /**
@@ -45,7 +48,7 @@ class Save extends \Iways\HomePage\Controller\Adminhtml\Homepage
                 'default',//ScopeInterface::SCOPE_STORE,
                 0
             );
-
+            $this->cacheTypeList->cleanType('config');
             $this->messageManager->addSuccessMessage(__('Homepage configuration was successfully saved'));
 
         } catch (\Exception $e) {

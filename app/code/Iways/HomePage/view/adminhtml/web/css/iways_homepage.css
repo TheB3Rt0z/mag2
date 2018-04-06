@@ -4,3 +4,12 @@
     left: 17px;
     top: 15px;
 }
+
+.colorpicker{
+    z-index: 2;
+}
+
+.has-border-top{
+    border-top: 1px solid #ededed !important;
+    padding-top: 30px !important;
+}

@@ -64,9 +64,10 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        if (!$this->manager->isEnabled('Iways_DeveloperToolBox')) {
+        /*if (!$this->manager->isEnabled('Iways_DeveloperToolBox')) {
+
             $this->_redirect('admin');
-        }
+        }*/
 
         return $this->resultPageFactory->create();
     }

@@ -47,13 +47,16 @@ class CategoryOptions extends \Iways\Base\Model\Config\Source
      */
     public function __construct(
         \Iways\Base\Helper\Data $baseHelper,
+        \Magento\Store\Model\StoreManagerInterface $storeManagerInterface,
+        \Magento\Store\Model\StoreResolver $storeResolver,
         \Iways\CategoryTree\Helper\Data $categoryTreeHelper,
         Category $category
     ) {
         $this->categoryTreeHelper = $categoryTreeHelper;
 
         $this->storeCategories = $category->getStoreCategories();
-        parent::__construct($baseHelper);
+
+        parent::__construct($baseHelper, $storeManagerInterface, $storeResolver);
     }
 
     /**
