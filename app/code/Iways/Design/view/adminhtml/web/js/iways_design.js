@@ -7,11 +7,16 @@ jQuery(document).on('change keyup', 'input.iways-color', function (e)
 
     var input = jQuery(this),
         val = input.val().replace("#", '');
-        
+
     if (!val || val.length >= 6) {
     
     	checkColorField(val, input);//check = setTimeout(checkColorField, delay * 4, val, jQuery(this));
     }
+    
+    /*input.siblings('.admin__field-fallback-reset').on('click', function (e)
+    {
+    	checkColorField(input.val(), input);
+    });*/
 });
 
 jQuery(document).on('change', '.iways-width-height select', function (e)

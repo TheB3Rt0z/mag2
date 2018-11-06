@@ -3,9 +3,5 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
      <head>
          <css src="Iways_Design::css/iways_design.css" />
-         <css src="jquery/colorpicker/css/colorpicker.css" />
-         <link src="jquery.js" />
-         <link src="Iways_Design::js/color_parser.js" />
-         <link src="Iways_Design::js/iways_design.js" />
      </head>
 </page>

@@ -181,6 +181,13 @@
                     <item name="fieldset"
                           xsi:type="string">iways_settings/sidebar</item>
                 </item>
+                <item name="sidebar_hide_product_comparison"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/sidebar/hide_product_comparison</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/sidebar</item>
+                </item>
                 <item name="toolbar_show_category_title"
                       xsi:type="array">
                     <item name="path"
@@ -208,6 +215,13 @@
                           xsi:type="string">design/toolbar/use_compact_sorter</item>
                     <item name="fieldset"
                           xsi:type="string">iways_settings/toolbar</item>
+                </item>
+                <item name="plain_text"
+                      xsi:type="array">
+                    <item name="path"
+                          xsi:type="string">design/custom_css/plain_text</item>
+                    <item name="fieldset"
+                          xsi:type="string">iways_settings/custom_css</item>
                 </item>
             </argument>
         </arguments>

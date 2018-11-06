@@ -541,6 +541,22 @@
                     </item>
                 </argument>
             </field>
+            
+            <field name="sidebar_hide_product_comparison">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="options"
+                          xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="label"
+                              xsi:type="string"
+                              translate="true">Hide product comparison</item>
+                        <item name="formElement"
+                             xsi:type="string">select</item>
+                    </item>
+                </argument>
+            </field>
         </fieldset>
         
         <fieldset name="toolbar">
@@ -622,5 +638,36 @@
                 </argument>
             </field>
          </fieldset>
+         
+         <fieldset name="custom_css">
+            <argument name="data"
+                      xsi:type="array">
+                <item name="config"
+                      xsi:type="array">
+                    <item name="label"
+                          xsi:type="string"
+                          translate="true">Custom CSS</item>
+                    <item name="collapsible"
+                          xsi:type="boolean">true</item>
+                    <item name="level"
+                          xsi:type="number">1</item>
+                </item>
+            </argument>
+            
+            <field name="plain_text">
+                <argument name="data"
+                          xsi:type="array">
+                    <item name="config"
+                          xsi:type="array">
+                        <item name="formElement"
+                              xsi:type="string">textarea</item>
+                        <item name="componentType"
+                              xsi:type="string">textarea</item>
+                        <item name="additionalClasses"
+                              xsi:type="string">iways-full-width</item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
     </fieldset>
 </form>

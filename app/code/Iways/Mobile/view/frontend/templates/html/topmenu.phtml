@@ -18,7 +18,7 @@ $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
 $helper = $this->helper('Iways\Design\Helper\Data');
 $storeManager = \Magento\Framework\App\ObjectManager::getInstance()->get('\Magento\Store\Model\StoreManagerInterface');
 $navigationDirection = $helper->getConfig('design/mobile/navigation_direction', $storeManager->getStore()->getCode());
-dump($storeManager->getStore()->getCode());
+
 ?>
 
 <nav class="navigation" data-action="navigation">

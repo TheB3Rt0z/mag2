@@ -11,7 +11,12 @@ function updatePreview(e)
         font_size = font_value
                   ? font_value + customFields.eq(2).val()
                   : 'initial',
-        hiddenField = jQuery('input[name=' + mainField.attr('name') + '_variant]'),
+        name = mainField.attr('name'),
+        hiddenField = jQuery(('[name="'
+                    + ((name.substring(name.length - 1) == "]")
+                      ? name.replace(/]$/, '_variant]')
+                      : name + '_variant')
+                    + '"]')),
         customResult = font_weight + ";" + font_value + ";" + customFields.eq(2).val()
                      + ";" + parseInt(font_weight) + ";" + font_style + ";" + font_size;
 
@@ -31,7 +36,11 @@ function initFontFaceFields(e, data, font_family)
         container = e.parent(),
         control = container.siblings('select'),
         name = control.attr('name'),
-        value = jQuery('[name=' + name + '_variant]').val(),
+        value = jQuery(('[name="'
+              + ((name.substring(name.length - 1) == "]")
+                ? name.replace(/]$/, '_variant]')
+                : name + '_variant')
+              + '"]')).val(),
         values = value.split(';');
 
     for (var property in data) {
@@ -51,6 +60,11 @@ function initFontFaceFields(e, data, font_family)
             jQuery(this).val(values[index]);
         }
     });
+    
+    if (!container.children('select.iways-empty').val()) {
+    	
+    	container.children('select.iways-empty').val(400); // "default" value, ATM always available
+    }
     
     jQuery.get('https://fonts.googleapis.com/css?family=' + font_family + ':' + variants.join(','), function(data)
     {

@@ -16,6 +16,14 @@
     padding-left: 52px;
 }
 
+.admin__fieldset > .admin__field.iways-full-width > .admin__field-control {
+	width: calc(100% - 135px);
+}
+.admin__fieldset > .admin__field.iways-full-width > .admin__field-control > textarea {
+	height: 255px;
+}
+
+
 input.iways-color {
     transition: .125s;
     width: 128px !important;

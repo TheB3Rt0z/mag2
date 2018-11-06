@@ -61,10 +61,14 @@ class Topseller extends \Magento\Framework\View\Element\Template
 
     public function getHotSellerIds()
     {
-        $hotSellerIds = $this->homePageHelper->retrieveData();
-        $hotSellerIds = $hotSellerIds['iways_homepage_settings']['hot_sellers'];
+        $layoutData = $this->homePageHelper->retrieveData();
 
-        return $hotSellerIds;
+        if (!empty($layoutData['iways_homepage_settings'])) {
+
+            return $layoutData['iways_homepage_settings']['hot_sellers'];
+        }
+
+        return false;
     }
 
     public function getPriceRender()
@@ -117,7 +121,7 @@ class Topseller extends \Magento\Framework\View\Element\Template
                             '</div>' .
                             '<div class="topseller-text">' .
                                 '<p class="topseller-name">' . $products[$i]->getName() . '</p>' .
-                                '<p class="topseller-price">' . $this->buildPrice($products[$i]) . '</p>' .
+                                $this->buildPrice($products[$i]) .
                             '</div>' .
                         '</a>' .
                     '</div>';

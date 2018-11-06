@@ -5,6 +5,51 @@
     top: 15px;
 }
 
+.preview-container{
+    margin-top: 10px;
+}
+
+.layout-preview{
+    float: left;
+    margin-right: 20px;
+}
+
+.layout-preview .layout-image-1{
+    width: 100px;
+    height: 120px;
+    background: url(layout1.svg);
+    margin-top: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.layout-preview .layout-image-2{
+    width: 100px;
+    height: 120px;
+    background: url(layout2.svg);
+    margin-top: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.layout-preview .layout-image-3{
+    width: 100px;
+    height: 120px;
+    background: url(layout3.svg);
+    margin-top: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.layout-preview .layout-image-4{
+    width: 100px;
+    height: 120px;
+    background: url(layout4.svg);
+    margin-top: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .colorpicker{
     z-index: 2;
 }
@@ -12,4 +57,9 @@
 .has-border-top{
     border-top: 1px solid #ededed !important;
     padding-top: 30px !important;
+}
+
+.iways-tabbed-form .iways-font-face:nth-child(1n+3) {
+    border-top: none !important;
+    padding-top: 0 !important;
 }

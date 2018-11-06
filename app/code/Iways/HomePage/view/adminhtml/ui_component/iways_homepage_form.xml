@@ -47,6 +47,7 @@
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Tile Settings</item>
                     <item name="collapsible" xsi:type="boolean">true</item>
+                    <item name="additionalClasses" xsi:type="string">iways-tabbed-form</item>
                 </item>
             </argument>
             <field name="layout_dropdown">
@@ -55,6 +56,7 @@
                     <item name="config" xsi:type="array">
                         <item name="label" xsi:type="string" translate="true">Select Layout</item>
                         <item name="formElement" xsi:type="string">select</item>
+                        <item name="elementTmpl" xsi:type="string">Iways_HomePage/layout-template</item>
                     </item>
                 </argument>
             </field>
@@ -124,12 +126,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -151,12 +173,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -169,6 +211,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -177,7 +231,7 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -192,18 +246,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -217,6 +260,7 @@
                     <item name="config" xsi:type="array">
                         <item name="label" xsi:type="string" translate="true">Second Tile</item>
                         <item name="collapsible" xsi:type="boolean">true</item>
+
                     </item>
                 </argument>
 
@@ -261,7 +305,7 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
@@ -270,6 +314,16 @@
                         </item>
                     </argument>
                 </field>
+                
+                <field name="title_font_variant">
+	                <argument name="data" xsi:type="array">
+	                    <item name="config" xsi:type="array">
+	                        <item name="formElement" xsi:type="string">hidden</item>
+	                        <item name="showFallbackReset" xsi:type="string">true</item>
+	                        <item name="dataType" xsi:type="string">string</item>
+	                    </item>
+	                </argument>
+	            </field>
                 <field name="title_font">
                     <argument name="data" xsi:type="array">
                         <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
@@ -281,6 +335,7 @@
                         </item>
                     </argument>
                 </field>
+                
                 <field name="img_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -299,12 +354,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -317,6 +392,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -325,7 +412,6 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -340,18 +426,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -408,12 +483,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -435,12 +530,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -453,6 +568,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -461,7 +588,6 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -476,18 +602,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -544,12 +659,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -571,12 +706,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -589,6 +744,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -597,7 +764,6 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -612,18 +778,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -680,12 +835,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -707,12 +882,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -725,6 +920,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -733,7 +940,6 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -748,18 +954,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -816,12 +1011,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Title Color</item>
+                            <item name="label" xsi:type="string" translate="true">Title Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="title_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Title Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -843,12 +1058,32 @@
                             <item name="component" xsi:type="string">Iways_Design/js/form/element/color-picker</item>
                             <item name="template" xsi:type="string">ui/form/field</item>
                             <item name="elementTmpl" xsi:type="string">Iways_Design/form/element/input-color-picker</item>
-                            <item name="label" xsi:type="string">Text Color</item>
+                            <item name="label" xsi:type="string" translate="true">Text Color</item>
                             <item name="labelVisible" xsi:type="boolean">true</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
                             <item name="source" xsi:type="string">category_form</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font_variant">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="formElement" xsi:type="string">hidden</item>
+                            <item name="showFallbackReset" xsi:type="string">true</item>
+                            <item name="dataType" xsi:type="string">string</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="text_font">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Iways\GoogleFonts\Model\Admin\Design\Config\Font\FamilyOptions</item>
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Text Font Family</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="additionalClasses" xsi:type="string">iways-font-face</item>
+                            <item name="elementTmpl" xsi:type="string">Iways_GoogleFonts/form/element/select-font-face</item>
                         </item>
                     </argument>
                 </field>
@@ -861,6 +1096,18 @@
                         </item>
                     </argument>
                 </field>
+                <field name="container_link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">homepage</item>
+                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
+                        </item>
+                    </argument>
+                </field>
                 <field name="use_button_link">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
@@ -869,7 +1116,6 @@
                             <item name="source" xsi:type="string">homepage</item>
                             <item name="prefer" xsi:type="string">toggle</item>
                             <item name="label" xsi:type="string" translate="true">Use Button as Link</item>
-                            <item name="additionalClasses" xsi:type="string">has-border-top</item>
                             <item name="valueMap" xsi:type="array">
                                 <item name="true" xsi:type="string">1</item>
                                 <item name="false" xsi:type="string">0</item>
@@ -884,18 +1130,7 @@
                 <field name="button_text">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Button Text (if used)</item>
-                            <item name="visible" xsi:type="boolean">true</item>
-                            <item name="dataType" xsi:type="string">text</item>
-                            <item name="formElement" xsi:type="string">input</item>
-                            <item name="source" xsi:type="string">homepage</item>
-                        </item>
-                    </argument>
-                </field>
-                <field name="container_link">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="label" xsi:type="string" translate="true">Button Text</item>
                             <item name="visible" xsi:type="boolean">true</item>
                             <item name="dataType" xsi:type="string">text</item>
                             <item name="formElement" xsi:type="string">input</item>
@@ -935,13 +1170,11 @@
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="formElement" xsi:type="string">input</item>
-                        <!--<item name="notice" xsi:type="string">The categroy has to be saved after selecting an image</item>-->
                         <item name="elementTmpl" xsi:type="string">Iways_HomePage/product-choose-button</item>
                         <item name="elementId" xsi:type="string">first_product_id</item>
                         <item name="dialogUrl" xsi:type="url" path="catalog/product_widget/chooser">
                             <param name="input_element_id">first_product_id</param>
                         </item>
-                        <!--<item name="component" xsi:type="string">Vendor_Module/js/form/element/button</item>-->
                         <item name="label" xsi:type="string" translate="true">1. Product ID</item>
                     </item>
                 </argument>

@@ -35,6 +35,9 @@ input[type='number'].iways-base-theme {
         }
     }
 }
+.minicart-items input[type='number'].iways-base-theme.item-qty {
+	margin-right: 0; // fixes blank theme
+}
 
 .page-products .products-grid .product-item {
 	&:hover {
@@ -45,15 +48,15 @@ input[type='number'].iways-base-theme {
 			box-shadow: 0 0 10px rgba(0, 0, 0, .25);
 			left: -11px;
 			padding: 0 10px;
-			position: absolute;
+			position: relative;
 			top: -1px;
 			z-index: 10;
 			.product-item-actions {
-				display: block;
+				text-indent: 0;
 			}
 		}
 	}
 	.product-item-info .product-item-actions {
-		display: none;
+		text-indent: -9999px;
 	}
 }

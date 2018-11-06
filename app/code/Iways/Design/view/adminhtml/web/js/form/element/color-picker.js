@@ -31,26 +31,31 @@ define([
             
             checkColorField($(element).val(), $(element));
 
-            $(element).ColorPicker({
-                onChange: function(hsb, hex, rgb)
+            $(element).ColorPicker(
+            {
+                onChange: function (hsb, hex, rgb)
                 {
-                    self.value("#"+hex);
+                    self.value("#" + hex);
+                    
                     var input = $(element);
+                    
                     checkColorField(hex, input);
                 },
-            	onSubmit: function(hsb, hex, rgb, el)
+            	onSubmit: function (hsb, hex, rgb, el)
                 {
                 	var input = $(el);
                 	
-                    self.value('#'+hex);
+                    self.value('#' + hex);
+                    
                     input.ColorPickerHide();
+                    
                     checkColorField(input.val(), input);
                 },
                 onBeforeShow: function ()
                 {
                 	$(this).ColorPickerSetColor(this.value);
                 }
-            }).bind('keyup', function()
+            }).bind('keyup', function ()
             {
                 $(this).ColorPickerSetColor(this.value);
             });

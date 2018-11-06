@@ -15,12 +15,14 @@
 namespace Iways\Design\Observer\Admin\System\Config\Changed\Section;
 
 
+use Iways\Design\Model\Design\Backend\Body\Background;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\Filesystem\Io\File as IOFile; // only to get rid of strict sniffers
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Context;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -135,7 +137,8 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         $this->stylesFile->write($data);
     }
 
-    public function writeStoreCss(Observer $observer, $store) {
+    public function writeStoreCss(Observer $observer, $store)
+    {
         $data = '@CHARSET "UTF-8";' . str_repeat(self::EOL, 2);
 
         if ($headerPanelBackgroundColor = $this->designHelper->getConfig('design/header/panel_background_color',
@@ -350,16 +353,18 @@ class Design implements \Magento\Framework\Event\ObserverInterface
         }
 
         if ($footerCopyrightBackgroundColor = $this->designHelper->getConfig('design/footer/copyright_background_color',
-            $store->getCode())) {
+                                                                             $store->getCode())) {
 
             $footerCopyrightBackgroundColor = $this->designHelper->checkColorCode($footerCopyrightBackgroundColor);
-
 
             $data .= 'footer.page-footer .copyright {' . self::EOL
                 . '    background-image: none;' . self::EOL
                 . '    background-color: ' . $footerCopyrightBackgroundColor . ';' . self::EOL
                 . '}' . self::EOL;
         }
+
+        $data .= $this->designHelper->getConfig('design/custom_css/plain_text',
+                                                $store->getCode()) . self::EOL;
 
         if ($this->designHelper->getConfig('design/sidebar/toggle_titles',
             $store->getCode())) {
@@ -384,7 +389,15 @@ class Design implements \Magento\Framework\Event\ObserverInterface
                 . '}' . self::EOL;
         }
 
-        // @todo additional css to hide compare if config: https://coderwall.com/p/vsqmbw/remove-product-compare-functionality-on-magento-2-frontend
+        if ($this->designHelper->getConfig('design/sidebar/hide_product_comparison',
+            $store->getCode())) { // @todo integrate with https://coderwall.com/p/vsqmbw/remove-product-compare-functionality-on-magento-2-frontend
+
+            $data .= '.columns .sidebar-additional > .block-compare,' . self::EOL
+                   . '.product-item-actions .actions-primary + .actions-secondary > .action.tocompare,' . self::EOL
+                   . '.product-info-main .product-addto-links .action.tocompare {' . self::EOL
+                   . '    display: none;' . self::EOL
+                   . '}' . self::EOL;
+        }
 
         $filePath = $this->directoryList->getPath('media') . '/' . self::STYLES_DIR
             . '/' . $store->getWebsiteId()

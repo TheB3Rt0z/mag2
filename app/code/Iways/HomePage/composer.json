@@ -2,6 +2,7 @@
     "name": "iways/module-homepage",
     "require": {
         "iways/module-design": "^0.1.0",
+        "iways/module-googlefonts": "^0.1.7",
         "magento/module-ui": "*"
     },
     "type": "magento2-module",

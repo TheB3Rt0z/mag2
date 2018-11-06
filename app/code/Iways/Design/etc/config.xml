@@ -11,6 +11,7 @@
             </input>
             <sidebar>
                 <toggle_titles>1</toggle_titles>
+                <hide_product_comparison>1</hide_product_comparison>
             </sidebar>
             <toolbar>
                 <show_category_title>0</show_category_title>
@@ -22,7 +23,6 @@
         <iways_design>
             <frontend>
                 <minify_css>1</minify_css>
-                <disable_product_comparison>1</disable_product_comparison>
             </frontend>
         </iways_design>
     </default>

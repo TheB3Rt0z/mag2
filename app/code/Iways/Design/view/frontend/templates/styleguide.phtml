@@ -375,13 +375,17 @@
                 backgroundColor = $(this).css('background-color');
 
             if (backgroundColor == 'rgba(0, 0, 0, 0)') {
+
                 $(this).hide();
                 $(this).siblings('.theme-color').hide();
+
             } else {
+
                 $(this).html(html + '<br />' + backgroundColor);
             }
 
             if ($(this).hasClass('background-color')) {
+
                 $(this).html($(this).html() + ' / ' + $(this).css('color'));
             }
         });

@@ -27,13 +27,13 @@
              sortOrder="801"
              module="Iways_Base"
              action="iways_base/documentation/index/theme/base/dev/0" />
-        <add id="Iways_Base::menu_documentation_basictheme"
+        <!--<add id="Iways_Base::menu_documentation_basictheme"
              resource="Iways_Base::menu_documentation_basictheme"
              title="Basic Theme"
              parent="Iways_Base::menu_documentation"
              sortOrder="802"
              module="Iways_Base"
-             action="iways_base/documentation/index/theme/basic/dev/0" />
+             action="iways_base/documentation/index/theme/basic/dev/0" />-->
         <add id="Iways_Base::menu_documentation_base"
              resource="Iways_Base::menu_documentation_base"
              title="Base Module"
@@ -54,13 +54,6 @@
              sortOrder="911"
              module="Iways_Base"
              action="adminhtml/system_config/edit/section/iways_base" />
-        <add id="Iways_Base::menu_system_cleanmedia"
-             resource="Iways_Base::menu_system_cleanmedia"
-             title="Flush JS/CSS Cache"
-             parent="Iways_Base::menu_system"
-             sortOrder="977"
-             module="Iways_Base"
-             action="adminhtml/cache/cleanMedia" />
         <add id="Iways_Base::menu_system_cacheflush"
              resource="Iways_Base::menu_system_cacheflush"
              title="Flush Magento's Cache"
@@ -75,5 +68,12 @@
              sortOrder="999"
              module="Iways_Base"
              action="adminhtml/cache/flushAll" />
+        <add id="Iways_Base::menu_system_cleanmedia"
+             resource="Iways_Base::menu_system_cleanmedia"
+             title="Flush JS/CSS Cache"
+             parent="Iways_Base::menu_system"
+             sortOrder="977"
+             module="Iways_Base"
+             action="adminhtml/cache/cleanMedia" />
     </menu>
 </config>
