@@ -6,9 +6,9 @@
          <css src="Vollkorn_Adminhtml::css/vollkorn_adminhtml.css" />
      </head>
      <body>
-         <block class="Vollkorn\Adminhtml\Block\Audio"
+         <!--<block class="Vollkorn\Adminhtml\Block\Audio" // audio-autostart dows no longer works, anyway..
                 name="vollkorn_adminhtml_block_audio"
                 as="vollkorn_adminhtml_block_audio"
-                after="-" />
+                after="-" />-->
      </body>
 </page>
